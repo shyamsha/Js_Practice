@@ -28,3 +28,5 @@ for (let i = 0; i < tempArray.length; i++) {
 }
 
 console.log(duplicates1) //[ 1, 5 ]
+
+

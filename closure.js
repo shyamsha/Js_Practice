@@ -1,3 +1,5 @@
+// A closure is a function having access to the parent scope, even after the parent function has closed.
+
 let x=100;
 function n(){
   console.log(x)
