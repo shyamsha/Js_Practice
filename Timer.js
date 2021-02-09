@@ -125,3 +125,12 @@ function startTimer(maxSeconds) {
 
 //Here is an example of how to use the above function
 startTimer(1000);
+
+for(var i=0;i<3;i++){
+  setTimeout(()=>{console.log(i)},1) // 3 3 3
+}
+
+//let is block scoped so value captured
+for(let i=0;i<3;i++){
+  setTimeout(()=>{console.log(i)},1) // 0 1 2
+}

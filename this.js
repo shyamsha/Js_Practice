@@ -68,7 +68,7 @@ var personName = {
   firstName: "Jock",
   lastName: "Sparrow",
   showFullName: function () {
-    //  here this refers person object
+    //  here this refers person object but
     console.log(this.firstName + this.lastName);
   },
 };

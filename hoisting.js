@@ -63,3 +63,29 @@ var func=function(){ // var is hoisted top of same var
   console.log("shyam")
 }
 func() //shyam
+
+function h(){
+  var host=5
+
+  function another(){
+    host=1 //it is not create global variable
+  }
+  another()
+  console.log(host) // 1
+}
+
+h()
+console.log(host) // ReferenceError: host is not defined
+x5= 235;
+let x5 = 21;
+x5= 265;
+console.log(x5); // throw an error cannot access before initialization
+function funcn() {
+  
+  console.log(x5); // first will x5 variable inside function and 
+  // variable already declarer with block scope throw an error cannot access before initialization
+
+  let x5 = 002;
+}
+
+funcn();

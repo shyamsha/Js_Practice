@@ -31,7 +31,7 @@ PrintStuff.prototype.print=function (){
 let newObj=new PrintStuff("Iam new obj I can print")
 // like this way inherit all properties and methods in simple example.
 
-newObj.print() //Iam new obj I can print
+newObj.print() //I am new obj I can print
 
 // second concept is prototype attribute
 // prototype attributes of object created with new Object() or object constructor.
