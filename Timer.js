@@ -23,7 +23,8 @@ setTimeout(() => {
 
 for (var i = 0; i < 10; i++) {
   function timer(j) {
-    setTimeout(function () { //set time out called 9 times
+    setTimeout(function () {
+      //set time out called 9 times
       console.log(j);
     }, i * 1000);
   }
@@ -31,13 +32,12 @@ for (var i = 0; i < 10; i++) {
 } //0 1 2 3 4 5 6 7 8 9 we implement closure to achieve
 
 for (var i = 10; i > 0; i--) {
-  function timer(j){
-
-  setTimeout(function() {
-     console.log(j);
-  }, (10-i)*1000);
- }
- timer(i)
+  function timer(j) {
+    setTimeout(function () {
+      console.log(j);
+    }, (10 - i) * 1000);
+  }
+  timer(i);
 } //10 9 8 7 6 5 4 3 2 1
 
 // How would you use a closure to create a private counter?
@@ -46,9 +46,13 @@ function counter() {
   // return an object with several functions that allow you
   // to modify the private _counter variable
   return {
-    add: function(increment) { _counter += increment; },
-    retrieve: function() { return 'The counter is currently at: ' + _counter; }
-  }
+    add: function (increment) {
+      _counter += increment;
+    },
+    retrieve: function () {
+      return "The counter is currently at: " + _counter;
+    },
+  };
 }
 
 // error if we try to access the private variable like below
@@ -56,8 +60,8 @@ function counter() {
 
 // usage of our counter function
 var c = counter();
-c.add(5); 
-c.add(9); 
+c.add(5);
+c.add(9);
 
 // now we can access the private variable in the following way
 c.retrieve(); // => The counter is currently at: 14
@@ -65,29 +69,29 @@ c.retrieve(); // => The counter is currently at: 14
 // in object counter
 let increment = {
   count: 100,
-  start: function(){
+  start: function () {
     //Assign this to variable that
     var that = this;
-    setInterval(function(){
+    setInterval(function () {
       console.log(that.count--);
-    }, 1000)
-  }
-}
+    }, 1000);
+  },
+};
 
 increment.start(); // 100 99 ...
 
-let increment = {
+let incrementNeg = {
   count: 1,
-  start: function(){
+  start: function () {
     //Assign this to variable that
     var that = this;
-    setInterval(function(){
-      console.log(++(that.count));
-    }, 1000)
-  }
-}
+    setInterval(function () {
+      console.log(++that.count);
+    }, 1000);
+  },
+};
 
-increment.start(); // 0 -1 ...
+incrementNeg.start(); // 0 -1 ...
 
 function clock() {
   let date = new Date();
@@ -95,7 +99,7 @@ function clock() {
   let m = date.getMinutes();
   let s = date.getSeconds();
 
-  console.log(`${h} : ${m} : ${s}`); 
+  console.log(`${h} : ${m} : ${s}`);
 }
 
 setInterval(() => {
@@ -105,32 +109,34 @@ setInterval(() => {
 // Timer
 function startTimer(maxSeconds) {
   var seconds = 0;
-  var intervalID = setInterval(function() {
-    
+  var intervalID = setInterval(function () {
     seconds++;
-    
+
     var timeRemaining = maxSeconds - seconds,
-        hours = parseInt(timeRemaining/3600),
-        mins = parseInt(timeRemaining%3600/60),
-        secs = parseInt(timeRemaining%3600%60);
-    
-    console.log(hours + ':' + mins + ':' + secs);
-    
+      hours = parseInt(timeRemaining / 3600),
+      mins = parseInt((timeRemaining % 3600) / 60),
+      secs = parseInt((timeRemaining % 3600) % 60);
+
+    console.log(hours + ":" + mins + ":" + secs);
+
     if (seconds === maxSeconds) {
       clearInterval(intervalID);
     }
-    
   }, 1000);
 }
 
 //Here is an example of how to use the above function
 startTimer(1000);
 
-for(var i=0;i<3;i++){
-  setTimeout(()=>{console.log(i)},1) // 3 3 3
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 1); // 3 3 3
 }
 
 //let is block scoped so value captured
-for(let i=0;i<3;i++){
-  setTimeout(()=>{console.log(i)},1) // 0 1 2
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 1); // 0 1 2
 }
