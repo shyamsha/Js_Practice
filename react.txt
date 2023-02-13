@@ -51,4 +51,11 @@ A) this.props.history.push({
   state: { detail: response.data }
 })
 
-13.
+13. what are webpack and babel?
+A) webpack and babel tools for developer that optimizing javascript applications
+
+webpack is module bundler we can use minify multiple files in javascript and increase overall efficiency. 
+a modular bundler takes all assets comes up with single output file that making more light weight project.
+
+for babel it is syntax converter and transpiler. the code to be compatible with all browsers and environments. 
+in such instances we can uses babel and it turns latest javascript code into ES5 this makes all browsers compatible.

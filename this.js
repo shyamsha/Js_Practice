@@ -36,6 +36,7 @@ log(); //undefined
 let personObj = {
   firstName: "John",
   lastName: "sin",
+
   fullName: function () {
     //  here this refers current object
     console.log(this.firstName + this.lastName);
@@ -128,11 +129,11 @@ let play = {
   },
 };
 play.playing(); // T. Woods playing The Masters
-                // P. Mickelson playing The Masters
-                // T. Woods playing undefined
-                // P. Mickelson playing undefined
-                // T. Woods playing The Masters
-                // P. Mickelson playing The Masters
+// P. Mickelson playing The Masters
+// T. Woods playing undefined
+// P. Mickelson playing undefined
+// T. Woods playing The Masters
+// P. Mickelson playing The Masters
 
 // Fix this when method is assigned to a variable
 // This data variable is a global variable
@@ -148,8 +149,8 @@ let user = {
     { name: "P. Mickelson", age: 43 },
   ],
   showData: function (event) {
-    var randomNum = ((Math.random () * 2 | 0) + 1) - 1; // random number between 0 and 1
-console.log(this.data)
+    var randomNum = ((Math.random() * 2) | 0) + 1 - 1; // random number between 0 and 1
+    console.log(this.data);
     // This line is adding a random person from the data array to the text field
     console.log(this.data[randomNum].name + " " + this.data[randomNum].age);
   },
@@ -164,4 +165,153 @@ showUserData(); // Samantha 12 (from the global data array)
 // we can use bind to the user object
 var showUserData = user.showData.bind(user);
 
-showUserData() // P. Mickelson 43
+showUserData(); // P. Mickelson 43
+
+// call is a function that help you to change context of invoking function
+// it helps you replace value of this inside function whatever value you want
+// it takes arguments
+
+let user1 = {
+  fName: "syam",
+  lName: "kumar",
+  sayName: function (n, s) {
+    console.log(this.fName + this.lName + n + s);
+  },
+};
+let fullN = {
+  fName: "sam",
+  lName: "kumar",
+};
+user.sayName.call(user1, "w", "z"); // syamkumarwz
+user.sayName.call(fullN); //samkumar
+user.sayName.call(); //NaN
+
+const persons = {
+  fullName: function (city, country) {
+    console.log(
+      this.firstName + " " + this.lastName + "," + city + "," + country
+    );
+  },
+};
+
+const person12 = {
+  firstName: "John",
+  lastName: "Doe",
+};
+
+persons.fullName.call(person12, "Oslo", "Norway"); //John Doe,Oslo,Norway
+
+function Car(type, fuelType) {
+  this.type = type;
+  this.fuelType = fuelType;
+}
+
+function setBrand(brand) {
+  Car.call(this, "convertible", "petrol");
+  this.brand = brand;
+  console.log(`Car details = `, this);
+}
+
+function definePrice(price) {
+  Car.call(this, "convertible", "diesel");
+  this.price = price;
+  console.log(`Car details = `, this);
+}
+
+const newBrand = new setBrand("Brand1"); 
+//  "Car details = "
+//  {
+//   brand: "Brand1",
+//   fuelType: "petrol",
+//   type: "convertible"
+// }
+
+const newCarPrice = new definePrice(100000);
+// "Car details = "
+//  {
+//   fuelType: "diesel",
+//   price: 100000,
+//   type: "convertible"
+// }
+//if call a function with no arguments it refers global object
+const newEntity = (obj) => console.log(obj);
+
+function mountEntity(){
+	this.entity = newEntity;
+	console.log(`Entity ${this.entity} is mounted on ${this}`);
+}
+
+mountEntity.call(); //"Entity (obj) => window.runnerWindow.proxyConsole.log(obj) is mounted on [object Window]"
+
+//apply is same behavior of call but it takes array arguments
+
+const persons1 = {
+  fullName: function (city, country) {
+    console.log(
+      this.firstName + " " + this.lastName + "," + city + "," + country
+    );
+  },
+};
+
+const person10 = {
+  firstName: "John",
+  lastName: "Doe",
+};
+
+persons1.fullName.apply(person10, ["Oslo", "Norway"]); //John Doe,Oslo,Norway
+persons1.fullName.apply(); // undefined
+ion.
+
+function Car1(type, fuelType){
+	this.type = type;
+	this.fuelType = fuelType;
+}
+
+function setBrand1(brand){
+	Car.apply(this, ["convertible", "petrol"]); //Syntax with array literal
+	this.brand = brand;
+	console.log(`Car details = `, this);
+}
+
+function definePrice1(price){
+	Car.apply(this, new Array("convertible", "diesel")); //Syntax with array object construction
+	this.price = price;
+	console.log(`Car details = `, this);
+}
+
+const newBrand1 = new setBrand1('Brand1');
+const newCarPrice1 = new definePrice1(100000); //same output as call
+
+//this another way to using in function
+function addUp(){
+  //Using arguments to capture the arbitrary number of inputs
+  const args = Array.from(arguments); // [1,2,3,4,5,6]
+  this.x = args.reduce((prev, curr) => prev + curr, 0);
+  console.log("this.x = ", this.x);
+}
+
+function driverFunc(){
+  const obj = {
+      inps: [1,2,3,4,5,6]
+  }
+  addUp.apply(obj, obj.inps);
+}
+
+driverFunc(); //this.x = 21
+
+// Bind is a function that helps you create another function.
+// that you can execute later with the new context of this that is provided.
+
+const persons2 = {
+  fullName: function () {
+    console.log(this.firstName + " " + this.lastName);
+  },
+};
+
+const person2 = {
+  firstName: "John",
+  lastName: "Doe",
+};
+
+const fullSayName = persons2.fullName.bind(person2);
+fullSayName(); //John Doe

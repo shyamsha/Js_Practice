@@ -1,4 +1,5 @@
 // hoisting means variables declare with var and function declaration move on top their scope.
+// if var declares inside function that will be hoisted top of the function not as global scope
 // console.log(n) // undefined
 var n="syam"
 
@@ -37,22 +38,24 @@ var movieStar=function(){ // function expression with var declaration even not h
 }
 
 // functions hoisted first than variable
+// this is work with old javascript right now it will throw error like SyntaxError: Identifier 'double' has already been declared
 var business;
 function business(){
   console.log("not hoisted")
 }
 
-console.log(business) //[function:business]
+console.log(business) //old one is [function:business] | new error is syntaxerror
 
 // another condition
-
+// this is work with old javascript right now it will throw error like SyntaxError: Identifier 'double' has already been declared
 var p1="sam"
 
 function p1(){ //this time var is assign to value first go declaration the var so var is assigned p1 is override
   console.log("s")
 }
 
-console.log(p1) // sam
+console.log(p1) // old one is sam | new error is syntaxerror
+
 // p1() // p1 is not a function
 
 var func=function(){
@@ -76,10 +79,10 @@ function h(){
 
 h()
 console.log(host) // ReferenceError: host is not defined
-x5= 235;
-let x5 = 21;
-x5= 265;
-console.log(x5); // throw an error cannot access before initialization
+  x5= 235;
+  let x5 = 21;
+  x5= 265;
+  console.log(x5); // throw an error cannot access before initialization
 function funcn() {
   
   console.log(x5); // first will x5 variable inside function and 
@@ -89,3 +92,27 @@ function funcn() {
 }
 
 funcn();
+
+// function decelerations are hoisted over variables decelerations but not variable assignments
+
+// Variable assignment over function declaration
+// this is work with old javascript right now it will throw error like SyntaxError: Identifier 'double' has already been declared
+
+var double = 22;
+
+function double(num) {
+  return (num*2);
+}
+
+console.log(typeof double); // Output: number
+
+// Function declarations over variable declarations
+// this is work with old javascript right now it will throw error like SyntaxError: Identifier 'double' has already been declared
+
+var double;
+
+function double(num) {
+  return (num*2);
+}
+
+console.log(typeof double); // Output: function
