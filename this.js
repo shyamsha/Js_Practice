@@ -218,7 +218,7 @@ function definePrice(price) {
   console.log(`Car details = `, this);
 }
 
-const newBrand = new setBrand("Brand1"); 
+const newBrand = new setBrand("Brand1");
 //  "Car details = "
 //  {
 //   brand: "Brand1",
@@ -236,9 +236,9 @@ const newCarPrice = new definePrice(100000);
 //if call a function with no arguments it refers global object
 const newEntity = (obj) => console.log(obj);
 
-function mountEntity(){
-	this.entity = newEntity;
-	console.log(`Entity ${this.entity} is mounted on ${this}`);
+function mountEntity() {
+  this.entity = newEntity;
+  console.log(`Entity ${this.entity} is mounted on ${this}`);
 }
 
 mountEntity.call(); //"Entity (obj) => window.runnerWindow.proxyConsole.log(obj) is mounted on [object Window]"
@@ -260,40 +260,39 @@ const person10 = {
 
 persons1.fullName.apply(person10, ["Oslo", "Norway"]); //John Doe,Oslo,Norway
 persons1.fullName.apply(); // undefined
-ion.
 
-function Car1(type, fuelType){
-	this.type = type;
-	this.fuelType = fuelType;
+function Car1(type, fuelType) {
+  this.type = type;
+  this.fuelType = fuelType;
 }
 
-function setBrand1(brand){
-	Car.apply(this, ["convertible", "petrol"]); //Syntax with array literal
-	this.brand = brand;
-	console.log(`Car details = `, this);
+function setBrand1(brand) {
+  Car.apply(this, ["convertible", "petrol"]); //Syntax with array literal
+  this.brand = brand;
+  console.log(`Car details = `, this);
 }
 
-function definePrice1(price){
-	Car.apply(this, new Array("convertible", "diesel")); //Syntax with array object construction
-	this.price = price;
-	console.log(`Car details = `, this);
+function definePrice1(price) {
+  Car.apply(this, new Array("convertible", "diesel")); //Syntax with array object construction
+  this.price = price;
+  console.log(`Car details = `, this);
 }
 
-const newBrand1 = new setBrand1('Brand1');
+const newBrand1 = new setBrand1("Brand1");
 const newCarPrice1 = new definePrice1(100000); //same output as call
 
 //this another way to using in function
-function addUp(){
+function addUp() {
   //Using arguments to capture the arbitrary number of inputs
   const args = Array.from(arguments); // [1,2,3,4,5,6]
   this.x = args.reduce((prev, curr) => prev + curr, 0);
   console.log("this.x = ", this.x);
 }
 
-function driverFunc(){
+function driverFunc() {
   const obj = {
-      inps: [1,2,3,4,5,6]
-  }
+    inps: [1, 2, 3, 4, 5, 6],
+  };
   addUp.apply(obj, obj.inps);
 }
 
