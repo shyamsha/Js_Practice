@@ -582,7 +582,14 @@ console.log(name.padStart(2)); // "Lydia Hallie"
 // padStart method, we can add padding to the beginning of a string
 // "Lydia Hallie" has a length of 12. name.padStart(13) inserts 1 space at the start of the string, because 12 + 1 is 13.
 
-// 60.
+// 60.how to check null
+let first = null;
+let second;
+
+console.log(Object.is(first,null)) // true
+console.log(Object.is(first,second)) // false because second is undefined
+
+//  The Object.is() static method determines whether two values are the same value.
 
 
 
