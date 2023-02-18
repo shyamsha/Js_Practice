@@ -1,4 +1,5 @@
 // callback
+// A callback is a function that is passed inside another function, and then called in that function to perform a task.
 // it's wait until its done
 function call(cb) {
   setTimeout(() => {

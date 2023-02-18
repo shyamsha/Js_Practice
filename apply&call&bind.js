@@ -142,22 +142,52 @@ doSomething("Water", "Salt", "Glue"); // ["Water", "Salt", "Glue"]
 // Use Apply () to Execute Variable-Arity Functions
 var allNumbers = [23, 11, 34, 56];
 // We cannot pass an array of numbers to the the Math.max method like this
-console.log (Math.max (allNumbers)); // NaN
+console.log(Math.max(allNumbers)); // NaN
 
 var allNumbers = [23, 11, 34, 56];
 // We cannot pass an array of numbers to the the Math.max method like this
-console.log (Math.max.apply(null,allNumbers)); // 56
+console.log(Math.max.apply(null, allNumbers)); // 56
 // the fist argument to apply () sets the “this” value, but “this” is not used in the Math.max () method, so we pass null.
 
-var students = ["Peter Alexander", "Michael Woodruff", "Judy Archer", "Malcolm Khan"];
+var students = [
+  "Peter Alexander",
+  "Michael Woodruff",
+  "Judy Archer",
+  "Malcolm Khan",
+];
 
 // No specific parameters defined, because ANY number of parameters are accepted
-function welcomeStudents () {
-    var args = Array.prototype.slice.call (arguments);
+function welcomeStudents() {
+  var args = Array.prototype.slice.call(arguments);
 
-    var lastItem = args.pop ();
-    console.log ("Welcome " + args.join (", ") + ", and " + lastItem + ".");
+  var lastItem = args.pop();
+  console.log("Welcome " + args.join(", ") + ", and " + lastItem + ".");
 }
 
-welcomeStudents.apply (null, students);
+welcomeStudents.apply(null, students);
 // Welcome Peter Alexander, Michael Woodruff, Judy Archer, and Malcolm Khan.
+
+function displayThisValue(param1, param2) {
+  console.log(this.value, param1, param2);
+}
+
+const obj = {
+  value: 10,
+};
+const valueArr = [20, 30];
+
+// No context set
+displayThisValue(20, 30); // undefined, 20, 30
+
+// 'obj' is set as the context using 'call'
+displayThisValue.call(obj, ...valueArr); // 10, 20, 30
+
+// 'obj' is set as the context using 'apply'
+displayThisValue.apply(obj, valueArr); // 10, 20, 30
+
+// No context set
+setTimeout(displayThisValue, 1000, ...valueArr); // undefined, 20, 30
+
+// 'obj' is set as the context using 'bind'
+setTimeout(displayThisValue.bind(obj), 1000, ...valueArr); // 10, 20, 30
+setTimeout(displayThisValue.bind(obj, ...valueArr), 1000); // 10, 20, 30

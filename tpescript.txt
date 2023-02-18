@@ -1,0 +1,123 @@
+1.the difference between interface vs type alias
+
+--> interface describe object shapes types can be used for primitives,unions,tuples
+
+example --> 
+
+// primitives 
+type Name = string 
+
+// object 
+type Male = {
+  name: string
+}
+
+type Female = {
+  name: string 
+}
+
+// union
+type HumanSex = Male | Female
+
+// tuple
+type Children = [Female, Male, Female]
+
+--> interface can be extended by declaring multiple times
+
+example 
+
+interface Human {
+  name: string 
+}
+
+interface Human {
+  legs: number 
+}
+
+Human will be treated as a single interface: a combination of the members of both declarations.
+
+This is not the case with type aliases.
+
+With a type alias, the following will lead to an error:
+
+type Human = {
+    name: string 
+}
+  
+type Human =  {
+    legs: number 
+}
+
+const h: Human = {
+   name: 'gg',
+   legs: 5 
+}  
+duplicate identifier Human
+
+--> With type aliases, you’ll have to resort to an intersection type:
+
+type HumanWithName = {
+    name: string 
+}
+  
+type HumanWithLegs =  {
+    legs: number 
+}
+
+type Human  = HumanWithName & HumanWithLegs
+
+const h: Human = {
+   name: 'gg',
+   legs: 5 
+}  
+
+Both type aliases and interfaces can be extended, but with different syntaxes
+Type alias extends a type alias
+
+type HumanWithName = {
+  name: string 
+}
+
+type Human = HumanWithName & {
+   legs: number 
+   eyes: number 
+}
+
+Interface extends an interface
+
+interface HumanWithName {
+  name: string 
+}
+
+interface Human extends HumanWithName {
+  legs: number 
+  eyes: number 
+}
+
+--> classes can only implement statically known members
+A class can implement both interfaces or type aliases. However, a class cannot implement or extend a union type.
+
+Class implements an interface
+interface Human {
+  name: string
+  legs: number 
+  eyes: number 
+}
+
+class FourLeggedHuman implements Human {
+  name = 'Krizuga'
+  legs = 4
+  eyes = 2
+}
+Class implements a type alias
+type Human = {
+  name: string
+  legs: number 
+  eyes: number 
+}
+
+class FourLeggedHuman implements Human {
+  name = 'Krizuga'
+  legs = 4
+  eyes = 2
+}
