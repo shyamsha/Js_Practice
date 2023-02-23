@@ -12,3 +12,12 @@ function binaryToNumber(a) {
   return sum;
 }
 console.log(binaryToNumber([0, 1, 0, 1]));
+
+//number to binary
+let arr = [5, 4, 2, 1];
+function binary(x) {
+  return x.toString("2");
+}
+
+let output = arr.map(binary);
+console.log(output);
