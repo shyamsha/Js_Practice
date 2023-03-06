@@ -1,0 +1,140 @@
+Question 1:- Why do we call JavaScript as dynamic language?
+variable can change during runtime
+
+Question 2:- how does JavaScript determine data types ?
+data types depended on values assigned
+
+Question 3:- What is typeof functions?
+determine datatype in JavaScript uses typeof
+
+Question 4:- How to check data type in JavaScript ?
+using typeof
+
+Question 5:- What are different datatypes in JavaScript ?
+primitive :- String,number,null,Undefined,symbol,boolean
+non-primitive/object type :- objects,array,date
+
+Question 6:- Explain Undefined Data types ?
+variable has been declare but value is not assigned
+
+Question 7:- What is Null ?
+null indicates absence of data. its not zero or empty. it is primitive datatype.
+
+Question 8:- Differentiate between Null and Undefined ?
+Undefined :-variable has been declare but value is not assigned
+Null :-null indicates absence of data.
+
+Question 9:- Explain Hoisting ?
+check with hoisting.js
+
+Question 10:- Are JavaScript initialization hoisted ?
+No
+
+Question 11:- What are global variables ?
+those variables access through out document
+
+Question 12:- What are the issues with Global variables ?
+hard to debug
+
+Question 13:- What happens when you declare variable with out VAR ?
+it will become global variable
+Question 14:- What is Use Strict ?
+JavaScript's strict mode is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of "sloppy mode".
+
+Question 15:- How to force developers to use Var keyword ?// strick
+
+Question 16:- How can we handle Global Variables ?
+Question 17:- How can we avoid Global variables ?
+using Closures
+
+Question 18:- What are Closures ?
+check clouser.js
+Question 19:- Why do we need Closures ?
+create self contain function and state and solve global variable problem
+Question 20:- Explain IIFE ?
+it is anonymous function it invoke immediately
+
+Question 21:- What is the use of IIFE ?
+solve name  collision 
+
+Question 22:- What is name collision in global scope ?
+name same variables or functions in same context
+
+Question 23:- IIFE vs Normal Function?
+normal function have name collision IIFE does not
+
+Question 24:- What are design patterns ?
+design patterns are time tested architecture. if we going to object uses singleton pattern
+
+Question 25:- Which is the most used design pattern?
+module design pattern or revealing module pattern
+
+Question 26:- What is module Pattern and revealing module pattern ?
+self contain independent components
+provide encapsulation and abstraction
+
+Question 27:- What are the various ways to create JavaScript objects?
+four ways 1.object create normal way 2.use constructor 3.using class 4.Object.create()
+
+Question 28:- How can we do inheritance in JavaScript ?
+JavaScript uses object inheritance or prototype inheritance. inheritance done using prototype object
+
+Question 29:- What is prototype in JavaScript ?
+every object has prototype object
+
+Question 30:- Explain Prototype chaining ?
+means where one object inheritance to another object
+
+Question 31:- What is Let Keyword?
+block level scope, we can not re declare
+
+Question 32:- Are Let variables hoisted ?
+they are hoisted but not initialization
+
+Question 33:- Explain Temporal Dead Zone ?
+variables are declared before initialization access those variables in the state of period is TDZ.
+those variables in memory but not have assigned values
+
+Question 34:- Let vs Var
+scope, declare, initialization
+
+Question 35:- String Concatenation and Arithmetic puzzle
+with "+" symbol to type caste
+
+Question 36 :- What is class in ES6 ?
+
+
+Question 37 :- So with class Keyword does it imply JavaScript is a OOP language ?
+
+
+Question 38 :- Differentiate between class and normal function ?
+
+
+Question 39 :- What is a Arrow function ?
+
+
+Question 40 :- Why do we use Arrow function ?
+
+
+Question 41 :- Differentiate between Arrow vs Normal Function ?
+
+
+Question 42 :- Does Arrow function create its own this ?
+
+
+Question 43. Explain Synchronous execution ?
+
+
+Question 44. What is a call Stack ?
+Question 45. What is a blocking call ?
+Question 46. How to avoid blocking calls ?
+Question 47. Explain Asynchronous execution ?
+Question 48. Synch vs Asynch ?
+Question 49. How can we do Asynch calls ?
+Question 50. What is a thread ?
+Question 51. Explain Multi-threading ?
+Question 52. Is JavaScript Multi-threaded ?
+Question 53. Then how does Settimeout run ?
+Question 54. What is a WebAPI/Browser API ?
+Question 55. What is a Event loop and callback queue?
+Question 56. Eventloop and Callback code question
