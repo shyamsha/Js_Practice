@@ -101,6 +101,13 @@ scope, declare, initialization
 Question 35:- String Concatenation and Arithmetic puzzle
 with "+" symbol to type caste
 
+How to detect if caps lock is on using JavaScript?
+use the getModifierState() method of the KeyboardEvent event object.
+
+What is context API VS Redux?
+Redux is a complete state manager capable of allowing an app to undo/redo actions and provides advanced developer tooling for debugging. 
+Context API is designed as a dependency injection mechanism that allows making data available through the component tree without being manually passed
+
 Question 36 :- What is class in ES6 ?
 
 
