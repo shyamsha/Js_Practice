@@ -22,9 +22,8 @@ function minimizeStr(str) {
   } else {
     return "String is not even";
   }
-  console.log();
   let arr = [];
-  arr.push(right[right.length - 1])
+  arr.push(right[right.length - 1]);
 
   return newString;
 }

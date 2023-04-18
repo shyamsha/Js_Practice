@@ -1,5 +1,6 @@
 // A closure is a function having access to the parent scope, even after the parent function has closed.
-// A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).
+// A closure is the combination of a function bundled together (enclosed) with references to its surrounding state
+// (the lexical environment).
 // In other words, a closure gives you access to an outer function's scope from an inner function.
 // In JavaScript, closures are created every time a function is created
 let x = 100;
@@ -14,7 +15,7 @@ function add(x) {
   };
 }
 
-const adding = add(5);
+const adding = add(5)(10);
 console.log(adding(10));
 
 function z() {
@@ -41,6 +42,7 @@ function y() {
   //here we taking another function pass i value
   for (var i = 0; i < 5; i++) {
     function close(i) {
+      // here every time function will call variable remembers
       setTimeout(function () {
         console.log(i);
       }, 1000);
