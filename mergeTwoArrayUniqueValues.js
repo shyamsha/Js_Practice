@@ -1,4 +1,4 @@
-function difference(firstArray, secondArray) {
+function mergeTwoArrayUniqueValues(firstArray, secondArray) {
   let add = [...firstArray, ...secondArray]; //spread operator
 
   if (firstArray.length == 0 && secondArray.length == 0) {
@@ -10,4 +10,4 @@ function difference(firstArray, secondArray) {
   return unique;
 }
 
-console.log(difference([1, 4, 5], [1, 4, 6]));
+console.log(mergeTwoArrayUniqueValues([1, 4, 4, 7], [1, 4, 6]));
