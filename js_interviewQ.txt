@@ -144,4 +144,28 @@ Question 52. Is JavaScript Multi-threaded ?
 Question 53. Then how does Settimeout run ?
 Question 54. What is a WebAPI/Browser API ?
 Question 55. What is a Event loop and callback queue?
-Question 56. Eventloop and Callback code question
+Question 56. Eventloop and Callback code question?
+
+Is Fetch API part of JavaScript Engine or JavaScript Runtime?
+
+JavaScript runtime (Browser)
+
+What will be the output of the following code snippet? (in operator)
+
+const first = 2 in [1, 2]; // return false in array we have give index not value of index
+const second = '2' in [0, 1, 2]; // return true
+console.log("length" in first); // returns true (length is an Array property)
+console.log(Symbol.iterator in first); // returns true
+console.log(first, second); 
+
+const myCar = { make: "Honda", model: "Accord", year: 1998 };
+"make" in myCar; // returns true
+"model" in myCar; // returns true
+
+const color1 = new String("green"); // creating new string object
+"length" in color1; // returns true
+
+const color2 = "coral";
+// generates an error (color2 is not a String object)
+"length" in color2;
+

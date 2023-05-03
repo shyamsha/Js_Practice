@@ -50,3 +50,39 @@ function y() {
   }
   close(i);
 } //0 1 2 3 4
+
+function isEven(num) {
+  return num % 2 === 0 ? "true" : "false";
+}
+
+function isPrime(num, b) {
+  let isPrime = "true";
+  if (num > 1) {
+    for (let i = 2; i < b; i++) {
+      if (num % i === 0 && num !== 2) {
+        isPrime = "false";
+        break;
+      }
+    }
+  }
+  return isPrime;
+}
+
+function some(a, b, c) {
+  let count = [];
+  let isTrue = 0;
+  for (let i = 0; i < b; i++) {
+    count.push(c(a[i], b));
+  }
+  for (let j = 0; j < count.length; j++) {
+    if (count[j] === "true") {
+      isTrue++;
+    }
+  }
+  return isTrue === b ? true : false;
+}
+
+console.log(some([2, 4, 6], 3, isEven));
+console.log(some([2, 3, 4], 3, isEven));
+console.log(some([2, 3, 11], 3, isPrime));
+console.log(some([2, 3, 5, 9], 4, isPrime));
