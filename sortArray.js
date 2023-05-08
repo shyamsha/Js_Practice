@@ -1,22 +1,45 @@
-function sort(array) {
+let arr1 = [1, 3, 9, 8, 7, 6, 4, 2, 5];
+
+function ascendingSort() {
+  let temp;
   let done = false;
   while (!done) {
     done = true;
-    for (let i = 1; i < array.length; i += 1) {
-      if (array[i - 1] > array[i]) {
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] > arr1[i + 1]) {
         done = false;
-        let tmp = array[i - 1];
-        array[i - 1] = array[i];
-        array[i] = tmp;
+        temp = arr1[i + 1];
+        arr1[i + 1] = arr1[i];
+        arr1[i] = temp;
       }
     }
   }
-
-  return array;
+  return arr1;
 }
 
+console.log(ascendingSort());
+
+function descendingSort(arr1) {
+  let temp;
+  let done = false;
+  while (!done) {
+    done = true;
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] < arr1[i + 1]) {
+        done = false;
+        temp = arr1[i + 1];
+        arr1[i + 1] = arr1[i];
+        arr1[i] = temp;
+      }
+    }
+  }
+  return arr1;
+}
+
+console.log(descendingSort(arr1));
+
 var numbers = [12, 10, 15, 11, 14, 13, 16, -1, 16, 11];
-sort(numbers);
+numbers.sort((a, b) => b - a);
 console.log(numbers);
 
 //another way
