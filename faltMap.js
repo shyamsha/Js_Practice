@@ -23,3 +23,8 @@ const arr1 = [1, 2, [4, 5], 6, 7, [8, [6]]];
 
 // flatMap() depth until 2
 console.log(arr1.flatMap((element) => element)); // [1, 2, 4, 5, 6, 7, 8, [6]]
+
+// dept flatten array using recursion
+let flatten = (a) => (Array.isArray(a) ? [].concat(...a.map(flatten)) : a);
+
+console.log(flatten(arr1));

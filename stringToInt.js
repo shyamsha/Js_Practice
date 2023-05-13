@@ -67,5 +67,5 @@ function integer(s) {
 }
 
 console.log(integer("words 21 gf"));
-console.log(integer("words 21 gf 241"));
+console.log(integer("words 21 gf"));
 console.log(integer(" gf -41"));

@@ -7,7 +7,7 @@ function filterValues(array) {
   return b;
 }
 
-//modifying original array and with out using filter
+//modifying original array and with out using filter with high order function
 
 function fns(n) {
   return n >= 10;
@@ -15,7 +15,7 @@ function fns(n) {
 
 var filter = function (arr, fn) {
   let size = 0;
-  for (let i = 0; i < arr.length; ++i) {
+  for (let i = 0; i < arr.length; i++) {
     if (fn(arr[i])) {
       arr[size] = arr[i];
       size++;

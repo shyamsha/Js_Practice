@@ -45,7 +45,7 @@ var mergeAlternately = function (word1, word2) {
 
   return str;
 };
-console.log(mergeAlternately(str1, str2));
+console.log(mergeAlternately(str1, str2)); //apbqcrsd
 
 //using one loop
 function stringAlternative(word1, word2) {

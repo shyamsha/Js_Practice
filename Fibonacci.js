@@ -9,10 +9,10 @@ function FibIterator(a) {
   };
 }
 const fibs = new FibIterator(1);
-console.log(fibs.next());
-console.log(fibs.next());
-console.log(fibs.next());
-console.log(fibs.next());
+// console.log(fibs.next());
+// console.log(fibs.next());
+// console.log(fibs.next());
+// console.log(fibs.next());
 
 // Write a function which returns a function that generates fibonacci numbers.
 // Don't use generators.
@@ -42,3 +42,20 @@ function createFibonacciGenerator() {
 // console.log(fibonacciGenerator())
 // console.log(fibonacciGenerator())
 // console.log(fibonacciGenerator())
+
+//recursive function of fibonacci
+
+function rf(n) {
+  if (n < 2) {
+    return n;
+  }
+  return rf(n - 1) + rf(n - 2);
+}
+
+console.log(rf(7)); // represents sequence of order 7
+
+// range between fibonacci
+
+for (let i = 0; i < 7; i++) {
+  console.log(rf(i)); // utilizing above function
+}
