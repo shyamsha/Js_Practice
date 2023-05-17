@@ -137,7 +137,7 @@ play.playing(); // T. Woods playing The Masters
 
 // Fix this when method is assigned to a variable
 // This data variable is a global variable
-let data = [
+data = [
   { name: "Samantha", age: 12 },
   { name: "Alexis", age: 14 },
 ];
@@ -146,7 +146,7 @@ let user = {
   // this data variable is a property on the user object
   data: [
     { name: "T. Woods", age: 37 },
-    { name: "P. Mickelson", age: 43 },
+    { name: "P. Michelson", age: 43 },
   ],
   showData: function (event) {
     var randomNum = ((Math.random() * 2) | 0) + 1 - 1; // random number between 0 and 1
@@ -163,9 +163,11 @@ var showUserData = user.showData;
 //
 showUserData(); // Samantha 12 (from the global data array)
 // we can use bind to the user object
-var showUserData = user.showData.bind(user);
+var showUserData1 = user.showData.bind(user);
+// or like this without bind method
+user.showData();
 
-showUserData(); // P. Mickelson 43
+showUserData1(); // P. Michelson 43
 
 // call is a function that help you to change context of invoking function
 // it helps you replace value of this inside function whatever value you want
@@ -314,3 +316,93 @@ const person2 = {
 
 const fullSayName = persons2.fullName.bind(person2);
 fullSayName(); //John Doe
+
+const { log } = require("console");
+//this use cases
+
+// 1. when this in global scope this refers to window object
+var myThis = this;
+log(myThis); //refers to window object
+var myVar = 1;
+log(this.myVar); // 1
+
+// 2. inside function this refers to undefined
+function inside() {
+  log(this); // undefined
+}
+
+// 3. IIFE function in this refers to window object and strict mode this refers to undefined and if you want window object in strict mode
+(function inside() {
+  log(this); // window
+})()(function inside() {
+  "use strict";
+  log(this); // undefined
+})()(function inside(self) {
+  "use strict";
+  log(self); // window
+})(this);
+
+// 4. inside object this
+let obj = {
+  name: "sam",
+  getContext: this,
+};
+log(obj.getContext); // window
+let obj1 = {
+  name: "sam",
+  getContext: function () {
+    return this;
+  },
+};
+log(obj1.getContext()); // current object
+
+// 5. if use in function constructor it will create new object
+function PersonDetails(name, job) {
+  this.name = name;
+  this.job = job;
+  this.getContext = this;
+}
+let p1 = new PersonDetails("sam", "software");
+log(p1.getContext);
+//output like PersonDetails {
+//   name: 'sam',
+//   job: 'software',
+//   getContext: PersonDetails
+// }
+
+// 6. inherit from object using this
+let parent = {
+  farther: "Srinivasa Rao",
+};
+let child = Object.create(parent);
+
+child.whoIsYourParent = function () {
+  return this.farther;
+};
+log(child.whoIsYourParent());
+
+// 7. function this to bind to refers current obj
+function setThis() {
+  return this;
+}
+let fruit = { summer: "Mango" };
+log((setThis = fruit)); // fruit obj
+let fruitBind = setThis.bind(fruit);
+log(fruitBind()); // fruit obj
+
+// 8. setTimeout is special case
+setTimeout(function () {
+  return this;
+}); // it will give random number
+
+let timeOutObj = {
+  getContext: function () {
+    setTimeout(function () {
+      console.log(this); // window
+      return this; // undefined
+    }, 0);
+  },
+};
+log(timeOutObj.getContext());
+
+// 9. in DOM event when fire event with this it will refers current event fire element ex: <p onClick=function(){return  this}></p>
