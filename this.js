@@ -406,3 +406,14 @@ let timeOutObj = {
 log(timeOutObj.getContext());
 
 // 9. in DOM event when fire event with this it will refers current event fire element ex: <p onClick=function(){return  this}></p>
+
+// 10. How would you make sure value of this works correctly inside setTimeout?
+// using arrow function as callbabk
+function time() {
+  this.a = 1;
+  console.log(this.a);
+  setTimeout(() => {
+    console.log(this.a + 2);
+  }, 0);
+  console.log(this.a + 1);
+} //1 2 3

@@ -16,7 +16,7 @@ for (let i = lowerNumber; i <= higherNumber; i++) {
     }
   }
 
-  // if number greater than 1 and not divisible by other numbers
+  // if number greater than 1 and not divisible by other Pnumbers
   if (i > 1 && flag == 0) {
     console.log(i);
   }
@@ -35,4 +35,36 @@ function isPrime(n) {
   return true;
 }
 
-console.log(isPrime(5));
+console.log(isPrime(6));
+
+function primeFactors(n) {
+  let factors = [];
+  for (let i = 2; i <= n; i++) {
+    if (n % i === 0) {
+      factors.push(i);
+      n = n / i;
+      i--;
+    }
+  }
+  return factors;
+}
+
+console.log(primeFactors(12));
+
+// another way
+function primeFactors(n) {
+  var factors = [],
+    divisor = 2;
+
+  while (n > 2) {
+    if (n % divisor == 0) {
+      factors.push(divisor);
+      n = n / divisor;
+    } else {
+      divisor++;
+    }
+  }
+  return factors;
+}
+
+console.log(primeFactors(69));

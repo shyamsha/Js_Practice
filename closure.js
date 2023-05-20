@@ -15,8 +15,7 @@ function add(x) {
   };
 }
 
-const adding = add(5)(10);
-console.log(adding(10));
+console.log(add(5)(10));
 
 function z() {
   for (var i = 0; i < 5; i++) {
@@ -28,7 +27,7 @@ function z() {
 z(); // 5 5 5 5 5 here closure works every time var modify with new when for loop executing.
 //  if you want execute 0 1 2 3 4 use let instead of var when using let it creates block scope of function create every time
 
-function x() {
+function c() {
   setTimeout(function () {
     for (var i = 0; i < 5; i++) {
       console.log(i);
@@ -36,7 +35,7 @@ function x() {
   }, 1000);
 }
 
-x(); // 0 1 2 3 4 this is another way of solution var define inside it work normal for loop
+c(); // 0 1 2 3 4 this is another way of solution var define inside it work normal for loop
 
 function y() {
   //here we taking another function pass i value

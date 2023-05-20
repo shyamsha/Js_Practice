@@ -52,7 +52,7 @@ function rf(n) {
   return rf(n - 1) + rf(n - 2);
 }
 
-console.log(rf(7)); // represents sequence of order 7
+console.log(rf(12)); // represents sequence of order 7
 
 // range between fibonacci
 
