@@ -20,7 +20,7 @@ const arr3 = [1, 2, [4, 5], 6, 7, [8]];
 console.log(arr3.flatMap((element) => element)); // [1, 2, 4, 5, 6, 7, 8]
 
 const arr1 = [1, 2, [4, 5], 6, 7, [8, [6]]];
-
+console.log(arr1.flat(Infinity));
 // flatMap() depth until 2
 console.log(arr1.flatMap((element) => element)); // [1, 2, 4, 5, 6, 7, 8, [6]]
 
@@ -28,3 +28,12 @@ console.log(arr1.flatMap((element) => element)); // [1, 2, 4, 5, 6, 7, 8, [6]]
 let flatten = (a) => (Array.isArray(a) ? [].concat(...a.map(flatten)) : a);
 
 console.log(flatten(arr1));
+
+function flattenMultiArray(arr) {
+  const flattened = [].concat(...arr);
+  return flattened.some((item) => Array.isArray(item))
+    ? flattenMultiArray(flattened)
+    : flattened;
+}
+const multiDimensionalArr = [11, [22, 33], [44, [55, 66, [77, [88]], 99]]];
+const flatArr = flattenMultiArray(multiDimensionalArr); // [11, 22, 33, 44, 55, 66, 77, 88, 99]

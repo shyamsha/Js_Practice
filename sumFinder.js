@@ -9,7 +9,6 @@ function sumFinder(arr, sum) {
 
   for (var i = 0; i < len; i++) {
     subtract = sum - arr[i];
-
     if (differ[subtract]) return true;
     else differ[arr[i]] = true;
   }

@@ -34,7 +34,8 @@ console.log(d);
 const { log } = require("console");
 //new map
 log("------Maps--------");
-
+// The Map object holds key-value pairs with unique keys. The keys in Map are ordered
+// using map = Object.create(null), achieving prototype
 let map = new Map();
 map.set(1, "one");
 map.set(1, "one");
@@ -58,10 +59,10 @@ log(values);
 const firstValue = values.next();
 const secondValue = values.next().value;
 log(firstValue, secondValue);
-let entrie = map.entries();
-log(entrie);
-let secondEntrieValue = entrie.next().value;
-log(secondEntrieValue);
+let entries = map.entries();
+log(entries);
+let secondEntriesValue = entries.next().value;
+log(secondEntriesValue);
 map.forEach((value, key) => {
   log(key, value);
 });
@@ -72,6 +73,7 @@ log("------weakMaps--------");
 
 //Sets
 log("------Sets--------");
+// The Set object lets you store unique values of any type, whether primitive values or object references. its  not key-value pair
 let newSet = new Set();
 newSet.add(1).add(2);
 newSet.add("one");
@@ -90,15 +92,28 @@ log(values);
 const firstSetValue = values.next();
 const secondSetValue = values.next().value;
 log(firstSetValue, secondSetValue);
-let setEntrie = newSet.entries();
-log(setEntrie);
-let firstSetEntrieValue = setEntrie.next().value;
-log(firstSetEntrieValue);
+let setEntries = newSet.entries();
+log(setEntries);
+let firstSetEntriesValue = setEntries.next().value;
+log(firstSetEntriesValue);
 newSet.forEach((value) => {
   log(value);
 });
+// we can iterate through this way
+const set1 = new Set();
+
+set1.add(42);
+set1.add("forty two");
+
+const iterator1 = set1[Symbol.iterator]();
+
+console.log(iterator1.next().value);
+// Expected output: 42
+
+console.log(iterator1.next().value);
+// Expected output: "forty two"
 // weakSets
 log("------weakSets--------");
 //they have key diff is it will key must be object only and garbage collector
-//set has diff methods but WeakSet are not only add and has and delete
-
+//set has diff methods but WeakSet are only add and has and delete
+// A value in the WeakSet may only occur once. It is unique in the WeakSet's collection.
