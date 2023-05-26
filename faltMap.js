@@ -26,6 +26,7 @@ console.log(arr1.flatMap((element) => element)); // [1, 2, 4, 5, 6, 7, 8, [6]]
 
 // dept flatten array using recursion
 let flatten = (a) => (Array.isArray(a) ? [].concat(...a.map(flatten)) : a);
+let flatArray = [].concat.apply([], arr4);
 
 console.log(flatten(arr1));
 
@@ -37,3 +38,21 @@ function flattenMultiArray(arr) {
 }
 const multiDimensionalArr = [11, [22, 33], [44, [55, 66, [77, [88]], 99]]];
 const flatArr = flattenMultiArray(multiDimensionalArr); // [11, 22, 33, 44, 55, 66, 77, 88, 99]
+
+function flatten(arr) {
+  const newArr = arr.reduce((acc, item) => {
+    if (Array.isArray(item)) {
+      acc = acc.concat(flatten(item));
+    } else {
+      acc.push(item);
+    }
+
+    return acc;
+  }, []);
+
+  return newArr;
+}
+
+const numArr = [1, [2, [3], 4, [5, 6, [7]]]];
+
+flatten(numArr); // [1, 2, 3, 4, 5, 6, 7]

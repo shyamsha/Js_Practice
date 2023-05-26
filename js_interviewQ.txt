@@ -169,3 +169,16 @@ const color2 = "coral";
 // generates an error (color2 is not a String object)
 "length" in color2;
 
+Canvas
+Resolution dependent
+No support for event handlers
+Poor text rendering capabilities
+You can save the resulting image as .png or .jpg
+Well suited for graphic-intensive games
+
+SVG
+Resolution independent
+Support for event handlers
+Best suited for applications with large rendering areas (Google Maps)
+Slow rendering if complex (anything that uses the DOM a lot will be slow)
+Not suited for game applications
