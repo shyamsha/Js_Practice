@@ -26,3 +26,11 @@ let flat = function (arr, arrayDepth) {
 };
 
 console.log(flat(arr, n));
+
+const people = [
+  { name: "Mike", items: ["hammer", "axe"] },
+  { name: "Steve", items: ["rock", "stick"] },
+];
+
+const allItems = people.map((d) => d.items).flat();
+console.log(allItems);

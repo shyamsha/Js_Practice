@@ -83,3 +83,25 @@ if (!Math.cbrt) { // if no such function
     return Math.pow(number,0.33);
   };
 }
+
+What is React Fiber?
+ React Fiber is a concept of ReactJS that is used to render a system faster, smoother and smarter. 
+ The Fiber reconciler, which became the default reconciler for React 16 and above, is a complete rewrite of React’s reconciliation algorithm to solve some long-standing issues in React. 
+ Because Fiber is asynchronous, React can:
+
+Pause, resume, and restart rendering work on components as new updates come in
+Reuse previously completed work and even abort it if not needed
+Split work into chunks and prioritize tasks based on importance
+
+How to programmatically trigger click event in React?
+using ref
+<input ref={(input) => (this.inputElement = input)} />
+this.inputElement.click();
+
+Is it possible to use async/await in plain React?
+If you want to use async/await in React, you will need Babel and transform-async-to-generator plugin.
+React Native ships with Babel and a set of transforms.
+
+animation packages for react?
+React Transition Group and React Motion
+
