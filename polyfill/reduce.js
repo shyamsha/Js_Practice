@@ -1,26 +1,19 @@
 //polyfill for reduce
-// some edge cases of this polyfill
-Array.prototype.myReduce = function (callback, initialValue) {
-  // Variable that accumulates the result
-  // after performing operation one-by-one
-  // on the array elements
-  let accumulator = initialValue;
-  for (let i = 0; i < this.length; i++) {
-    // If the initialValue exists, we call
-    // the callback function on the existing
-    // element and store in accumulator
-    if (accumulator) {
-      accumulator = callback.call(undefined, accumulator, this[i], i, this);
-
-      // If initialValue does not exist,
-      // we assign accumulator to the
-      // current element of the array
-    } else {
-      accumulator = this[i];
-    }
+// reduce of this polyfill
+Array.prototype.myReduce = function (cb, initialValue) {
+  let result;
+  let startIndex = this.length - 1;
+  if (arguments.length <= 1) {
+    result = this[this.length - 1];
+    startIndex = this.length - 2;
   }
-  // We return the overall accumulated response
-  return accumulator;
+  if (arguments.length > 1) {
+    result = initialValue;
+  }
+  for (let i = 0; i <= startIndex; i++) {
+    result = cb(result, this[i]);
+  }
+  return result;
 };
 
 // Code to calculate sum of array elements
@@ -29,4 +22,30 @@ const arr = [1, 2, 3, 4];
 console.log(arr.myReduce((total, elem) => total + elem));
 
 // Code to calculate multiplication of all array elements
-console.log(arr.myReduce((prod, elem) => prod * elem));
+console.log(arr.myReduce((prod, elem) => prod * elem, 5));
+
+const sum = arr.myReduce((prev, curr) => prev + curr, 6);
+console.log(sum);
+
+// polyfill for reduce right
+
+const arr1 = [5, 2];
+
+Array.prototype.myReduceRight = function (cb, initialValue) {
+  let result;
+  let startIndex = this.length - 1;
+  if (arguments.length <= 1) {
+    result = this[this.length - 1];
+    startIndex = this.length - 2;
+  }
+  if (arguments.length > 1) {
+    result = initialValue;
+  }
+  for (let i = startIndex; i >= 0; i--) {
+    result = cb(result, this[i]);
+  }
+  return result;
+};
+
+const subtract = arr1.myReduceRight((prev, curr) => prev - curr, 6);
+console.log(subtract);

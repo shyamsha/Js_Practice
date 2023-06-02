@@ -5,9 +5,6 @@ const arr = [1, 2, 3, 4];
 Array.prototype.map = function (callBack) {
   const resultArray = [];
 
-  if (typeof callBack !== "function") {
-    throw Error(`${callBack} is not a function`);
-  }
   for (let i = 0; i < this.length; i++) {
     resultArray.push(callBack(this[i], i, this));
   }
