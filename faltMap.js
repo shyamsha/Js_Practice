@@ -56,3 +56,43 @@ function flatten(arr) {
 const numArr = [1, [2, [3], 4, [5, 6, [7]]]];
 
 flatten(numArr); // [1, 2, 3, 4, 5, 6, 7]
+
+// Flatten array of array object example [1,[{3:[5]}]]
+
+let arr13 = [1, [{ 3: [{ 5: [1] }] }]];
+
+let flatten = function (a) {
+  let arr = a.flat(Infinity);
+  let e = [];
+  function helper(obj) {
+    e.push(Object.keys(obj));
+    for (key in obj) {
+      let value = obj[key];
+      if (Array.isArray(value) && value.length > 0) {
+        helper1(value);
+      }
+    }
+  }
+  function helper1(array) {
+    for (let i = 0; i < array.length; i++) {
+      if (typeof array[i] === "object" && !Array.isArray(array[i])) {
+        helper(array[i]);
+      }
+      if (typeof array[i] !== "object" && !Array.isArray(array[i])) {
+        e.push(array[i]);
+      }
+    }
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === "object" && !Array.isArray(arr[i])) {
+      helper(arr[i]);
+    }
+    if (typeof arr[i] !== "object" && !Array.isArray(arr[i])) {
+      e.push(arr[i]);
+    }
+  }
+  return e.flat(Infinity);
+};
+
+console.log(flatten(arr13));
