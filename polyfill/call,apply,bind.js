@@ -39,7 +39,7 @@ Function.prototype.applyPolyfill = function (obj, ...args) {
   return res;
 };
 
-printName.apply(person, ["India", "America"]);
+printName.applyPolyfill(person, ...["India", "America"]);
 
 // bind() polyfill
 let friends = {
