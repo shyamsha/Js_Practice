@@ -4,4 +4,4 @@ function reverseInPlace(str) {
 
 console.log(reverseInPlace("I am the good boy"));
 
-// console.log("I am the good boy".split("").reverse().join(""));
+console.log("I am the good boy".split("").reverse().join(""));

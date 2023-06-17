@@ -14,9 +14,9 @@ console.log(postfix); // 2
 // Saying x++ means to return the value of x first then increment (++) it after, thus x++.
 
 for (let index = 0; index < 5; ++index) {
-  console.log(index);
+  console.log(index, "j");
 }
 
 for (let index = 0; index < 5; index++) {
-  console.log(index);
+  console.log(index, "i");
 }
