@@ -28,6 +28,6 @@ const trim = (str) => {
   return str.slice(stringBeg, stringEnd + 1);
 };
 
-let s = "   syam \n kumar   ";
+let s = "   syam  kumar   ";
 console.log(s);
 console.log(trim(s));

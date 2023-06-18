@@ -12,3 +12,9 @@ const myFind = [1, 2, 3, 4, 5, 6].myFind((e, index, self) => {
   }
 });
 console.log(myFind);
+
+const arr = [10, 20, 31, 44, 55, 67];
+
+const result1 = arr.myFind((element) => element % 20 === 0);
+console.log(result1);
+// output: 20

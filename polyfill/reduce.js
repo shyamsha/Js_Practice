@@ -27,6 +27,16 @@ console.log(arr.myReduce((prod, elem) => prod * elem, 5));
 const sum = arr.myReduce((prev, curr) => prev + curr, 6);
 console.log(sum);
 
+const oddEvenCount = arr.myReduce(
+  (prev, curr) =>
+    curr % 2 == 0
+      ? { ...prev, even: prev.even + 1 }
+      : { ...prev, odd: prev.odd + 1 },
+  { even: 0, odd: 0 }
+);
+console.log(oddEvenCount);
+// output: {even: 2, odd: 3};
+
 // polyfill for reduce right
 
 const arr1 = [5, 2];

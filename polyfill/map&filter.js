@@ -23,3 +23,24 @@ const newArr = arr.map(function (item) {
 });
 
 console.log(newArr);
+
+//polyfill for filter
+
+Array.prototype.myFilter = function (cb) {
+  let result = [];
+
+  for (let i = 0; i < this.length; i++) {
+    if (cb(this[i], i, this)) {
+      result.push(this[i]);
+    }
+  }
+
+  return result;
+};
+
+const arr1 = [1, 2, 3, 4, 5];
+
+const result1 = arr1.myFilter((el) => el % 2 === 0);
+
+console.log(result1);
+// output: [2, 4];
