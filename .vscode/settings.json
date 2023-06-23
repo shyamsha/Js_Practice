@@ -2,12 +2,17 @@
   "cSpell.words": [
     "cbrt",
     "circumeference",
+    "componentdidmount",
+    "componentdidupdate",
+    "componentwillunmount",
     "datatypes",
+    "getderivedstatefromprops",
     "IIFE",
     "Kotesh",
     "Kumar",
     "Nagendra",
     "nums",
+    "shouldcomponentupdate",
     "Srinivasa",
     "typeof"
   ]

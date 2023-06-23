@@ -1,0 +1,101 @@
+1.what are new tags of html5?
+there are several tags. 
+some of the tags are aside,article,datalist,canvas,date,datetime,audio,video,color inputs are some of new tags.
+
+2.should we inject div tag inside of span tag?
+yes, div is block scope and span is inline tag but schematically wrong it will break in production
+
+3.5 ways center align image inside div?
+flex box,grid,table css,margin css, position css
+
+4.px vs em vs rem?
+px is absolute value and it is  fixed size
+em is scalable elements that needs to change size relative to parent element
+rem is scalable responsive layout that needs to change size relative to root element
+
+5.name all basic data types?
+there are two types one is primitive and another is non-primitive
+primitive--string,boolean,number,null,undefined,bigint,symbol
+non-primitive--array,object,date
+
+6.what is event delegation and bubbling and capturing?
+event delegation is pattern to handle events efficiently.
+Instead of add event listener to each and every similar element we can add event to parent element. 
+call an event on particular target using event.target property of object to perform a task
+bubbling--when element receives event happens its bubbles up to parent element and ancestor element on dom until get root element
+capturing is opposite of bubbling
+
+7.what is closure and uses?
+closure is combination of function bundled together with reference to surrounding state. it means lexical environment
+simply means a child function can access parent scope even if parent function closed.
+usages memorization and currying
+
+8.what is need of js frameworks?
+to help you to design web applications. it has flexibility and scalable and code readability and plugins and builds-->production,development... 
+
+9.VDOM vs DOM?
+DOM is document object modal and it represents document tree structure of HTML
+React follows observable pattern
+VDOM is memory representation of DOM means exact copy of DOM
+if react changes state in component and it update VDOM but not in DOM.
+after updating react compares previous version of VDOM and current version of VDOM
+react knows exactly which nodes changed in VDOM.those nodes only changed in real DOM
+this process is diffing algorithm VDOM is faster because of making minimal manipulating operations 
+
+10.component lifecycle methods and order?
+there phases mounting and updating and unmounting
+constructor
+getderivedstatefromprops
+shouldcomponentupdate
+render
+componentdidmount
+componentdidupdate
+componentwillunmount
+
+11.pure components vs HOC components?
+pure components work like functional components there is one difference that is shouldcomponentupdate lifecycle method.
+it is checking on every render shallow comparison of state and props if it difference should render component other wise should not
+HOC is component it takes another component as argument and returns new component. it is pattern from compositional nature
+we don't modify components we create new ones
+it is useful for code reuse
+props manipulating
+it is pure function. It ha no side effects. return new components only
+for example show loading when user fetching data so wa can create HOC achieve it
+react-redux --> connect
+react-router--> withRouter
+material-ui-->	withStyles(styles)(UserPage)
+
+12.HOF functions?
+HOF takes function as argument returns another function. they enable us abstract over actions not values
+for example map,foreach,filter
+
+13.state vs props vs ref?
+state is object that stores information and owned by component and locally scoped
+state can mutable via setState
+props is object that have information
+props passing down child components and it immutable
+ref are accessing DOM elements without using selector methods of the document object
+ref create like useRef hook createRef using class-based components
+use-cases of refs are maintaining input focus,text selection,media controls,outside dom,wth third party libraries
+
+14.version of react?
+react 18 features for automatic batch updates, useTransition startTransition  A transition is a new concept in React to distinguish between urgent and non-urgent updates.
+support for Suspense on the server,New Strict Mode Behaviors, new hooks
+
+15.functional component vs class component?
+functional component is pure functional in javascript
+we can maintaining stateful using hooks 
+class component extend from react and it has render method return children and class component has lifecycle methods
+
+16.Why it is Recommended to use Functional Components over Class Components?
+simplicity
+performance
+code readability
+easier to test
+we can make stateful and lifecycle methods using hooks
+
+17.Is the Shadow DOM the same as the Virtual DOM?
+No, they are different. The Shadow DOM is a browser technology designed primarily for scoping variables and CSS in web components. 
+The virtual DOM is a concept implemented by libraries in JavaScript on top of browser APIs.
+
+18.what are fragments?
