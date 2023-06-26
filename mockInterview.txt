@@ -99,3 +99,79 @@ No, they are different. The Shadow DOM is a browser technology designed primaril
 The virtual DOM is a concept implemented by libraries in JavaScript on top of browser APIs.
 
 18.what are fragments?
+return multiple elements from component by allowing us to group list of children without adding extra node on DOM
+
+19.react fiber?
+react fiber is re-implementation of react core algorithm. that is reconciliation main goal is ability to pause and resume and reuse work.
+incremental rendering and break down rendering tasks to small chunks and distribute across the numerous frames.
+it more suitable for layout and gestures and animation
+
+20.how can maintaining data in complex ui?
+using redux maintaining external global single store to achieve
+contextAPI
+
+21.two way data binding implementation?
+use callback to achieve it
+
+22.pure functions?
+a function has always returns same if we pass same arguments. it is not depend on any state
+
+23. promise and async&await?
+promises makes a asynchronous operation either resolve or reject.
+previous we are using callbacks to achieve asynchronous operation. writing multiple callbacks inside callback will create callback hell
+to make avoid callback hell promises are introduced. creating new promise and it returns promise object
+promise function  takes resolve and reject arguments
+it has three states 1.pending 2.fulfilled 3.reject
+initial stage to execute function
+when promise resolve it will fulfilled
+if reject it will reject
+we consume output we use then and catch then used resolve callback catch used reject callback
+promise chain is passing return value to then to another then and soon is called promise chain
+async/await is shorter syntax of promise 
+write async keyword function before and await waiting either resolve or reject
+we catch errors using try and catch
+
+24.how to 5 api calls parallel?
+promise.all([])
+
+25.what happens background when enter url and hit enter?
+each website has ip than ip locate DNS server and DNS locates to web server then fetch website from server
+
+26.what is hoisting and scope
+variables declare with var and function declarations are hoisting
+if we declared with var is hoisted and default value assigned as undefined
+let and const are also hoisted but not initialization default value if access it will give reference error that block temporal dead zone
+Function declarations are hoisted not function expressions.
+Function hoisting allows us to call a function before it is defined
+scope-- block scope if the variable is declared in code block that variable visible in that code block
+lexical environment scope
+
+27.service workers and pwa?
+it is script that browser runs background separate from web page
+service workers act as proxy between web browser and web server.
+they aim to readability by providing offline access as well as boost web page performance
+Service workers are at the core of progressive web applications.
+pwa has modern web capability to delivery to app experience to users
+pwa can run multiple platforms from single code base
+pwa support offline and it will install on device and faster loading and user interactions
+
+28.prototype and prototype chain?
+
+29.HTML?
+hypertext is text that is organized order to connect related items it comes from hyperlink
+markup is style guide it defined elements and elements will be page layout 
+language is combines both features make HTML
+
+30.hyperlink?
+<a> tag defines hyperlink. which is used to link between one page to another
+
+31.HTML entity
+some characters are reserved in HTML we can show in web page we can use entity name or entity number ex &lt or &#60 to display < symbol
+used for non-breaking space
+
+32.input type submit vs button in html
+<input type="submit"> cause the form data to be submitted to the server
+<button> can have content, whereas <input> cannot (it is a null element).
+
+
+
