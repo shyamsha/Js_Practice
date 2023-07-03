@@ -24,7 +24,7 @@ Ex token sends every request
 Event bubbling and capturing and 
 event delegation 
 It happens when an element receives an event and that event bubbles up to its parent and ancestor elements on DOM until gets to the root element
-Event capture phase opposite of bubbling 
+Event capture phase opposite of bubbling, its parent to child
 Event delegation is pattern to handle events efficiently. Instead of adding event listener to each and every smiler elements we can add event listener to parent element.
 Call an event on particular target using event.target property of object to perform a task. 
 For example we take Amazon website. It is several categories so we couldn’t add on click event on every category to navigate that category page. 
@@ -45,8 +45,11 @@ If two components shared the same username to display how will do in
 saves in local storage
 
 Position relative vs position absolute 
+default value is static it's not effect layout
 position: relative places an element relative to its current position without changing the layout around it, 
 position: absolute places an element relative to its parent’s position and changing the layout around it.
+position: fixed; is positioned relative to the viewport, stays same place
+position: sticky; is positioned based on the user's scroll position.
 
 Two separate div tags to display next to each other how can do that
 using flex-box
