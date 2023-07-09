@@ -3,8 +3,8 @@ Temporal dead zone
 A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible.
 
 Map and filter and reduce 
-map create new array from existing array. applying function to each element transforms
-filter is create new array from existing array. applying condition to each element and push to output element otherwise element take away from output array
+map returns new array from existing array. applying function to each element transforms into new array.
+filter returns new array from existing array. applying condition to each element and if condition satisfy push to element to array and returns
 reduce has accumulator,current values reduce array values down to just single value
 
 Closures 
@@ -63,19 +63,56 @@ Npm vs yarn
 NPM fetches packages from the online npm registry for every 'install' command
 YARN stores dependencies locally in most cases and fetches packages from a local disk.
 
+What are React hooks? Explain the difference between useState and useEffect.
+React hooks are functions that allow you to use state and lifecycle features in functional components. 
+useState is used to manage state, while useEffect is used to handle side effects like fetching data or subscribing to events.
+
 Use context API
 props passed to several components. this leads to prop drilling. 
 avoid prop drilling use contextAPI allows data to be passed through a component tree without having to pass props manually at every level
 Context API consists of two main components:  provider and consumer
 The provider is responsible for creating and managing the context, which holds the data
 the consumer is used to access the context and its data
+ Context API provides a way to share data between components without passing it through props. It's useful for managing global state. 
+ You create a context using createContext and provide it at a higher level. Consumers can access the context using useContext.
+
+Code Example:
+const ThemeContext = createContext();
+
+function App() {
+ return (
+ <ThemeContext.Provider value="dark">
+ <Component />
+ </ThemeContext.Provider>
+ );
+}
+
+function Component() {
+ const theme = useContext(ThemeContext);
+ // Use theme value here
+}
+
+
 
 Global execution contexts
 
+How can you optimize performance in a React application? Discuss techniques like memoization, code splitting, and lazy loading.
+Performance optimization techniques include memoization with useMemo and useCallback to avoid unnecessary recalculations, 
+code splitting to split the bundle into smaller chunks, and lazy loading to load components or resources only when needed.
+
+useCallback and useMemo
+useCallback and useMemo are both React Hooks that help optimize the performance of a React application by memoizing values.
+useCallback is often used as an event handler or to pass data between components. 
+The useCallback hook takes two arguments: a function and a dependency array. 
+It will return a memoized version of the function that only changes if one of the dependencies has changed.
+useMemo is a hook that returns a memoized value. It takes two arguments: a function that returns a value and a dependency array. 
+It will call the function and return its result only if one of the dependencies has changed.
+useCallback returns a memoized callback function, while useMemo returns a memoized value.
+
 What is the hook? Life cycle methods vs hooks
-Answer: React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. 
+Answer: React hooks are functions that allow you to use state and lifecycle features in functional components. 
 Hooks can be stateful and can manage side effects. React hooks provide a more concise way to manage state and side effects in functional components. 
-Lifecycle methods are only available in class components and can hook into various stages of a component’s lifecycle.
+Lifecycle methods are only available in class components
 
 Unidirectional flow in react
 Answer: In React JS, data flows in one direction, from Parent to Child. This helps components to be simple and predictable. 
@@ -151,7 +188,7 @@ VDOM is memory representation of DOM means exact copy of DOM
 if react changes state in component and it update VDOM but not in DOM.
 after updating react compares previous version of VDOM and current version of VDOM
 react knows exactly which nodes changed in VDOM.those nodes only changed in real DOM
-this process is diffing algorithm VDOM is faster because of making minimal manipulating operations 
+this process is diffing algorithm VDOM is faster because of making minimal manipulating operations on realDOM
 
 10.component lifecycle methods and order?
 there phases mounting and updating and unmounting
