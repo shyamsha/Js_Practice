@@ -109,28 +109,34 @@ Redux is a complete state manager capable of allowing an app to undo/redo action
 Context API is designed as a dependency injection mechanism that allows making data available through the component tree without being manually passed
 
 Question 36 :- What is class in ES6 ?
-
+class is template of object
 
 Question 37 :- So with class Keyword does it imply JavaScript is a OOP language ?
-
+JS is a Prototype-based programming paradigm.
+It is not an OOP language. But it has support for it. It has the class keyword, which is just a syntactic sugar over prototypes.
 
 Question 38 :- Differentiate between class and normal function ?
-
+class is template function is to perform a task
+class are not hoisted and functions are hoisted
+Functions can be overwritten, whereas classes can be extended, but not overwritten
 
 Question 39 :- What is a Arrow function ?
-
+ES6 feature and it is different from normal function
 
 Question 40 :- Why do we use Arrow function ?
-
+for readability and concise way to perform function task and we can able write single line to return function
 
 Question 41 :- Differentiate between Arrow vs Normal Function ?
-
+arrow function are syntactical shorter and more readability compares to normal function
+In arrow functions can not bind this
+No arguments object in arrow functions like normal functions passed parameters uses in function without pass args we use arguments
+arrow functions not hoisted
 
 Question 42 :- Does Arrow function create its own this ?
-
+no
 
 Question 43. Explain Synchronous execution ?
-
+one by one execute function than it block until execute first one
 
 Question 44. What is a call Stack ?
 Question 45. What is a blocking call ?
