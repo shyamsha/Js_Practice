@@ -1,6 +1,7 @@
 
 Temporal dead zone
 A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible.
+ex if you access variable before initialization it throws error Cannot access 'a' before initialization
 
 Map and filter and reduce 
 map returns new array from existing array. applying function to each element transforms into new array.
@@ -56,8 +57,12 @@ using flex-box
 one div inside another div displays inline property without affecting width and height
 
 Servers side component 
+when you render website HTML on server we can use SSR
+
 Rules of hooks 
-Flatten array of array object example [1,[{3:[5]}]]
+hooks can only be called inside functional component
+hooks can be top level of component
+hooks cannot be conditional
 
 Npm vs yarn
 NPM fetches packages from the online npm registry for every 'install' command
@@ -92,7 +97,9 @@ function Component() {
  // Use theme value here
 }
 
-
+custom hook
+when you have component logic to be used by multiple components. we can extract logic place in custom hook.
+the hook start with name 'useFetch' 'useOnline'  like  
 
 Global execution contexts
 
@@ -101,7 +108,7 @@ Performance optimization techniques include memoization with useMemo and useCall
 code splitting to split the bundle into smaller chunks, and lazy loading to load components or resources only when needed.
 
 useCallback and useMemo
-useCallback and useMemo are both React Hooks that help optimize the performance of a React application by memoizing values.
+useCallback and useMemo are both React Hooks that help optimize the performance of a React application by memoizing technique.
 useCallback is often used as an event handler or to pass data between components. 
 The useCallback hook takes two arguments: a function and a dependency array. 
 It will return a memoized version of the function that only changes if one of the dependencies has changed.
@@ -126,11 +133,13 @@ Answer: Mounting occurs when a component is first added to the page, while rende
 
 package.json vs package.lock.json
 The “package. json” file defines the rules required to run your application and install dependencies. 
+
 the “package-lock.json” file holds detailed information on all the dependencies installed based on the package.
 
-What is hypertext in HTML 
-What is doctype in HTML
 Function composition 
+it is a approach one function result on to pass next function until final function executes get results
+function composition can be composed of any number of functions
+
 React dom
 ReactDOM is the JavaScript library that allows React to interact with the DOM. 
 
@@ -140,11 +149,14 @@ This object is mainly used for server-side rendering (SSR)
 
 ReactMixins
 
-Code splitting is optimizing technique
 Diffing algorithm is VDOM reconciliation process
 React scripts react-scripts are simply scripts to run the build tools required to transform React JSX syntax into plain JavaScript programmatically
 Concurrent rendering 
+
 Use effect vs use layout effect 
+useEffect() is asynchronous useLayoutEffect() synchronous 
+useLayoutEffect() code always comes before useEffect()
+useEffect() flickering or produce inaccurate results then useLayoutEffect() useful hook
 
 1.what are new tags of html5?
 there are several tags. 
@@ -243,7 +255,10 @@ easier to test
 we can make stateful and lifecycle methods using hooks
 
 17.Is the Shadow DOM the same as the Virtual DOM?
-No, they are different. The Shadow DOM is a browser technology designed primarily for scoping variables and CSS in web components. 
+No, they are different. The Shadow DOM is a browser technology designed primarily for scoping variables and CSS in web components. designed for encapsulation
+Shadow DOM allows hidden DOM trees to be attached to elements in the regular DOM tree this shadow DOM tree starts with a shadow root
+const shadowOpen = elementRef.attachShadow({ mode: "open" });
+const shadowClosed = elementRef.attachShadow({ mode: "closed" });
 The virtual DOM is a concept implemented by libraries in JavaScript on top of browser APIs.
 
 18.what are fragments?
@@ -322,4 +337,52 @@ used for non-breaking space
 <button> can have content, whereas <input> cannot (it is a null element).
 
 
+33.callbacks
+callback is a function takes another function to execute results. make asynchronous operations we can use callbacks
+ex setTimeout(cb,time), addEventListener('click',cb)
 
+34.callbacks vs HOF
+A callback is a function that is passed as an argument to another function.
+
+A higher order function is a function that takes function as an input and returns a function as an output.
+ex filter,map
+
+35.What is Lifting State Up in React?
+We lift the state up to make the parent state a single shared state and pass the parent's data to its children. 
+This concept is called lifting state up. maintain data consistency in our react applications.
+
+36.What is Hot Module Replacement?
+allows you to make changes to your code and immediately see the results. without losing the current state of the app.
+ without a full reload.
+
+ 36.What is the use of Parcel, Vite, Webpack?
+ bundling all the js files together
+
+37.How does create-react-app work?
+create-react-app (CRA), your command runs through a series of checks. It finds information about your system and run program
+
+38.What is Tree Shaking?
+dead code elimination means if unused modules in application webpack will eliminate and not remove code 
+
+39.Difference b/w dependency and devDependency
+"dependencies" : Packages required by your application in production. 
+"devDependencies" : Packages that are only needed for local development and testing.
+
+40.npm vs npx
+NPM is a package manager used to install, delete, and update Javascript packages on your machine. 
+NPX is a package executer, and it is used to execute javascript packages directly, without installing them.
+
+41.Difference between console.log(<HeaderComponent/>) and console.log(HeaderComponent())
+
+42. What if 2 components are given will the state change in one component will effect the other component’s state (child)?
+no,but if parent re-render subsequent children will re-render
+
+43.What is the use of return in useEffect ?
+removing EventListener
+
+44.Difference b/w client-side routing and server-side routing?
+
+45.How does React handle routing and navigation?
+ react-router-dom library
+ React Router provides a <Link> component, which can be used for basic React navigation
+ 

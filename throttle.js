@@ -1,8 +1,3 @@
-/**
- * @param {Function} fn
- * @param {number} t
- * @return {Function}
- */
 var throttle = function (fn, t) {
   let wait = false;
   let nextArgs = null;
@@ -48,5 +43,15 @@ var throttle1 = function (fn, t) {
       fn(...args); // enter the looping phase
       intervalInProgress = setInterval(intervalFunction, t);
     }
+  };
+};
+
+let throttle2 = function (fn, time) {
+  let last = 0;
+  return function (...args) {
+    let now = new Date().getTime();
+    if (now - last < time) return;
+    last = now;
+    return fn(...args);
   };
 };

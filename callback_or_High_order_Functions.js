@@ -47,80 +47,74 @@ function log(user) {
   }
 }
 // we can reusable this way
-function getInput(options,cb) {
-  userData.push(options)
-  cb(options)
+function getInput(options, cb) {
+  userData.push(options);
+  cb(options);
 }
 
-console.log(getInput ({name:"Rich", specialty:"JavaScript"}, log));
+console.log(getInput({ name: "Rich", specialty: "JavaScript" }, log));
 
 const radius = [1, 2, 3];
 // without using HOF
 // function to calculate area of the circle
-const calculateArea =  function (radius) {
+const calculateArea = function (radius) {
   const output = [];
-  for(let i = 0; i< radius.length; i++){
-      output.push(Math.PI * radius[i] * radius[i]);
+  for (let i = 0; i < radius.length; i++) {
+    output.push(Math.PI * radius[i] * radius[i]);
   }
   return output;
-}
+};
 // function to calculate diameter of the circle
-const calculateDiameter =  function (radius) {
+const calculateDiameter = function (radius) {
   const output = [];
-  for(let i = 0; i< radius.length; i++){
-      output.push(2 * radius[i]);
+  for (let i = 0; i < radius.length; i++) {
+    output.push(2 * radius[i]);
   }
   return output;
-}
+};
 console.log(calculateArea(radius));
-console.log(calculateDiameter(radius))
+console.log(calculateDiameter(radius));
 
-
-
-// with using HOF
 // logic to calculate area
-const area = function(radius){
-    return Math.PI * radius * radius;
-}
+const area = function (radius) {
+  return Math.PI * radius * radius;
+};
 // logic to calculate diameter
-const diameter = function(radius){
-    return 2 * radius;
-}
+const diameter = function (radius) {
+  return 2 * radius;
+};
 // logic to calculate diameter
-const circumeference = function(radius){
+const circumeference = function (radius) {
   return 2 * Math.PI * radius;
-}
+};
 // a reusable function to calculate area, diameter, etc
-// The code that we have written using HOFs is concise and modular. 
+// The code that we have written using HOFs is concise and modular.
 // Each function is doing its own job and we are not repeating anything here.
-const calculate = function(radius, logic){ 
-    const output = [];
-    for(let i = 0; i < radius.length; i++){
-        output.push(logic(radius[i]))
-    }
-    return output;
-}
+const calculate = function (radius, cb) {
+  const output = [];
+  for (let i = 0; i < radius.length; i++) {
+    output.push(cb(radius[i]));
+  }
+  return output;
+};
 console.log(calculate(radius, area));
 console.log(calculate(radius, diameter));
 console.log(calculate(radius, circumeference));
 
-
-
-
 const shoppingCart = [
-  {name: 'Apple', price: 1.99, quantity: 3},
-  {name: 'Apple', price: 1.99, quantity: 3},
-  {name: 'Xiomi', price: 2.99, quantity: 2},
-  {name: 'Samsung', price: 3.99, quantity: 1},
-  {name: 'Tesla', price: 3.99, quantity: 1},
-  {name: 'Tesla', price: 4.99, quantity: 4},
-  {name: 'Nokia', price: 4.99, quantity: 4},
-]
+  { name: "Apple", price: 1.99, quantity: 3 },
+  { name: "Apple", price: 1.99, quantity: 3 },
+  { name: "Xiomi", price: 2.99, quantity: 2 },
+  { name: "Samsung", price: 3.99, quantity: 1 },
+  { name: "Tesla", price: 3.99, quantity: 1 },
+  { name: "Tesla", price: 4.99, quantity: 4 },
+  { name: "Nokia", price: 4.99, quantity: 4 },
+];
 
 const products = shoppingCart.reduce((productGroup, product) => {
   const name = product.name;
-  if(productGroup[name] == null) {
-      productGroup[name] = [];
+  if (productGroup[name] == null) {
+    productGroup[name] = [];
   }
   productGroup[name].push(product);
 

@@ -149,6 +149,8 @@ Question 51. Explain Multi-threading ?
 Question 52. Is JavaScript Multi-threaded ?
 Question 53. Then how does Settimeout run ?
 Question 54. What is a WebAPI/Browser API ?
+A Web API is an application programming interface for the Web. A Browser API can extend the functionality of a web browser
+
 Question 55. What is a Event loop and callback queue?
 Question 56. Eventloop and Callback code question?
 
