@@ -20,4 +20,4 @@ function vowelsAndConsonants(s) {
 
   return { v: vowels, c: consonants };
 }
-console.log(vowelsAndConsonants("javascriptloops"));
+console.log(vowelsAndConsonants("ibpbhixfiouhdljnjfflpapptrxgcomvn"));

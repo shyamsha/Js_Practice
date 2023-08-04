@@ -10,4 +10,4 @@ function stringChop(string, number) {
   return lengthOfChopped;
 }
 
-console.log(stringChop("javascript", 3));
+console.log(stringChop("ibpbhixfiouhdljnjfflpapptrxgcomvnb", 33));

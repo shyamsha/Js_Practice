@@ -37,13 +37,33 @@ It uses VDOM
 It uses the component structure 
 It uses a modularize component 
 We can build complex UI easily
-It is a view library only
+It has a view library only
 
 What is de-structure how can use arrays if the value change dynamic
 de-structure is extract values from array/object and uses like variables
 
 If two components shared the same username to display how will do in
 saves in local storage
+
+local storage vs session storage vs cookies
+ 	        Local Storage	  Session Storage	  Cookies
+Capacity-->	10MB	        5MB	              4KB
+Browsers-->	HTML 5	      HTML 5	          HTML 5 / HTML 4
+Accessibility-->	Any Window Same Tab	      Any Window
+Expiration-->	Never	On     Tab Close	      Manually Set 
+Browser Support-->	Very High 
+Supported Data Types-->	String Only 	
+Auto-expire Option-->	No	 Yes	             Yes
+Storage Location-->	Browser Only	Browser Only	Browser and Server
+Editable and Blockable by Users-->	Yes
+SSL Support-->  	No	      No	                Yes
+
+Which is better local storage or session storage?
+If we want some data on the browser, we often utilize the local storage object. Cookies are used if we want them on the server.
+session storage is used if we want to delete the data if the user closes that particular tab or the season
+
+Is Async a sessionStorage?
+No, all localStorage calls are synchronous
 
 Position relative vs position absolute 
 default value is static it's not effect layout
@@ -259,6 +279,7 @@ No, they are different. The Shadow DOM is a browser technology designed primaril
 Shadow DOM allows hidden DOM trees to be attached to elements in the regular DOM tree this shadow DOM tree starts with a shadow root
 const shadowOpen = elementRef.attachShadow({ mode: "open" });
 const shadowClosed = elementRef.attachShadow({ mode: "closed" });
+Shadow DOM is particularly useful when creating custom elements.
 The virtual DOM is a concept implemented by libraries in JavaScript on top of browser APIs.
 
 18.what are fragments?

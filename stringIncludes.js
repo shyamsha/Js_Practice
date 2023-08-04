@@ -9,4 +9,4 @@ function stringIncludes(string, character) {
   return false;
 }
 
-console.log(stringIncludes('skajfklsd','f'))
+console.log(stringIncludes("skajfklsd", "f"));

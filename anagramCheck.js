@@ -9,4 +9,4 @@ function anagramCheck(string1, string2) {
   }
 }
 
-anagramCheck("silenT", "listenh");
+anagramCheck("silenT", "listen");
