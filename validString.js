@@ -18,7 +18,6 @@ function validString(str) {
     }
   }
   let set = new Set(Object.values(obj));
-  log(set);
   return set.size === 1;
 }
 
@@ -27,7 +26,6 @@ console.log(validString(str1));
 // if array of all same values
 function allEqual(arr) {
   let set = new Set(arr);
-  log(set);
   return set.size === 1;
 }
 

@@ -31,5 +31,25 @@ function isValid(s) {
   return !arr.length;
 }
 
-let str = "[]({{})";
+let str = "[}";
 console.log(isValid(str));
+
+var isValid1 = function (s) {
+  let set = new Set();
+  if (s.length % 2 != 0) return false;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "{" || s[i] === "[" || s[i] === "(") {
+      set.add(s[i]);
+    } else if (s[i] === ")" && set.size !== 0 && set.has("(")) {
+      set.delete("(");
+    } else if (s[i] === "}" && set.size !== 0 && set.has("{")) {
+      set.delete("{");
+    } else if (s[i] === "]" && set.size !== 0 && set.has("[")) {
+      set.delete("[");
+    }
+  }
+  return set.size === 0;
+};
+
+let s = "{([)}";
+console.log(isValid1(s));

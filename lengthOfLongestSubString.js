@@ -37,3 +37,21 @@ function subString(s) {
   }
   return maxSize;
 }
+
+var lengthOfLongestSubstring = function minimizeStr(str) {
+  let leftIndex = 0;
+  let rightIndex = 0;
+  let maxSize = 0;
+  let set = new Set();
+  while (rightIndex < str.length) {
+    if (!set.has(str[rightIndex])) {
+      set.add(str[rightIndex]);
+      rightIndex++;
+      maxSize = Math.max(maxSize, set.size);
+    } else {
+      set.delete(str[leftIndex]);
+      leftIndex++;
+    }
+  }
+  return maxSize;
+};
