@@ -14,4 +14,4 @@ function length(s) {
   return output;
 }
 
-console.log(length("find last det "));
+console.log(length("find det "));

@@ -6,7 +6,7 @@ ex if you access variable before initialization it throws error Cannot access 'a
 Map and filter and reduce 
 map returns new array from existing array. applying function to each element transforms into new array.
 filter returns new array from existing array. applying condition to each element and if condition satisfy push to element to array and returns
-reduce has accumulator,current values reduce array values down to just single value
+reduce has accumulator,current values reduce can makes array values down to just single value
 
 Closures 
 A closure is a combination of functions bundled together with reference to the surrounding state means the lexical environment
@@ -14,7 +14,8 @@ It simply means child function will access to parent scope even if parent functi
 
 Debounce vs throttling 
 Debounce is limit the execution of a function call and waits for a certain amount of time before running it again 
-The throttle also limits function execution calls for ex it takes a 1-sec delay first it will execute the function immediately then wait 1sec and execute the function again so it will be continued to execute intervals of time 
+The throttle also limits function execution calls for ex it takes a 1-sec delay first it will execute the function immediately then wait 1sec and 
+execute the function again so it will be continued to execute intervals of time 
 Debounce is most suitable for control events like typing or button clicks
 Throttle is most suitable for continued user events like resizing and scrolling 
 
@@ -46,11 +47,11 @@ If two components shared the same username to display how will do in
 saves in local storage
 
 local storage vs session storage vs cookies
- 	        Local Storage	  Session Storage	  Cookies
-Capacity-->	10MB	        5MB	              4KB
-Browsers-->	HTML 5	      HTML 5	          HTML 5 / HTML 4
-Accessibility-->	Any Window Same Tab	      Any Window
-Expiration-->	Never	On     Tab Close	      Manually Set 
+ 	        Local Storage	    Session Storage	  Cookies
+Capacity-->	10MB	          5MB	              4KB
+Browsers-->	HTML 5	        HTML 5	          HTML 5 / HTML 4
+Accessibility-->Any Window  Same Tab	      Any Window
+Expiration-->	Never	On      Tab Close	      Manually Set 
 Browser Support-->	Very High 
 Supported Data Types-->	String Only 	
 Auto-expire Option-->	No	 Yes	             Yes
@@ -359,18 +360,18 @@ used for non-breaking space
 
 
 33.callbacks
-callback is a function takes another function to execute results. make asynchronous operations we can use callbacks
+callback is a function passed another function to execute results. make asynchronous operations we can use callbacks
 ex setTimeout(cb,time), addEventListener('click',cb)
 
 34.callbacks vs HOF
 A callback is a function that is passed as an argument to another function.
 
-A higher order function is a function that takes function as an input and returns a function as an output.
+A higher order function is a function that takes function as an argument and returns a function as an output.
 ex filter,map
 
 35.What is Lifting State Up in React?
 We lift the state up to make the parent state a single shared state and pass the parent's data to its children. 
-This concept is called lifting state up. maintain data consistency in our react applications.
+This concept is called lifting state up. maintain data consistency throughout applications.
 
 36.What is Hot Module Replacement?
 allows you to make changes to your code and immediately see the results. without losing the current state of the app.
@@ -396,7 +397,9 @@ NPX is a package executer, and it is used to execute javascript packages directl
 41.Difference between console.log(<HeaderComponent/>) and console.log(HeaderComponent())
 
 42. What if 2 components are given will the state change in one component will effect the other component’s state (child)?
-no,but if parent re-render subsequent children will re-render
+no,it will not re-render. If you pass any props to the component from the parent component and you update that prop in children
+or that prop update in the parent component so both will re-render. 
+But if the data or state has no dependency on the parent component so it will not cause a re-render in the parent component.
 
 43.What is the use of return in useEffect ?
 removing EventListener
