@@ -39,7 +39,7 @@ console.log(oddEvenCount);
 
 // polyfill for reduce right
 
-const arr1 = [5, 2];
+const arr1 = [1, 2];
 
 Array.prototype.myReduceRight = function (cb, initialValue) {
   let result;
@@ -57,5 +57,5 @@ Array.prototype.myReduceRight = function (cb, initialValue) {
   return result;
 };
 
-const subtract = arr1.myReduceRight((prev, curr) => prev - curr, 6);
+const subtract = arr1.myReduceRight((prev, curr) => prev + curr);
 console.log(subtract);

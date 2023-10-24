@@ -1,13 +1,14 @@
-function abbreviate(string){
-    var word='';
-    for (var i = 0; i < string.length; i++) {
-        if (string[i] === ' ') {
-            word = string[0] + '.' + string[i + 1];
-           } else if(string[i] ===''){ 
-                 word 
-             }
+let abbreviate = (str) => {
+  let wordSplit = str.trim().split(" ");
+  let code = "";
+  for (let i = 0; i < wordSplit.length; i++) {
+    if (wordSplit[i] === "") {
+      wordSplit.pop(wordSplit[i]);
+    } else {
+      code += wordSplit[i][0].toUpperCase();
+    }
+  }
+  return code;
+};
 
-        }
-    
-    return word;
-}
+console.log(abbreviate(" non residence indians "));

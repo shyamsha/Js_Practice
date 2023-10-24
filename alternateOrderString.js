@@ -7,8 +7,6 @@ let str2 = "pqrsd";
 
 function merge(s1, s2) {
   let newArray = [];
-  let s1L = s1.length;
-  let s2L = s2.length;
   for (let i = 0; i < s1.length; i++) {
     for (let j = 0; j < s1.length; j++) {
       if (i == j) {

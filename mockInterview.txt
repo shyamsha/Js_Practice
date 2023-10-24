@@ -124,6 +124,30 @@ the hook start with name 'useFetch' 'useOnline'  like
 
 Global execution contexts
 
+props.children
+children are a special prop that is used to pass the data from the parent component to the children component 
+but this data must be enclosed within the parent’s opening and closing tag.
+
+const Picture = (props) => {
+  return (
+    <div>
+      <img src={props.src}/>
+      {props.children}
+    </div>
+  )
+}
+
+//App.js
+render () {
+  return (
+    <div className='container'>
+      <Picture key={picture.id} src={picture.src}>
+          //what is placed here is passed as props.children  
+      </Picture>
+    </div>
+  )
+}
+
 How can you optimize performance in a React application? Discuss techniques like memoization, code splitting, and lazy loading.
 Performance optimization techniques include memoization with useMemo and useCallback to avoid unnecessary recalculations, 
 code splitting to split the bundle into smaller chunks, and lazy loading to load components or resources only when needed.
@@ -138,24 +162,28 @@ It will call the function and return its result only if one of the dependencies 
 useCallback returns a memoized callback function, while useMemo returns a memoized value.
 
 What is the hook? Life cycle methods vs hooks
-Answer: React hooks are functions that allow you to use state and lifecycle features in functional components. 
+React hooks are functions that allow you to use state and lifecycle features in functional components. 
 Hooks can be stateful and can manage side effects. React hooks provide a more concise way to manage state and side effects in functional components. 
 Lifecycle methods are only available in class components
 
+functional components vs class Components
+A functional component is just a plain JavaScript pure function that accepts props as an argument and returns a React element(JSX).
+A class component requires you to extend from React.Component and create a render function that returns a React element. 
+There is no render method used in functional components. React hooks provide a more concise way to manage state and side effects in functional components.
+
 Unidirectional flow in react
-Answer: In React JS, data flows in one direction, from Parent to Child. This helps components to be simple and predictable. 
+In React JS, data flows in one direction, from Parent to Child. This helps components to be simple and predictable. 
 Data passed through Props it's properties passed to a child component that can hold information.
 
 Mounting in react
-Answer: Mounting means putting elements into the DOM. It occurs when a component is first added to a page
+Mounting means putting elements into the DOM. It occurs when a component is first added to a page
 
 Mounting vs render
-Answer: Mounting occurs when a component is first added to the page, while rendering occurs when a component's state changes.
+Mounting occurs when a component is first added to the page, while rendering occurs when a component's state changes.
 
 package.json vs package.lock.json
-The “package. json” file defines the rules required to run your application and install dependencies. 
-
-the “package-lock.json” file holds detailed information on all the dependencies installed based on the package.
+The “package.json” file defines the rules required to run your application and install dependencies. 
+the “package-lock.json” file holds detailed information on all the dependencies on your project.
 
 Function composition 
 it is a approach one function result on to pass next function until final function executes get results
@@ -221,7 +249,7 @@ VDOM is memory representation of DOM means exact copy of DOM
 if react changes state in component and it update VDOM but not in DOM.
 after updating react compares previous version of VDOM and current version of VDOM
 react knows exactly which nodes changed in VDOM.those nodes only changed in real DOM
-this process is diffing algorithm VDOM is faster because of making minimal manipulating operations on realDOM
+this process is reconciliation process. it uses diffing algorithm. VDOM is faster because of making minimal manipulating operations on realDOM
 
 10.component lifecycle methods and order?
 there phases mounting and updating and unmounting
@@ -410,3 +438,19 @@ removing EventListener
  react-router-dom library
  React Router provides a <Link> component, which can be used for basic React navigation
  
+46.contextAPI vs redux
+ Context API is a light-weight solution which is more suited for passing data from a parent to a deeply nested child.
+ Redux is a more robust State Management solution.
+
+47.Can I replace Redux with context API?
+If you're only using Redux to avoid passing down props, you can replace it with Context API. 
+Context is great for sharing trivial pieces of state between components. 
+Redux is much more powerful and provides a set of handy features that Context doesn't have
+It's great for managing centralized state and handling API requests.
+
+48.Difference Between Context API and Redux
+The main difference between these two libraries is that Redux deals with changes of the state in a centralized manner. 
+On the other hand, Context deals with them as they happen on the component level.
+
+49.difference of function statement and function expression
+hoisting is happens in function statement not in function expression
