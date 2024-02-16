@@ -9,16 +9,32 @@
         width: 250px;
         height: 200px;
         display: flex;
-        justify-content:space-around;
+        justify-content: space-around;
       }
-      .bar{
-        background-color:blue;
+      .bar {
+        background-color: blue;
       }
     </style>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="app.js" defer></script>
+    <!-- <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="app.js" defer></script> -->
   </head>
   <body>
-    <div></div>
+    <div id="root"></div>
+    <div id="root">
+      <h4>hgljkhghg</h4>
+    </div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script>
+      const heading = React.createElement("h1", {}, "heading");
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(heading);
+    </script>
   </body>
 </html>

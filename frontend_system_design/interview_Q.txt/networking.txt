@@ -1,0 +1,7 @@
+networking fundamentals
+how the internet works
+frontend and backend interaction depth
+REST concepts
+difference of HTTP methods
+HTTP header based questions
+cors in depth

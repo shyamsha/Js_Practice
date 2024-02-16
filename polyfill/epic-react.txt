@@ -1,0 +1,13 @@
+optimization
+  -- import(/* webpackPrefetch: true */'./pageA.js')
+Modules that are prefetched are requested and loaded by the browser even before the user requested the resource. 
+When the browser is idle and calculates that it’s got enough bandwidth, it will make a request in order to load the resource, and cache it.
+Having the resource cached can reduce the loading time significantly, as we don’t have to wait for the request to finish after the user has clicked the button. 
+It can simply get the loaded resource from cache. prefetching is a great way to optimize the loading time.
+if user not requested that time waste of resource. Only prefetch the necessary resources.
+
+  --react.memo 
+let menu = React.memo(menu,(prevProps,nextProps)=>{}) return true component doesn't render.return false will render
+This makes us want to use React.memo for various components, but memoization is also costly. 
+The second argument of React.memo is a function that compares whether the previous props and the new props are the same
+c:\Users\sam\Pictures\memo.png
