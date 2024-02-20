@@ -4,7 +4,7 @@
 
 const isPalindrome = require("./ttd");
 
-test("abc --> false", () => {
+test("// abc -> false", () => {
   const result = isPalindrome("abc");
-  expert(result).toBe(false);
+  expect(result).toBe(false);
 });
