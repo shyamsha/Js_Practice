@@ -1,0 +1,5 @@
+long polling vs webhook vs websocket
+unidirectional vs bidirectional
+websocket protocol
+long polling vs server side events
+security aspects
