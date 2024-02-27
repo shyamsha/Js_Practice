@@ -1,0 +1,7 @@
+localStorage vs session localStorage
+cookie vs localStorage
+access cookie with js
+indexDB
+how can be assets cached
+API response cache
+... extra

@@ -48,9 +48,10 @@ saves in local storage
 
 local storage vs session storage vs cookies
  	        Local Storage	    Session Storage	  Cookies
-Capacity-->	10MB	          5MB	              4KB
+Capacity-->	5-10MB	          5MB	              4KB
 Browsers-->	HTML 5	        HTML 5	          HTML 5 / HTML 4
 Accessibility-->Any Window  Same Tab	      Any Window
+performance--> synchronous  synchronous     asynchronous
 Expiration-->	Never	On      Tab Close	      Manually Set 
 Browser Support-->	Very High 
 Supported Data Types-->	String Only 	
@@ -64,7 +65,7 @@ If we want some data on the browser, we often utilize the local storage object. 
 session storage is used if we want to delete the data if the user closes that particular tab or the season
 
 Is Async a sessionStorage?
-No, all localStorage calls are synchronous
+No, all localStorage and sessionStorage calls are synchronous
 
 Position relative vs position absolute 
 default value is static it's not effect layout
