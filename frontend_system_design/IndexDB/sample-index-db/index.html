@@ -1,0 +1,109 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO APP</title>
+    <script src="index.js" defer></script>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>TODO APP</h1>
+    <section>
+      <aside class="view">
+        <h2>TODOs</h2>
+        <div class="todos">
+          <ol></ol>
+        </div>
+      </aside>
+      <aside class="add">
+        <h2>Add Todo</h2>
+        <form>
+          <div>
+            <label for="title">Todo title</label>
+            <input id="title" type="text" required />
+          </div>
+          <div>
+            <label for="desc">Todo description</label>
+            <input id="desc" type="text" required />
+          </div>
+          <div>
+            <button>Save</button>
+          </div>
+        </form>
+      </aside>
+    </section>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/idb@3.0.2/build/idb.min.js"></script>
+
+<button onclick="addBook()">Add a book</button>
+<button onclick="clearBooks()">Clear books</button>
+
+<p>Books list:</p>
+
+<ul id="listElem"></ul>
+
+<script>
+  let db;
+
+  init();
+
+  async function init() {
+    db = await idb.openDb("booksDb", 1, (db) => {
+      db.createObjectStore("books", { keyPath: "name" });
+    });
+
+    list();
+  }
+
+  async function list() {
+    let tx = db.transaction("books");
+    let bookStore = tx.objectStore("books");
+
+    let books = await bookStore.getAll();
+
+    if (books.length) {
+      listElem.innerHTML = books
+        .map(
+          (book) => `<li>
+        name: ${book.name}, price: ${book.price}
+      </li>`
+        )
+        .join("");
+    } else {
+      listElem.innerHTML = "<li>No books yet. Please add books.</li>";
+    }
+  }
+
+  async function clearBooks() {
+    let tx = db.transaction("books", "readwrite");
+    await tx.objectStore("books").clear();
+    await list();
+  }
+
+  async function addBook() {
+    let name = prompt("Book name?");
+    let price = +prompt("Book price?");
+
+    let tx = db.transaction("books", "readwrite");
+
+    try {
+      await tx.objectStore("books").add({ name, price });
+      await list();
+    } catch (err) {
+      if (err.name == "ConstraintError") {
+        alert("Such book exists already");
+        await addBook();
+      } else {
+        throw err;
+      }
+    }
+  }
+
+  window.addEventListener("unhandledrejection", (event) => {
+    alert("Error: " + event.reason.message);
+  });
+</script>
