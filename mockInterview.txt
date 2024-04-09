@@ -155,11 +155,11 @@ code splitting to split the bundle into smaller chunks, and lazy loading to load
 
 useCallback and useMemo
 useCallback and useMemo are both React Hooks that help optimize the performance of a React application by memoizing technique.
-useCallback is often used as an event handler or to pass data between components. 
+useCallback is often used as an event handler or to pass data between components.
+useCallback is used to memoize callback functions, reducing unnecessary re-creation of functions and optimizing component re-renders.
 The useCallback hook takes two arguments: a function and a dependency array. 
 It will return a memoized version of the function that only changes if one of the dependencies has changed.
-useMemo is a hook that returns a memoized value. It takes two arguments: a function that returns a value and a dependency array. 
-It will call the function and return its result only if one of the dependencies has changed.
+useMemo is used to memoize values or computations, helping to optimize expensive calculations or data transformations.u
 useCallback returns a memoized callback function, while useMemo returns a memoized value.
 
 What is the hook? Life cycle methods vs hooks
