@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from "react";
-import MemesL from "./components/with_library/MemesL";
+import Memes from "./components/without_library/Memes";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import About from "./components/About";
 import Teams from "./components/Teams";
@@ -39,7 +39,7 @@ function App() {
       <BrowserRouter>
         <Suspense fallback={null}>
           <Routes>
-            <Route path="/" element={<MemesL />} />
+            <Route path="/" element={<Memes />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/about" element={<About />} />
               <Route path="/teams" element={<Teams />} />
