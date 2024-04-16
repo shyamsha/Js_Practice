@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import Accordion from "./components/accordion/Accordion";
 import Comments from "./components/comments/Comments";
+import MemesL from "./components/with_library/MemesL";
 
 function App() {
   const { i18n } = useTranslation();
@@ -43,7 +44,7 @@ function App() {
       <BrowserRouter>
         <Suspense fallback={null}>
           <Routes>
-            <Route path="/" element={<Memes />} />
+            <Route path="/" element={<MemesL />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/about" element={<About />} />
               <Route path="/teams" element={<Teams />} />
