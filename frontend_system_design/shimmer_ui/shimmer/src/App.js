@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import Accordion from "./components/accordion/Accordion";
+import Comments from "./components/comments/Comments";
 
 function App() {
   const { i18n } = useTranslation();
@@ -27,6 +28,7 @@ function App() {
           <a href="/about">About </a>
           <a href="/teams">Team </a>
           <a href="/accordion">Accordion</a>
+          <a href="/comments">Nested Comments</a>
           <a href="/login">Login </a>
         </nav>
         <select
@@ -48,6 +50,7 @@ function App() {
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/accordion" element={<Accordion />} />
+            <Route path="/comments" element={<Comments />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
