@@ -455,3 +455,9 @@ On the other hand, Context deals with them as they happen on the component level
 
 49.difference of function statement and function expression
 hoisting is happens in function statement not in function expression
+
+50.block level element vs inline level element
+block level element will take full width and height of the parent element
+ex: <header>,<nav>,<section>,<article>,<aside>,<footer>,<main>
+inline level element will take only the space required to display the content
+ex: <a>,<span>,<strong>,<em>,<b>,,<label>,<img>,<input>,<br>,<script>
