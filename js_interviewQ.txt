@@ -190,3 +190,61 @@ Support for event handlers
 Best suited for applications with large rendering areas (Google Maps)
 Slow rendering if complex (anything that uses the DOM a lot will be slow)
 Not suited for game applications
+
+Execution context
+ javascript is a synchronous single threaded language
+ execution context has two components the first component is known as the memory component
+ the second component is known as the code component 
+ memory component contains variables and functions as the key value pairs and this code component is the place where whole javascript code is executed 
+ memory component is also known as the variable environment and the code component is also known as the thread of execution
+
+As soon as the whole JavaScript program is run,The global execution context is created.
+It has two components, memory & code, as you know and it is created in two phases.
+Phase 1, was the memory creation phase.
+In the memory creation phase, we were allocating memory to all the variables and functions inside the global space.
+
+And what we allocated these variables undefined
+In case of functions literally it just stores the whole function. 
+In the second phase,
+the code execution phase, now the JS program is executed line by line, when code execute all local variables replaced
+and created memory and code components inside code execution. 
+in memory creation phase it store variable in function with undefined when parameter has value it will replaces undefined with value.
+And it will now invoke the function, in the code execution phase, again this whole thing is run,
+the task and return statement is executed.
+In the return statement, we take back the control over here,
+now function is populated with a new value which is coming from this function invocation, which was the result.
+
+And suppose if there was a function invocation inside the function, you would have created an execution context INSIDE an execution context over here,
+and maybe again an invocation so it can go to any deep level
+call stack will handles everything to manage this execution context creation, deletion, and the control
+Every time in the bottom of the stack we have our global execution context.
+That means, whenever any JS program is run, this call stack is populated with this Global execution context.
+Whenever a function is invoked, or a new execution context is created and pushed to stack,
+we return the ans,Execution is popped out of the stack, and the control goes back to the global execution context, where it left.
+
+Hoisting
+The function statement and variable declared with var are accessible before they appear in the code
+In hoisting the hoisted items are accessible in the scope they are declared in
+Function expressions do not get hoisted
+strict mode var not hoisted will give reference error but function will hoisted but inside function variables it will not hoisted
+only declaration hoisted not assignment/initialization
+execution context in memory phase Declarations will allocated to undefined
+
+how function works in execution context
+scope
+syntax error vs reference error vs type error
+
+const a; or const a;
+            a=100;
+we declared but not initialized look like SyntaxError: Missing initializer in const declaration
+console.log(a) ReferenceError: Cannot access 'a' before initialization
+let a=10
+console.log(b) ReferenceError: b is not defined
+reference error has two types one is not defined and second is not access before initialized
+const a=10
+ a=100
+ console.log(a); TypeError: Assignment to constant variable
+type error is when a value is not of the expected type
+
+block: we need write multiple statements opn closed curly braces that is block
+

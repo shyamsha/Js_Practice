@@ -446,7 +446,7 @@ removing EventListener
 47.Can I replace Redux with context API?
 If you're only using Redux to avoid passing down props, you can replace it with Context API. 
 Context is great for sharing trivial pieces of state between components. 
-Redux is much more powerful and provides a set of handy features that Context doesn't have
+Redux is much more powerful and hooks provides a set of handy features that Context doesn't have
 It's great for managing centralized state and handling API requests.
 
 48.Difference Between Context API and Redux
@@ -461,3 +461,20 @@ block level element will take full width and height of the parent element
 ex: <header>,<nav>,<section>,<article>,<aside>,<footer>,<main>
 inline level element will take only the space required to display the content
 ex: <a>,<span>,<strong>,<em>,<b>,,<label>,<img>,<input>,<br>,<script>
+
+most asked question
+hooks
+custom hooks 
+HOC
+lifecycle of methods(class components)
+state Management (all about data),redux,rtk query,contextAPI
+react.contextAPI
+lazy loading
+VDOM,reconciliation
+ssr vs csr
+performance(senior engineer should know all things)
+role based routing
+testing
+asynchronous tasks like api calls, events,promises,callbacks
+reusability,modularity,readability,testability these keywords are used to describe the quality of a software code
+styling,Accessibility

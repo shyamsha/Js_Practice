@@ -1,0 +1,11 @@
+ 1. auto suggestion in search suggestions
+ 2. Implement google like day calender 
+ 3. Implement google like spreadsheet
+ 4. render dynamic forms using config
+ 5. Implement progress bar
+ 6. Implement of star ratting
+ 7. Implement twitter like textarea
+ 8. TODO application
+ 9. Implement design cart page
+ 10. Implement design product listing page with filters like myntra
+ 11. tic toc toe game
