@@ -8,6 +8,7 @@
     "componentwillunmount",
     "datatypes",
     "Deepika",
+    "Eventloop",
     "getderivedstatefromprops",
     "heapify",
     "IIFE",
