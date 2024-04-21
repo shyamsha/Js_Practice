@@ -272,7 +272,97 @@ It provides a cleaner way to write asynchronous code using .then() and .catch() 
 catch() will handle errors after catch() writing than() it will execute no mater what happens. in promise chaining we have to return in every than()
 
 async await vs promise
+async is keyword used before a function to create
+async function will always return a promise 
 
+await is keyword that can only use in async function
+
+difference of promise and async
+
+
+const p= new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve("promise resolve afer 10 sec")
+    },10000)
+})
+
+function getData(){
+  p.than((res)=>console.log(res))
+  console.log(" it will print before promise resolve")
+}
+getData()
+when execute promise it will print after 10 sec but console.log will print before promise resolve
+async and await was different it will print in both same time
+
+async function handlePromise(){
+console.log("hello")
+ 
+ // this major difference
+  const val = await p; // before code will execute when JS Engine see await it will wait to promise resolve
+  console.log("print what ever text with promise value")
+  console.log(val);
+
+  const val2 = await p; // if write two time await it will print both at time
+  console.log("print what ever text with promise value2")
+  console.log(val2);
+}
+handlePromise()
+
+what happens if two async function call different times wait
+
+const p1 = new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve("promise resolve after 10 sec")
+    },10000)
+})
+
+const p2 = new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve("promise resolve after 10 sec")
+    },5000)
+})
+
+async function handlePromise(){
+console.log("hello")
+ 
+  const val = await p1; 
+  console.log("print what ever text with promise value")
+  console.log(val);
+
+  const val2 = await p2; 
+  console.log("print what ever text with promise value2")
+  console.log(val2);
+}
+handlePromise()
+
+it will not print after 5 sec's it gone it will print after 10 sec all at time 
+async function await the all promises resolve because first await wait 10 sec 
+
+if we reverse the timing p1 will 5 sec and p2 will 10 sec than it will print 5 sec promise will first than p2 will print after 10 sec
+
+what happens behind scenes
+ JS Engine waiting for promise to resolve than it will execute. this wrong statement when JS Engine waits browser will unresponsive
+
+as soon as we call this handlePromise function will come inside your call stack right now it will executing all of this one by one
+will log hello to the console after it will see that there is a await P1 over here
+JavaScript does not wait for anything and this handle promise function is execution will suspend
+and this will move out of call stack once this P1 is resolved then in only in it will move handlePromise to call stack and 
+will start executing from where it left p1 5sec same on p2 10sec
+
+p1 10sec and p2 5sec this scenario
+
+hello will be printed immediately right now this P1 is 10 seconds so handle promise was executing it saw that P1 is not resolved yet
+P1 will resolve after after 10sec than move to next line print then p2 will resolve in 5 sec so by the time it moves over
+here after 10 seconds it sees that P2 is
+already resolved than it will move to next line quickly print after 10 seconds it will
+print
+
+real world examples
+
+using fetch api to get data
+do use Async and await it will give more cleaner and wait for data to resolve
+
+for error handling use try and catch block
 
 
 
