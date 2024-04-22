@@ -3,6 +3,22 @@ Temporal dead zone
 A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible.
 ex if you access variable before initialization it throws error Cannot access 'a' before initialization
 
+null vs undefined
+undefined means a variable has been declared but has not yet been assigned a value :
+
+var testVar;
+console.log(testVar); //shows undefined
+console.log(typeof testVar); //shows undefined
+Expand snippet
+null is an assignment value. It can be assigned to a variable as a representation of no value :
+
+var testVar = null;
+console.log(testVar); //shows null
+console.log(typeof testVar); //shows object
+Expand snippet
+From the preceding examples, it is clear that undefined and null are two distinct types: 
+undefined is a type itself (undefined) while null is an object.
+
 Map and filter and reduce 
 map returns new array from existing array. applying function to each element transforms into new array.
 filter returns new array from existing array. applying condition to each element and if condition satisfy push to element to array and returns

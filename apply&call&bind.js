@@ -76,7 +76,7 @@ console.log(gameController.avgScore); // 46.4
 
 // apply method usage
 var clientData = {
-  id: 094545,
+  id: "094545",
   fullName: "Not Set",
   // setUserName is a method on the clientData object
   setUserName: function (firstName, lastName) {

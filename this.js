@@ -326,9 +326,9 @@ log(myThis); //refers to window object
 var myVar = 1;
 log(this.myVar); // 1
 
-// 2. inside function this refers to undefined
+// 2. inside function this refers to window object in non strict mode and undefined in strict mode
 function inside() {
-  log(this); // undefined
+  log(this); // window object in non strict mode and strict mode undefined
 }
 
 // 3. IIFE function in this refers to window object and strict mode this refers to undefined and if you want window object in strict mode
@@ -408,7 +408,7 @@ log(timeOutObj.getContext());
 // 9. in DOM event when fire event with this it will refers current event fire element ex: <p onClick=function(){return  this}></p>
 
 // 10. How would you make sure value of this works correctly inside setTimeout?
-// using arrow function as callbabk
+// using arrow function as callback
 function time() {
   this.a = 1;
   console.log(this.a);
