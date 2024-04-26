@@ -11,3 +11,14 @@ function stringChop(string, number) {
 }
 
 console.log(stringChop("ibpbhixfiouhdljnjfflpapptrxgcomvnb", 33));
+
+function stringChop1(str, size = str.length) {
+  const arr = [];
+  let i = 0;
+  while (i < str.length) {
+    arr.push(str.slice(i, i + size));
+    i += size;
+  }
+  return arr;
+}
+console.log(stringChop1("java", 2));

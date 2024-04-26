@@ -440,9 +440,52 @@ const obj2 = {
   },
 };
 
-events works
-prototype
+how events works
 
+prototype
+in javascript every function and object has its own property called prototype.
+a prototype it self another object.so prototype has its own prototype. this creates prototype chain.
+we can use prototype to add properties and methods to constructor function.
+and objects inherit the properties and methods from a Prototype
+
+function Person(fName,lName){
+  this.fName=fName
+  this.lName=lName
+}
+
+// if you want add properties or methods existing constructor Person do like
+
+
+const person1=new Person("d","s")
+const person2=new Person("da","sa")
+
+Person.prototype.gender= "m"
+Person.prototype.getFullName= function(){
+  return this.fName+this.lName
+}
+
+// object is inheriting properties and methods of prototype
+
+console.log(person2.getFullName())
+
+function Person(){
+  this.fName="fName"
+  this.lName="lName"
+}
+
+ Person.prototype.age = 24
+
+const person1=new Person()
+Person.prototype.age=34  //it is override
+Person.prototype = {age:55} // this way not replaceable
+const person2=new Person()
+if the prototype value changed than all objects will change
+all previous value not changed
+
+
+
+console.log(person1)
+console.log(person2)
 
 
 

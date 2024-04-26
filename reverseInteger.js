@@ -14,3 +14,15 @@ var reverse = function (x) {
   return parseInt(rev);
 };
 console.log(reverse(a));
+
+let num = 3849;
+function reversedNumber(num) {
+  let reversedNum = 0;
+  while (num !== 0) {
+    reversedNum = reversedNum * 10 + (num % 10);
+    num = Math.floor(num / 10);
+  }
+  return reversedNum;
+}
+
+console.log(reversedNumber(a)); // 9483
