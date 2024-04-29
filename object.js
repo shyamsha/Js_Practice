@@ -203,3 +203,32 @@ obj21.counter; // 2
 obj21.counter; // 3
 
 // Symbol is used to maintain the private variable in the object. Using the private variable to store the data such as _counter is also a well known pattern before symbols
+
+function deepCopyObj(obj) {
+  if (!obj) return obj;
+
+  const copyObj = {};
+  for (const key in obj) {
+    if (typeof obj[key] !== "object" || Array.isArray(obj[key]))
+      copyObj[key] = obj[key];
+    else copyObj[key] = deepCopyObj(obj[key]);
+  }
+  return copyObj;
+}
+
+console.log(deepCopyObj(obj12));
+
+// an object by excluding the property
+
+const obj11 = {
+  id: 1,
+  username: "John",
+  password: "secret",
+  email: "john@email.com",
+  address: "qwerty",
+};
+const newObj1 = Object.assign({}, obj12, {
+  address: undefined,
+});
+JSON.stringify(obj, (key, value) => (key === "password" ? undefined : value)); // {"id":1,"username":"John","email":"john@email.com"}
+JSON.stringify(obj, ["id", "username", "email"]); // {"id":1,"username":"John","email":"john@email.com"}

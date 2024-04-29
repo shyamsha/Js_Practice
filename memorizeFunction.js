@@ -42,3 +42,27 @@ function memoize1(fn) {
     return n.get("__CACHE__");
   };
 }
+
+function memoize2(fn) {
+  const cache = new Map();
+  return function () {
+    const key = JSON.stringify(arguments);
+
+    // if the calculations have already been done for inputs, return the value from cache
+    if (cache.has(key)) {
+      return cache.get(key);
+    } else {
+      // call the function with arguments and store the result in cache before returning
+      cache.set(key, fn(...arguments));
+      return cache.get(key);
+    }
+  };
+}
+
+// driver code
+let factorial = memoize2(function fact(value) {
+  return value > 1 ? value * fact(value - 1) : 1;
+});
+
+factorial(5); // 120 (output is calculated by calling the function)
+factorial(5); // 120 (output is returned from the cache which was stored from previous calculations)
