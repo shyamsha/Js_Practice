@@ -10,6 +10,7 @@ import i18next from "i18next";
 import Accordion from "./components/accordion/Accordion";
 import Comments from "./components/comments/Comments";
 import MemesL from "./components/with_library/MemesL";
+import Slider from "./components/slider/Slider";
 
 function App() {
   const { i18n } = useTranslation();
@@ -30,6 +31,7 @@ function App() {
           <a href="/teams">Team </a>
           <a href="/accordion">Accordion</a>
           <a href="/comments">Nested Comments</a>
+          <a href="/slider">Slider</a>
           <a href="/login">Login </a>
         </nav>
         <select
@@ -52,6 +54,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/accordion" element={<Accordion />} />
             <Route path="/comments" element={<Comments />} />
+            <Route path="/slider" element={<Slider />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
