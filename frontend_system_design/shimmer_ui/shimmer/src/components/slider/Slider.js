@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../../App.css";
 
 const images = [
   "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg",
@@ -22,7 +23,7 @@ function Slider() {
   useEffect(() => {
     const interval = setInterval(() => {
       loadNextImage();
-    }, 2000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -35,8 +36,11 @@ function Slider() {
           alt="left arrow"
           src="https://cdn0.iconfinder.com/data/icons/glyphpack/26/nav-arrow-left-512.png"
         />
-
-        <img className="w-[800px]" src={images[active]} alt="slider" />
+        <img
+          className="w-[800px] slide fade"
+          src={images[active]}
+          alt="slider"
+        />
         <img
           onClick={loadNextImage}
           className="w-20 h-20 cursor-pointer"
@@ -45,6 +49,19 @@ function Slider() {
         />
       </div>
     </div>
+    // <>
+    //   <div class="slideshow-container">
+    //     <div class="slide fade">
+    //       <img src={images[0]} alt="Image 1" />
+    //     </div>
+    //     <div class="slide fade">
+    //       <img src={images[1]} alt="Image 2" />
+    //     </div>
+    //     <div class="slide fade">
+    //       <img src={images[2]} alt="Image 3" />
+    //     </div>
+    //   </div>
+    // </>
   );
 }
 
