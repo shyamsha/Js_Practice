@@ -11,6 +11,7 @@ import Accordion from "./components/accordion/Accordion";
 import Comments from "./components/comments/Comments";
 import MemesL from "./components/with_library/MemesL";
 import Slider from "./components/slider/Slider";
+import NestedSelect from "./components/Select/NestedSelect";
 
 function App() {
   const { i18n } = useTranslation();
@@ -32,6 +33,7 @@ function App() {
           <a href="/accordion">Accordion</a>
           <a href="/comments">Nested Comments</a>
           <a href="/slider">Slider</a>
+          <a href="/select">Select Box</a>
           <a href="/login">Login </a>
         </nav>
         <select
@@ -55,6 +57,7 @@ function App() {
             <Route path="/accordion" element={<Accordion />} />
             <Route path="/comments" element={<Comments />} />
             <Route path="/slider" element={<Slider />} />
+            <Route path="/select" element={<NestedSelect />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
