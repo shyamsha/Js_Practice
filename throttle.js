@@ -55,3 +55,24 @@ let throttle2 = function (fn, time) {
     return fn(...args);
   };
 };
+
+const throttle3 = (func, limit) => {
+  let lastFunc;
+  let lastRun;
+  return function () {
+    const context = this;
+    const args = arguments;
+    if (!lastRun) {
+      func.apply(context, args);
+      lastRun = Date.now();
+    } else {
+      clearTimeout(lastFunc);
+      lastFunc = setTimeout(() => {
+        if (Date.now() - lastRun >= limit) {
+          func.apply(context, args);
+          lastRun = Date.now();
+        }
+      }, limit - (Date.now() - lastRun));
+    }
+  };
+};
