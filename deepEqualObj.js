@@ -1,8 +1,3 @@
-/**
- * @param {any} o1
- * @param {any} o2
- * @return {boolean}
- */
 var areDeeplyEqual = function (a, b) {
   if (a === b) return true;
   if (typeof a != "object" || typeof b != "object" || a == null || b == null)

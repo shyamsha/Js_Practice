@@ -487,11 +487,75 @@ all previous value not changed
 console.log(person1)
 console.log(person2)
 
+ 
+What is JSON?
+it is data interchange  format that is commonly used in web applications.
+
+datatype diff in JS
+primitive datatype hold single value and immutable
+non-primitive is reference and mutable
+
+spread vs rest
+spread operator used to expand iterable objects(array,string,object) ex: coping an array,merging arrays,passing multiple arguments
+rest is used to get the remaining arguments of an iterable ex: func d(a,b,...rest){} d(1,2,3,4,5,6) 
+what is type coercion in JS?
+type coercion is the process of converting one data type to another data type.
+what is operator precedence?
+using bodmass rule to apply Arithmetic operations by evaluating them from which is first.
+what are array-like objects in JS?
+string is array-like object in JS. we can use length,index. same way arguments,HTML collections also array-like objects.
+we can convert array-like objects into array using spread operator and Array.from(arr) and Array.prototype.slice.call(arr)
+
+what are First-Class functions in JS?
+In JavaScript, functions are first-class citizens.
+they treated like other variables.
+functions can be assigned to variables or passed as an argument or can be returned by another function.
+what are Pure and Impure functions in JS?
+Pure function is a function which returns the same result if given the same arguments. it has no side effects and not modify state
+Impure function is a function which returns different results if given the same arguments. it has side effects and modify state
+what is Function Currying in JS? 
+transforming a function that takes multiple arguments into a sequence of functions that each take a single argument.
+benefit of currying is that it is easy to compose functions and reusability and modularity
+
+Template Literals and String Interpolation
+`name is ${name}` is template Literals and variable with name is in curly braces is called string interpolation
+
+HTML VS DOM
+HTML is a markup language used to create web pages. This language describes the HTML tree structure 
+this is represented as a DOM that allows to dynamically change the content of the web page. 
+what is the difference between innerHTML vs textContent?
+innerHTML is used to insert HTML content into the element it renders a HTML tree structure. 
+textContent is used to get or set the text content of an element.it render as text.
+
+Error Handling in JS
+try catch finally   
+what is Error Propagation in JS?
+error Propagation refers to the process of passing an error from one part of code to another by using the throw statement with try catch block.
+Error Handling Best Practices
+try catch block should be used to handle errors. throw manually error
+what are the different types of error in JS?
+SyntaxError: occurs when there is a syntax error in the code.
+console.log("syntax error"
+referenceError: occurs when there is a reference error in the code.
+console.log(myVar)
+TypeError: occurs when there is converting one type to another type error in the code.
+const n=23
+console.log(n.toUpperCase())
+RangeError: occurs when there is a range error in the code.
+const a=[1,2]
+console.log(a[10])
+
+shallow copy vs deep copy
+shallow copy is copying the reference of the child object.
+deep copy is copying the object and its properties.
+Sets in JS
+collections of unique values.
+Map Object in JSvents in JS
+it is special object that has key value pairs.
+key value any-type of value
+it maintains order of insertion key value pair.
+
+map vs object
 
 
-
-
-
-
-
-
+  

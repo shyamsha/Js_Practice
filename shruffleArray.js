@@ -44,3 +44,14 @@ Array.prototype.duplicator = function () {
 
 let arr = [1, 2, 3, 4, 5];
 console.log(arr.duplicator());
+
+function rangeGenFunc(start = 1, end = 0) {
+  const arr = [];
+  for (let i = start; i <= end; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
+
+const arr1 = rangeGenFunc(1, 10); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+arr1.sort(() => 0.5 - Math.random()); // [6, 8, 5, 10, 4, 3, 9, 2, 7, 1]

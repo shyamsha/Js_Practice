@@ -40,14 +40,16 @@ Interceptors are a feature that allows an application to intercept requests or r
 Ex token sends every request 
 
 Event bubbling and capturing and 
-event delegation 
-It happens when an element receives an event and that event bubbles up to its parent and ancestor elements on DOM until gets to the root element
+event delegation and event.stopPropagation()
+event bubbling is process when an element receives an event and that event bubbles up to its parent and ancestor elements on DOM until gets to the root element
 Event capture phase opposite of bubbling, its parent to child
-Event delegation is pattern to handle events efficiently. Instead of adding event listener to each and every smiler elements we can add event listener to parent element.
-Call an event on particular target using event.target property of object to perform a task. 
+Event delegation is pattern to handle events efficiently. 
+Instead of adding event listener to each and every smiler elements we can add event listener to parent element.
+Call an event on particular target using event.target property to perform an event on every child of parent. 
 For example we take Amazon website. It is several categories so we couldn’t add on click event on every category to navigate that category page. 
 simply we can add event to parent element and call the event using property of event.target and 
 it is capturing which element triggers than we can perform task on that element. 
+event bubbling can be stopped by calling stopPropagation() on event object
 
 Why use react
 It uses VDOM
