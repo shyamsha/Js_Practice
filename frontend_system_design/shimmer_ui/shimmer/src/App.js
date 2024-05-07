@@ -12,6 +12,8 @@ import Comments from "./components/comments/Comments";
 import MemesL from "./components/with_library/MemesL";
 import Slider from "./components/slider/Slider";
 import NestedSelect from "./components/Select/NestedSelect";
+import FeatureFlagEnable from "./components/feature-flag/FeatureFlagEnable";
+import UseFeatureFlagContextProvider from "./components/feature-flag/UseFeatureFlagContextProvider";
 
 function App() {
   const { i18n } = useTranslation();
@@ -26,7 +28,7 @@ function App() {
   return (
     <div>
       <header className="text-2xl font-bold py-5 bg-blue-500 text-white text-center flex justify-evenly items-center">
-        <nav className="px-20 m-2 w-[800px] flex justify-between text-lg">
+        <nav className="px-15 m-2 w-[800px] flex justify-between text-lg">
           <a href="/">Home </a>
           <a href="/about">About </a>
           <a href="/teams">Team </a>
@@ -34,6 +36,7 @@ function App() {
           <a href="/comments">Nested Comments</a>
           <a href="/slider">Slider</a>
           <a href="/select">Select Box</a>
+          <a href="/flag">Feature Flag</a>
           <a href="/login">Login </a>
         </nav>
         <select
@@ -46,7 +49,7 @@ function App() {
         </select>
       </header>
       <BrowserRouter>
-        <Suspense fallback={null}>
+        <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<MemesL />} />
             <Route element={<ProtectedRoute />}>
@@ -58,6 +61,14 @@ function App() {
             <Route path="/comments" element={<Comments />} />
             <Route path="/slider" element={<Slider />} />
             <Route path="/select" element={<NestedSelect />} />
+            <Route
+              path="/flag"
+              element={
+                <UseFeatureFlagContextProvider>
+                  <FeatureFlagEnable />
+                </UseFeatureFlagContextProvider>
+              }
+            />
           </Routes>
         </Suspense>
       </BrowserRouter>
