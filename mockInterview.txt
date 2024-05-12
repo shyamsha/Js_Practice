@@ -9,7 +9,7 @@ undefined means a variable has been declared but has not yet been assigned a val
 var testVar;
 console.log(testVar); //shows undefined
 console.log(typeof testVar); //shows undefined
-Expand snippet
+
 null is an assignment value. It can be assigned to a variable as a representation of no value :
 
 var testVar = null;
@@ -30,8 +30,8 @@ It simply means child function will access to parent scope even if parent functi
 
 Debounce vs throttling 
 Debounce is limit the execution of a function call and waits for a certain amount of time before running it again 
-The throttle also limits function execution calls for ex it takes a 1-sec delay first it will execute the function immediately then wait 1sec and 
-execute the function again so it will be continued to execute intervals of time 
+The throttle also limits function execution calls for ex it takes a 1-sec delay first it will execute the function immediately 
+then wait 1sec and execute the function again so it will be continued to execute intervals of time 
 Debounce is most suitable for control events like typing or button clicks
 Throttle is most suitable for continued user events like resizing and scrolling 
 
@@ -53,10 +53,26 @@ event bubbling can be stopped by calling stopPropagation() on event object
 
 Why use react
 It uses VDOM
-It uses the component structure 
+It uses the component architecture
 It uses a modularize component 
 We can build complex UI easily
 It has a view library only
+it has vast community and ecosystem
+it has reusability and composition
+it uses declarative syntax
+react hooks simplified ecosystem
+
+how to manage nested routes and role based routes?
+
+reusability vs composition
+reusability is create a component that can be used in multiple places. 
+composition is combining simple reusable components together to build one big component. ex:App component
+
+transpiler vs compiler
+transpiler: converts code from one language to another language. ex: babel converts es6 to es5
+compiler: converts code to machine readable format means high level programming language to low level machine code.
+
+createContext
 
 What is de-structure how can use arrays if the value change dynamic
 de-structure is extract values from array/object and uses like variables
@@ -115,6 +131,7 @@ useState is used to manage state, while useEffect is used to handle side effects
 Use context API
 props passed to several components. this leads to prop drilling. 
 avoid prop drilling use contextAPI allows data to be passed through a component tree without having to pass props manually at every level
+createContext:function returns an object with provider and consumer properties
 Context API consists of two main components:  provider and consumer
 The provider is responsible for creating and managing the context, which holds the data
 the consumer is used to access the context and its data
@@ -169,7 +186,12 @@ render () {
 
 How can you optimize performance in a React application? Discuss techniques like memoization, code splitting, and lazy loading.
 Performance optimization techniques include memoization with useMemo and useCallback to avoid unnecessary recalculations, 
-code splitting to split the bundle into smaller chunks, and lazy loading to load components or resources only when needed.
+code splitting to split the bundle into smaller chunks to load components when needed. we can use lay loading and Suspense
+react.lazy is function that allows you to load component lazily. it enables code splitting to import component asynchronous/dynamically.
+Suspense is used to define loading state and render fallback UI while component is loading.
+pros and cons of code splitting
+faster initial loading, optimized bandwidth usage,improve caching, parallel loading,easier maintaining
+complexity, tooling dependency, potential for run time errors,increased number of requests
 
 useCallback and useMemo
 useCallback and useMemo are both React Hooks that help optimize the performance of a React application by memoizing technique.
@@ -189,6 +211,9 @@ functional components vs class Components
 A functional component is just a plain JavaScript pure function that accepts props as an argument and returns a React element(JSX).
 A class component requires you to extend from React.Component and create a render function that returns a React element. 
 There is no render method used in functional components. React hooks provide a more concise way to manage state and side effects in functional components.
+
+reactive programming
+it is programming approach focuses on reactive to change and events in a declarative and asynchronous manner.
 
 Unidirectional flow in react
 In React JS, data flows in one direction, from Parent to Child. This helps components to be simple and predictable. 
@@ -496,3 +521,8 @@ testing
 asynchronous tasks like api calls, events,promises,callbacks
 reusability,modularity,readability,testability these keywords are used to describe the quality of a software code
 styling,Accessibility
+redux vs contextAPI
+Context is not a "state management" tool. It's a Dependency Injection mechanism
+Redux is a library and a pattern for separating your state update logic from the rest of your app
+https://www.reddit.com/r/reactjs/comments/z4y7sj/redux_vs_context_what_exactly_does_redux/ read article
+
