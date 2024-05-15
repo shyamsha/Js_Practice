@@ -14,6 +14,7 @@ import Slider from "./components/slider/Slider";
 import NestedSelect from "./components/Select/NestedSelect";
 import FeatureFlagEnable from "./components/feature-flag/FeatureFlagEnable";
 import UseFeatureFlagContextProvider from "./components/feature-flag/UseFeatureFlagContextProvider";
+import Product from "./components/pagination/Product";
 
 function App() {
   const { i18n } = useTranslation();
@@ -29,15 +30,36 @@ function App() {
     <div>
       <header className="text-2xl font-bold py-5 bg-blue-500 text-white text-center flex justify-evenly items-center">
         <nav className="px-15 m-2 w-[800px] flex justify-between text-lg">
-          <a href="/">Home </a>
-          <a href="/about">About </a>
-          <a href="/teams">Team </a>
-          <a href="/accordion">Accordion</a>
-          <a href="/comments">Nested Comments</a>
-          <a href="/slider">Slider</a>
-          <a href="/select">Select Box</a>
-          <a href="/flag">Feature Flag</a>
-          <a href="/login">Login </a>
+          <a className="pr-4" href="/">
+            Home{" "}
+          </a>
+          <a className="pr-4" href="/about">
+            About{" "}
+          </a>
+          <a className="pr-4" href="/teams">
+            Team{" "}
+          </a>
+          <a className="pr-4" href="/accordion">
+            Accordion
+          </a>
+          <a className="pr-4" href="/comments">
+            Nested Comments
+          </a>
+          <a className="pr-4" href="/slider">
+            Slider
+          </a>
+          <a className="pr-4" href="/select">
+            Select Box
+          </a>
+          <a className="pr-4" href="/flag">
+            Feature Flag
+          </a>
+          <a className="pr-4" href="/pagination">
+            Pagination
+          </a>
+          <a className="pr-4" href="/login">
+            Login{" "}
+          </a>
         </nav>
         <select
           className="bg-black text-white"
@@ -61,6 +83,7 @@ function App() {
             <Route path="/comments" element={<Comments />} />
             <Route path="/slider" element={<Slider />} />
             <Route path="/select" element={<NestedSelect />} />
+            <Route path="/pagination" element={<Product />} />
             <Route
               path="/flag"
               element={

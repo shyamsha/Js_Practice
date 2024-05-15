@@ -524,5 +524,6 @@ styling,Accessibility
 redux vs contextAPI
 Context is not a "state management" tool. It's a Dependency Injection mechanism
 Redux is a library and a pattern for separating your state update logic from the rest of your app
+Context is a great tool by itself, and I use it frequently in my own apps. But, Context doesn't "replace Redux". 
 https://www.reddit.com/r/reactjs/comments/z4y7sj/redux_vs_context_what_exactly_does_redux/ read article
 
