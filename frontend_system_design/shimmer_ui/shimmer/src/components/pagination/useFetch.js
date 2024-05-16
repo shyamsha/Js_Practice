@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-function useFetch(currentPage) {
+function useFetch({ currentPage, LIMIT }) {
   const [products, setProducts] = useState([]);
-  const LIMIT = 6;
+  const [pages, setPages] = useState(0);
   let abortController = new AbortController();
 
   const fetchProducts = async () => {
@@ -12,6 +12,7 @@ function useFetch(currentPage) {
     let data = await fetch(url, { signal: abortController.signal });
     const json = await data.json();
     setProducts(json.products);
+    setPages(json.total / LIMIT);
   };
   useEffect(() => {
     fetchProducts();
@@ -20,7 +21,7 @@ function useFetch(currentPage) {
     };
   }, [products]);
 
-  return [products];
+  return [products, pages];
 }
 
 export default useFetch;
