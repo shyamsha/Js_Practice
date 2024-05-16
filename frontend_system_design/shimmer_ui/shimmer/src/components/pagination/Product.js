@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 
 function Product() {
   const LIMIT = 5;
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [products, pages] = useFetch({ currentPage, LIMIT });
 
   return (

@@ -8,7 +8,7 @@ function Pagination({ pages, setCurrentPage, currentPage }) {
   const handleNextPageChange = () => {
     setCurrentPage((currentPage) => currentPage + 1);
   };
-
+  //TODO: Add a pagination like 1 2 3...16 if we click 3 iterate next 3 times and so on 3 4 5...16.
   return (
     <div className="p-10 cursor-pointer">
       {currentPage > 0 && <span onClick={handlePrevPageChange}>Prev</span>}
