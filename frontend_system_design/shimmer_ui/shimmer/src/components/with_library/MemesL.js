@@ -13,7 +13,7 @@ function MemesL() {
     setMeme(res.memes);
   };
   useEffect(() => {
-    // fetchData();
+    fetchData();
   }, []);
   return (
     <>

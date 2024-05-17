@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MemeCard from "./MemeCard";
 import Shimmer from "./Shimmer";
+import { handleScroll } from "../../utils/InfiniteScroll";
 function Memes() {
   const [meme, setMeme] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -14,17 +15,19 @@ function Memes() {
   };
   useEffect(() => {
     fetchData();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll());
+    return () => window.removeEventListener("scroll", handleScroll());
   }, []);
+
   const handleScroll = () => {
     //scrollY - how much I have scrolled
-    // innerHeight - heigh of the window(visible setion)
+    // innerHeight - heigh of the window(visible section)
     // document.body.scrollHeight - total height of the web page
     if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {
       fetchData();
     }
   };
+
   return (
     <div className="flex flex-wrap">
       {meme?.map((item, index) => (

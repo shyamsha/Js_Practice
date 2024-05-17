@@ -73,7 +73,7 @@ function App() {
       <BrowserRouter>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
-            <Route path="/" element={<MemesL />} />
+            <Route path="/" element={<Memes />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/about" element={<About />} />
               <Route path="/teams" element={<Teams />} />
