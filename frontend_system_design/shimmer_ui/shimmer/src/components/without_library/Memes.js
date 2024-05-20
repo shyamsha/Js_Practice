@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MemeCard from "./MemeCard";
 import Shimmer from "./Shimmer";
-import { handleScroll } from "../../utils/InfiniteScroll";
+// import { handleScroll } from "../../utils/InfiniteScroll";
 function Memes() {
   const [meme, setMeme] = useState([]);
   const [loading, setLoading] = useState(false);
