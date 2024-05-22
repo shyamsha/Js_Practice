@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useFetch from "./useFetch";
 import ProductCard from "./ProductCard";
 import Pagination from "./Pagination";
+import Paginator from "./Paginator";
 
 function Product() {
   const LIMIT = 5;
@@ -15,10 +16,17 @@ function Product() {
           <ProductCard key={product.id} {...product} />
         ))}
       </div>
-      <Pagination
+      {/* <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         pages={pages}
+      /> */}
+      <Paginator
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        pages={pages}
+        LIMIT={LIMIT}
+        products={products}
       />
     </div>
   );

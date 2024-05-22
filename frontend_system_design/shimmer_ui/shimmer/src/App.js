@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Suspense, useEffect } from "react";
 import Memes from "./components/without_library/Memes";
-import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import About from "./components/About";
 import Teams from "./components/Teams";
 import Login from "./components/Login";
@@ -17,6 +17,7 @@ import FeatureFlagEnable from "./components/feature-flag/FeatureFlagEnable";
 import UseFeatureFlagContextProvider from "./components/feature-flag/UseFeatureFlagContextProvider";
 import Product from "./components/pagination/Product";
 import LiveChat from "./components/livechat/LiveChat";
+import Search from "./components/autocomplete/Search";
 
 function App() {
   const { i18n } = useTranslation();
@@ -34,39 +35,42 @@ function App() {
       <BrowserRouter>
         <header className="text-2xl font-bold p-9 bg-blue-500 text-white  flex justify-between items-center">
           <nav className="px-15 m-2 w-auto flex justify-between text-lg">
-            <Link className="" to="/">
+            <a className="" href="/">
               Home<span className="text-red-600 px-1">|</span>
-            </Link>
-            <Link className="" to="/about">
+            </a>
+            <a className="" href="/about">
               About<span className="text-red-600 px-1">|</span>
-            </Link>
-            <Link className="" to="/teams">
+            </a>
+            <a className="" href="/teams">
               Team<span className="text-red-600 px-1">|</span>
-            </Link>
-            <Link className="" to="/accordion">
+            </a>
+            <a className="" href="/accordion">
               Accordion<span className="text-red-600 px-1">|</span>
-            </Link>
-            <Link className="" to="/comments">
+            </a>
+            <a className="" href="/comments">
               Nested Comments<span className="text-red-600 px-1">|</span>
-            </Link>
-            <Link className="" to="/slider">
+            </a>
+            <a className="" href="/slider">
               Slider<span className="text-red-600 px-1">|</span>
-            </Link>
-            <Link className="" to="/select">
+            </a>
+            <a className="" href="/select">
               Select Box<span className="text-red-600 px-1">|</span>
-            </Link>
-            <Link className="" to="/flag">
+            </a>
+            <a className="" href="/flag">
               Feature Flag<span className="text-red-600 px-1">|</span>
-            </Link>
-            <Link className="" to="/pagination">
+            </a>
+            <a className="" href="/pagination">
               Pagination<span className="text-red-600 px-1">|</span>
-            </Link>
-            <Link className="" to="/live-chat">
+            </a>
+            <a className="" href="/live-chat">
               Live Chat<span className="text-red-600 px-1">|</span>
-            </Link>
-            <Link className="" to="/login">
+            </a>
+            <a className="" href="/search">
+              AutoComplete Search<span className="text-red-600 px-1">|</span>
+            </a>
+            <a className="" href="/login">
               Login
-            </Link>
+            </a>
           </nav>
           <select
             className="bg-black text-white"
@@ -94,6 +98,7 @@ function App() {
             <Route path="/select" element={<NestedSelect />} />
             <Route path="/pagination" element={<Product />} />
             <Route path="/live-chat" element={<LiveChat />} />
+            <Route path="/search" element={<Search />} />
             <Route
               path="/flag"
               element={
