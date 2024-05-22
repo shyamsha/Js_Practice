@@ -37,6 +37,8 @@ function flattenMultiArray(arr) {
     : flattened;
 }
 const multiDimensionalArr = [11, [22, 33], [44, [55, 66, [77, [88]], 99]]];
+const flatArr = flattenMultiArray(multiDimensionalArr); // [11, 22, 33, 44, 55, 66, 77, 88, 99]
+
 function flat(arr) {
   let result = [];
   for (let i = 0; i < arr.length; i++) {
@@ -50,9 +52,22 @@ function flat(arr) {
 }
 console.log(flat(multiDimensionalArr));
 
-const flatArr = flattenMultiArray(multiDimensionalArr); // [11, 22, 33, 44, 55, 66, 77, 88, 99]
+function flattenArray(a, flattenArr) {
+  for (let i = 0; i < a.length; i++) {
+    const element = a[i];
+    if (typeof element === "number") {
+      // this is not good case
+      flattenArr.push(element);
+    } else {
+      flattenArray(element, flattenArr);
+    }
+  }
+  return flattenArr;
+}
 
-function flatten(arr) {
+console.log(flattenArray(multiDimensionalArr, []), "flatten array");
+
+function flatten2(arr) {
   const newArr = arr.reduce((acc, item) => {
     if (Array.isArray(item)) {
       acc = acc.concat(flatten(item));
@@ -68,13 +83,13 @@ function flatten(arr) {
 
 const numArr = [1, [2, [3], 4, [5, 6, [7]]]];
 
-flatten(numArr); // [1, 2, 3, 4, 5, 6, 7]
+flatten2(numArr); // [1, 2, 3, 4, 5, 6, 7]
 
 // Flatten array of array object example [1,[{3:[5]}]]
 
 let arr13 = [1, [{ 3: [{ 5: [1] }] }]];
 
-let flatten = function (a) {
+let flatten1 = function (a) {
   let arr = a.flat(Infinity);
   let e = [];
   function helper(obj) {
@@ -108,4 +123,4 @@ let flatten = function (a) {
   return e.flat(Infinity);
 };
 
-console.log(flatten(arr13));
+console.log(flatten1(arr13));
