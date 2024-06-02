@@ -15,7 +15,7 @@ function debounce(fn, t) {
   };
 }
 
-let log = debounce(getData, 500);
+let log = debounce(getData, 5000);
 
 log("...fetching");
 

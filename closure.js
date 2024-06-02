@@ -85,3 +85,62 @@ console.log(some([2, 4, 6], 3, isEven));
 console.log(some([2, 3, 4], 3, isEven));
 console.log(some([2, 3, 11], 3, isPrime));
 console.log(some([2, 3, 5, 9], 4, isPrime));
+
+let count = (() => {
+  let counter = 0;
+  function inner() {
+    counter++;
+    return counter;
+  }
+  inner.reset = function () {
+    return (counter = 0);
+  };
+  return inner;
+})();
+
+console.log(count());
+console.log(count());
+console.log(count());
+console.log(count.reset());
+console.log(count());
+
+function counter() {
+  let count = 0;
+  return function incr() {
+    count++;
+    return count;
+  };
+}
+
+let increment = counter();
+log(increment());
+log(increment());
+log(increment());
+let increment1 = counter(); // it will create new counter function
+log(increment1());
+log(increment1());
+
+// using constructor function to create
+function Counter() {
+  let count = 0;
+  this.increment = function () {
+    count++;
+    return count;
+  };
+  this.decrement = function () {
+    count--;
+    return count;
+  };
+  this.reset = function () {
+    count = 0;
+    return count;
+  };
+}
+
+let count1 = new Counter();
+log(count1.increment());
+log(count1.increment());
+log(count1.increment());
+let count2 = new Counter();
+log(count2.increment());
+log(count2.increment());

@@ -1,5 +1,5 @@
 // count sbstr
-function count(string, substr) {
+function countSubStr(string, substr) {
   var convertStr = string.toLowerCase().split(" ");
   var count = 0;
   for (var i = 0; i < convertStr.length; i++) {
@@ -10,7 +10,7 @@ function count(string, substr) {
   return count;
 }
 
-console.log(count("I am good the good boy", "good"));
+console.log(countSubStr("I am good the good boy", "good"));
 
 // count of characters between the first and last  specific one character
 
