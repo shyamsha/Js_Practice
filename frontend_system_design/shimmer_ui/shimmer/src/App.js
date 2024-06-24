@@ -18,6 +18,8 @@ import UseFeatureFlagContextProvider from "./components/feature-flag/UseFeatureF
 import Product from "./components/pagination/Product";
 import LiveChat from "./components/livechat/LiveChat";
 import Search from "./components/autocomplete/Search";
+import OTP from "./components/Input-OTP/OTP";
+import StopWatch from "./components/stop-wach/StopWatch";
 
 function App() {
   const { i18n } = useTranslation();
@@ -68,6 +70,12 @@ function App() {
             <a className="" href="/search">
               AutoComplete Search<span className="text-red-600 px-1">|</span>
             </a>
+            <a className="" href="/otp">
+              OTP Input<span className="text-red-600 px-1">|</span>
+            </a>
+            <a className="" href="/stop-watch">
+              Stop Watch<span className="text-red-600 px-1">|</span>
+            </a>
             <a className="" href="/login">
               Login
             </a>
@@ -99,6 +107,8 @@ function App() {
             <Route path="/pagination" element={<Product />} />
             <Route path="/live-chat" element={<LiveChat />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/otp" element={<OTP />} />
+            <Route path="/stop-watch" element={<StopWatch />} />
             <Route
               path="/flag"
               element={

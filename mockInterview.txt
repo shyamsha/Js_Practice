@@ -25,8 +25,20 @@ filter returns new array from existing array. applying condition to each element
 reduce has accumulator,current values reduce can makes array values down to just single value
 
 Closures 
-A closure is a combination of functions bundled together with reference to the surrounding state means the lexical environment
+A closure is a combination of function and with reference to the surrounding state means the lexical environment
 It simply means child function will access to parent scope even if parent function is closed 
+it allows for private variables and function level encapsulation
+function outer() {
+  let privateVar = 0;
+  return function inner() {
+    privateVar++;
+    console.log(privateVar);
+  };
+}
+const closureFunc = outer();
+closureFunc(); // 1
+closureFunc(); // 2
+closureFunc(); // 3
 
 Debounce vs throttling 
 Debounce is limit the execution of a function call and waits for a certain amount of time before running it again 
@@ -46,7 +58,7 @@ Event capture phase opposite of bubbling, its parent to child
 Event delegation is pattern to handle events efficiently. 
 Instead of adding event listener to each and every smiler elements we can add event listener to parent element.
 Call an event on particular target using event.target property to perform an event on every child of parent. 
-For example we take Amazon website. It is several categories so we couldn’t add on click event on every category to navigate that category page. 
+For example we take Amazon website. It has several categories so we couldn’t add on click event on every category to navigate that category page. 
 simply we can add event to parent element and call the event using property of event.target and 
 it is capturing which element triggers than we can perform task on that element. 
 event bubbling can be stopped by calling stopPropagation() on event object
@@ -328,6 +340,7 @@ state can mutable via setState
 props is object that have information
 props passing down child components and it immutable
 ref are accessing DOM elements without using selector methods of the document object
+the main difference when state updates than component re-renders but in useRef we can access DOM elements without re-rendering component
 ref create like useRef hook createRef using class-based components
 use-cases of refs are maintaining input focus,text selection,media controls,outside dom,wth third party libraries
 
@@ -395,9 +408,8 @@ promise.all([])
 each website has ip than ip locate DNS server and DNS locates to web server then fetch website from server
 
 26.what is hoisting and scope
-variables declare with var and function declarations are hoisting
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution.
 if we declared with var is hoisted and default value assigned as undefined
-let and const are also hoisted but not initialization default value if access it will give reference error that block temporal dead zone
 Function declarations are hoisted not function expressions.
 Function hoisting allows us to call a function before it is defined
 scope-- block scope if the variable is declared in code block that variable visible in that code block
@@ -527,3 +539,7 @@ Redux is a library and a pattern for separating your state update logic from the
 Context is a great tool by itself, and I use it frequently in my own apps. But, Context doesn't "replace Redux". 
 https://www.reddit.com/r/reactjs/comments/z4y7sj/redux_vs_context_what_exactly_does_redux/ read article
 
+
+
+Concurrency modal in js
+it is a process of running multiple tasks at the same time. in js it is achieved by using the asynchronous programming and event loop 

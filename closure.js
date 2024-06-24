@@ -44,10 +44,10 @@ function y() {
       // here every time function will call variable remembers
       setTimeout(function () {
         console.log(i);
-      }, 1000);
+      }, i * 1000);
     }
+    close(i);
   }
-  close(i);
 } //0 1 2 3 4
 
 function isEven(num) {

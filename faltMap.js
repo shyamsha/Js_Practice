@@ -52,9 +52,9 @@ function flat(arr) {
 }
 console.log(flat(multiDimensionalArr));
 
-function flattenArray(a, flattenArr) {
-  for (let i = 0; i < a.length; i++) {
-    const element = a[i];
+function flattenArray(arr22, flattenArr) {
+  for (let i = 0; i < arr22.length; i++) {
+    const element = arr22[i];
     if (typeof element === "number") {
       // this is not good case
       flattenArr.push(element);

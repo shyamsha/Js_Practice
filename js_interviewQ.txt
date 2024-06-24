@@ -45,12 +45,9 @@ Question 15:- How to force developers to use Var keyword ?// strick
 
 Question 16:- How can we handle Global Variables ?
 Question 17:- How can we avoid Global variables ?
-using Closures
+using strict mode
 
-Question 18:- What are Closures ?
-check closure.js
-Question 19:- Why do we need Closures ?
-create self contain function and state and solve global variable problem
+
 Question 20:- Explain IIFE ?
 it is anonymous function it invoke immediately
 
@@ -149,10 +146,11 @@ Question 51. Explain Multi-threading ?
 Question 52. Is JavaScript Multi-threaded ?
 Question 53. Then how does Settimeout run ?
 Question 54. What is a WebAPI/Browser API ?
-A Web API is an application programming interface for the Web. A Browser API can extend the functionality of a web browser
+Web API is an application programming interface for the Web
 
 Question 55. What is a Event loop and callback queue?
-Question 56. Eventloop and Callback code question?
+event loop is a single-threaded loop that monitors the call stack and callback queue.
+callback queue is a list of tasks to be executed.
 
 Is Fetch API part of JavaScript Engine or JavaScript Runtime?
 
@@ -282,7 +280,7 @@ difference of promise and async
 
 const p= new Promise((resolve,reject)=>{
     setTimeout(()=>{
-      resolve("promise resolve afer 10 sec")
+      resolve("promise resolve after 10 sec")
     },10000)
 })
 

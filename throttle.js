@@ -47,11 +47,11 @@ var throttle1 = function (fn, t) {
 };
 
 let throttle2 = function (fn, time) {
-  let last = 0;
+  let lastTime = 0;
   return function (...args) {
-    let now = new Date().getTime();
-    if (now - last < time) return;
-    last = now;
+    let nowTime = new Date().getTime();
+    if (nowTime - lastTime < time) return;
+    lastTime = nowTime;
     return fn(...args);
   };
 };
