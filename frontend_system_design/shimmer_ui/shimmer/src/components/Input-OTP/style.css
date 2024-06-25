@@ -37,7 +37,6 @@ button[type="submit"] {
   font-weight: bold;
   border: 1px solid gray;
   outline: 0;
-  cursor: not-allowed;
 }
 button:focus {
   outline: none;

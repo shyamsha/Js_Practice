@@ -1,70 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./style.css";
 
 function OTP() {
-  const [inputField, setInputField] = useState({});
-  const [otpLength, setOtpLength] = useState(6);
-  const [otp1, setOtp1] = useState("");
-  const [otp2, setOtp2] = useState("");
-  const [otp3, setOtp3] = useState("");
-  const [otp4, setOtp4] = useState("");
-  const [otp5, setOtp5] = useState("");
-  const [otp6, setOtp6] = useState("");
+  const [inputField, setInputField] = useState(new Array(6).fill(""));
+  const inputRefs = useRef([]);
+  useEffect(() => {
+    if (inputRefs.current[0]) {
+      inputRefs.current[0].focus();
+    }
+  }, []);
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(inputField);
-    alert("OTP submitted");
+    let otp = inputField.join("");
+    alert(`OTP is verified ${otp}`);
   };
-  function handleOtp(e) {
-    const input = e.target;
-    let value = input.value;
-    let isValidInput = value.match(/[0-9]/gi);
-    input.value = "";
-    input.value = isValidInput ? value[0] : "";
-    console.log(input.value);
-
-    //  const fieldIndex = input.dataset.index;
-    //   if (fieldIndex < inputs.length - 1 && isValidInput) {
-    //     input.nextElementSibling.focus();
-    //   }
-    //   if (e.key === "Backspace" && fieldIndex > 0) {
-    //     input.previousElementSibling.focus();
-    //   }
-
-    //   if (fieldIndex == inputs.length - 1) {
-    //     console.log("Button activated");
-    //     submitButton.style.background = "#18d395";
-    //     submitButton.style.cursor = "pointer";
-    //   }
-  }
 
   function handleOnPasteOtp(e) {
     const data = e.clipboardData.getData("text");
     const value = data.split("");
-    //console.log(value);
-
-    // if (value.length === inputs.length) {
-    //   inputs.forEach((input, index) => (input.value = value[index]));
-    //   submitButton.style.background = "#18d395";
-    //   submitButton.style.cursor = "pointer";
-    // }
+    if (value.length === inputField.length) {
+      const newInputField = [...inputField];
+      newInputField.forEach((input, index) => {
+        newInputField[index] = value[index];
+      });
+      setInputField(newInputField);
+    }
   }
-  const handleInputChange = (event) => {
-    let data = { ...inputField };
-    data[event.target.name] = event.target.value;
-
-    // let isValidInput = data.match(/[0-9]/gi) || true;
-    const fieldIndex = Object.values(data).length;
-    if (fieldIndex < otpLength && true) {
-      // input.nextElementSibling.focus();
+  const handleInputChange = (e, index) => {
+    let value = e.target.value;
+    let isValidInput = value.match(/[0-9]/gi);
+    value = isValidInput ? value : "";
+    const newInputField = [...inputField];
+    newInputField[index] = value;
+    setInputField(newInputField);
+    if (value && index < inputField.length - 1 && isValidInput) {
+      inputRefs.current[index + 1].focus();
     }
-    if (event.key === "Backspace" && fieldIndex > 0) {
-      // input.previousElementSibling.focus();
-    }
-    setInputField(data);
   };
 
-  console.log(inputField);
+  const handleKeyDown = (e, index) => {
+    // Todo: Handle backspace
+    if (
+      e.key === "Backspace" &&
+      !inputField[index - 1] &&
+      index > 0 &&
+      inputRefs.current[index - 1]
+    ) {
+      inputRefs.current[index - 1].focus();
+    }
+  };
 
   return (
     <>
@@ -75,78 +59,21 @@ function OTP() {
         </div>
         <form>
           <div id="otp-container">
-            <input
-              type="text"
-              placeholder="1"
-              className="otp-number"
-              minLength="1"
-              maxLength="1"
-              name="0"
-              onChange={(event) => handleInputChange(event)}
-              value={inputField["0"] || ""}
-              // onKeyUp={handleOtp}
-              // onPaste={handleOnPasteOtp}
-            />
-            <input
-              type="text"
-              placeholder="2"
-              className="otp-number"
-              minLength="1"
-              maxLength="1"
-              name="1"
-              value={inputField["1"] || ""}
-              onChange={(event) => handleInputChange(event)}
-              // onKeyUp={handleOtp}
-              // onPaste={handleOnPasteOtp}
-            />
-            <input
-              type="text"
-              placeholder="3"
-              className="otp-number"
-              minLength="1"
-              maxLength="1"
-              name="2"
-              onChange={(event) => handleInputChange(event)}
-
-              // onKeyUp={handleOtp}
-              // onPaste={handleOnPasteOtp}
-            />
-            <input
-              type="text"
-              placeholder="4"
-              className="otp-number"
-              minLength="1"
-              maxLength="1"
-              name="3"
-              onChange={(event) => handleInputChange(event)}
-
-              // onKeyUp={handleOtp}
-              // onPaste={handleOnPasteOtp}
-            />
-            <input
-              type="text"
-              placeholder="5"
-              className="otp-number"
-              minLength="1"
-              maxLength="1"
-              name="4"
-              onChange={(event) => handleInputChange(event)}
-
-              // onKeyUp={handleOtp}
-              // onPaste={handleOnPasteOtp}
-            />
-            <input
-              type="text"
-              placeholder="6"
-              className="otp-number"
-              minLength="1"
-              maxLength="1"
-              name="5"
-              onChange={(event) => handleInputChange(event)}
-
-              // onKeyUp={handleOtp}
-              // onPaste={handleOnPasteOtp}
-            />
+            {inputField.map((value, index) => (
+              <input
+                key={index + value}
+                type="text"
+                placeholder={index + 1}
+                className="otp-number"
+                minLength="1"
+                maxLength="1"
+                value={value}
+                onChange={(e) => handleInputChange(e, index)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
+                onPaste={(e) => handleOnPasteOtp(e)}
+                ref={(input) => (inputRefs.current[index] = input)}
+              />
+            ))}
           </div>
           <div className="btn-container">
             <button onClick={handleFormSubmit} id="submit" type="submit">
