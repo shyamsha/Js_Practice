@@ -1,16 +1,17 @@
 //polyfill for reduce
 // reduce of this polyfill
-Array.prototype.myReduce = function (cb, initialValue) {
-  let result;
-  let startIndex = this.length - 1;
-  if (arguments.length <= 1) {
-    result = this[this.length - 1];
-    startIndex = this.length - 2;
+Array.prototype.myReduce1 = function (cb, initialValue) {
+  let result; // it acts as prev value
+  let currIndex = 0; // it acts as curr value
+  if (arguments.length < 2) {
+    result = this[0];
+    currIndex = 1;
   }
   if (arguments.length > 1) {
     result = initialValue;
   }
-  for (let i = 0; i <= startIndex; i++) {
+
+  for (let i = currIndex; i < this.length; i++) {
     result = cb(result, this[i]);
   }
   return result;
@@ -35,7 +36,7 @@ const oddEvenCount = arr.myReduce(
   { even: 0, odd: 0 }
 );
 console.log(oddEvenCount);
-// output: {even: 2, odd: 3};
+// output: {even: 2, odd: 2};
 
 // polyfill for reduce right
 

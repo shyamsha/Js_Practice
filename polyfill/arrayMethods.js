@@ -145,3 +145,39 @@ const result25 = arr.myReverse();
 
 console.log(arr); // [5, 4, 3, 2, 1]
 console.log(result25); // [5, 4, 3, 2, 1]
+
+function defaultComparator(a, b) {
+  a = a.toString();
+  b = b.toString();
+  if (a < b) {
+    return -1;
+  }
+  if (a > b) {
+    return 1;
+  }
+  return 0;
+}
+
+Array.prototype.mySort = function (cb = defaultComparator) {
+  for (var i = 0; i < this.length; i++) {
+    for (var j = i + 1; j < this.length; j++) {
+      if (cb(this[i], this[j]) > 0) {
+        var swap = this[i];
+        this[i] = this[j];
+        this[j] = swap;
+      }
+    }
+  }
+};
+
+// Test case 1:
+
+const arr12 = [30, 55, 1, 3, 66, 22];
+arr12.mySort();
+console.log(arr);
+// output: [1, 22, 3, 30, 55, 66];
+
+// Test case 1:
+arr12.mySort((a, b) => a - b);
+console.log(arr12);
+// output: [1, 3, 22, 30, 55, 66];
