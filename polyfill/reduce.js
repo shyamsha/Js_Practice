@@ -1,6 +1,6 @@
 //polyfill for reduce
 // reduce of this polyfill
-Array.prototype.myReduce1 = function (cb, initialValue) {
+Array.prototype.myReduce = function (cb, initialValue) {
   let result; // it acts as prev value
   let currIndex = 0; // it acts as curr value
   if (arguments.length < 2) {
@@ -28,7 +28,14 @@ console.log(arr.myReduce((prod, elem) => prod * elem, 5));
 const sum = arr.myReduce((prev, curr) => prev + curr, 6);
 console.log(sum);
 
-const oddEvenCount = arr.myReduce(
+Array.prototype.myReduce1 = function (cb, initial) {
+  let acc = initial;
+  for (let i = 0; i < this.length; i++) {
+    acc = acc ? cb(acc, this[i], i, this) : this[i];
+  }
+  return acc;
+};
+const oddEvenCount = arr.myReduce1(
   (prev, curr) =>
     curr % 2 == 0
       ? { ...prev, even: prev.even + 1 }
