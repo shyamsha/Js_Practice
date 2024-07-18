@@ -156,3 +156,29 @@ Array.prototype.myFilter = function (cb) {
   return result;
 };
 ar.myFilter((ele) => ele > 2);
+
+// once is lodash function it will execute only once
+
+const once = function (cb, context) {
+  let ran;
+  return function () {
+    if (cb) {
+      ran = cb.apply(context || this, arguments);
+      cb = null;
+    }
+    return ran;
+  };
+};
+
+let a = 10;
+
+function add() {
+  a += 10;
+}
+let startFunc = once(add);
+startFunc();
+console.log(a);
+startFunc();
+console.log(a);
+startFunc();
+console.log(a);

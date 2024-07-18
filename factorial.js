@@ -29,3 +29,13 @@ function factorialR(number) {
 }
 
 console.log(factorialR(4));
+
+function extraLongFactorials(n) {
+  let result = BigInt(1);
+  for (let i = BigInt(1); i <= BigInt(n); i++) {
+    result *= i;
+  }
+  return result;
+}
+
+console.log(extraLongFactorials(25));
