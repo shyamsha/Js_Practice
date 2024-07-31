@@ -1,14 +1,25 @@
-function capitalizeWords(string){
-    var capitalize=[];
-    var saperate = string.split(' ')
-    if (string === '') {
-        return "empty string"
-    }
-    else {
+function capitalizeWords(string) {
+  var capitalize = [];
+  var saperate = string.split(" ");
+  if (string === "") {
+    return "empty string";
+  } else {
     for (var i = 0; i < saperate.length; i++) {
-        capitalize.push(saperate[i].charAt(0).toUpperCase() + saperate[i].slice(1))
-        }
+      capitalize.push(
+        saperate[i].charAt(0).toUpperCase() + saperate[i].slice(1)
+      );
     }
-    let captial=capitalize.join(' ')
-    return captial
+  }
+  let captial = capitalize.join(" ");
+  return captial;
 }
+
+const capital = function (str) {
+  const newStr = str.split(" ");
+  for (let i = 0; i < newStr.length; i++) {
+    newStr[i] = newStr[i].charAt(0).toUpperCase() + newStr[i].slice(1);
+  }
+  return newStr.join("");
+};
+
+console.log(capital("Use the defined types in your main component"));

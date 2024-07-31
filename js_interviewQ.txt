@@ -355,7 +355,7 @@ here after 10 seconds it sees that P2 is
 already resolved than it will move to next line quickly print after 10 seconds it will
 print
 
-real world examples
+real world examples9
 
 using fetch api to get data
 do use Async and await it will give more cleaner and wait for data to resolve
