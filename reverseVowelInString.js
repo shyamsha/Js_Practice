@@ -67,3 +67,4 @@ var reverseVowels = function (str) {
   }
   return s.join("");
 };
+console.log(reverseVowel(str));

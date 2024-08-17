@@ -12,7 +12,7 @@ function useFetch({ currentPage, LIMIT }) {
     let data = await fetch(url, { signal: abortController.signal });
     const json = await data.json();
     setProducts(json.products);
-    setPages(json.total / LIMIT);
+    setPages(Math.ceil(json.total / LIMIT));
   };
   useEffect(() => {
     fetchProducts();

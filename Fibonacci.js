@@ -43,6 +43,26 @@ let fibonacciGenerator = createFibonacciClosureGenerator();
 // console.log(fibonacciGenerator())
 // console.log(fibonacciGenerator())
 
+// 1. Write a function which loops through an array and checks if n of the elements
+
+// of the array satisfy the condition function that is passed
+// Signature of the 'some' function
+
+// (array, n, conditionFunction) -> trueOrFalse
+// array - Input array
+// n - The function should check if n elements of the conditionFunction satisfy
+// Signature of the 'isEven' and 'isPrime' functions. They should take one integer as input and return a true or false value.
+
+// (int) -> trueOrFalse
+
+// Write the some function and isEven and isPrime functions
+
+// Example: (When you run the following code, don't change anything)
+// console.log(some([2,4,6], 3, isEven)) // should print true
+// console.log(some([2,3,4], 3, isEven)) // should print false
+// console.log(some([2,3,11], 4, isPrime)) // should print false
+// console.log(some([2,3,5,9], 3, isPrime)) // should print true
+
 //recursive function of fibonacci
 
 function rf(n) {

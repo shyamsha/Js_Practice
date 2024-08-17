@@ -244,7 +244,7 @@ const a=10
  console.log(a); TypeError: Assignment to constant variable
 type error is when a value is not of the expected type
 
-block: we need write multiple statements opn closed curly braces that is block
+block: we need write multiple statements open closed curly braces that is block
 
 closure: function along with lexical scope bundle together forms a  closure
 

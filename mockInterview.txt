@@ -244,7 +244,7 @@ Mounting vs render
 Mounting occurs when a component is first added to the page, while rendering occurs when a component's state changes.
 
 package.json vs package.lock.json
-The “package.json” file defines the rules required to run your application and install dependencies. 
+ package.json is a metadata file. The “package.json” file defines the rules required to run your application and install dependencies. 
 the “package-lock.json” file holds detailed information on all the dependencies on your project.
 
 Function composition 
@@ -495,24 +495,13 @@ But if the data or state has no dependency on the parent component so it will no
 removing EventListener
 
 44.Difference b/w client-side routing and server-side routing?
+Client-side routing is a technique that allows you to update the URL without reloading the page.
+Server-side routing is a technique that allows you to update the page without reloading the page.
 
 45.How does React handle routing and navigation?
  react-router-dom library
  React Router provides a <Link> component, which can be used for basic React navigation
- 
-46.contextAPI vs redux
- Context API is a light-weight solution which is more suited for passing data from a parent to a deeply nested child.
- Redux is a more robust State Management solution.
 
-47.Can I replace Redux with context API?
-If you're only using Redux to avoid passing down props, you can replace it with Context API. 
-Context is great for sharing trivial pieces of state between components. 
-Redux is much more powerful and hooks provides a set of handy features that Context doesn't have
-It's great for managing centralized state and handling API requests.
-
-48.Difference Between Context API and Redux
-The main difference between these two libraries is that Redux deals with changes of the state in a centralized manner. 
-On the other hand, Context deals with them as they happen on the component level.
 
 49.difference of function statement and function expression
 hoisting is happens in function statement not in function expression
@@ -549,3 +538,34 @@ https://www.reddit.com/r/reactjs/comments/z4y7sj/redux_vs_context_what_exactly_d
 
 Concurrency modal in js
 it is a process of running multiple tasks at the same time. in js it is achieved by using the asynchronous programming and event loop 
+
+tilde(~) and caret(^) in package.json
+
+2.4.6 here 2 is major version, 4 is minor version, 6 is patch version(bug fixes,security patches)
+
+Using a tilde (~) before the version number of the dependency package means 
+that we will accept only further patch releases from the version specified
+but will not receive any major or minor release if we were to install or update our dependency package.
+
+"dependencies": {
+    "express": "~4.17.0"
+}
+
+Using a caret (^) before the version number of the dependency package means 
+that we can accept both patch and minor releases from the version specified
+but will not receive any major release if we were to install or update our dependency package.
+
+"dependencies": {
+    "axios": "^1.2.0"
+}
+
+robots.txt file in public folder in react app
+Robots.txt is a simple text file that sites in the root directory of your site.
+It tells “robots” (such as search engine spiders) which pages to crawl on your site, which pages to ignore.
+it improve for SEO 
+
+public folder in react app
+public folder is where you put the files that need to be publicly available, such as images, fonts, and other static files.
+public folder are not processed by webpack
+Images in the public folder are not processed by webpack and are simply copied to the build folder during the build process.
+means that the images are not part of the final bundle and will not increase the size of your application.

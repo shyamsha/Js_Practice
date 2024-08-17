@@ -23,9 +23,9 @@ function memoize(fn) {
 }
 
 const memoizedAdd = memoize(add);
-// console.log(memoizedAdd(2, 2)); // 4 first call
-// console.log(memoizedAdd(2, 2)); // 4 second from call cache result
-// console.log(memoizedAdd(2, 3)); // new input it calls actual function and stores input
+console.log(memoizedAdd(2, 2)); // 4 first call
+console.log(memoizedAdd(2, 2)); // 4 second from call cache result
+console.log(memoizedAdd(2, 3)); // new input it calls actual function and stores input
 
 // same like using react memo it is do shallow comparison by react memo
 

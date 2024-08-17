@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Paginator({ pages, setCurrentPage, currentPage, LIMIT, products }) {
+function Paginator({ pages, setCurrentPage, currentPage }) {
   const [pageNumberLimit, setPageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);

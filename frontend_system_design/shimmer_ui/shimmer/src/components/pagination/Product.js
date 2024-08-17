@@ -16,18 +16,17 @@ function Product() {
           <ProductCard key={product.id} {...product} />
         ))}
       </div>
-      <Pagination
+      {/* <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         pages={pages}
-      />
-      {/* <Paginator
+      /> */}
+      <Paginator
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         pages={pages}
         LIMIT={LIMIT}
-        products={products}
-      /> */}
+      />
     </div>
   );
 }
