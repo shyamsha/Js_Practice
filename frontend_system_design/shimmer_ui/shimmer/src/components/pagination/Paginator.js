@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, memo } from "react";
 
 function Paginator({ pages, setCurrentPage, currentPage }) {
-  const [pageNumberLimit, setPageNumberLimit] = useState(5);
+  const pageNumberLimit = 5;
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
-  useEffect(() => {
-    return () => {};
-  }, []);
   const handlePrevPageChange = () => {
     setCurrentPage((currentPage) => currentPage - 1);
     if ((currentPage - 1) % pageNumberLimit === 0) {
@@ -18,7 +15,7 @@ function Paginator({ pages, setCurrentPage, currentPage }) {
 
   const handleNextPageChange = () => {
     setCurrentPage((currentPage) => currentPage + 1);
-    if (currentPage + 1 > maxPageNumberLimit) {
+    if (currentPage > maxPageNumberLimit) {
       setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
@@ -27,12 +24,16 @@ function Paginator({ pages, setCurrentPage, currentPage }) {
   const length = [...Array(pages).keys()].length;
   let pageIncrement = null;
   if (length > maxPageNumberLimit) {
-    pageIncrement = <span className="pr-2 font-[1100]">&hellip;</span>;
+    pageIncrement = (
+      <span className="pr-2 font-[1100]">&sdot;&sdot;&sdot;</span>
+    );
   }
 
   let pageDecrement = null;
   if (minPageNumberLimit >= 1) {
-    pageDecrement = <span className="pl-2 font-[1100]">&hellip;</span>;
+    pageDecrement = (
+      <span className="pl-2 font-[1100]">&sdot;&sdot;&sdot;</span>
+    );
   }
   return (
     <div className="p-10 cursor-pointer">
@@ -41,8 +42,8 @@ function Paginator({ pages, setCurrentPage, currentPage }) {
       <span>
         {[...Array(pages).keys()].map((pageNumber) => {
           if (
-            pageNumber < maxPageNumberLimit + 1 &&
-            pageNumber > minPageNumberLimit
+            pageNumber < maxPageNumberLimit &&
+            pageNumber >= minPageNumberLimit
           ) {
             return (
               <span
@@ -53,21 +54,15 @@ function Paginator({ pages, setCurrentPage, currentPage }) {
                 key={pageNumber}
                 onClick={() => setCurrentPage(pageNumber)}
               >
-                {pageNumber}
+                {console.log([...Array(pages).keys()], pageNumber)}
+
+                {pageNumber + 1}
               </span>
             );
           }
         })}
       </span>
       {pageIncrement}
-      <span
-        className={
-          "text-xl p-4 " + (length - 1 === currentPage && "font-bold underline")
-        }
-        onClick={() => setCurrentPage(length - 1)}
-      >
-        {length - 1}
-      </span>
       {currentPage < pages - 1 && (
         <span onClick={handleNextPageChange}>Next</span>
       )}
@@ -75,4 +70,4 @@ function Paginator({ pages, setCurrentPage, currentPage }) {
   );
 }
 
-export default Paginator;
+export default memo(Paginator);

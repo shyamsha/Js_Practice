@@ -3,6 +3,7 @@ import useFetch from "./useFetch";
 import ProductCard from "./ProductCard";
 import Pagination from "./Pagination";
 import Paginator from "./Paginator";
+import CustomPagination from "./CustomPagination";
 
 function Product() {
   const LIMIT = 5;
@@ -21,12 +22,13 @@ function Product() {
         setCurrentPage={setCurrentPage}
         pages={pages}
       /> */}
-      <Paginator
+      {/* <Paginator
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         pages={pages}
         LIMIT={LIMIT}
-      />
+      /> */}
+      <CustomPagination />
     </div>
   );
 }
