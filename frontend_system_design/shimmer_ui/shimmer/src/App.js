@@ -8,7 +8,7 @@ import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import Accordion from "./components/accordion/Accordion";
+import Accordion from "./components/accordion/terms&conditionsAccordion/Accordion";
 import Comments from "./components/comments/Comments";
 import MemesL from "./components/with_library/MemesL";
 import Slider from "./components/slider/Slider";
@@ -20,6 +20,8 @@ import LiveChat from "./components/livechat/LiveChat";
 import Search from "./components/autocomplete/Search";
 import OTP from "./components/Input-OTP/OTP";
 import StopWatch from "./components/stop-wach/StopWatch";
+import Button from "./components/toastComponent/Button";
+import Header from "./components/header/Header";
 
 function App() {
   const { i18n } = useTranslation();
@@ -36,7 +38,7 @@ function App() {
     <div>
       <BrowserRouter>
         <header className="text-2xl font-bold p-9 bg-blue-500 text-white  flex justify-between items-center">
-          <nav className="px-15 m-2 w-auto flex justify-between text-lg">
+          <nav className="px-15 m-2 w-auto flex flex-wrap justify-start text-lg">
             <a className="" href="/">
               Home<span className="text-red-600 px-1">|</span>
             </a>
@@ -76,8 +78,14 @@ function App() {
             <a className="" href="/stop-watch">
               Stop Watch<span className="text-red-600 px-1">|</span>
             </a>
+            <a className="" href="/toast">
+              toast<span className="text-red-600 px-1">|</span>
+            </a>
             <a className="" href="/login">
-              Login
+              Login<span className="text-red-600 px-1">|</span>
+            </a>
+            <a className="" href="/contracts">
+              Contracts
             </a>
           </nav>
           <select
@@ -109,6 +117,7 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/otp" element={<OTP />} />
             <Route path="/stop-watch" element={<StopWatch />} />
+            <Route path="/toast" element={<Button />} />
             <Route
               path="/flag"
               element={
@@ -117,6 +126,7 @@ function App() {
                 </UseFeatureFlagContextProvider>
               }
             />
+            <Route path="/contracts" element={<Header />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
