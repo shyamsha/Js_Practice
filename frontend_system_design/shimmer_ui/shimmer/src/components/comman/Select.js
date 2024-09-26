@@ -1,13 +1,14 @@
 import React from "react";
 
-function Select({ options, values }) {
+function Select({ optionData, placeHolder }) {
+  // console.log(options);
+
   return (
-    <select>
-      <option value="1">Select</option>
-      <option value={values}>{options}</option>
-      {/* one problem options are not coming single value 
-      try to solve
-       */}
+    <select onChange={(e) => console.log(e.target.value)}>
+      <option value="1">{placeHolder}</option>
+      {optionData.map((option) => {
+        return <option value={option.value}>{option.label}</option>;
+      })}
     </select>
   );
 }

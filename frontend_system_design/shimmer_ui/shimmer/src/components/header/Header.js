@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Select from "../comman/Select";
+import { SEARCH_CONTRACT } from "../../utils/strings";
 
 function Header() {
-  let optionData = ["option1", "option2", "option3", "option4", "option5"];
-  let valueData = ["value1", "value2", "value3", "value4", "value5"];
+  let optionData = [
+    { label: "option1", value: "option123" },
+    { label: "option2", value: "option123" },
+    { label: "option3", value: "option123" },
+  ];
+  let optionData2 = [
+    { label: "option1", value: "option123" },
+    { label: "option2", value: "option123" },
+    { label: "option3", value: "option123" },
+  ];
+  const [selectValue, setSelectValue] = useState("");
+
   return (
     <div style={{ backgroundColor: "lightblue" }}>
       <div
@@ -23,9 +34,17 @@ function Header() {
           }}
         >
           {/* select box parent container */}
-          <Select options={optionData} values={valueData} />
-          <Select options={optionData} values={valueData} />
-          <Select options={optionData} values={valueData} />
+          <Select
+            optionData={optionData}
+            selectValue={selectValue}
+            placeHolder={SEARCH_CONTRACT}
+          />
+          <Select
+            optionData={optionData2}
+            selectValue={selectValue}
+            placeHolder={"Search Contract2"}
+          />
+          {/* <Select options={optionData} values={valueData} /> */}
           {/* select box parent container */}
         </div>
         <div>Contracts</div>
