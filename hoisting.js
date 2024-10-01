@@ -55,7 +55,7 @@ function p1() {
   console.log("s");
 }
 
-console.log(p1); // old one is sam
+console.log(p1); // sam
 
 // p1() // p1 is not a function
 

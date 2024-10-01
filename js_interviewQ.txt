@@ -260,7 +260,7 @@ first class function: function can be passed as argument to another function
 function are first class functions or citizens of first class objects
 
 Higher Order Function: A function that accepts a function as an argument and/or returns a function as its value.
-callback function: function ability to passed as argument to another function it is first class function. it make asynchronous operation
+callback function: function passed as a argument to another function it is first class function. it make asynchronous operation
 EventListeners
 Eventloop: event loop is a single-threaded loop used to manage the order in which asynchronous callbacks are executed
 It allows asynchronous code to run without blocking subsequent synchronous code from executing.
@@ -402,7 +402,7 @@ let personObj1 = {
   },
   arrowF: function () {
     setTimeout(() => {
-      console.log(this.firstName); //  if this refers to window object it will print firstName
+      console.log(this.firstName); //  if this refers to current object it will print firstName
     }, 1000);
   },
 };
@@ -426,7 +426,7 @@ const obj2 = {
   printThisValue: function () {
     let t = this; // if we assigns to this to a variable it will refer to current object
     function innerPrint() {
-      console.log(t.a); // undefined it refers to window object
+      console.log(t.a); // 2 will print
     }
     innerPrint();
   },
@@ -508,9 +508,11 @@ what are First-Class functions in JS?
 In JavaScript, functions are first-class citizens.
 they treated like other variables.
 functions can be assigned to variables or passed as an argument or can be returned by another function.
+
 what are Pure and Impure functions in JS?
 Pure function is a function which returns the same result if given the same arguments. it has no side effects and not modify state
 Impure function is a function which returns different results if given the same arguments. it has side effects and modify state
+
 what is Function Currying in JS? 
 transforming a function that takes multiple arguments into a sequence of functions that each take a single argument.
 benefit of currying is that it is easy to compose functions and reusability and modularity
@@ -521,16 +523,18 @@ Template Literals and String Interpolation
 HTML VS DOM
 HTML is a markup language used to create web pages. This language describes the HTML tree structure 
 this is represented as a DOM that allows to dynamically change the content of the web page. 
+
 what is the difference between innerHTML vs textContent?
 innerHTML is used to insert HTML content into the element it renders a HTML tree structure. 
 textContent is used to get or set the text content of an element.it render as text.
 
 Error Handling in JS
 try catch finally   
+
 what is Error Propagation in JS?
 error Propagation refers to the process of passing an error from one part of code to another by using the throw statement with try catch block.
-Error Handling Best Practices
 try catch block should be used to handle errors. throw manually error
+
 what are the different types of error in JS?
 SyntaxError: occurs when there is a syntax error in the code.
 console.log("syntax error"
@@ -546,14 +550,25 @@ console.log(a[10])
 shallow copy vs deep copy
 shallow copy is copying the reference of the child object.
 deep copy is copying the object and its properties.
+
 Sets in JS
 collections of unique values.
+
 Map Object in JSvents in JS
 it is special object that has key value pairs.
 key value any-type of value
 it maintains order of insertion key value pair.
 
 map vs object
-
+map is collection of key value pair.
+object is collection of key value pair.
+map is iterable.
+object is not iterable.
+map is mutable.
+object is immutable.
+map is ordered.
+object is not ordered.
+map is faster.
+object is slower.
 
   

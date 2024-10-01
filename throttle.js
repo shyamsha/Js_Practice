@@ -46,11 +46,11 @@ var throttle1 = function (fn, t) {
   };
 };
 
-let throttle2 = function (fn, time) {
+let throttle2 = function (fn, delay) {
   let lastTime = 0;
   return function (...args) {
     let nowTime = new Date().getTime();
-    if (nowTime - lastTime < time) return;
+    if (nowTime - lastTime < delay) return;
     lastTime = nowTime;
     return fn(...args);
   };

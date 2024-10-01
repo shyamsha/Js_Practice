@@ -281,8 +281,8 @@ flex box,grid,table css,margin css, position css
 
 4.px vs em vs rem?
 px is absolute value and it is  fixed size
-em is scalable elements that needs to change size relative to parent element
-rem is scalable responsive layout that needs to change size relative to root element
+em is scalable elements that change size relative to parent element
+rem is scalable responsive layout that  change size relative to root element
 
 5.name all basic data types?
 there are two types one is primitive and another is non-primitive
@@ -487,9 +487,7 @@ NPX is a package executer, and it is used to execute javascript packages directl
 41.Difference between console.log(<HeaderComponent/>) and console.log(HeaderComponent())
 
 42. What if 2 components are given will the state change in one component will effect the other component’s state (child)?
-no,it will not re-render. If you pass any props to the component from the parent component and you update that prop in children
-or that prop update in the parent component so both will re-render. 
-But if the data or state has no dependency on the parent component so it will not cause a re-render in the parent component.
+yes,Every time some state changes in the parent component, it makes the child component to re render
 
 43.What is the use of return in useEffect ?
 removing EventListener

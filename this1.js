@@ -11,7 +11,7 @@ let personObj1 = {
   },
   arrowF: function () {
     setTimeout(() => {
-      console.log(this.firstName); //  if this refers to window object it will print firstName
+      console.log(this.firstName); //  if this refers to current object it will print firstName
     }, 1000);
   },
 };
@@ -35,7 +35,7 @@ const obj2 = {
   printThisValue: function () {
     let t = this; // if we assigns to this to a variable it will refer to current object
     function innerPrint() {
-      console.log(t.a); // undefined it refers to window object
+      console.log(t.a); // it will print 2
     }
     innerPrint();
   },

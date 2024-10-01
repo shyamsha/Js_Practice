@@ -1,3 +1,24 @@
+//call and apply are used to borrow methods
+// call and apply are used to change context of this value
+function greet(name) {
+  console.log(`Hello, ${name}! My name is ${this.name}.`);
+}
+
+let person23 = {
+  name: "John",
+};
+
+greet.call(person23, "Alice"); // Output: Hello, Alice! My name is John.
+
+// apply
+function add(a, b) {
+  return a + b;
+}
+
+let numbers = [1, 2];
+
+console.log(add.apply(null, numbers)); // Output: 3
+
 // bind() method
 // bind allow us to easily set this value which specific object bound to this when method invoked
 // some times this is not bounded to method

@@ -22,6 +22,7 @@ import OTP from "./components/Input-OTP/OTP";
 import StopWatch from "./components/stop-wach/StopWatch";
 import Button from "./components/toastComponent/Button";
 import Header from "./components/header/Header";
+import SortTitle from "./components/sortApiTitle/SortTitle";
 
 function App() {
   const { i18n } = useTranslation();
@@ -84,6 +85,9 @@ function App() {
             <a className="" href="/login">
               Login<span className="text-red-600 px-1">|</span>
             </a>
+            <a className="" href="/sort">
+              Sort API Title<span className="text-red-600 px-1">|</span>
+            </a>
             <a className="" href="/contracts">
               Contracts
             </a>
@@ -126,6 +130,7 @@ function App() {
                 </UseFeatureFlagContextProvider>
               }
             />
+            <Route path="/sort" element={<SortTitle />} />
             <Route path="/contracts" element={<Header />} />
           </Routes>
         </Suspense>
