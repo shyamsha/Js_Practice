@@ -1,18 +1,14 @@
 // You get an array of numbers, return the sum of all of the positives ones.
 
-function sumPos(sum){
-let add=0
-    if (sum.length == 0) {
-    return 0
+const array1 = [1, -2, -3, -4];
+
+let accumulator = 0;
+const sumWithPositives = array1
+  .filter((currentValue) => {
+    if (currentValue > 0) {
+      return (accumulator += currentValue);
     }
+  })
+  .join("");
 
-    for (let i = 0; i < sum.length;i++){
-        if (sum[i]>0) {
-
-            add += sum[i];
-    }
-
-    } return add
-}
-
-console.log(sumPos([0,0,-1,1]))
+console.log(sumWithPositives);

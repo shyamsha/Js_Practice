@@ -28,7 +28,7 @@ function subArraySum(arr, n, sum) {
 let arr = [15, 2, 4, 8, 9, 5, 10, 23];
 let n = arr.length;
 let sum = 23;
-subArraySum(arr, n, sum);
+console.log(subArraySum(arr, n, sum));
 
 // 1.It initializes two variables: curr_sum (current sum) set to 0, and start_index set to 0.
 
