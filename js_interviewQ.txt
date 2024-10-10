@@ -496,10 +496,13 @@ non-primitive is reference and mutable
 spread vs rest
 spread operator used to expand iterable objects(array,string,object) ex: coping an array,merging arrays,passing multiple arguments
 rest is used to get the remaining arguments of an iterable ex: func d(a,b,...rest){} d(1,2,3,4,5,6) 
+
 what is type coercion in JS?
 type coercion is the process of converting one data type to another data type.
+
 what is operator precedence?
 using bodmass rule to apply Arithmetic operations by evaluating them from which is first.
+
 what are array-like objects in JS?
 string is array-like object in JS. we can use length,index. same way arguments,HTML collections also array-like objects.
 we can convert array-like objects into array using spread operator and Array.from(arr) and Array.prototype.slice.call(arr)
@@ -564,8 +567,6 @@ map is collection of key value pair.
 object is collection of key value pair.
 map is iterable.
 object is not iterable.
-map is mutable.
-object is immutable.
 map is ordered.
 object is not ordered.
 map is faster.

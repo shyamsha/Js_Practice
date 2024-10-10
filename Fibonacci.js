@@ -18,8 +18,8 @@ const fibs = new FibIterator(1);
 // Don't use generators.
 
 function generator() {
-  let f0 = 0;
-  let f1 = 1;
+  let f0 = 1;
+  let f1 = 0;
 
   return function () {
     let old_f0 = f0;
@@ -78,6 +78,7 @@ function rf(n) {
 
 for (let i = 0; i < 7; i++) {
   // console.log(rf(i)); // utilizing above function
+  // console.log(fibonacciGenerator()); // utilizing above function
 }
 
 var fibGenerator = function* () {

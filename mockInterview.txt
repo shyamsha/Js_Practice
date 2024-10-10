@@ -1,7 +1,7 @@
 
 Temporal dead zone
 A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible.
-ex if you access variable before initialization it throws error Cannot access 'a' before initialization
+ex if you access block scope variable before initialization it gives error Cannot access 'a' before initialization
 
 null vs undefined
 undefined means a variable has been declared but has not yet been assigned a value :
@@ -10,7 +10,7 @@ var testVar;
 console.log(testVar); //shows undefined
 console.log(typeof testVar); //shows undefined
 
-null is an assignment value. It can be assigned to a variable as a representation of no value :
+null is an assignment value. It can be assigned to a variable as a representation of absence of data :
 
 var testVar = null;
 console.log(testVar); //shows null
@@ -25,8 +25,8 @@ filter returns new array from existing array. applying condition to each element
 reduce has accumulator,current values reduce can makes array values down to just single value
 
 Closures 
-A closure is a combination of function and with reference to the surrounding state means the lexical environment
-It simply means child function will access to parent scope even if parent function is closed 
+A closure is a combination of function and with reference to the surrounding state
+It means child function will access to parent scope even if parent function is executed 
 it allows for private variables and function level encapsulation
 function outer() {
   let privateVar = 0;
@@ -48,12 +48,12 @@ Debounce is most suitable for control events like typing or button clicks
 Throttle is most suitable for continued user events like resizing and scrolling 
 
 Axios interceptors
-Interceptors are a feature that allows an application to intercept requests or responses before they are handled by then or catch 
+Interceptors are a feature of axios. for an application to intercept requests or responses before they are handled by then or catch 
 Ex token sends every request 
 
 Event bubbling and capturing and 
 event delegation and event.stopPropagation()
-event bubbling is process when an element receives an event and that event bubbles up to its parent and ancestor elements on DOM until gets to the root element
+event bubbling is process when an element triggers an event and that event bubbles up to its parent and ancestor elements on DOM until gets to the root element
 Event capture phase opposite of bubbling, its parent to child
 Event delegation is pattern to handle events efficiently. 
 Instead of adding event listener to each and every smiler elements we can add event listener to parent element.
@@ -75,10 +75,11 @@ it uses declarative syntax
 react hooks simplified ecosystem
 
 how to manage nested routes and role based routes?
+creating can component and which user will abilities
 
 reusability vs composition
 reusability is create a component that can be used in multiple places. 
-composition is combining simple reusable components together to build one big component. ex:App component
+composition is combining reusable components together to build one big component. ex:App component
 
 transpiler vs compiler
 transpiler: converts code from one language to another language. ex: babel converts es6 to es5
@@ -99,7 +100,6 @@ Browsers-->	HTML 5	        HTML 5	          HTML 5 / HTML 4
 Accessibility-->Any Window  Same Tab	      Any Window
 performance--> synchronous  synchronous     asynchronous
 Expiration-->	Never	On      Tab Close	      Manually Set 
-Browser Support-->	Very High 
 Supported Data Types-->	String Only 	
 Auto-expire Option-->	No	 Yes	             Yes
 Storage Location-->	Browser Only	Browser Only	Browser and Server
@@ -108,6 +108,7 @@ SSL Support-->  	No	      No	                Yes
 
 Which is better local storage or session storage?
 If we want some data on the browser, we often utilize the local storage object. Cookies are used if we want them on the server.
+
 session storage is used if we want to delete the data if the user closes that particular tab or the season
 
 Is Async a sessionStorage?
@@ -261,8 +262,8 @@ This object is mainly used for server-side rendering (SSR)
 ReactMixins
 
 Diffing algorithm is VDOM reconciliation process
-React scripts react-scripts are simply scripts to run the build tools required to transform React JSX syntax into plain JavaScript programmatically
-Concurrent rendering 
+React scripts  to run the build tools required to transform React JSX syntax into plain JavaScript programmatically
+
 
 Use effect vs use layout effect 
 useEffect() is asynchronous useLayoutEffect() synchronous 
@@ -288,18 +289,6 @@ rem is scalable responsive layout that  change size relative to root element
 there are two types one is primitive and another is non-primitive
 primitive--string,boolean,number,null,undefined,bigint,symbol
 non-primitive--array,object,date
-
-6.what is event delegation and bubbling and capturing?
-event delegation is pattern to handle events efficiently.
-Instead of add event listener to each and every similar element we can add event to parent element. 
-call an event on particular target using event.target property of object to perform a task
-bubbling--when element receives event happens its bubbles up to parent element and ancestor element on dom until get root element
-capturing is opposite of bubbling
-
-7.what is closure and uses?
-closure is combination of function bundled together with reference to surrounding state. it means lexical environment
-simply means a child function can access parent scope even if parent function closed.
-usages memorization and currying
 
 8.what is need of js frameworks?
 to help you to design web applications. it has flexibility and scalable and code readability and plugins and builds-->production,development... 
@@ -353,11 +342,6 @@ use-cases of refs are maintaining input focus,text selection,media controls,outs
 14.version of react?
 react 18 features for automatic batch updates, useTransition startTransition  A transition is a new concept in React to distinguish between urgent and non-urgent updates.
 support for Suspense on the server,New Strict Mode Behaviors, new hooks
-
-15.functional component vs class component?
-functional component is pure functional in javascript
-we can maintaining stateful using hooks 
-class component extend from react and it has render method return children and class component has lifecycle methods
 
 16.Why it is Recommended to use Functional Components over Class Components?
 simplicity
@@ -458,17 +442,6 @@ A callback is a function that is passed as an argument to another function.
 
 A higher order function is a function that takes function as an argument and returns a function as an output.
 ex filter,map
-
-35.What is Lifting State Up in React?
-We lift the state up to make the parent state a single shared state and pass the parent's data to its children. 
-This concept is called lifting state up. maintain data consistency throughout applications.
-
-36.What is Hot Module Replacement?
-allows you to make changes to your code and immediately see the results. without losing the current state of the app.
- without a full reload.
-
- 36.What is the use of Parcel, Vite, Webpack?
- bundling all the js files together
 
 37.How does create-react-app work?
 create-react-app (CRA), your command runs through a series of checks. It finds information about your system and run program

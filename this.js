@@ -386,7 +386,7 @@ function setThis() {
   return this;
 }
 let fruit = { summer: "Mango" };
-log((setThis = fruit)); // fruit obj
+log((setThis = fruit)); // we are setting function to fruit obj
 let fruitBind = setThis.bind(fruit);
 log(fruitBind()); // fruit obj
 
