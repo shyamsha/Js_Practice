@@ -1,4 +1,3 @@
-
 Temporal dead zone
 A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible.
 ex if you access block scope variable before initialization it gives error Cannot access 'a' before initialization
@@ -167,10 +166,23 @@ function Component() {
  // Use theme value here
 }
 
+synchronous vs asynchronous
+Code runs line by line, one operation at a time.
+Each operation must complete before the next one begins. blocking code
+Potential for Slowdowns for Long-running operations can block the entire program, leading to unresponsiveness.
+
+Operations can run independently,
+Non-Blocking The program doesn't wait for an operation to finish before moving on to the next.
+Improved Performance
+callbacks, promises, or async/await to manage asynchronous operations. 
+
+Asynchronous is a non-blocking architecture, so the execution of task isn't dependent on another. Tasks can run simultaneously. 
+Synchronous is a blocking architecture, so the execution of each operation depends on completing the one before it.
+
 custom hook
 when you have component logic to be used by multiple components. we can extract logic place in custom hook.
 the hook start with name 'useFetch' 'useOnline'  like  
-
+ 
 Global execution contexts
 
 props.children

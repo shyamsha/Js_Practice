@@ -14,12 +14,6 @@ Question 5:- What are different datatypes in JavaScript ?
 primitive :- String,number,null,Undefined,symbol,boolean
 non-primitive/object type :- objects,array,date
 
-Question 6:- Explain Undefined Data types ?
-variable has been declare but value is not assigned
-
-Question 7:- What is Null ?
-null indicates absence of data. its not zero or empty. it is primitive datatype.
-
 Question 8:- Differentiate between Null and Undefined ?
 Undefined :-variable has been declare but value is not assigned
 Null :-null indicates absence of data.

@@ -20,7 +20,7 @@ function binary(arr, t) {
   return -1;
 }
 
-// console.log(binary(a, target));
+console.log(binary(a, target));
 
 function recursiveBinarySearch(arr, t) {
   return search(arr, t, 0, arr.length - 1);

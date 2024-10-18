@@ -8,8 +8,10 @@ const { log } = require("console");
 // Since 2 has only one digit, return it
 
 function addingNumbersUptoSingleDigit(num) {
-  let string = "" + num;
-  let arr = string.split("").map((data) => Number(data));
+  let string = "" + num; // convert to string
+  let arr = string.split("").map(Number); // convert to array with numeric values
+  console.log(Array.from(num.toString()).map(Number)); // we can use this to convert to array with numeric values
+
   let result = arr.reduce((a, b) => a + b);
   if (result > 9) {
     result = addingNumbersUptoSingleDigit(result);
@@ -19,16 +21,3 @@ function addingNumbersUptoSingleDigit(num) {
 }
 
 log(addingNumbersUptoSingleDigit(823));
-
-var addDigits = function (num) {
-  let result = num
-    .toString()
-    .split("")
-    .reduce((a, b) => Number(a) + Number(b));
-  if (result > 9) {
-    result = addDigits(result);
-  }
-  return result;
-};
-
-log(addDigits(38));

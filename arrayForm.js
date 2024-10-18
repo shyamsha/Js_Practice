@@ -21,4 +21,4 @@ multiplicationTable = function (size) {
   return result;
 };
 
-console.log(multiplicationTable(3));
+console.log(multiplicationTable(5));
