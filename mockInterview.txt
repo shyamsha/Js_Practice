@@ -58,7 +58,7 @@ Event delegation is pattern to handle events efficiently.
 Instead of adding event listener to each and every smiler elements we can add event listener to parent element.
 Call an event on particular target using event.target property to perform an event on every child of parent. 
 For example we take Amazon website. It has several categories so we couldn’t add on click event on every category to navigate that category page. 
-simply we can add event to parent element and call the event using property of event.target and 
+simply we can add event to parent element and when call the event using property of event.target and 
 it is capturing which element triggers than we can perform task on that element. 
 event bubbling can be stopped by calling stopPropagation() on event object
 
@@ -73,8 +73,9 @@ it has reusability and composition
 it uses declarative syntax
 react hooks simplified ecosystem
 
-how to manage nested routes and role based routes?
-creating can component and which user will abilities
+What is the difference between state and props?
+props are immutable and state is mutable
+props are passed from parent to child and state is managed by component
 
 reusability vs composition
 reusability is create a component that can be used in multiple places. 
@@ -83,8 +84,6 @@ composition is combining reusable components together to build one big component
 transpiler vs compiler
 transpiler: converts code from one language to another language. ex: babel converts es6 to es5
 compiler: converts code to machine readable format means high level programming language to low level machine code.
-
-createContext
 
 What is de-structure how can use arrays if the value change dynamic
 de-structure is extract values from array/object and uses like variables
@@ -96,7 +95,7 @@ local storage vs session storage vs cookies
  	        Local Storage	    Session Storage	  Cookies
 Capacity-->	5-10MB	          5MB	              4KB
 Browsers-->	HTML 5	        HTML 5	          HTML 5 / HTML 4
-Accessibility-->Any Window  Same Tab	      Any Window
+Access      -->Any Window  Same Tab	      Any Window
 performance--> synchronous  synchronous     asynchronous
 Expiration-->	Never	On      Tab Close	      Manually Set 
 Supported Data Types-->	String Only 	
@@ -107,11 +106,10 @@ SSL Support-->  	No	      No	                Yes
 
 Which is better local storage or session storage?
 If we want some data on the browser, we often utilize the local storage object. Cookies are used if we want them on the server.
-
 session storage is used if we want to delete the data if the user closes that particular tab or the season
 
 Is Async a sessionStorage?
-No, all localStorage and sessionStorage calls are synchronous
+No, localStorage and sessionStorage calls are synchronous
 
 Position relative vs position absolute 
 default value is static it's not effect layout
@@ -120,12 +118,8 @@ position: absolute places an element relative to its parent’s position and ch
 position: fixed; is positioned relative to the viewport, stays same place
 position: sticky; is positioned based on the user's scroll position.
 
-Two separate div tags to display next to each other how can do that
-using flex-box
-one div inside another div displays inline property without affecting width and height
-
 Servers side component 
-when you render website HTML on server we can use SSR
+when you render static HTML on server we can use SSR
 
 Rules of hooks 
 hooks can only be called inside functional component
@@ -147,9 +141,7 @@ createContext:function returns an object with provider and consumer properties
 Context API consists of two main components:  provider and consumer
 The provider is responsible for creating and managing the context, which holds the data
 the consumer is used to access the context and its data
- Context API provides a way to share data between components without passing it through props. It's useful for managing global state. 
- You create a context using createContext and provide it at a higher level. Consumers can access the context using useContext.
-
+ 
 Code Example:
 const ThemeContext = createContext();
 
@@ -183,8 +175,6 @@ custom hook
 when you have component logic to be used by multiple components. we can extract logic place in custom hook.
 the hook start with name 'useFetch' 'useOnline'  like  
  
-Global execution contexts
-
 props.children
 children are a special prop that is used to pass the data from the parent component to the children component 
 but this data must be enclosed within the parent’s opening and closing tag.
@@ -233,6 +223,7 @@ It will return a memoized version of the function that only changes if one of th
 useMemo is used to memoize values or computations, helping to optimize expensive calculations or data transformations.u
 useCallback returns a memoized callback function, while useMemo returns a memoized value.
 useCallback(callback, dependencies)
+
 What is the hook? Life cycle methods vs hooks
 React hooks are functions that allow you to use state and lifecycle features in functional components. 
 Hooks can be stateful and can manage side effects. React hooks provide a more concise way to manage state and side effects in functional components. 
@@ -289,9 +280,27 @@ some of the tags are aside,article,datalist,canvas,date,datetime,audio,video,col
 2.should we inject div tag inside of span tag?
 yes, div is block scope and span is inline tag but schematically wrong it will break in production
 
-3.5 ways center align image inside div?
+3.5 ways center align  div tag?
 flex box,grid,table css,margin css, position css
-
+with position and without
+div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+}
+div {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 4.px vs em vs rem?
 px is absolute value and it is  fixed size
 em is scalable elements that change size relative to parent element
@@ -470,6 +479,24 @@ NPM is a package manager used to install, delete, and update Javascript packages
 NPX is a package executer, and it is used to execute javascript packages directly, without installing them.
 
 41.Difference between console.log(<HeaderComponent/>) and console.log(HeaderComponent())
+Output of console.log(<HeaderComponent/>) is JSX syntax returns React element object
+{
+  type: HeaderComponent,
+  props: {},
+  key: null,
+  ref: null,
+}
+
+console.log(HeaderComponent())
+Output (JSX/React element):
+{
+  type: 'h1',
+  props: { children: 'Hello, World!' },
+  key: null,
+  ref: null,
+}
+
+HeaderComponent(): Logs the result of directly calling the component function, which is the actual JSX/React element that the function returns. 
 
 42. What if 2 components are given will the state change in one component will effect the other component’s state (child)?
 yes,Every time some state changes in the parent component, it makes the child component to re render
@@ -504,13 +531,25 @@ state Management (all about data),redux,rtk query,contextAPI
 react.contextAPI
 lazy loading
 VDOM,reconciliation
+
 ssr vs csr
+Server-side rendering (SSR) and client-side rendering (CSR) are two different ways to render web pages: 
+Rendering process: SSR renders on the server, while CSR renders on the client. 
+SEO: SSR is better for SEO because it sends a fully rendered HTML file to the client, which helps search engines analyze and rank the page. 
+Initial page load time: SSR is faster because it delivers pre-rendered HTML content. CSR is slower because the browser needs to download JavaScript code to render the page. 
+Interactivity: CSR is better for interactive user experiences because the rendering happens in the browser. 
+Server load: CSR minimizes server load because the server only needs to serve the initial HTML file. 
+Best use: SSR is better for static content, while CSR is better for dynamic content. 
+The best choice depends on your project's needs, such as user experience, performance, and search engine visibility. 
+In some cases, you can combine SSR and CSR, a technique called "hydration".
+
 performance(senior engineer should know all things)
 role based routing
 testing
 asynchronous tasks like api calls, events,promises,callbacks
 reusability,modularity,readability,testability these keywords are used to describe the quality of a software code
 styling,Accessibility
+
 redux vs contextAPI
 Context is not a "state management" tool. It's a Dependency Injection mechanism
 Redux is a library and a pattern for separating your state update logic from the rest of your app

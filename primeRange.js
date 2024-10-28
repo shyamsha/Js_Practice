@@ -16,7 +16,7 @@ for (let i = lowerNumber; i <= higherNumber; i++) {
     }
   }
 
-  // if number greater than 1 and not divisible by other Pnumbers
+  // if number greater than 1 and not divisible by other numbers
   if (i > 1 && flag == 0) {
     console.log(i);
   }
@@ -27,7 +27,7 @@ function isPrime(n) {
     return false;
   }
   for (let i = 2; i < n; i++) {
-    // we can use i < Math.sqrt(n) to achieve here we use optimization code if bigger n
+    // we can use i <= Math.sqrt(n) to achieve here we use optimization code if bigger n
     if (n % i === 0) {
       return false;
     }
@@ -35,7 +35,7 @@ function isPrime(n) {
   return true;
 }
 
-console.log(isPrime(6));
+console.log(isPrime(9));
 
 function primeFactors(n) {
   let factors = [];
@@ -67,4 +67,4 @@ function primeFactors(n) {
   return factors;
 }
 
-console.log(primeFactors(69));
+// console.log(primeFactors(69));

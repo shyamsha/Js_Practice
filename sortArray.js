@@ -141,10 +141,6 @@ Array.prototype.mySort = function (cb = defaultComparator) {
 
 // heap sort
 
-/**
- * @param {Array<number>} arr The input integer array to be sorted.
- * @return {Array<number>}
- */
 function heapSort(arr) {
   // Begin by building a max heap.
   const size = arr.length;

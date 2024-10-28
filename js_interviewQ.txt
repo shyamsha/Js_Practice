@@ -1,150 +1,61 @@
-Question 1:- Why do we call JavaScript as dynamic language?
-variable can change during runtime
-
-Question 2:- how does JavaScript determine data types ?
-data types depended on values assigned
-
-Question 3:- What is typeof functions?
-determine datatype in JavaScript uses typeof
-
-Question 4:- How to check data type in JavaScript ?
-using typeof
-
-Question 5:- What are different datatypes in JavaScript ?
+what are different datatypes in JavaScript ?
 primitive :- String,number,null,Undefined,symbol,boolean
 non-primitive/object type :- objects,array,date
 
-Question 8:- Differentiate between Null and Undefined ?
+differentiate between Null and Undefined ?
 Undefined :-variable has been declare but value is not assigned
 Null :-null indicates absence of data.
 
-Question 9:- Explain Hoisting ?
-check with hoisting.js
+What is Hoisting ?
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution.
 
-Question 10:- Are JavaScript initialization hoisted ?
-No
-
-Question 11:- What are global variables ?
-those variables access through out document
-
-Question 12:- What are the issues with Global variables ?
-hard to debug
-
-Question 13:- What happens when you declare variable with out VAR ?
-it will become global variable
-Question 14:- What is Use Strict ?
+What is Use Strict ?
 JavaScript's strict mode is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of "sloppy mode".
 
-Question 15:- How to force developers to use Var keyword ?// strick
-
-Question 16:- How can we handle Global Variables ?
-Question 17:- How can we avoid Global variables ?
-using strict mode
-
-
-Question 20:- Explain IIFE ?
-it is anonymous function it invoke immediately
-
-Question 21:- What is the use of IIFE ?
-solve name  collision 
-
-Question 22:- What is name collision in global scope ?
-name same variables or functions in same context
-
-Question 23:- IIFE vs Normal Function?
-normal function have name collision IIFE does not
-
-Question 24:- What are design patterns ?
-design patterns are time tested architecture. if we going to object uses singleton pattern
-
-Question 25:- Which is the most used design pattern?
-module design pattern or revealing module pattern
-
-Question 26:- What is module Pattern and revealing module pattern ?
-self contain independent components
-provide encapsulation and abstraction
-
-Question 27:- What are the various ways to create JavaScript objects?
+What are the various ways to create JavaScript objects?
 four ways 1.object create normal way 2.use constructor 3.using class 4.Object.create()
 
-Question 28:- How can we do inheritance in JavaScript ?
+How can we do inheritance in JavaScript ?
 JavaScript uses object inheritance or prototype inheritance. inheritance done using prototype object
 
-Question 29:- What is prototype in JavaScript ?
+What is prototype in JavaScript ?
 every object has prototype object
 
-Question 30:- Explain Prototype chaining ?
+Explain Prototype chaining ?
 means where one object inheritance to another object
 
-Question 31:- What is Let Keyword?
-block level scope, we can not re declare
-
-Question 32:- Are Let variables hoisted ?
-they are hoisted but not initialization
-
-Question 33:- Explain Temporal Dead Zone ?
-variables are declared before initialization access those variables in the state of period is TDZ.
-those variables in memory but not have assigned values
-
-Question 34:- Let vs Var
-scope, declare, initialization
-
-Question 35:- String Concatenation and Arithmetic puzzle
+String Concatenation and Arithmetic puzzle
 with "+" symbol to type caste
 
 How to detect if caps lock is on using JavaScript?
 use the getModifierState() method of the KeyboardEvent event object.
 
-What is context API VS Redux?
-Redux is a complete state manager capable of allowing an app to undo/redo actions and provides advanced developer tooling for debugging. 
-Context API is designed as a dependency injection mechanism that allows making data available through the component tree without being manually passed
-
-Question 36 :- What is class in ES6 ?
+What is class in ES6 ?
 class is template of object
 
-Question 37 :- So with class Keyword does it imply JavaScript is a OOP language ?
+ So with class Keyword does it imply JavaScript is a OOP language ?
 JS is a Prototype-based programming paradigm.
 It is not an OOP language. But it has support for it. It has the class keyword, which is just a syntactic sugar over prototypes.
 
-Question 38 :- Differentiate between class and normal function ?
+ Differentiate between class and normal function ?
 class is template function is to perform a task
 class are not hoisted and functions are hoisted
 Functions can be overwritten, whereas classes can be extended, but not overwritten
 
-Question 39 :- What is a Arrow function ?
-ES6 feature and it is different from normal function
-
-Question 40 :- Why do we use Arrow function ?
+Why do we use Arrow function ?
 for readability and concise way to perform function task and we can able write single line to return function
 
-Question 41 :- Differentiate between Arrow vs Normal Function ?
+ Differentiate between Arrow vs Normal Function ?
 arrow function are syntactical shorter and more readability compares to normal function
 In arrow functions can not bind this
 No arguments object in arrow functions like normal functions passed parameters uses in function without pass args we use arguments
 arrow functions not hoisted
 
-Question 42 :- Does Arrow function create its own this ?
+ Does Arrow function create its own this ?
 no
 
-Question 43. Explain Synchronous execution ?
-one by one execute function than it block until execute first one
-
-Question 44. What is a call Stack ?
-Question 45. What is a blocking call ?
-Question 46. How to avoid blocking calls ?
-Question 47. Explain Asynchronous execution ?
-Question 48. Synch vs Asynch ?
-Question 49. How can we do Asynch calls ?
-Question 50. What is a thread ?
-Question 51. Explain Multi-threading ?
-Question 52. Is JavaScript Multi-threaded ?
-Question 53. Then how does Settimeout run ?
-Question 54. What is a WebAPI/Browser API ?
+what is a WebAPI/Browser API ?
 Web API is an application programming interface for the Web
-
-Question 55. What is a Event loop and callback queue?
-event loop is a single-threaded loop that monitors the call stack and callback queue.
-callback queue is a list of tasks to be executed.
 
 Is Fetch API part of JavaScript Engine or JavaScript Runtime?
 
@@ -185,20 +96,16 @@ Not suited for game applications
 
 Execution context
  javascript is a synchronous single threaded language
- execution context has two components the first component is known as the memory component
- the second component is known as the code component 
- memory component contains variables and functions as the key value pairs and this code component is the place where whole javascript code is executed 
- memory component is also known as the variable environment and the code component is also known as the thread of execution
 
-As soon as the whole JavaScript program is run,The global execution context is created.
-It has two components, memory & code, as you know and it is created in two phases.
+As soon as the JavaScript program is run,The global execution context is created.
+It has two phases, 
 Phase 1, was the memory creation phase.
-In the memory creation phase, we were allocating memory to all the variables and functions inside the global space.
+In the memory creation phase, we were allocating memory to all the variables and functions.
 
-And what we allocated these variables undefined
+we allocated these variables undefined default
 In case of functions literally it just stores the whole function. 
 In the second phase,
-the code execution phase, now the JS program is executed line by line, when code execute all local variables replaced
+the code execution phase, now the JS program is executed line by line, when code execute and encounters local variables replaced
 and created memory and code components inside code execution. 
 in memory creation phase it store variable in function with undefined when parameter has value it will replaces undefined with value.
 And it will now invoke the function, in the code execution phase, again this whole thing is run,
@@ -207,7 +114,7 @@ In the return statement, we take back the control over here,
 now function is populated with a new value which is coming from this function invocation, which was the result.
 
 And suppose if there was a function invocation inside the function, you would have created an execution context INSIDE an execution context over here,
-and maybe again an invocation so it can go to any deep level
+and it can go to any deep level
 call stack will handles everything to manage this execution context creation, deletion, and the control
 Every time in the bottom of the stack we have our global execution context.
 That means, whenever any JS program is run, this call stack is populated with this Global execution context.
@@ -222,7 +129,6 @@ strict mode var not hoisted will give reference error but function will hoisted 
 only declaration hoisted not assignment/initialization
 execution context in memory phase Declarations will allocated to undefined
 
-how function works in execution context
 scope
 syntax error vs reference error vs type error
 
@@ -540,9 +446,10 @@ console.log(myVar)
 TypeError: occurs when there is converting one type to another type error in the code.
 const n=23
 console.log(n.toUpperCase())
-RangeError: occurs when there is a range error in the code.
-const a=[1,2]
-console.log(a[10])
+RangeError:  range occurs if a number that is outside the range of 0 and 20 (or 21) is passed into toFixed(), toPrecision(), or toExponential() method.
+console.log(45.2222.toFixed(-20))
+RangeError: toFixed() digits argument must be between 0 and 100
+    at Number.toFixed
 
 shallow copy vs deep copy
 shallow copy is copying the reference of the child object.
@@ -572,7 +479,7 @@ JavaScript is single-threaded, which means it can only execute one task at a tim
 This is managed by the call stack, where functions are executed one by one.
 
 ➤ Call Stack: Think of the call stack as a stack of plates. 
-Every time a function is called, a new plate (function) is added to the stack. 
+Every time a function is invoked, a new plate (function) is added to the stack. 
 When the function finishes, the plate is removed from the stack.
 
 ➤ Web APIs: For asynchronous operations like setTimeout, DOM events, and HTTP requests, JavaScript relies on Web APIs 
