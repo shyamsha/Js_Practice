@@ -146,16 +146,15 @@ type error is when a value is not of the expected type
 
 block: we need write multiple statements open closed curly braces that is block
 
-closure: function along with lexical scope bundle together forms a  closure
-
-first class functions
 function statement vs function expression vs function declaration
+
 statement: function statement(){} function with name
 expression: var expression = function(){} function acts as variable value or var a=function z(){} also called named anonymous function
 major difference these two is hoisting. expression not hoisted
 declaration: function statement also known as function declaration
 anonymous function: function(){} function without name. does't have identity. it will use function as value
 arrow function: ()=>{}
+
 first class function: function can be passed as argument to another function
 function are first class functions or citizens of first class objects
 
@@ -164,10 +163,6 @@ callback function: function passed as a argument to another function it is first
 EventListeners
 Eventloop: event loop is a single-threaded loop used to manage the order in which asynchronous callbacks are executed
 It allows asynchronous code to run without blocking subsequent synchronous code from executing.
-promises: it is a object which will be filled value for certain period of time until receive from asynchronous operation.
-Promises are used to handle asynchronous operations in JavaScript. 
-It provides a cleaner way to write asynchronous code using .then() and .catch() methods instead of nested callbacks
-catch() will handle errors after catch() writing than() it will execute no mater what happens. in promise chaining we have to return in every than()
 
 async await vs promise
 async is keyword used before a function to create
