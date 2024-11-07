@@ -272,4 +272,137 @@ function numRange(n1, n2, arr = []) {
   }
   return arr;
 }
-console.log(numRange(3, 8));
+// console.log(numRange(3, 8));
+
+// 25. password valdiation
+
+function passwordValidation(str) {
+  let pattern = new RegExp(
+    "^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]*$"
+  );
+  return pattern.test(str);
+}
+
+// console.log(passwordValidation("Qwerty@12345"));
+
+// 26. random hex color
+function randomHexColor() {
+  let hex = "#";
+  for (let i = 0; i < 6; i++) {
+    hex += Math.floor(Math.random() * 16).toString(16);
+  }
+  return hex;
+}
+// console.log(randomHexColor());
+
+// 27.remove duplicates
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+// console.log(removeDuplicates([1, 2, 2, 3, 4, 5]));
+
+// 28. check is empty object
+function isEmptyObject(obj) {
+  return Object.keys(obj).length === 0;
+}
+// console.log(isEmptyObject({}));
+
+// 29. convert obj to array vise versa
+function objToArray(obj) {
+  return Object.entries(obj);
+}
+// console.log(objToArray({ a: 1, b: 2, c: 3 }));
+function arrayToObj(arr) {
+  console.log(Object.assign({}, [1, 2, 3]));
+  return Object.fromEntries(arr);
+}
+
+// console.log(
+//   arrayToObj([
+//     ["a", 1],
+//     ["b", 2],
+//     ["c", 3],
+//   ])
+// );
+
+// 30. simple interest calculator
+function simpleInterest(p, r, t) {
+  return (p * r * t) / 100;
+}
+// console.log(simpleInterest(1000, 5, 3));
+
+// 31. calculates days between dates
+function days(d1, d2) {
+  const date1 = new Date(d1);
+  const date2 = new Date(d2);
+  let diff = date2 - date1;
+  console.log(date1.toLocaleDateString());
+  return Math.abs(diff / (24 * 60 * 60 * 1000));
+}
+// console.log(days("2024-01-01", "2024-01-31"));
+
+// 32. calculates age
+function age(birthDate) {
+  const date1 = new Date(birthDate);
+  const currentDate = new Date();
+  let age = currentDate.getFullYear() - date1.getFullYear();
+  let monthDiff = currentDate.getMonth() - date1.getMonth();
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && currentDate.getDate() - date1.getDate())
+  ) {
+    age--;
+  }
+  return age;
+}
+// console.log(age("1991-12-06"));
+
+// 33.generate bar chart
+function barChart(arr) {
+  // const newArr = arr.map((curr, index) => {
+  //   let star = "";
+  //   let num = 0;
+  //   while (num < curr) {
+  //     star += "*";
+  //     num++;
+  //   }
+
+  //   return `${index}: ${star}`;
+  // });
+  // return newArr.join("\n");
+  return arr.map((curr, index) => `${index}: ${"*".repeat(curr)}`).join("\n");
+}
+
+// console.log(barChart([5, 3, 9, 2]));
+
+// 34.currency calculator
+let rates = {
+  USD: 1,
+  EUR: 0.85,
+  GBP: 0.75,
+  JPY: 100.5,
+  AUD: 1.35,
+  CAD: 1.25,
+  CHF: 0.95,
+  INR: 75.5,
+  KRW: 1100,
+  NZD: 1.45,
+  SEK: 8.5,
+  SGD: 1.35,
+  THB: 32.5,
+  ZAR: 15.5,
+};
+// TODO: implement this proper way function
+function currencyConverter(amount, from, to) {
+  if (from === to) {
+    return amount;
+  }
+  return (amount * rates[from]) / rates[to];
+}
+// console.log(currencyConverter(75.5, "INR", "USD"));
+// 35.extract numbers form string
+function extractNumbers(str) {
+  // return [...str].filter((curr) => Number(curr));
+  return str.match(/\d/g).map(Number);
+}
+console.log(extractNumbers("hello 123 world 456"));
