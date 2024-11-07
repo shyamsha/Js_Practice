@@ -23,6 +23,7 @@ import StopWatch from "./components/stop-wach/StopWatch";
 import Button from "./components/toastComponent/Button";
 import Header from "./components/header/Header";
 import SortTitle from "./components/sortApiTitle/SortTitle";
+import FileExplorer from "./components/fileExplorer/FileExplorer";
 
 function App() {
   const { i18n } = useTranslation();
@@ -89,7 +90,10 @@ function App() {
               Sort API Title<span className="text-red-600 px-1">|</span>
             </a>
             <a className="" href="/contracts">
-              Contracts
+              Contracts<span className="text-red-600 px-1">|</span>
+            </a>
+            <a className="" href="/file">
+              File Explorer<span className="text-red-600 px-1">|</span>
             </a>
           </nav>
           <select
@@ -132,6 +136,7 @@ function App() {
             />
             <Route path="/sort" element={<SortTitle />} />
             <Route path="/contracts" element={<Header />} />
+            <Route path="/file" element={<FileExplorer />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
