@@ -36,6 +36,7 @@ body {
   height: 24px;
   border-radius: 50%;
   position: absolute;
+  animation: bounce 0.2s ease-in-out forwards;
 }
 
 .controls {
@@ -64,4 +65,13 @@ body {
   cursor: not-allowed;
   pointer-events: none;
   background-color: gray;
+}
+
+@keyframes bounce {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
