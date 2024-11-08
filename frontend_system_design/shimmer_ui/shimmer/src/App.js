@@ -24,6 +24,7 @@ import Button from "./components/toastComponent/Button";
 import Header from "./components/header/Header";
 import SortTitle from "./components/sortApiTitle/SortTitle";
 import FileExplorer from "./components/fileExplorer/FileExplorer";
+import MouseMoveCircle from "./components/mouseMoveCircle/MouseMoveCircle";
 
 function App() {
   const { i18n } = useTranslation();
@@ -94,6 +95,9 @@ function App() {
             </a>
             <a className="" href="/file">
               File Explorer<span className="text-red-600 px-1">|</span>
+            </a>{" "}
+            <a className="" href="/circle">
+              Mouse Circle<span className="text-red-600 px-1">|</span>
             </a>
           </nav>
           <select
@@ -137,6 +141,7 @@ function App() {
             <Route path="/sort" element={<SortTitle />} />
             <Route path="/contracts" element={<Header />} />
             <Route path="/file" element={<FileExplorer />} />
+            <Route path="/circle" element={<MouseMoveCircle />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
