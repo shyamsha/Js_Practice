@@ -3,15 +3,11 @@
 // Sum everything except 2 , the sum is 13
 //and so on... last one we can find the min and max of sum
 
-function miniMaxSum(arr) {
-  let min = 0;
-  let max = 0;
-  for (let i = 0; i < arr.length; i++) {
-    min += arr[i];
-    max += arr[i];
-  }
-  min = min - Math.max.apply(null, arr);
-  max = max - Math.min.apply(null, arr);
+function miniMaxSum1(arr) {
+  const totalSum = arr.reduce((acc, num) => acc + num, 0);
+  const min = totalSum - Math.max(...arr);
+  const max = totalSum - Math.min(...arr);
   console.log(min, max);
 }
-console.log(miniMaxSum([1, 3, 5, 7, 9]));
+
+console.log(miniMaxSum1([1, 2, 3, 4, 5]));

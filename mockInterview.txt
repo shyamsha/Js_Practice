@@ -383,9 +383,10 @@ The virtual DOM is a concept implemented by libraries in JavaScript on top of br
 return multiple elements from component by allowing us to group list of children without adding extra node on DOM
 
 19.react fiber?
-react fiber is re-implementation of react core algorithm. that is reconciliation main goal is ability to pause and resume and reuse work.
-incremental rendering and break down rendering tasks to small chunks and distribute across the numerous frames.
-it more suitable for layout and gestures and animation
+Fiber is the new reconciliation engine or
+re-implementation of core algorithm in React v16. 
+The goal of React Fiber is to increase its suitability for areas like animation, layout, gestures, ability to pause, abort, or 
+reuse work and assign priority to different types of updates and new concurrency primitives.
 
 20.how can maintaining data in complex ui?
 using redux maintaining external global single store to achieve
@@ -591,3 +592,59 @@ public folder is where you put the files that need to be publicly available, suc
 public folder are not processed by webpack
 Images in the public folder are not processed by webpack and are simply copied to the build folder during the build process.
 means that the images are not part of the final bundle and will not increase the size of your application.
+
+In JavaScript, both pre-increment (++x) and post-increment (x++) operators increase the value of a variable by 1. However, they differ in when the increment happens and what value is returned:
+Pre-increment (++x)
+Increment first: The variable is incremented first, and then the new value is returned.
+Example:
+JavaScript
+
+let x = 5;
+let y = ++x;
+
+console.log(x); // 6
+console.log(y); // 6
+Post-increment (x++)
+Return first, increment later: The current value of the variable is returned first, and then the variable is incremented.
+Example:
+JavaScript
+
+let x = 5;
+let y = x++;
+
+console.log(x); // 6
+console.log(y); // 5
+In summary:
+Use pre-increment (++x): when you want to use the incremented value immediately.
+Use post-increment (x++): when you want to use the original value before incrementing.
+
+querySelector() vs getElementById()
+querySelector()
+The querySelector() function is used to retrieve an element from the document using a CSS selector.
+ It returns the first element that matches the specified selector. 
+ The selector can be any valid CSS selector, such as a class, id, or tag name.
+
+getElementById()
+The getElementById() function is used to retrieve an element from the document using its ID attribute. 
+It returns the element with the specified ID.
+IDs must be unique within a page, so getElementById() will always return one element or null if there is no matching element. 
+
+getElementById() only works with ID attributes, while querySelector() can work with any CSS selector. 
+Additionally, getElementById() is faster than querySelector() 
+because it only needs to search for one element, 
+whereas querySelector() may need to search for multiple elements before returning the first match.
+
+async vs defer
+async
+The script executes as soon as it's downloaded, without waiting for the HTML parsing to complete. This means that the order of execution is not guaranteed.
+defer
+The script executes after the browser has fully processed the HTML, in the order they are in the HTML. 
+Here are some other differences between async and defer:
+When to use
+Use async if the order of execution doesn't matter and the script doesn't modify the DOM. Use defer if the order is execution is important or the script modifies the DOM. 
+Performance
+Both attributes help you optimize the First Contentful Paint metric. 
+Browser support
+Older browsers might not support defer, so your scripts might not load at all for some users. 
+Inline scripts
+These attributes don't work on inline scripts, which are scripts without a src attribute. 
