@@ -12,4 +12,4 @@ function sumTwoArrayIndexes(arr1, arr2) {
   return sum;
 }
 
-console.log(sumTwoArrayIndexes([0, 1, 2, 3, 4], [4, 5, 6, 7]));
+console.log(sumTwoArrayIndexes([1, 2, 3, 4], [4, 5, 6, 7]));

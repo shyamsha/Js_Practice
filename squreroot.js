@@ -6,4 +6,5 @@ function narcissistic(value) {
   );
 }
 
-console.log(narcissistic(5));
+console.log(narcissistic(153));
+console.log(narcissistic(1652));

@@ -17,17 +17,15 @@ function subArraySum(arr, n, sum) {
     }
 
     if (curr_sum === sum) {
-      console.log("Sum found between indexes " + start_index + " and " + i);
-      return;
+      return "Sum found between indexes " + start_index + " and " + i;
     }
   }
-  console.log("No subarray found");
-  return;
+  return "No subarray found";
 }
 
 let arr = [15, 2, 4, 8, 9, 5, 10, 23];
 let n = arr.length;
-let sum = 23;
+let sum = 28;
 console.log(subArraySum(arr, n, sum));
 
 // 1.It initializes two variables: curr_sum (current sum) set to 0, and start_index set to 0.
@@ -57,7 +55,7 @@ function subArraySum(arr, k) {
   return maxSum;
 }
 let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-console.log(subArraySum(arr1, 2));
+// console.log(subArraySum(arr1, 2));
 // problem breakdown steps
 // 1. create a variable to store the sum of the first k elements
 // 2. create a variable to store the max sum of the subarray

@@ -56,7 +56,7 @@
 function integer(s) {
   let arr = [];
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === "-") {
+    if (s[i] === "-" || s[i] === "+") {
       arr.push(s[i]);
     }
     if (!isNaN(s[i])) {

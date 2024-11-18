@@ -33,19 +33,14 @@ log(removeDuplicateChar("the quick brown fox jumps then quickly blow air"));
 
 function removeDuplicateChar2(str) {
   var len = str.length,
-    char,
-    charCount = {},
-    newStr = [];
+    charCount = {};
+
   for (var i = 0; i < len; i++) {
-    char = str[i];
-    if (charCount[char]) {
-      charCount[char]++;
-    } else charCount[char] = 1;
+    if (!charCount[str[i]]) {
+      charCount[str[i]] = 1;
+    }
   }
-  for (var j in charCount) {
-    if (charCount[j] == 1) newStr.push(j);
-  }
-  return newStr.join("");
+  return Object.keys(charCount).join("");
 }
 
 log(removeDuplicateChar2("Learn more javascript dude"));

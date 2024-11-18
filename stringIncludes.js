@@ -10,3 +10,4 @@ function stringIncludes(string, character) {
 }
 
 console.log(stringIncludes("skajfklsd", "f"));
+console.log("skajfklsd".includes("f"));
