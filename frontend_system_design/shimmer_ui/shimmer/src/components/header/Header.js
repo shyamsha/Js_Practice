@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Select from "../comman/Select";
+import Select from "../common/Select";
 import { SEARCH_CONTRACT } from "../../utils/strings";
 
 function Header() {

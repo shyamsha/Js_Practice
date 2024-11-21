@@ -21,3 +21,7 @@ span[aria-live="polite"] {
   display: flex;
   flex-wrap: wrap;
 }
+
+.offline {
+  filter: grayscale(100%);
+}

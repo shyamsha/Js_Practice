@@ -25,6 +25,8 @@ import Header from "./components/header/Header";
 import SortTitle from "./components/sortApiTitle/SortTitle";
 import FileExplorer from "./components/fileExplorer/FileExplorer";
 import MouseMoveCircle from "./components/mouseMoveCircle/MouseMoveCircle";
+import useOnlineStatus from "./hooks/useOnlineStatus";
+import Offline from "./components/common/Offline";
 
 function App() {
   const { i18n } = useTranslation();
@@ -37,8 +39,11 @@ function App() {
   const handleLanguageChange = (e) => {
     i18n.changeLanguage(e.target.value);
   };
+  const isOnline = useOnlineStatus();
+  console.log(isOnline);
   return (
-    <div>
+    <div className="">
+      {isOnline ? null : <Offline />}
       <BrowserRouter>
         <header className="text-2xl font-bold p-9 bg-blue-500 text-white  flex justify-between items-center">
           <nav className="px-15 m-2 w-auto flex flex-wrap justify-start text-lg">

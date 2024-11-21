@@ -10,15 +10,21 @@ class TaskRunner {
       await this.execute(task);
     } else {
       this.queue.push(task);
+      // console.log(this.queue);
     }
   }
 
   async execute(task) {
     try {
       this.runningTasks++;
+      // console.log(this.runningTasks);
       await task();
     } finally {
+      console.log(this.runningTasks);
+
       this.runningTasks--;
+      console.log(this.runningTasks);
+      console.log(this.queue);
       if (this.queue.length && this.runningTasks < this.concurrency) {
         const nextTask = this.queue.shift();
         await this.execute(nextTask);
