@@ -1,0 +1,22 @@
+.game-container {
+  display: flex;
+  justify-content: center;
+  padding: 30px !important;
+}
+
+.game-boxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  width: 38%;
+}
+
+.game-box {
+  width: 25%;
+  padding-top: 25%;
+  /* aspect-ratio: 1/1; we can give aset ratio insted of padding */
+  cursor: pointer;
+  border: 1px solid black;
+  transition: all 0.2s ease-in-out;
+}

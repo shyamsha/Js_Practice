@@ -27,6 +27,7 @@ import FileExplorer from "./components/fileExplorer/FileExplorer";
 import MouseMoveCircle from "./components/mouseMoveCircle/MouseMoveCircle";
 import useOnlineStatus from "./hooks/useOnlineStatus";
 import Offline from "./components/common/Offline";
+import Game from "./components/rippleGame/Game";
 
 function App() {
   const { i18n } = useTranslation();
@@ -104,6 +105,9 @@ function App() {
             <a className="" href="/circle">
               Mouse Circle<span className="text-red-600 px-1">|</span>
             </a>
+            <a className="" href="/game">
+              Rippling Game<span className="text-red-600 px-1">|</span>
+            </a>
           </nav>
           <select
             className="bg-black text-white"
@@ -147,6 +151,7 @@ function App() {
             <Route path="/contracts" element={<Header />} />
             <Route path="/file" element={<FileExplorer />} />
             <Route path="/circle" element={<MouseMoveCircle />} />
+            <Route path="/game" element={<Game />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
