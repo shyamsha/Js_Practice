@@ -28,6 +28,7 @@ import MouseMoveCircle from "./components/mouseMoveCircle/MouseMoveCircle";
 import useOnlineStatus from "./hooks/useOnlineStatus";
 import Offline from "./components/common/Offline";
 import Game from "./components/rippleGame/Game";
+import { CardItemList } from "./components/pictureGame/CardItemList";
 
 function App() {
   const { i18n } = useTranslation();
@@ -106,7 +107,7 @@ function App() {
               Mouse Circle<span className="text-red-600 px-1">|</span>
             </a>
             <a className="" href="/game">
-              Rippling Game<span className="text-red-600 px-1">|</span>
+              Game<span className="text-red-600 px-1">|</span>
             </a>
           </nav>
           <select
@@ -151,7 +152,8 @@ function App() {
             <Route path="/contracts" element={<Header />} />
             <Route path="/file" element={<FileExplorer />} />
             <Route path="/circle" element={<MouseMoveCircle />} />
-            <Route path="/game" element={<Game />} />
+            {/* <Route path="/game" element={<Game />} /> */}
+            <Route path="/game" element={<CardItemList />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
