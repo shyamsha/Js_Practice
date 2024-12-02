@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { CardItem } from "./CardItem";
 import GameData from "./app.mock";
 import "./styles.css";
@@ -6,45 +6,52 @@ import "./styles.css";
 export const CardItemList = () => {
   const [cardList, setCardList] = useState([...GameData]);
   const [imageObjArray, setImageObjArray] = useState([]);
+  const [images, setImages] = useState(new Set());
 
-  const onClickHandler = (currentId) => {
-    let newData = cardList.map((item) => {
-      if (currentId === item.id) {
-        setImageObjArray((pervs) => [...pervs, item]);
-        return { ...item, isOpen: true };
+  const onClickHandler = (item) => {
+    const newData = cardList.map((ele) => {
+      if (item.id === ele.id) {
+        return { ...ele, isOpen: true };
       }
-      return item;
+      return ele;
     });
-    setCardList(newData);
-  };
-  useEffect(() => {
-    if (imageObjArray.length > 1) {
-      let newData = cardList.filter((item) => {
-        if (!item.isOpen) {
-          return item;
-        }
-      });
-      if (imageObjArray[1].name !== imageObjArray[0].name) {
-        setTimeout(() => {
-          setCardList([...imageObjArray, ...newData]);
-          setImageObjArray([]);
-        }, 500);
-      }
+    setCardList([...newData]);
+    if (imageObjArray.length === 0) {
+      setImageObjArray([item]);
+      return;
     }
-  }, [imageObjArray]);
-  // console.log(cardList, imageObjArray);
+
+    if (imageObjArray[0].name !== item.name) {
+      setTimeout(() => {
+        const newImageData = cardList.map((ele) => {
+          if (ele.isOpen && !images.has(ele.name)) {
+            return { ...ele, isOpen: false };
+          }
+
+          return ele;
+        });
+        setImageObjArray([]);
+        setCardList([...newImageData]);
+      }, 500);
+    } else {
+      setImages((pervs) => pervs.add(item.name));
+      setImageObjArray([]);
+    }
+  };
+
   return (
     <div className="picture-container">
       <div className="card-item-list">
         {cardList.map((item) => {
           return (
-            <CardItem
-              key={item.id}
-              id={item.id}
-              image={item.pic}
-              onClick={onClickHandler}
-              isOpen={item.isOpen}
-            ></CardItem>
+            <Fragment key={item.id}>
+              <CardItem
+                item={item}
+                image={item.pic}
+                onClick={onClickHandler}
+                isOpen={item.isOpen}
+              />
+            </Fragment>
           );
         })}
         {/* {JSON.stringify( picName)} */}
