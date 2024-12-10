@@ -296,10 +296,23 @@ div {
     
     margin: auto;
 }
-div {
-  display: block;
+.element {
+  max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
+}
+.element {
+  max-width: fit-content;
+  margin-inline: auto;  will set both m-left and m-right is auto
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: grid;
+  place-content: center;
 }
 4.px vs em vs rem?
 px is absolute value and it is  fixed size

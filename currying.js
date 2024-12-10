@@ -63,7 +63,7 @@ var curry = function (fn) {
   };
 };
 // with bind return new function and accumulate previous value
-var curry = function (fn) {
+var curry1 = function (fn) {
   return function curried(...args) {
     if (args.length >= fn.length) {
       return fn.apply(this, args);
@@ -105,3 +105,40 @@ const square = (x) => x * x;
 const doubleThenSquare = compose(square, double);
 
 const result = doubleThenSquare(5); // (5 * 2)^2 = 100
+
+function sum(...args) {
+  let total = args.reduce((acc, curr) => acc + curr, 0); // Calculate the initial sum
+
+  // Return a function that adds to the existing total
+  return function (...nextArgs) {
+    if (nextArgs.length > 0) {
+      total += nextArgs.reduce((acc, curr) => acc + curr, 0); // Add the new arguments
+      return sum(total); // Call sum again recursively with the updated total
+    } else {
+      return total; // If no new arguments, return the final total
+    }
+  };
+}
+
+console.log(sum(1)(2)(3)(4)(5)()); // Output: 15
+console.log(sum(1, 2, 3)(4, 5)()); // Output: 15
+console.log(sum(1, 2)(3)(4, 5)()); // Output: 15
+
+function sum1(...args) {
+  let total = args.reduce((acc, num) => acc + num, 0);
+
+  function adder(...innerArgs) {
+    if (innerArgs.length === 0) return total;
+    total += innerArgs.reduce((acc, num) => acc + num, 0);
+    return adder;
+  }
+
+  adder.toString = () => total; // For cases like sum(1)(2) + 3
+
+  return adder;
+}
+
+// Test cases
+console.log(sum1(1)(2)(3)(4)(5)() + 3 + 5); // Output: 15
+console.log(sum1(1, 2, 3)(4, 5)()); // Output: 15
+console.log(sum1(1, 2)(3)(4, 5)()); // Output: 15
