@@ -8,7 +8,7 @@ function FeatureFlagEnable() {
         Google Pay Feature Enabled
       </Feature>
       <br />
-      <Feature feature="isApplePayEnabled" value={true}>
+      <Feature feature="isApplePayEnabled" value={false}>
         Apple Pay Feature Enabled
       </Feature>
     </>

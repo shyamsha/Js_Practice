@@ -5,14 +5,14 @@ function Search() {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isResultVisible, setIsResultVisible] = useState(false);
-  const [cache, setCache] = useState({});
+  const [cache] = useState({});
 
   useEffect(() => {
-    const t = setTimeout(() => {
-      fetchData();
-    }, 200);
-    return () => clearTimeout(t);
-    // debounce(fetchData(), 5000);
+    // const t = setTimeout(() => {
+    //   fetchData();
+    // }, 200);
+    debounce(fetchData(), 5000);
+    // return () => clearTimeout(t);
   }, [searchText]);
 
   const fetchData = async () => {
@@ -20,7 +20,12 @@ function Search() {
       setSearchResults(cache[searchText]);
     } else {
       const data = await fetch(
-        `https://www.google.com/complete/search?client=firefox&q=${searchText}`
+        `https://www.google.com/complete/search?client=firefox&q=${searchText}`,
+        {
+          headers: {
+            // mode: "no-cors",
+          },
+        }
       );
       const results = await data.json();
       cache[searchText] = results[1];

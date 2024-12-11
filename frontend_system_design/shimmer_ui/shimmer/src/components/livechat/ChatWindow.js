@@ -1,8 +1,8 @@
-import React, { useId, useEffect, useState } from "react";
+import React, { useId, useEffect, useState, Fragment } from "react";
 import ChatMessage from "./ChatMessage";
 
-const CHAT_MESSAGES_LIMIT = 5;
-var nameList = [
+const CHAT_MESSAGES_LIMIT = 10;
+let nameList = [
   "Time",
   "Past",
   "Future",
@@ -189,7 +189,7 @@ function generateRandomNames() {
 function ChatWindow() {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
-
+  let id = useId();
   useEffect(() => {
     const APIIntervalCall = setInterval(fetchedData, 1000);
 
@@ -216,9 +216,11 @@ function ChatWindow() {
 
   return (
     <>
-      <div className="flex w-full h-[600px] border border-black m-5 overflow-y-scroll flex-col-reverse">
+      <div className="flex w-full h-[350px] border border-black m-5 overflow-y-scroll flex-col-reverse">
         {messages.map((message, i) => (
-          <ChatMessage key={i} {...message} />
+          <Fragment key={id + i}>
+            <ChatMessage {...message} />
+          </Fragment>
         ))}
         <input
           value={inputMessage}
