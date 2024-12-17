@@ -5,27 +5,28 @@
 // it is like pure functions.
 //  It is important to note that memoization only works correctly for pure functions. A pure function is defined as function that always returns the same output given the same inputs and doesn't have any side-effects.
 
-const add = (a, b) => {
-  return a + b;
-};
+function add(a, b) {
+  for (i = 0; i < 10000000; i++) {
+    return this.c * a * b;
+  }
+}
 
-function memoize(fn) {
+function memoize(fn, context) {
   let cache = {};
   return function (...args) {
     let n = args;
-    if (n in cache !== true) {
-      cache[n] = fn(...args);
-      return cache[n];
-    } else {
+    if (!cache[n]) {
+      cache[n] = fn(context || this, ...args);
       return cache[n];
     }
+    return cache[n];
   };
 }
 
-const memoizedAdd = memoize(add);
-console.log(memoizedAdd(2, 2)); // 4 first call
-console.log(memoizedAdd(2, 2)); // 4 second from call cache result
-console.log(memoizedAdd(2, 3)); // new input it calls actual function and stores input
+const memoizedAdd = memoize(add, { c: 3 });
+console.log(memoizedAdd(2, 2)); // 4 * 3(because this/context refers to obj ) first call
+console.log(memoizedAdd(2, 2)); // 4 *3 second from call cache result
+console.log(memoizedAdd(2, 3)); // 6*3 new input it calls actual function and stores input
 
 // same like using react memo it is do shallow comparison by react memo
 
