@@ -60,14 +60,14 @@ c.greeting = 'Hello';
 console.log(d.greeting); // Hello
 
 // 7.
-let a = 3;
-let b = new Number(3);
+let a1 = 3;
+let b1 = new Number(3);
 let c1 = 3;
 // new Number() is a built-in function constructor. 
 // Although it looks like a number, it's not really a number: it has a bunch of extra features and is an object.
-console.log(a == b); // true
-console.log(a === b); // false
-console.log(b === c1); // false
+console.log(a1 == b1); // true
+console.log(a1 === b1); // false
+console.log(b1 === c1); // false
 
 // 8.
 class Chameleon {
@@ -92,8 +92,8 @@ const freddie = new Chameleon({ newColor: 'purple' });
 
 // 9.
 let greeting;
-greetign = {}; // in strict Type error
-console.log(greetign); // {}
+greeting = {}; // in strict Type error
+console.log(greeting); // {}
 
 // 10.
 function bark() {
@@ -153,11 +153,11 @@ function getPersonInfo(one, two, three,four) {
 
 }
 
-const person = 'Lydia';
+const per = 'Lydia';
 const age = 21;
 // If you use tagged template literals, the value of the first argument is always an array of the string values. 
 // The remaining arguments get the values of the passed expressions!
-getPersonInfo`${person} is ${age} years old`; // ["", " is ", " years old"] "Lydia" 21
+getPersonInfo`${per} is ${age} years old`; // ["", " is ", " years old"] "Lydia" 21
 
 // 15.
 function checkAge(data) {
@@ -200,13 +200,13 @@ var num = 10;
 console.log(num); // 10
 
 // 19.
-const obj = { 1: 'a', 2: 'b', 3: 'c' };
-const set = new Set([1, 2, 3, 4, 5]);
+const obj1 = { 1: 'a', 2: 'b', 3: 'c' };
+const set1 = new Set([1, 2, 3, 4, 5]);
 
-obj.hasOwnProperty('1');
-obj.hasOwnProperty(1);
-set.has('1');
-set.has(1); // set is object collection of values example mySet = new Set() and mySet.add(1) or any type value add output set {1} here only values
+obj1.hasOwnProperty('1');
+obj1.hasOwnProperty(1);
+set1.has('1');
+set1.has(1); // set is object collection of values example mySet = new Set() and mySet.add(1) or any type value add output set {1} here only values
 
 // 20.
 const obj = { a: 'one', b: 'two', a: 'three' };
@@ -253,14 +253,14 @@ baz(); // first third second
 // You can stop bubbling by event.stopPropagation
 
 // 25.
-const person = { name: 'Lydia' };
+const p = { name: 'Lydia' };
 
 function sayHi(age) {
   return `${this.name} is ${age}`;
 }
 
-console.log(sayHi.call(person, 21)); // Lydia is 21 call is also executed immediately! 
-console.log(sayHi.bind(person, 21)); // function .bind returns a copy of the function, but with a bound context! It is not executed immediately.
+console.log(sayHi.call(p, 21)); // Lydia is 21 call is also executed immediately! 
+console.log(sayHi.bind(p, 21)); // function .bind returns a copy of the function, but with a bound context! It is not executed immediately.
 
 // 26.
 function sayHi() {
@@ -343,19 +343,19 @@ const secondPromise = new Promise((res, rej) => {
 Promise.race([firstPromise, secondPromise]).then(res => console.log(res)); // two
 
 // 37.
-let person = { name: 'Lydia' };
-const members = [person];
-person = null;
+let p1 = { name: 'Lydia' };
+const members = [p1];
+p1 = null;
 
 console.log(members); // [{ name: "Lydia" }] because objects has copied reference type
 
 // 38.
-const person = {
+const person1 = {
   name: 'Lydia',
   age: 21,
 };
 
-for (const item in person) {
+for (const item in person1) {
   console.log(item); // name age
 }
 
@@ -372,19 +372,19 @@ console.log(num); // 7
 
 // 41.
 function getInfo(member, year) {
-  member.name = 'Lydia';
+  member.name = 'L';
   year = '1998';
 }
 
-const person = { name: 'Sarah' };
+const person2 = { name: 'Sarah' };
 const birthYear = '1997';
 
-getInfo(person, birthYear);
+getInfo(person2, birthYear);
 // because of person obj is pass by reference and 
 // when passed to function it copy the object so obj refers same obj.
 // if object is changed both will be change same as value copied in function.
 // this is pass by value it so both are different values.
-console.log(person, birthYear); // {name: "Sara"} 1997
+console.log(person2, birthYear); // {name: "L"} 1997
 
 // 42.
 function greeting() {
@@ -459,12 +459,12 @@ console.log(myCounter); // error
 // Only the module that exports them can change its value.
 
 // 48.
-const name = 'Lydia';
-age = 21;
+const user_name = 'Lydia';
+user_age = 21;
 
 // variables declared with the var, const or let keyword cannot be deleted using the delete operator
-console.log(delete name); // false
-console.log(delete age); // true
+// console.log(delete user_name); // false
+// console.log(delete user_age); // true
 
 // 49.
 const numbers = [1, 2, 3, 4, 5];

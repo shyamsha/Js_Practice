@@ -34,3 +34,6 @@ var maxOperations = function (nums, k) {
   }
   return count;
 };
+
+// The code first sorts the 'nums' array in O(n log n) time complexity. Then, it iterates through the array once in a while loop, which has a linear time complexity of O(n).
+// Therefore, the overall time complexity is O(n log n) + O(n) = O(n log n).

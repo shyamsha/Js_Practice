@@ -38,3 +38,5 @@ let maxProfit = function (prices) {
   return maxProfit;
 };
 console.log(maxProfit(prices1));
+// The code snippet contains a single while loop that iterates through the 'prices' array once.
+// Therefore, the time complexity is O(n) where n is the number of elements in the 'prices' array.
