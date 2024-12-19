@@ -7,7 +7,8 @@ const generateHash = (str) => {
   }
   return hash;
 };
-
+//	The code snippet has a single for loop that iterates through each character in the input string 'str'.
+//  Therefore, the time complexity is O(n) where n is the length of the input string.
 // console.log(generateHash("hello world"));
 
 // 2. convert capitalize the first letter of each word
@@ -46,6 +47,7 @@ function charCount(str, char) {
   }
   return count;
 }
+// o(n) time complexity
 // console.log(charCount("hello worLd", "o"));
 
 // 4. write function that takes in a 3 sides triangle and returns if it is 3 sides equilateral, isosceles, or scalene
@@ -59,7 +61,7 @@ function checkTriangleType(a, b, c) {
     return "scalene";
   }
 }
-
+// o(1) time complexity
 // console.log(checkTriangleType(1, 2, 3));
 
 // 5. write function that takes in a array of numbers and returns the sorted array asc.

@@ -21,3 +21,7 @@ function addingNumbersUptoSingleDigit(num) {
 }
 
 log(addingNumbersUptoSingleDigit(823));
+
+// The function recursively adds the digits of the input number until a single digit number is obtained.
+// The number of recursive calls is logarithmic in the input number, as each recursive call reduces the number of digits by a factor of 10.
+// Therefore, the time complexity is O(log n).

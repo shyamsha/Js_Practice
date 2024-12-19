@@ -6,6 +6,8 @@ class LRUCache {
     this.capacity = capacity;
   }
   // Implementing Get method
+  // If the key is found, delete and reinsert it so that it will be at the top.
+  // So an item at the start of Map is the least recently used item.
   get(key) {
     if (!this.cache.has(key)) return -1;
 
@@ -37,26 +39,32 @@ class LRUCache {
     return Array.from(this.cache)[this.cache.size - 1];
   }
 }
-
+// O(1)	The get and put methods have a time complexity of O(1) because they involve operations on a Map data structure,
+// which has constant time complexity for operations like get, set, and delete.
 let cache = new LRUCache(3);
 
 let arr = [1, 2, 3, 4, 5];
-arr.forEach((v) => cache.put(v, `v: + ${v}`));
-console.log(cache.cache); // Map(3) { 3 => 'v: + 3', 4 => 'v: + 4', 5 => 'v: + 5' }
+arr.forEach((v) => cache.put(v, v));
+console.log(cache.cache); // Map(3) { 3 => 'v:  3', 4 => 'v:  4', 5 => 'v:  5' }
 
 console.log(cache.get(2));
 // -1
 console.log(cache.get(3));
 // "v:3"
 console.log(cache.get(5)); // "v:5"
-console.log(cache.put(6, 6)); // it will set key 6 with value 6
-console.log(cache.put(7, 7));
-console.log(cache.getLeastRecent());
+cache.put(6, 6); // it will set key 6 with value 6
+cache.put(7, 7);
+console.log(cache.cache); // { 5 => 5, 6 => 6, 7 => 7 }
+console.log(cache.getLeastRecent(), "least recent1"); // used recently key 5
+console.log(cache.getMostRecent(), "most recent1"); // used recently key 7
+cache.get(6);
+cache.put(6, 6);
+console.log(cache.cache); // Map(3) { 5 => 5, 7 => 7, 6 => 6 }
+cache.put(8, 8);
+console.log(cache.cache); // Map(3) { 7 => 7, 6 => 6, 8 => 8 }
 
-console.log(cache.cache); // Map(3) { 5 => 'v: + 5', 6 => 6, 7 => 7 }
-
-console.log(cache.getLeastRecent());
-console.log(cache.getMostRecent());
-console.log(cache.cache); // Map(3) { 5 => 'v: + 5', 6 => 6, 7 => 7 }
+console.log(cache.getLeastRecent(), "least recent"); // used recently key 7 because it was deleted and size is 3
+console.log(cache.getMostRecent(), "most recent"); // used recently key 8
+console.log(cache.cache); // Map(3) { 7 => 7, 6 => 6, 8 => 8 }
 
 function getLRUCache(capacity) {}

@@ -8,5 +8,8 @@ function anagramCheck(string1, string2) {
     return false;
   }
 }
+// The code first converts both input strings to lowercase, then splits them into arrays of characters,
+// sorts the arrays, and finally joins them back together.
+// The sorting step has a time complexity of O(n log n) where n is the length of the input strings
 
 anagramCheck("silenT", "listen");

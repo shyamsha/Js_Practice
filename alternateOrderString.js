@@ -13,5 +13,5 @@ function stringAlternative(word1, word2) {
   }
   return str;
 }
-
+// o(n) time complexity
 console.log(stringAlternative(str1, str2));

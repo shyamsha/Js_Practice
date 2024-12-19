@@ -10,5 +10,5 @@ let abbreviate = (str) => {
   }
   return code;
 };
-
+// o(n) time complexity
 console.log(abbreviate(" non residence indians "));
