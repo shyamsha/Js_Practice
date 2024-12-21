@@ -65,3 +65,38 @@ let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 // 6. update the max sum with the current sum
 // 7. subtract the element at the current index minus k - 1 from the sum
 // 8. return the max sum
+
+// un-optimized solution
+function maxSubArray(nums) {
+  let maxSum = nums[0];
+  for (let i = 0; i < nums.length; i++) {
+    let currentSum = 0;
+    for (let j = i; j < nums.length; j++) {
+      currentSum += nums[j];
+      if (currentSum > maxSum) {
+        maxSum = currentSum;
+      }
+    }
+  }
+  return maxSum;
+}
+
+console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+
+//optimized solution
+function maxSubArray1(nums) {
+  let maxSum = nums[0];
+  let currentSum = 0;
+  for (let i = 0; i < nums.length; i++) {
+    currentSum += nums[i];
+    if (currentSum > maxSum) {
+      maxSum = currentSum;
+    }
+    if (currentSum < 0) {
+      currentSum = 0;
+    }
+  }
+  return maxSum;
+}
+
+console.log(maxSubArray1([5, 4, -1, 7, 8]));
