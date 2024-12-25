@@ -28,10 +28,11 @@ function isValid(s) {
       return false;
     }
   }
+  console.log(arr);
   return !arr.length;
 }
 
-let str = "[}";
+let str = "[[]]";
 console.log(isValid(str));
 
 var isValid1 = function (s) {
@@ -52,4 +53,4 @@ var isValid1 = function (s) {
 };
 
 let s = "{([)}";
-console.log(isValid1(s));
+// sconsole.log(isValid1(s));
