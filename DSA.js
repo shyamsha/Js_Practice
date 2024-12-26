@@ -220,6 +220,7 @@ class myArray {
     //   this.data[i] = this.data[i + 1];
     // }
     for (let key in ele) {
+      // let key it will take declaration of variable not initialization
       ele[key] = ele[parseInt(key) + 1];
     }
     delete this.data[this.length - 1];
@@ -228,18 +229,24 @@ class myArray {
   }
   deleteByIndex(index) {
     const item = this.data[index];
-    const ele = this.data;
     for (let i = index; i < this.length; i++) {
       this.data[i] = this.data[i + 1];
     }
-    // let key = index;
-    // for (key in ele) {
-    //   console.log(key);
-    //   ele[key] = ele[parseInt(key) + 1];
-    // }
     delete this.data[this.length - 1];
     this.length--;
     return item;
+  }
+  unshift(item) {
+    for (let i = this.length; i >= 0; i--) {
+      console.log(this.data[i - 1]);
+      this.data[i] = this.data[i - 1];
+    }
+    this.data[0] = item;
+    this.length++;
+    return this.length;
+  }
+  size() {
+    return this.length;
   }
 }
 
@@ -249,5 +256,5 @@ newArray.push("apple");
 newArray.push("banana");
 // newArray.shift();
 console.log(newArray);
-newArray.deleteByIndex(1);
+newArray.unshift(123);
 console.log(newArray);
