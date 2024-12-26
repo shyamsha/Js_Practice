@@ -179,7 +179,7 @@ function quickSort(arr) {
   }
   return [...quickSort(left), pivot, ...quickSort(right)];
 }
-console.log(quickSort([8, 3, 5, 4, 7, 6, 1, 2]));
+// console.log(quickSort([8, 3, 5, 4, 7, 6, 1, 2]));
 // worst case time complexity: O(n^2)
 // best case time complexity: O(n log n)
 //explanation of quick sort
@@ -190,3 +190,64 @@ console.log(quickSort([8, 3, 5, 4, 7, 6, 1, 2]));
 // [ 4 ] [ 7, 6 ] 5
 // [ 6 ] [] 7
 // [1, 2, 3, 4, 5, 6, 7, 8]
+
+class myArray {
+  constructor() {
+    this.length = 0;
+    this.data = {};
+  }
+  push(item) {
+    this.data[this.length] = item;
+    this.length++;
+    return this.length;
+  }
+  get(index) {
+    if (index >= this.length) {
+      return "index out of range";
+    }
+    return this.data[index];
+  }
+  pop() {
+    const lastItem = this.data[this.length - 1];
+    delete this.data[this.length - 1];
+    this.length--;
+    return lastItem;
+  }
+  shift() {
+    const firstItem = this.data[0];
+    const ele = this.data;
+    // for (let i = 0; i < this.length; i++) {
+    //   this.data[i] = this.data[i + 1];
+    // }
+    for (let key in ele) {
+      ele[key] = ele[parseInt(key) + 1];
+    }
+    delete this.data[this.length - 1];
+    this.length--;
+    return firstItem;
+  }
+  deleteByIndex(index) {
+    const item = this.data[index];
+    const ele = this.data;
+    for (let i = index; i < this.length; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    // let key = index;
+    // for (key in ele) {
+    //   console.log(key);
+    //   ele[key] = ele[parseInt(key) + 1];
+    // }
+    delete this.data[this.length - 1];
+    this.length--;
+    return item;
+  }
+}
+
+const newArray = new myArray();
+newArray.push(1);
+newArray.push("apple");
+newArray.push("banana");
+// newArray.shift();
+console.log(newArray);
+newArray.deleteByIndex(1);
+console.log(newArray);
