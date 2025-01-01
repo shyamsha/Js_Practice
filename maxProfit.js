@@ -37,6 +37,19 @@ let maxProfit = function (prices) {
   }
   return maxProfit;
 };
-console.log(maxProfit(prices1));
+// console.log(maxProfit(prices1));
 // The code snippet contains a single while loop that iterates through the 'prices' array once.
 // Therefore, the time complexity is O(n) where n is the number of elements in the 'prices' array.
+
+let maxProfit1 = function (arr) {
+  let min = arr[0];
+  let max = 0;
+  for (let i = 1; i < arr.length; i++) {
+    let currentPrice = arr[i];
+    min = Math.min(min, currentPrice);
+    let profit = currentPrice - min;
+    max = Math.max(profit, max);
+  }
+  return max;
+};
+console.log(maxProfit1(prices1));

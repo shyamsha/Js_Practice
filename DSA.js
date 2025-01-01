@@ -258,3 +258,103 @@ newArray.push("banana");
 console.log(newArray);
 newArray.unshift(123);
 console.log(newArray);
+
+// implement linked list
+
+const { log } = require("console");
+
+class Node {
+  constructor(element) {
+    this.head = element;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor(value) {
+    this.head = new Node(value);
+    this.tail = this.head;
+    this.length = 0;
+  }
+  push(value) {
+    const newNode = new Node(value);
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+    return newNode;
+  }
+
+  pop() {
+    if (!this.head.head) {
+      this.length = 0;
+      return undefined;
+    }
+    let temp = this.head;
+    let prev = this.head;
+    while (temp.next) {
+      prev = temp;
+      temp = prev.next;
+    }
+    this.tail = prev;
+    this.tail.next = null;
+    this.length--;
+    return temp;
+  }
+
+  unshift(value) {
+    let newNode = new Node(value);
+
+    if (!this.head.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    }
+
+    newNode.next = this.head;
+    this.head = newNode;
+    this.tail.next = null;
+    this.length++;
+    return newNode;
+  }
+  shift() {
+    if (!this.head.head) {
+      return undefined;
+    }
+    let temp = this.head;
+    this.head = this.head.next;
+    temp.next = null;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return temp;
+  }
+  getFirst() {
+    if (!this.head.head) {
+      return null;
+    }
+    return this.head;
+  }
+  getLast() {
+    if (!this.head) {
+      return null;
+    }
+    let temp = this.head;
+    while (temp) {
+      if (!temp.next) {
+        return temp;
+      }
+      temp = temp.next;
+    }
+  }
+}
+
+let linkedin = new LinkedList(1);
+linkedin.push(10);
+linkedin.push(15);
+linkedin.pop();
+linkedin.pop();
+linkedin.unshift(2);
+linkedin.unshift(3);
+linkedin.shift();
+log(linkedin.getLast());
+log(linkedin);
