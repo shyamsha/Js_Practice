@@ -1,3 +1,4 @@
+const { log } = require("console");
 // find kth positive missing element in an array
 
 function missingElementsOfKth(arr, k) {
@@ -261,8 +262,6 @@ console.log(newArray);
 
 // implement linked list
 
-const { log } = require("console");
-
 class Node {
   constructor(element) {
     this.head = element;
@@ -346,15 +345,78 @@ class LinkedList {
       temp = temp.next;
     }
   }
+  getElementByIndex(index) {
+    let counter = 0;
+    let temp = this.head;
+    while (temp) {
+      if (counter === index) {
+        return temp;
+      }
+      counter++;
+      temp = temp.next;
+    }
+    return null;
+  }
+  replaceElementByIndex(index, value) {
+    let temp = this.getElementByIndex(index);
+    if (temp) {
+      temp.head = value;
+      return true;
+    }
+    return false;
+  }
+  insertElementByIndex(index, value) {
+    let newNode = new Node(value);
+    let temp = this.getElementByIndex(index - 1);
+    if (index > this.length) {
+      return false;
+    }
+    if (index === 0) {
+      this.unshift(value);
+      return true;
+    }
+    if (index === this.length) {
+      this.push(value);
+      return true;
+    }
+    if (temp) {
+      newNode.next = temp.next;
+      temp.next = newNode;
+      this.length++;
+      return true;
+    }
+    return false;
+  }
+  size() {
+    // return this.length;
+    let counter = 0;
+    let temp = this.head;
+    while (temp) {
+      counter++;
+      temp = temp.next;
+    }
+    return counter;
+  }
+  clear() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+    return true;
+  }
 }
 
-let linkedin = new LinkedList(1);
-linkedin.push(10);
-linkedin.push(15);
-linkedin.pop();
-linkedin.pop();
-linkedin.unshift(2);
-linkedin.unshift(3);
-linkedin.shift();
-log(linkedin.getLast());
-log(linkedin);
+let linkedList = new LinkedList(1);
+linkedList.push(10);
+linkedList.push(15);
+linkedList.pop();
+linkedList.pop();
+linkedList.unshift(2);
+linkedList.unshift(3);
+linkedList.shift();
+log(linkedList.getLast());
+log(linkedList.getElementByIndex(2));
+log(linkedList.replaceElementByIndex(2, 20));
+log(linkedList.insertElementByIndex(1, 18));
+log(linkedList.size());
+log(linkedList.clear());
+log(linkedList);
