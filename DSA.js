@@ -403,6 +403,19 @@ class LinkedList {
     this.length = 0;
     return true;
   }
+  reverse() {
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+    let next = temp;
+    let prev = null;
+    for (let i = 0; i <= this.length; i++) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
+    }
+  }
 }
 
 let linkedList = new LinkedList(1);
@@ -418,5 +431,115 @@ log(linkedList.getElementByIndex(2));
 log(linkedList.replaceElementByIndex(2, 20));
 log(linkedList.insertElementByIndex(1, 18));
 log(linkedList.size());
+linkedList.reverse();
 log(linkedList.clear());
 log(linkedList);
+
+class Node1 {
+  constructor(value) {
+    this.head = value;
+    this.prev = null;
+    this.next = null;
+  }
+}
+
+class DoublyLinkedList {
+  constructor(value) {
+    this.head = new Node(value);
+    this.tail = this.head;
+    this.length = 0;
+  }
+  push(value) {
+    let newNode = new Node1(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    }
+    this.tail.next = newNode;
+    newNode.prev = this.tail;
+    this.tail = newNode;
+    this.length++;
+    return this;
+  }
+  pop() {
+    let temp = this.tail;
+    if (this.length === 0) {
+      return undefined;
+    }
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    this.tail = temp.prev;
+    this.tail.next = null;
+    temp.prev = null;
+    this.length--;
+    return temp;
+  }
+  unshift(value) {
+    let newNode = new Node1(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    }
+
+    newNode.next = this.head;
+    this.head.prev = newNode;
+    this.head = newNode;
+    this.length++;
+    return newNode;
+  }
+  shift() {
+    if (this.length === 0) {
+      return undefined;
+    }
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    }
+    let temp = this.head;
+    this.head = this.head.next;
+    this.head.prev = null;
+    temp.next = null;
+    this.length--;
+    return temp;
+  }
+}
+
+const doubleLinkedList = new DoublyLinkedList(0);
+doubleLinkedList.push(1);
+doubleLinkedList.push(2);
+doubleLinkedList.push(3);
+doubleLinkedList.pop();
+doubleLinkedList.unshift(3);
+doubleLinkedList.shift();
+log(doubleLinkedList);
+
+// implement reverse linked list
+
+function reverseLinkedList(head) {
+  // iterative approach and each head has next and next has next and so on
+  // so we need to reverse the next to previous and previous to next
+  let current = head;
+  let prev = null;
+
+  while (current !== null) {
+    const nextNode = current.next;
+    current.next = prev;
+    prev = current;
+    current = nextNode;
+  }
+  return prev;
+}
+function recursivelyReverseList(head) {
+  // recursive approach
+  // time complexity: O(n) and space complexity: O(n)
+  if (head === null || head.next === null) {
+    return head;
+  }
+  let reversedHead = recursivelyReverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+  return reversedHead;
+}
