@@ -435,7 +435,7 @@ linkedList.reverse();
 log(linkedList.clear());
 log(linkedList);
 
-class Node1 {
+class DoublyLinkedListNode {
   constructor(value) {
     this.head = value;
     this.prev = null;
@@ -445,12 +445,12 @@ class Node1 {
 
 class DoublyLinkedList {
   constructor(value) {
-    this.head = new Node(value);
+    this.head = new DoublyLinkedListNode(value);
     this.tail = this.head;
     this.length = 0;
   }
   push(value) {
-    let newNode = new Node1(value);
+    let newNode = new DoublyLinkedListNode(value);
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
@@ -478,7 +478,7 @@ class DoublyLinkedList {
     return temp;
   }
   unshift(value) {
-    let newNode = new Node1(value);
+    let newNode = new DoublyLinkedListNode(value);
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
@@ -543,3 +543,101 @@ function recursivelyReverseList(head) {
   head.next = null;
   return reversedHead;
 }
+
+class StackNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+class Stack {
+  constructor(value) {
+    this.first = new StackNode(value);
+    this.length = 1;
+  }
+  push(value) {
+    let newNode = new StackNode(value);
+    if (this.length === 0) {
+      this.first = newNode;
+    }
+    newNode.next = this.first;
+    this.first = newNode;
+    this.length++;
+    return newNode;
+  }
+  pop() {
+    let temp = this.first;
+    if (this.length === 0) {
+      return null;
+    }
+    this.first = temp.next;
+    temp.next = null;
+    this.length--;
+    return temp;
+  }
+}
+
+let stack = new Stack(0);
+stack.push(1);
+stack.push(2);
+stack.pop();
+console.log(stack);
+
+class QueueNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+class Queue {
+  constructor(value) {
+    const newNode = new QueueNode(value);
+    this.first = newNode;
+    this.last = newNode;
+    this.length = 1;
+  }
+  enQueue(value) {
+    const newNode = new QueueNode(value);
+    if (this.length === 0) {
+      this.first = newNode;
+      this.last = newNode;
+    }
+    this.last.next = newNode;
+    this.last = newNode;
+    this.length++;
+    return newNode;
+  }
+  deQueue() {
+    const temp = this.first;
+    if (this.length === 0) {
+      return null;
+    }
+    if (this.length === 1) {
+      this.first = null;
+      this.last = null;
+    }
+    this.first = temp.next;
+    temp.next = null;
+    this.length--;
+    return temp;
+  }
+  min() {
+    if (this.length === 0) {
+      return null;
+    }
+    let current = this.first;
+    let minValue = current.value;
+    while (current.next) {
+      current = current.next;
+      minValue = Math.min(current.value, minValue);
+    }
+    return minValue;
+  }
+}
+
+let queue = new Queue(0);
+queue.enQueue(1);
+queue.enQueue(2);
+queue.deQueue();
+console.log(queue.min());
+console.log(queue);

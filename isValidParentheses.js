@@ -53,4 +53,4 @@ var isValid1 = function (s) {
 };
 
 let s = "{([)}";
-// sconsole.log(isValid1(s));
+// console.log(isValid1(s));
