@@ -100,3 +100,71 @@ function maxSubArray1(nums) {
 }
 
 console.log(maxSubArray1([5, 4, -1, 7, 8]));
+
+// Function to find a continuous sub-array which adds up to
+// a given number.
+function subarraySum(arr, target) {
+  // this is the optimized solution and not work with negative numbers
+  // Initialize window
+  let s = 0,
+    e = 0;
+
+  let curr = 0;
+  for (let i = 0; i < arr.length; i++) {
+    curr += arr[i];
+
+    // If current sum becomes more or equal,
+    // set end and try adjusting start
+    if (curr >= target) {
+      e = i;
+
+      // While current sum is greater,
+      // remove starting elements of current window
+      while (curr > target && s < e) {
+        curr -= arr[s];
+        s++;
+      }
+
+      // If we found a subarray
+      if (curr === target) {
+        return [s, e];
+      }
+    }
+  }
+  // If no subarray is found
+  return [-1];
+}
+
+// Driver Code
+let array = [15, 2, 4, 8, 9, 5, 10, 23];
+let target = 23;
+console.log(subarraySum(array, target));
+function sum(arr, sum) {
+  //cur_sum to keep track of cumulative sum till that point
+  let cur_sum = 0;
+  let start = 0;
+  let end = -1;
+  let n = arr.length;
+  let hashMap = new Map();
+
+  for (let i = 0; i < n; i++) {
+    cur_sum = cur_sum + arr[i];
+    //check whether cur_sum - sum = 0, if 0 it means
+    //the sub array is starting from index 0- so stop
+    if (cur_sum - sum == 0) {
+      start = 0;
+      end = i;
+      break;
+    }
+    //if hashMap already has the value, means we already
+    // have subarray with the sum - so stop
+    if (hashMap.has(cur_sum - sum)) {
+      start = hashMap.get(cur_sum - sum) + 1;
+      end = i;
+      break;
+    }
+    //if value is not present then add to hashmap
+    hashMap.set(cur_sum, i);
+  }
+  return [start, end];
+}

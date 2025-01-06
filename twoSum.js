@@ -31,14 +31,14 @@ let twoSum1 = function (nums, target) {
   }
 };
 
-let nums = [3, 2, 4];
-let target = 6;
+let nums = [8, 7, 2, 5, 3, 1];
+let target = 10;
 
-// console.log(twoSum1(nums, target));
+console.log(twoSum1(nums, target));
 
 // Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number.
 // Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
 
 let numbers = [2, 7, 11, 10, 5, 9];
 let t = 15;
-console.log(twoSum1(numbers, t));
+// console.log(twoSum1(numbers, t));
