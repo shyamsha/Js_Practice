@@ -26,7 +26,7 @@ function subArraySum(arr, n, sum) {
 let arr = [15, 2, 4, 8, 9, 5, 10, 23];
 let n = arr.length;
 let sum = 28;
-console.log(subArraySum(arr, n, sum));
+// console.log(subArraySum(arr, n, sum));
 
 // 1.It initializes two variables: curr_sum (current sum) set to 0, and start_index set to 0.
 
@@ -42,7 +42,7 @@ console.log(subArraySum(arr, n, sum));
 // This algorithm uses a sliding window approach, efficiently handling cases where the subarray sum might temporarily exceed the target sum by adjusting the start index.
 
 // sub array sum with k steps
-function subArraySum(arr, k) {
+function subArraySum1(arr, k) {
   let sum = 0;
   let maxSum = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -55,7 +55,7 @@ function subArraySum(arr, k) {
   return maxSum;
 }
 let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// console.log(subArraySum(arr1, 2));
+// console.log(subArraySum1(arr1, 2));
 // problem breakdown steps
 // 1. create a variable to store the sum of the first k elements
 // 2. create a variable to store the max sum of the subarray
@@ -81,7 +81,7 @@ function maxSubArray(nums) {
   return maxSum;
 }
 
-console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+// console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
 
 //optimized solution
 function maxSubArray1(nums) {
@@ -99,11 +99,11 @@ function maxSubArray1(nums) {
   return maxSum;
 }
 
-console.log(maxSubArray1([5, 4, -1, 7, 8]));
+console.log(maxSubArray1([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
 
 // Function to find a continuous sub-array which adds up to
 // a given number.
-function subarraySum(arr, target) {
+function subarraySum1(arr, target) {
   // this is the optimized solution and not work with negative numbers
   // Initialize window
   let s = 0,
@@ -135,11 +135,10 @@ function subarraySum(arr, target) {
   return [-1];
 }
 
-// Driver Code
 let array = [15, 2, 4, 8, 9, 5, 10, 23];
 let target = 23;
-console.log(subarraySum(array, target));
-function sum(arr, sum) {
+// console.log(subarraySum1(array, target));
+function subArraySum2(arr, sum) {
   //cur_sum to keep track of cumulative sum till that point
   let cur_sum = 0;
   let start = 0;

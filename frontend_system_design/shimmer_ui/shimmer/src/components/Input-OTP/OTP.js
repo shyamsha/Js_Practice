@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import "./style.css";
 
 function OTP() {
-  const [inputField, setInputField] = useState(new Array(6).fill(""));
+  const [inputField, setInputField] = useState(Array(6).fill(""));
   const inputRefs = useRef([]);
+
   useEffect(() => {
     if (inputRefs.current[0]) {
       inputRefs.current[0].focus();
@@ -33,20 +34,20 @@ function OTP() {
     const newInputField = [...inputField];
     newInputField[index] = value;
     setInputField(newInputField);
-    if (value && index < inputField.length - 1 && isValidInput) {
+    if (value && index < inputField.length - 1) {
       inputRefs.current[index + 1].focus();
     }
   };
 
   const handleKeyDown = (e, index) => {
-    // Todo: Handle backspace
-    if (
-      e.key === "Backspace" &&
-      !inputField[index - 1] &&
-      index > 0 &&
-      inputRefs.current[index - 1]
-    ) {
-      inputRefs.current[index - 1].focus();
+    if (e.key === "Backspace") {
+      const updatedOtp = [...inputField];
+      if (!inputField[index] && index > 0) {
+        // Move to the previous input if current is empty
+        inputRefs.current[index - 1].focus();
+      }
+      updatedOtp[index] = ""; // Clear the current value
+      setInputField(updatedOtp);
     }
   };
 
@@ -61,17 +62,15 @@ function OTP() {
           <div id="otp-container">
             {inputField.map((value, index) => (
               <input
-                key={index + value}
+                key={index} // key is misleading here, use index only if we add other than index backspace not working
                 type="text"
-                placeholder={index + 1}
                 className="otp-number"
-                minLength="1"
-                maxLength="1"
+                maxLength={1}
                 value={value}
                 onChange={(e) => handleInputChange(e, index)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
                 onPaste={(e) => handleOnPasteOtp(e)}
-                ref={(input) => (inputRefs.current[index] = input)}
+                ref={(el) => (inputRefs.current[index] = el)}
               />
             ))}
           </div>

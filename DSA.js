@@ -641,3 +641,63 @@ queue.enQueue(2);
 queue.deQueue();
 console.log(queue.min());
 console.log(queue);
+
+//implement hash table
+
+class HashTable {
+  constructor(size = 5) {
+    this.map = new Array(size);
+  }
+  hash(key) {
+    return (
+      (key.split("").reduce((acc, char) => {
+        return acc + char.charCodeAt(0);
+      }, 0) *
+        599) %
+      this.map.length
+    );
+  }
+  set(key, value) {
+    let index = this.hash(key);
+    if (!this.map[index]) {
+      this.map[index] = [];
+    }
+    this.map[index].push([key, value]);
+  }
+  get(key) {
+    let index = this.hash(key);
+    if (this.map[index]) {
+      for (let i = 0; i < this.map[index].length; i++) {
+        if (this.map[index][i][0] === key) {
+          return this.map[index][i][1];
+        }
+      }
+    }
+  }
+  getKeys() {
+    let keysArray = [];
+    for (let i = 0; i < this.map.length; i++) {
+      if (this.map[i]) {
+        keysArray.push(this.map[i][0][0]);
+      }
+    }
+    return keysArray;
+  }
+  getValues() {
+    let valuesArray = [];
+    for (let i = 0; i < this.map.length; i++) {
+      if (this.map[i]) {
+        valuesArray.push(this.map[i][0][1]);
+      }
+    }
+    return valuesArray;
+  }
+}
+
+let hash = new HashTable(5);
+hash.set("apple", "fruit");
+hash.set("banana", "fruit");
+console.log(hash.get("banana"));
+console.log(hash.getKeys());
+console.log(hash.getValues());
+console.log(hash);
