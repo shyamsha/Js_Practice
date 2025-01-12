@@ -701,3 +701,69 @@ console.log(hash.get("banana"));
 console.log(hash.getKeys());
 console.log(hash.getValues());
 console.log(hash);
+
+class NodeTree {
+  constructor(value) {
+    this.value = value;
+    this.right = null;
+    this.left = null;
+  }
+}
+
+class BST {
+  constructor() {
+    this.root = null;
+  }
+  insert(value) {
+    const newNode = new NodeTree(value);
+    if (this.root === null) {
+      this.root = newNode;
+      return this;
+    }
+    let temp = this.root;
+
+    while (true) {
+      if (newNode.value === temp.value) {
+        return null;
+      }
+
+      if (newNode.value < temp.value) {
+        if (temp.left === null) {
+          temp.left = newNode;
+          return this;
+        }
+        temp = temp.left;
+      } else {
+        if (temp.right === null) {
+          temp.right = newNode;
+          return this;
+        }
+        temp = temp.right;
+      }
+    }
+  }
+  include(value) {
+    let temp = this.root;
+    while (temp) {
+      if (value === temp.value) {
+        return temp;
+      }
+      if (value < temp.value) {
+        temp = temp.left;
+      } else {
+        temp = temp.right;
+      }
+    }
+    return false;
+  }
+}
+
+let tree = new BST();
+tree.insert(5);
+tree.insert(8);
+tree.insert(3);
+tree.insert(1);
+tree.insert(7);
+tree.insert(9);
+console.log(tree.include(5));
+console.log(tree);
