@@ -756,6 +756,47 @@ class BST {
     }
     return false;
   }
+  bfsIterate() {
+    const treeData = [];
+    const queue = [];
+    let node = this.root;
+    queue.push(node);
+    while (queue.length) {
+      node = queue.shift();
+      treeData.push(node.value);
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+    return treeData;
+  }
+  dfsPreOrder(node = this.root, data = []) {
+    if (node) {
+      data.push(node.value);
+      this.dfsPreOrder(node.left, data);
+      this.dfsPreOrder(node.right, data);
+    }
+    return data;
+  }
+  dfsPostOrder(node = this.root, data = []) {
+    if (node) {
+      this.dfsPostOrder(node.left, data);
+      this.dfsPostOrder(node.right, data);
+      data.push(node.value);
+    }
+    return data;
+  }
+  dfsInOrder(node = this.root, data = []) {
+    if (node) {
+      this.dfsInOrder(node.left, data);
+      data.push(node.value);
+      this.dfsInOrder(node.right, data);
+    }
+    return data;
+  }
 }
 
 let tree = new BST();
@@ -766,4 +807,7 @@ tree.insert(1);
 tree.insert(7);
 tree.insert(9);
 console.log(tree.include(5));
+console.log(tree.bfsIterate());
+console.log(tree.dfsPreOrder());
+console.log(tree.dfsPostOrder());
 console.log(tree);
