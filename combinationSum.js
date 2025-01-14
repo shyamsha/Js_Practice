@@ -42,4 +42,43 @@ const combinationSum = function (candidates, target) {
   dfs(0, target, []);
   return result;
 };
-console.log(combinationSum([2, 3, 6, 7], 7));
+// console.log(combinationSum([2, 3, 6, 7], 7));
+
+// The solution set must not contain duplicate combinations.
+// Each number in candidates may only be used once in the combination.
+const combinationSum2 = function (candidates, target) {
+  const result = [];
+  candidates = candidates.sort((a, b) => a - b);
+  function dfs(index, currentVal, arr) {
+    // Base case: if target becomes 0, we found a valid combination
+    if (currentVal < 0) return; // Stop recursion if current value exceeds currentVal
+    if (currentVal === 0) {
+      const newArr = [...arr];
+      result.push(newArr); // Create a new array copy
+    }
+
+    // Try all possible numbers from current index
+    for (let i = index; i < candidates.length; i++) {
+      // Only proceed if current number doesn't exceed target and if it's not a duplicate
+      if (i > index && candidates[i] === candidates[i - 1]) {
+        continue;
+      }
+      if (candidates[i] > target) return;
+
+      // Include current number in combination
+      arr.push(candidates[i]);
+
+      // Recursive call with:
+      // - same index i (allowing reuse of same number)
+      // - reduced target by current number
+      dfs(i + 1, currentVal - candidates[i], arr);
+
+      // Backtrack: remove the last added number to try other combinations
+      arr.pop();
+    }
+  }
+
+  dfs(0, target, []);
+  return result;
+};
+console.log(combinationSum2([10, 1, 2, 7, 6, 1, 5], 8));
