@@ -15,7 +15,6 @@ var moveZeroesLeft = function (nums) {
     else return 0;
   });
 };
-console.log(moveZeroesLeft([0, 1, 0, 3, 12]));
 let moveZeroes1 = function (nums) {
   let low = 0;
   let high = low + 1;
@@ -32,7 +31,9 @@ let moveZeroes1 = function (nums) {
       high++;
     }
   }
+  return nums;
 };
+console.log(moveZeroes1([0, 0, 1, 0, 3, 12]));
 
 var moveZeroes2 = function (nums) {
   let left = 0;
