@@ -31,3 +31,21 @@ function mostRepeat1(arr) {
 }
 
 log(mostRepeat1(arr));
+
+let majorityElement = function (arr) {
+  let element = 0;
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (count === 0) {
+      element = arr[i];
+    }
+    if (arr[i] === element) {
+      count++;
+    } else {
+      count--;
+    }
+  }
+  return element;
+};
+let nums = [2, 2, 3, 2, 2, 3, 3, 3];
+console.log(majorityElement(nums));

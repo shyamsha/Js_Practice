@@ -2,7 +2,7 @@
 // modify nums1 in-place instead
 // m,n are the number of elements in nums1 and nums2 respectively
 
-var merge = function (nums1, m, nums2, n) {
+let merge = function (nums1, m, nums2, n) {
   // last element
   let last = m + n - 1;
   // reverse oder to in place comparison
