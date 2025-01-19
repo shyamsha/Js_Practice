@@ -1,0 +1,42 @@
+key concepts of system design
+
+---->Load Balancing
+Load Balancing is a key concept to system design. 
+One of the popular ways to balance load in a system is to use the concept of consistent hashing. 
+Consistent Hashing allows requests to be mapped into hash buckets while allowing the system to add and remove nodes flexibly 
+so as to maintain a good load factor on each machine.
+
+The standard way to hash objects is to map them to a search space, and then transfer the load to the mapped computer. 
+A system using this policy is likely to suffer when new nodes are added or removed from it. 
+
+Consistent Hashing maps servers to the key space and assigns requests(mapped to relevant buckets, called load) to the next clockwise server.
+Servers can then store relevant request data in them while allowing the system flexibility and scalability.
+
+Some terms you would here in system design interviews are Fault Tolerance, in which case a machine crashes.
+And Scalability, in which case machines need to be added to process more requests. 
+These two principles are allowed by Consistent Hashing, and hence it is an important building block to a system design architect's toolbox.
+
+Another term used often is request allocation. 
+This means assigning a request to a server. 
+Consistent hashing assigns requests to the servers in a way that the load is balanced are remains close to equal. 
+
+Server architecture is a subjective concept, and there are outliers for many cases.
+Don't think of Consistent Hashing as a silver bullet for fault tolerance and scalability, but a useful concept for request allocation.
+
+---->Messaging Queues
+Messaging Queues are widely used in asynchronous systems. 
+Message processing in an asynchronous fashion allows the client to relieve itself from waiting for a task to complete and, 
+hence, can do other jobs during that time. It also allows a server to process its jobs in the order it wants to.
+
+Messaging Queues provide useful features such as persistence, routing, and task management.
+We will be discussing the benefits of a message queue in future videos.
+
+A system having a message queue can move to higher-level requirements while abstracting implementation details of message delivery 
+and event handling to the messaging queue.
+
+The 'queue' is just a name for this data structure. 
+In practice, it could be storing messages using any policy. Some examples of message queues are Kafka and RabbitMQ. 
+They are widely used for various purposes, such as command query request segregation (CQRS) and event sourcing.
+
+---->
+
