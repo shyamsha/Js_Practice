@@ -36,12 +36,7 @@
 // Solution:
 // Javascript Solution:
 
-/**
- * @param {Function[]} functions
- * @param {number} n
- * @return {Function}
- */
-var promisePool1 = async function (functions, n) {
+let promisePool1 = async function (functions, n) {
   const results = [];
   const inProgress = [];
   let i = 0;

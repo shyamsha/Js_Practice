@@ -53,3 +53,45 @@ let maxProfit1 = function (arr) {
   return max;
 };
 console.log(maxProfit1(prices1));
+
+// best time to buy and sell stock 2
+// On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time.
+// However, you can buy it then immediately sell it on the same day.
+// Input: prices = [7,1,5,3,6,4]
+// Output: 7
+// Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+// Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+// Total profit is 4 + 3 = 7.
+
+function maxProfit2(arr) {
+  // let min = arr[0];
+  // let max = 0;
+  // let profit = 0;
+  // for (let i = 1; i < arr.length; i++) {
+  //   let current = arr[i];
+  //   min = Math.min(min, current);
+  //   profit = current - min;
+
+  //   if (current > arr[i + 1]) {
+  //     min = current;
+  //     max += profit;
+  //     profit = 0;
+  //   }
+  // }
+
+  // return max + profit;
+  // write code
+  let maxProfit = 0;
+  for (let i = 1; i < arr.length; i++) {
+    //simplified version
+    if (arr[i] > arr[i - 1]) {
+      maxProfit += arr[i] - arr[i - 1];
+    }
+  }
+  return maxProfit;
+}
+let nums = [1, 2, 3, 4, 5];
+// let nums = [7, 6, 4, 3, 1];
+// let nums = [7, 1, 5, 3, 6, 4];
+
+console.log(maxProfit2(nums));
