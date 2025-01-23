@@ -22,7 +22,7 @@ let tasks = [
   createAsyncTask(),
   createAsyncTask(),
 ];
-
+// Execute async tasks in Sequence means 
 function asyncSequence(tasks, callback) {
   let results = [];
   let errors = [];
