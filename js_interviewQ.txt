@@ -474,3 +474,34 @@ The event loop checks the microtasks queue first, ensuring these tasks are proce
 If it's empty, it moves to the callback queue. 
 This ensures that critical tasks, like promises, are handled promptly.
   
+  -=1. timer in react
+2.Run Third-Party Scripts From A Web Worker
+3. Implement offset pagination
+deepClone of object compare
+build a Sticky Notes application
+Disadvantages of Virtual DOM?
+Why virtual DOM is not used by other libraries and frameworks other than React?
+Disadvantages of React?
+Disadvantages of some CSS framework, why it is needed, he was expecting the justification.
+Asked to write a custom hook to get the live data from the server, the endpoint was provided.
+Difference between server state, app state and local state? Use cases for each?
+Which the best way to implement server state?redux thunk vs tanstack query vs redux saga?
+webpack configurations?
+ssr vs spa?
+serverless vs servers?
+debouncing va throttling? Usecases?
+design youtube(Flipkart in 2022)
+design WhatsApp(Walmart in 2022)
+design BookMyShow(Flipkart in 2023)
+design google calendar(Netomi in 2023) 
+
+--Microsoft Machine coding design question 
+Design an Email Client like MS Outlook.
+Create a chat interface like MS teams.
+Create a Notification interface like MS
+
+HLD and LLD question
+Design snake and ladders game.
+
+show me a project on which is in the initial stage you worked earlier, 
+and explain to me the complete architecture of the project and, what actions you have taken to scale up this project?
