@@ -24,15 +24,15 @@ let twoSum1 = function (nums, target) {
   for (let i = 0; i < nums.length; i++) {
     let x = target - nums[i];
     if (map.has(x)) {
-      return [map.get(x), i];
+      return [map.get(x) + 1, i + 1];
     } else {
       map.set(nums[i], i);
     }
   }
 };
 
-let nums = [8, 7, 2, 5, 3, 1];
-let target = 10;
+let nums = [2, 7, 11, 15];
+let target = 9;
 
 console.log(twoSum1(nums, target));
 
@@ -42,3 +42,27 @@ console.log(twoSum1(nums, target));
 let numbers = [2, 7, 11, 10, 5, 9];
 let t = 15;
 // console.log(twoSum1(numbers, t));
+/**
+ * @param {number[]} numbers
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum2 = function (numbers, target) {
+  let i = 0;
+  let j = numbers.length - 1;
+
+  while (i < j) {
+    const sum = numbers[i] + numbers[j];
+    if (sum === target) {
+      return [i + 1, j + 1];
+    }
+
+    if (sum < target) {
+      i += 1;
+    }
+
+    if (sum > target) {
+      j -= 1;
+    }
+  }
+};
