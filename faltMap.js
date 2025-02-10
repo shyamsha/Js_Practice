@@ -11,24 +11,24 @@
 
 const arr4 = [1, 2, [3, [4, 5, [6, 7]]]];
 
-console.log(arr4.flatMap((element) => element).flat(2)); // [1, 2, 3, 4, 5, 6, 7]
+// console.log(arr4.flatMap((element) => element).flat(2)); // [1, 2, 3, 4, 5, 6, 7]
 
-console.log(arr4.flat(3)); // [1, 2, 3, 4, 5, 6, 7]
+// console.log(arr4.flat(3)); // [1, 2, 3, 4, 5, 6, 7]
 
 const arr3 = [1, 2, [4, 5], 6, 7, [8]];
 
-console.log(arr3.flatMap((element) => element)); // [1, 2, 4, 5, 6, 7, 8]
+// console.log(arr3.flatMap((element) => element)); // [1, 2, 4, 5, 6, 7, 8]
 
 const arr1 = [1, 2, [4, 5], 6, 7, [8, [6]]];
-console.log(arr1.flat(Infinity));
+// console.log(arr1.flat(Infinity));
 // flatMap() depth until 2
-console.log(arr1.flatMap((element) => element)); // [1, 2, 4, 5, 6, 7, 8, [6]]
+// console.log(arr1.flatMap((element) => element)); // [1, 2, 4, 5, 6, 7, 8, [6]]
 
 // dept flatten array using recursion
 let flatten = (a) => (Array.isArray(a) ? [].concat(...a.map(flatten)) : a);
 let flatArray = [].concat.apply([], arr4);
 
-console.log(flatten(arr1));
+// console.log(flatten(arr1));
 
 function flattenMultiArray(arr) {
   const flattened = [].concat(...arr);
@@ -50,7 +50,7 @@ function flat(arr) {
   }
   return result;
 }
-console.log(flat(multiDimensionalArr));
+// console.log(flat(multiDimensionalArr));
 
 function flattenArray(arr22, flattenArr) {
   for (let i = 0; i < arr22.length; i++) {
@@ -65,7 +65,7 @@ function flattenArray(arr22, flattenArr) {
   return flattenArr;
 }
 
-console.log(flattenArray(multiDimensionalArr, []), "flatten array");
+// console.log(flattenArray(multiDimensionalArr, []), "flatten array");
 
 function flatten2(arr) {
   const newArr = arr.reduce((acc, item) => {
@@ -83,7 +83,7 @@ function flatten2(arr) {
 
 const numArr = [1, [2, [3], 4, [5, 6, [7]]]];
 
-flatten2(numArr); // [1, 2, 3, 4, 5, 6, 7]
+// flatten2(numArr); // [1, 2, 3, 4, 5, 6, 7]
 
 // Flatten array of array object example [1,[{3:[5]}]]
 
@@ -124,3 +124,23 @@ let flatten1 = function (a) {
 };
 
 console.log(flatten1(arr13));
+function flattenCustomerOrders(customers) {
+  let arr = [];
+  for (const key of customers) {
+    const { username, orders } = key;
+    for (const order of orders) {
+      arr.push({ username, ...order });
+    }
+  }
+  return arr;
+}
+let arr = [
+  {
+    username: "123",
+    orders: [
+      { item: "1", amount: "1000" },
+      { item: "2", amount: "1000" },
+    ],
+  },
+];
+console.log(flattenCustomerOrders(arr));
