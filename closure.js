@@ -144,3 +144,12 @@ log(count1.increment());
 let count2 = new Counter();
 log(count2.increment());
 log(count2.increment());
+
+function count() {
+  let counter = 0;
+  counter++;
+  count.reset = () => {
+    return (counter = 0);
+  };
+  return counter;
+}
