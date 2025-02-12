@@ -1,7 +1,3 @@
-differentiate between Null and Undefined ?
-Undefined :-variable has been declare but value is not assigned
-Null :-null indicates absence of data.
-
 What is Use Strict ?
 JavaScript's strict mode is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of "sloppy mode".
 
@@ -10,12 +6,6 @@ four ways 1.object create normal way 2.use constructor 3.using class 4.Object.cr
 
 How can we do inheritance in JavaScript ?
 JavaScript uses object inheritance or prototype inheritance. inheritance done using prototype object
-
-What is prototype in JavaScript ?
-every object has prototype object
-
-Explain Prototype chaining ?
-means where one object inheritance to another object
 
 How to detect if caps lock is on using JavaScript?
 use the getModifierState() method of the KeyboardEvent event object.
@@ -27,9 +17,6 @@ Differentiate between class and normal function ?
 class is template function is to perform a task
 class are not hoisted and functions are hoisted
 Functions can be overwritten, whereas classes can be extended, but not overwritten
-
-Why do we use Arrow function ?
-for readability and concise way to perform function task and we can able write single line to return function
 
 Differentiate between Arrow vs Normal Function ?
 arrow function are syntactical shorter and more readability compares to normal function
@@ -109,19 +96,6 @@ only declaration hoisted not assignment/initialization
 execution context in memory phase Declarations will allocated to undefined
 
 scope
-syntax error vs reference error vs type error
-
-const a; or const a;
-            a=100;
-we declared but not initialized look like SyntaxError: Missing initializer in const declaration
-console.log(a) ReferenceError: Cannot access 'a' before initialization
-let a=10
-console.log(b) ReferenceError: b is not defined
-reference error has two types one is not defined and second is not access before initialized
-const a=10
- a=100
- console.log(a); TypeError: Assignment to constant variable
-type error is when a value is not of the expected type
 
 block: we need write multiple statements open closed curly braces that is block
 
@@ -374,17 +348,9 @@ rest is used to get the remaining arguments of an iterable ex: func d(a,b,...res
 what is type coercion in JS?
 type coercion is the process of converting one data type to another data type.
 
-what is operator precedence?
-using bodmass rule to apply Arithmetic operations by evaluating them from which is first.
-
 what are array-like objects in JS?
 string is array-like object in JS. we can use length,index. same way arguments,HTML collections also array-like objects.
 we can convert array-like objects into array using spread operator and Array.from(arr) and Array.prototype.slice.call(arr)
-
-what are First-Class functions in JS?
-In JavaScript, functions are first-class citizens.
-they treated like other variables.
-functions can be assigned to variables or passed as an argument or can be returned by another function.
 
 what are Pure and Impure functions in JS?
 Pure function is a function which returns the same result if given the same arguments. it has no side effects and not modify state
@@ -393,9 +359,6 @@ Impure function is a function which returns different results if given the same 
 what is Function Currying in JS? 
 transforming a function that takes multiple arguments into a sequence of functions that each take a single argument.
 benefit of currying is that it is easy to compose functions and reusability and modularity
-
-Template Literals and String Interpolation
-`name is ${name}` is template Literals and variable with name is in curly braces is called string interpolation
 
 HTML VS DOM
 HTML is a markup language used to create web pages. This language describes the HTML tree structure 
@@ -474,7 +437,7 @@ The event loop checks the microtasks queue first, ensuring these tasks are proce
 If it's empty, it moves to the callback queue. 
 This ensures that critical tasks, like promises, are handled promptly.
   
-  -=1. timer in react
+1. timer in react
 2.Run Third-Party Scripts From A Web Worker
 3. Implement offset pagination
 deepClone of object compare
@@ -489,7 +452,6 @@ Which the best way to implement server state?redux thunk vs tanstack query vs re
 webpack configurations?
 ssr vs spa?
 serverless vs servers?
-debouncing va throttling? Usecases?
 design youtube(Flipkart in 2022)
 design WhatsApp(Walmart in 2022)
 design BookMyShow(Flipkart in 2023)
