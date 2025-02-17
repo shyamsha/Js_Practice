@@ -38,20 +38,19 @@ function subString(s) {
   return maxSize;
 }
 
-var lengthOfLongestSubstring = function minimizeStr(str) {
-  let leftIndex = 0;
-  let rightIndex = 0;
+// using map implement longest substring
+function lengthOfLongestSubstring(s) {
+  let map = new Map();
+  let left = 0;
   let maxSize = 0;
-  let set = new Set();
-  while (rightIndex < str.length) {
-    if (!set.has(str[rightIndex])) {
-      set.add(str[rightIndex]);
-      rightIndex++;
-      maxSize = Math.max(maxSize, set.size);
-    } else {
-      set.delete(str[leftIndex]);
-      leftIndex++;
+  for (let i = 0; i < s.length; i++) {
+    if (map.has(s[i])) {
+      left = Math.max(left, map.get(s[i]) + 1);
     }
+    map.set(s[i], i);
+    maxSize = Math.max(maxSize, i - left + 1);
   }
   return maxSize;
-};
+}
+let s = "pwwkew";
+console.log(lengthOfLongestSubstring(s));

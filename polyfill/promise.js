@@ -13,13 +13,18 @@ const promise3 = new Promise(function (resolve, reject) {
 Promise.myall = function (promises) {
   return new Promise((resolve, reject) => {
     let results = [];
-    let total = 0;
+    let completedPromises = 0;
+    if (promises.length === 0) Promise.resolve(results);
     promises.forEach((promise, index) => {
-      Promise.resolve(promise).then((res) => {
-        results[index] = res;
-        total++;
-        if (total === promises.length) resolve(results);
-      }, reject);
+      Promise.resolve(promise)
+        .then((res) => {
+          results[index] = res;
+          completedPromises++;
+          if (completedPromises === promises.length) resolve(results);
+        })
+        .catch((error) => {
+          reject(error);
+        });
     });
   });
 };
@@ -28,6 +33,25 @@ Promise.myall([promise1, promise2, promise3])
   .then((res) => console.log(res))
   .catch((err) => console.log(err));
 
+// create promise.allSettled polyfill
+Promise.allSettled = function (promises) {
+  let mappedPromises = promises.map((p) => {
+    return p
+      .then((value) => {
+        return {
+          status: "fulfilled",
+          value,
+        };
+      })
+      .catch((reason) => {
+        return {
+          status: "rejected",
+          reason,
+        };
+      });
+  });
+  return Promise.all(mappedPromises);
+};
 // create promise polyfill
 
 const MyPromise = function (executor) {
