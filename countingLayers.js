@@ -13,10 +13,11 @@ function countLayers(grid) {
       layers[grid[i]] = true;
     }
   }
+  return count;
 }
 
 console.log(countLayers(["CCCC", "CBBB", "CCCC"]));
-2;
+// 2
 
 console.log(countLayers(["DDDDDD", "DCCCCD", "DCDDDC", "DCCCCD", "DDDDDD"]));
 // 3

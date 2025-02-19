@@ -32,7 +32,7 @@ function add(a, b, c) {
   return a + b + c;
 }
 
-function a(fn) {
+function currying(fn) {
   return function curry(...args) {
     console.log(args.length, fn.length);
     if (args.length >= fn.length) {
@@ -45,7 +45,7 @@ function a(fn) {
   };
 }
 
-let sum = a(add);
+let sum = currying(add);
 console.log(sum(2)(2)(4));
 console.log(sum(2, 2)(4));
 console.log(sum(2)(2, 4));
