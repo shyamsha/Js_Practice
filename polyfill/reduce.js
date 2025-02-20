@@ -3,6 +3,10 @@
 Array.prototype.myReduce = function (cb, initialValue) {
   let result; // it acts as prev value
   let currIndex = 0; // it acts as curr value
+  if (typeof cb !== "function")
+    throw new TypeError("callback is not a function");
+  if (this.length === 0 && initialValue === undefined)
+    throw new TypeError("Reduce of empty array with no initial value");
   if (arguments.length < 2) {
     result = this[0];
     currIndex = 1;
@@ -27,23 +31,6 @@ console.log(arr.myReduce((prod, elem) => prod * elem, 5));
 
 const sum = arr.myReduce((prev, curr) => prev + curr, 6);
 console.log(sum);
-
-Array.prototype.myReduce1 = function (cb, initial) {
-  let acc = initial;
-  for (let i = 0; i < this.length; i++) {
-    acc = acc ? cb(acc, this[i], i, this) : this[i];
-  }
-  return acc;
-};
-const oddEvenCount = arr.myReduce1(
-  (prev, curr) =>
-    curr % 2 == 0
-      ? { ...prev, even: prev.even + 1 }
-      : { ...prev, odd: prev.odd + 1 },
-  { even: 0, odd: 0 }
-);
-console.log(oddEvenCount);
-// output: {even: 2, odd: 2};
 
 // polyfill for reduce right
 
