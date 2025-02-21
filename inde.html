@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time Validation</title>
+    <style>
+      .error {
+        color: red;
+        font-size: 0.9em;
+      }
+      input:invalid {
+        border: 1px solid red;
+      }
+      input:valid {
+        border: 1px solid green;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required />
+      <span class="error" id="nameError"></span>
+      <br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+      <span class="error" id="emailError"></span>
+      <br /><br />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required />
+      <span class="error" id="passwordError"></span>
+      <br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      document.getElementById("name").addEventListener("input", function () {
+        let name = this.value;
+        let errorSpan = document.getElementById("nameError");
+        if (name.length < 3) {
+          errorSpan.textContent = "Name must be at least 3 characters long.";
+        } else {
+          errorSpan.textContent = "";
+        }
+      });
+
+      document.getElementById("email").addEventListener("input", function () {
+        let email = this.value;
+        let errorSpan = document.getElementById("emailError");
+        let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (!email.match(emailPattern)) {
+          errorSpan.textContent = "Enter a valid email address.";
+        } else {
+          errorSpan.textContent = "";
+        }
+      });
+
+      document
+        .getElementById("password")
+        .addEventListener("input", function () {
+          let password = this.value;
+          let errorSpan = document.getElementById("passwordError");
+          if (password.length < 6) {
+            errorSpan.textContent =
+              "Password must be at least 6 characters long.";
+          } else {
+            errorSpan.textContent = "";
+          }
+        });
+
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          if (
+            document.getElementById("nameError").textContent ||
+            document.getElementById("emailError").textContent ||
+            document.getElementById("passwordError").textContent
+          ) {
+            event.preventDefault(); // Prevent form submission if there are errors
+            alert("Please fix the errors before submitting.");
+          }
+        });
+    </script>
+  </body>
+</html>

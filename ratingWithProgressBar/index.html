@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Rating</title>
+    <!-- Link the CSS file -->
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="rating-component">
+      <h2>Rate this Product</h2>
+      <div id="stars">
+        <button class="star" data-rating="1">★</button>
+        <button class="star" data-rating="2">★</button>
+        <button class="star" data-rating="3">★</button>
+        <button class="star" data-rating="4">★</button>
+        <button class="star" data-rating="5">★</button>
+      </div>
+      <h3>Total Ratings</h3>
+      <div id="total-ratings">0</div>
+      <h3>Ratings:</h3>
+      <div id="ratings-list">
+        <div class="rating-item" id="rating-1">
+          <span>1 Star</span>
+          <div class="progress-bar" id="progress-1">
+            <div class="progress-fill" id="fill-1"></div>
+          </div>
+          <span id="percentage-1">0%</span>
+        </div>
+
+        <div class="rating-item" id="rating-2">
+          <span>2 Stars</span>
+          <div class="progress-bar" id="progress-2">
+            <div class="progress-fill" id="fill-2"></div>
+          </div>
+          <span id="percentage-2">0%</span>
+        </div>
+
+        <div class="rating-item" id="rating-3">
+          <span>3 Stars</span>
+          <div class="progress-bar" id="progress-3">
+            <div class="progress-fill" id="fill-3"></div>
+          </div>
+          <span id="percentage-3">0%</span>
+        </div>
+
+        <div class="rating-item" id="rating-4">
+          <span>4 Stars</span>
+          <div class="progress-bar" id="progress-4">
+            <div class="progress-fill" id="fill-4"></div>
+          </div>
+          <span id="percentage-4">0%</span>
+        </div>
+
+        <div class="rating-item" id="rating-5">
+          <span>5 Stars</span>
+          <div class="progress-bar" id="progress-5">
+            <div class="progress-fill" id="fill-5"></div>
+          </div>
+          <span id="percentage-5">0%</span>
+        </div>
+      </div>
+    </div>
+    <!-- Link the JavaScript file -->
+    <script src="index.js" defer></script>
+  </body>
+</html>
