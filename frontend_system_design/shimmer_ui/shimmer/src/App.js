@@ -29,6 +29,7 @@ import useOnlineStatus from "./hooks/useOnlineStatus";
 import Offline from "./components/common/Offline";
 import Game from "./components/rippleGame/Game";
 import { CardItemList } from "./components/pictureGame/CardItemList";
+import MultiTabForm from "./components/multiTabFrom/MultiTabForm";
 
 function App() {
   const { i18n } = useTranslation();
@@ -109,6 +110,9 @@ function App() {
             <a className="" href="/game">
               Game<span className="text-red-600 px-1">|</span>
             </a>
+            <a className="" href="/tabs">
+              Tabs<span className="text-red-600 px-1">|</span>
+            </a>
           </nav>
           <select
             className="bg-black text-white"
@@ -154,6 +158,7 @@ function App() {
             <Route path="/circle" element={<MouseMoveCircle />} />
             {/* <Route path="/game" element={<Game />} /> */}
             <Route path="/game" element={<CardItemList />} />
+            <Route path="/tabs" element={<MultiTabForm />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
