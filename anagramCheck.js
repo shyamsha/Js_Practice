@@ -7,7 +7,7 @@ function anagramCheck(string1, string2) {
 // sorts the arrays, and finally joins them back together.
 // The sorting step has a time complexity of O(n log n) where n is the length of the input strings
 
-console.log(anagramCheck("silenT", "listen"));
+// console.log(anagramCheck("silenT", "listen"));
 
 function optimizedAnagram(s, t) {
   if (s.length !== t.length) return false;
@@ -16,6 +16,7 @@ function optimizedAnagram(s, t) {
     counter[s[i]] = (counter[s[i]] || 0) + 1;
     counter[t[i]] = (counter[t[i]] || 0) - 1;
   }
+  console.log(counter);
   for (let key in counter) {
     if (counter[key] !== 0) return false;
   }
