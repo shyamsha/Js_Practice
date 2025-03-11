@@ -1,4 +1,4 @@
-console.log(isPalindrome("A man, a plan, a canal: Panama"));
+// console.log(isPalindrome("A man, a plan, a canal: Panama"));
 function isPalindrome(str) {
   // let len = str.length;
   // for (let i = 0; i < len / 2; i++) {
@@ -35,3 +35,28 @@ function PalindromeWithRecursion(num) {
 
 // console.log(PalindromeWithRecursion(12321));
 // console.log(PalindromeWithRecursion(10));
+var isPalindrome = function (x) {
+  let xCopy = x;
+  let output = 0;
+  while (xCopy > 0) {
+    output = output * 10 + (xCopy % 10);
+    xCopy = Math.floor(xCopy / 10);
+  }
+
+  return output === x;
+};
+
+var isPalindrome12 = function (x) {
+  let str = x + "";
+  let j = str.length - 1;
+  for (let i = 0; i < str.length; i++) {
+    console.log(str[i], str[j]);
+    if (str[i] === str[j]) {
+      j--;
+    }
+  }
+  console.log(j);
+  return j < 0;
+};
+
+console.log(isPalindrome(121));
