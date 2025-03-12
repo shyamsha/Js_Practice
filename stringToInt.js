@@ -66,6 +66,26 @@ function integer(s) {
   return +arr.join("");
 }
 
-console.log(integer("words 21 gf"));
-console.log(integer("words 21 gf"));
-console.log(integer(" gf -41"));
+// console.log(integer("words 21 gf"));
+// console.log(integer("words 21 gf"));
+// console.log(integer("-041"));
+
+var myAtoi = function (s) {
+  s = s.trim(); // remove leading and trailing white spaces
+  const numValue = parseInt(s); // parse the integer value
+
+  if (isNaN(numValue)) {
+    return 0;
+  } else if (numValue < Math.pow(-2, 31)) {
+    return Math.pow(-2, 31);
+  } else if (numValue > Math.pow(2, 31) - 1) {
+    return Math.pow(2, 31) - 1;
+  } else {
+    return numValue;
+  }
+};
+
+let arr = "1337c03";
+let arr1 = "-042";
+let arr2 = "0-1";
+console.log(myAtoi(arr1));
