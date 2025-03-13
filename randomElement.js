@@ -34,3 +34,16 @@ console.log(
   Math.random().toString(36).slice(2) +
     Math.random().toString(36).toUpperCase().slice(2)
 );
+
+function generateRandomNumbers(count, min, max) {
+  // 1: Create a `Set` object
+  let uniqueNumbers = new Set();
+  while (uniqueNumbers.size < count) {
+    // 2: Generate each random number
+    uniqueNumbers.add(Math.floor(Math.random() * (max - min + 1)) + min);
+  }
+  // 3: Immediately insert them numbers into the Set...
+  return Array.from(uniqueNumbers);
+}
+// ...set how many numbers to generate from a given range
+console.log(generateRandomNumbers(10, 1, 10));
