@@ -162,7 +162,7 @@ Array.prototype.mySort = function (cb = defaultComparator) {
   for (var i = 0; i < this.length; i++) {
     for (var j = i + 1; j < this.length; j++) {
       if (cb(this[i], this[j]) > 0) {
-        var swap = this[i];
+        let swap = this[i];
         this[i] = this[j];
         this[j] = swap;
       }

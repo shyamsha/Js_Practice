@@ -1,24 +1,17 @@
 //polyfill for reduce
 // reduce of this polyfill
 Array.prototype.myReduce = function (cb, initialValue) {
-  let result; // it acts as prev value
-  let currIndex = 0; // it acts as curr value
   if (typeof cb !== "function")
     throw new TypeError("callback is not a function");
   if (this.length === 0 && initialValue === undefined)
     throw new TypeError("Reduce of empty array with no initial value");
-  if (arguments.length < 2) {
-    result = this[0];
-    currIndex = 1;
-  }
-  if (arguments.length > 1) {
-    result = initialValue;
-  }
+  let accumulator = initialValue !== undefined ? initialValue : this[0];
+  let startIndex = initialValue !== undefined ? 0 : 1;
 
-  for (let i = currIndex; i < this.length; i++) {
-    result = cb(result, this[i]);
+  for (let i = startIndex; i < this.length; i++) {
+    accumulator = callback(accumulator, this[i], i, this);
   }
-  return result;
+  return accumulator;
 };
 
 // Code to calculate sum of array elements
@@ -37,7 +30,7 @@ console.log(sum);
 const arr1 = [1, 2];
 
 Array.prototype.myReduceRight = function (cb, initialValue) {
-  let result;
+  let result = null;
   let startIndex = this.length - 1;
   if (arguments.length <= 1) {
     result = this[this.length - 1];
