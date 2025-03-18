@@ -55,12 +55,12 @@ Promise.allSettled = function (promises) {
 // create promise polyfill
 
 const MyPromise = function (executor) {
-  let onResolve,
-    onReject,
+  let onResolve = null,
+    onReject = null,
     isFullFilled = false,
     isRejected = false,
     isCalled = false,
-    value;
+    value = null;
   function resolve(val) {
     isFullFilled = true;
     value = val;
@@ -69,11 +69,11 @@ const MyPromise = function (executor) {
       isCalled = true;
     }
   }
-  function reject(val) {
+  function reject(err) {
     isRejected = true;
-    value = val;
+    value = err;
     if (typeof onReject === "function") {
-      onReject(val);
+      onReject(err);
       isCalled = true;
     }
   }
@@ -89,7 +89,7 @@ const MyPromise = function (executor) {
     onReject = cb;
     if (isRejected && !isCalled) {
       isCalled = true;
-      onResolve(value);
+      onReject(value);
     }
     return this;
   };
@@ -101,13 +101,84 @@ const MyPromise = function (executor) {
 };
 
 const examplePromise = new MyPromise((resolve, reject) => {
-  // setTimeout(() => {
-  reject(2);
-  // }, 0)
+  reject("error");
 });
 
 examplePromise
   .then((res) => {
-    console.log(res);
+    console.log(res, "promise");
   })
   .catch((error) => console.log(error));
+
+MyPromise.resolve = (val) => {
+  return new MyPromise((resolve, reject) => {
+    resolve(val);
+  });
+};
+
+MyPromise.reject = (err) => {
+  return new MyPromise((resolve, reject) => {
+    reject(err);
+  });
+};
+
+MyPromise.all = function (promises) {
+  return new MyPromise((resolve, reject) => {
+    let results = [];
+    let completedPromises = 0;
+    if (promises.length === 0) {
+      MyPromise.resolve(results);
+      return;
+    }
+    for (let i = 0; i < promises.length; i++) {
+      promises[i]
+        .then((val) => {
+          done(val, i);
+        })
+        .catch((error) => reject(error));
+    }
+    function done(val, i) {
+      results[i] = val;
+      completedPromises++;
+      if (completedPromises === promises.length) resolve(results);
+    }
+  });
+};
+
+const p1 = MyPromise.resolve(1);
+const p2 = MyPromise.resolve(2);
+const p3 = MyPromise.resolve(3);
+MyPromise.all([p1, p2, p3])
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+
+MyPromise.race = function (promises) {
+  return new MyPromise((resolve, reject) => {
+    promises.forEach((promise) => {
+      promise
+        .then((val) => {
+          resolve(val);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  });
+};
+
+const p4 = MyPromise.resolve(4);
+const p5 = MyPromise.resolve(5);
+const p6 = MyPromise.resolve(6);
+MyPromise.race([p4, p5, p6])
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+
+const race = function (promisesArray) {
+  return new Promise((resolve, reject) => {
+    promisesArray.forEach((promise) => {
+      Promise.resolve(promise)
+        .then(resolve, reject) // resolve, when any of the input promise resolves
+        .catch(reject); // reject, when any of the input promise rejects
+    });
+  });
+};
