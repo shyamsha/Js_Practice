@@ -1,10 +1,5 @@
 // find the differences between two deeply nested objects
 
-/**
- * @param {object} obj1
- * @param {object} obj2
- * @return {object}
- */
 function objDiff(obj1, obj2) {
   if (!isObject(obj1) && !isObject(obj2)) {
     //if both primitive
