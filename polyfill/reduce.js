@@ -47,3 +47,75 @@ Array.prototype.myReduceRight = function (cb, initialValue) {
 
 const subtract = arr1.myReduceRight((prev, curr) => prev + curr);
 console.log(subtract);
+
+// power full way usage reduce
+// functions
+const upperCase = (str) => {
+  return str.toUpperCase();
+};
+
+const reverse = (str) => {
+  return str.split("").reverse().join("");
+};
+
+const append = (str) => {
+  return "Hello " + str;
+};
+
+// array of functions to be piped
+const arr21 = [upperCase, reverse, append];
+
+// initial value
+const initialValue = "learnersbucket";
+
+const finalValue = arr21.reduce((previousValue, currentElement) => {
+  // pass the value through each function
+  // currentElement is the function from the array
+  const newValue = currentElement(previousValue);
+
+  // return the value received from the function
+  return newValue;
+}, initialValue);
+
+console.log(finalValue);
+
+// "Hello TEKCUBSRENRAEL"
+
+// Similarly, if we want to run a promise in a sequence we can do the same with this
+// helper function to create a promise
+// that resolves after a certain time
+const asyncTask = function (i) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(`Completing ${i}`), 100 * i);
+  });
+};
+
+// create an array of task
+const promises = [
+  asyncTask(3),
+  asyncTask(1),
+  asyncTask(7),
+  asyncTask(2),
+  asyncTask(5),
+];
+
+// mani function to run promise in series
+const asyncSeriesExecuter = function (promises) {
+  promises.reduce((acc, curr) => {
+    // return when previous promise is resolved
+    return acc.then(() => {
+      // run the current promise
+      return curr.then((val) => {
+        console.log(val);
+      });
+    });
+  }, Promise.resolve());
+};
+
+asyncSeriesExecuter(promises);
+
+("Completing 3");
+("Completing 1");
+("Completing 7");
+("Completing 2");
+("Completing 5");
