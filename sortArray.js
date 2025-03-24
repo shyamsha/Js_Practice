@@ -92,26 +92,25 @@ function quickSort(arr) {
 console.log(quickSort([-3, -4, 6, 4, 40, 50, 2, 3, 5]));
 
 // merge sort
-
 function mergeSort(arr) {
-  if (arr.length < 2) {
+  if (arr.length <= 1) {
     return arr;
   }
   let mid = Math.floor(arr.length / 2);
-  let leftArr = arr.slice(0, mid);
-  let rightArr = arr.slice(mid);
-  return merge(mergeSort(leftArr), mergeSort(rightArr));
-}
-function merge(leftArr, rightArr) {
-  const sortedArray = [];
-  while (leftArr.length && rightArr.length) {
-    if (leftArr[0] <= rightArr[0]) {
-      sortedArray.push(leftArr.shift());
-    } else {
-      sortedArray.push(rightArr.shift());
+  let left = mergeSort(arr.slice(0, mid));
+  let right = mergeSort(arr.slice(mid));
+  function merge(left, right) {
+    let result = [];
+    while (left.length && right.length) {
+      if (left[0] < right[0]) {
+        result.push(left.shift());
+      } else {
+        result.push(right.shift());
+      }
     }
+    return [...result, ...left, ...right];
   }
-  return [...sortedArray, ...leftArr, ...rightArr];
+  return merge(left, right);
 }
 console.log(mergeSort([-3, -4, 6, 4, 40, 50, 2, 3, 5]));
 
