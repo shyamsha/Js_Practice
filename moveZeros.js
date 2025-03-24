@@ -53,22 +53,26 @@ function moveZerosR(arr) {
   let i = 0;
   for (let j = 0; j < arr.length; j++) {
     if (arr[j] !== 0) {
-      [arr[i], arr[j]] = [arr[j], arr[i]];
+      if (j !== i) {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
       i++;
     }
   }
   return arr;
 }
-log(moveZerosR([0, 1, 0, 3, 12]));
+console.log(moveZerosR([0, 1, 0, 3, 12]));
 
 function moveZerosL(arr) {
   let i = 0;
   for (let j = 0; j < arr.length; j++) {
     if (arr[j] === 0) {
-      [arr[i], arr[j]] = [arr[j], arr[i]];
+      if (j !== i) {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
       i++;
     }
   }
   return arr;
 }
-log(moveZerosL([0, 1, 0, 3, 12]));
+console.log(moveZerosL([0, 1, 0, 3, 12]));
