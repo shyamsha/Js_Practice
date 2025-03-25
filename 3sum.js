@@ -63,3 +63,30 @@ function threeSumTwoPointer(nums) {
   return res;
 } // O(n^2)
 console.log(threeSumTwoPointer(nums));
+
+// 3sum closest to target
+function threeSumClosest(nums, target) {
+  nums.sort((a, b) => a - b);
+  let closest = Infinity;
+  for (let i = 0; i < nums.length; i++) {
+    let left = i + 1;
+    let right = nums.length - 1;
+    while (left < right) {
+      let sum = nums[i] + nums[left] + nums[right];
+      if (Math.abs(target - sum) < Math.abs(target - closest)) {
+        closest = sum;
+      }
+      if (sum < target) {
+        left++;
+      } else {
+        right--;
+      }
+    }
+  }
+  return closest;
+}
+const arr = [-1, 2, 1, -4];
+const target = 1;
+console.log(threeSumClosest(arr, target)); // 2
+// time complexity is O(n^2)
+// space complexity is O(1)
