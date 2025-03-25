@@ -1,18 +1,3 @@
-What is Use Strict ?
-JavaScript's strict mode is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of "sloppy mode".
-
-What are the various ways to create JavaScript objects?
-four ways 1.object create normal way 2.use constructor 3.using class 4.Object.create()
-
-How can we do inheritance in JavaScript ?
-JavaScript uses object inheritance or prototype inheritance. inheritance done using prototype object
-
-How to detect if caps lock is on using JavaScript?
-use the getModifierState() method of the KeyboardEvent event object.
-
-What is class in ES6 ?
-class is template of object
-
 Differentiate between class and normal function ?
 class is template function is to perform a task
 class are not hoisted and functions are hoisted
@@ -21,7 +6,7 @@ Functions can be overwritten, whereas classes can be extended, but not overwritt
 Differentiate between Arrow vs Normal Function ?
 arrow function are syntactical shorter and more readability compares to normal function
 In arrow functions can not bind this
- arrow functions we can implicitly return with single line
+arrow functions we can implicitly return with single line
 no duplicate parameters allowed
 We cannot use them as Constructors.
 They do not have prototype property.
@@ -34,8 +19,6 @@ Difference between arguments and Rest parameters
 arguments objects are not real arrays they are just array like objects which have only one property length. 
 Where as Rest parameter are real arrays which has all methods like pop, forEach, push etc.
 For arguments objects we cannot use different names while with the Rest parameters we can use our custom names.
-what is a WebAPI/Browser API ?
-Web API is an application programming interface for the Web
 
 What will be the output of the following code snippet? (in operator)
 
@@ -174,7 +157,7 @@ const p1 = new Promise((resolve,reject)=>{
 
 const p2 = new Promise((resolve,reject)=>{
     setTimeout(()=>{
-      resolve("promise resolve after 10 sec")
+      resolve("promise resolve after 5 sec")
     },5000)
 })
 
@@ -338,18 +321,8 @@ const person2=new Person()
 if the prototype value changed than all objects will change
 all previous value not changed
 
-
-
 console.log(person1)
 console.log(person2)
-
- 
-What is JSON?
-it is data interchange  format that is commonly used in web applications.
-
-datatype diff in JS
-primitive datatype hold single value and immutable
-non-primitive is reference and mutable
 
 spread vs rest
 spread operator used to expand iterable objects(array,string,object) ex: coping an array,merging arrays,passing multiple arguments
