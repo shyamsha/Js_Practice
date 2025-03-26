@@ -135,9 +135,6 @@ position: absolute places an element relative to its parent’s position and ch
 position: fixed; is positioned relative to the viewport, stays same place
 position: sticky; is positioned based on the user's scroll position.
 
-Servers side component 
-when you render static HTML on server we can use SSR
-
 Rules of hooks 
 hooks can only be called inside functional component
 hooks can be top level of component
@@ -148,7 +145,7 @@ NPM fetches packages from the online npm registry for every 'install' command
 YARN stores dependencies locally in most cases and fetches packages from a local disk.
 
 What are React hooks? Explain the difference between useState and useEffect.
-React hooks are functions that allow you to use state and lifecycle features in functional components. 
+React hooks are functions that allow you to maintaining state and lifecycle features in functional components. 
 useState is used to manage state, while useEffect is used to handle side effects like fetching data or subscribing to events.
 
 Use context API
@@ -265,7 +262,7 @@ Mounting vs render
 Mounting occurs when a component is first added to the page, while rendering occurs when a component's state changes.
 
 package.json vs package.lock.json
- package.json is a metadata file. The “package.json” file defines the rules required to run your application and install dependencies. 
+package.json is a metadata file. The “package.json” file defines the rules required to run your application and install dependencies. 
 the “package-lock.json” file holds detailed information on all the dependencies on your project.
 
 Function composition 
@@ -340,11 +337,6 @@ px is absolute value and it is  fixed size
 em is scalable elements that change size relative to parent element
 rem is scalable responsive layout that  change size relative to root element
 
-5.name all basic data types?
-there are two types one is primitive and another is non-primitive
-primitive--string,boolean,number,null,undefined,bigint,symbol
-non-primitive--array,object,date
-
 9.VDOM vs DOM?
 DOM is document object modal and it represents document tree structure of HTML
 React follows observable pattern
@@ -418,6 +410,9 @@ Fiber is the new reconciliation engine or
 re-implementation of core algorithm in React v16. 
 The goal of React Fiber is to increase its suitability for areas like animation, layout, gestures, ability to pause, abort, or 
 reuse work and assign priority to different types of updates and new concurrency primitives.
+
+Cumulative layout shift
+A layout shift happens when any element that is visible in the viewport changes its position between two frames.
 
 20.how can maintaining data in complex ui?
 using redux maintaining external global single store to achieve
