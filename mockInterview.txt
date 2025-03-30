@@ -462,16 +462,6 @@ pwa has modern web capability to delivery to app experience to users
 pwa can run multiple platforms from single code base
 pwa support offline and it will install on device and faster loading and user interactions
 
-28.prototype and prototype chain?
-
-29.HTML?
-hypertext is text that is organized order to connect related items it comes from hyperlink
-markup is style guide it defined elements and elements will be page layout 
-language is combines both features make HTML
-
-30.hyperlink?
-<a> tag defines hyperlink. which is used to link between one page to another
-
 31.HTML entity
 some characters are reserved in HTML we can show in web page we can use entity name or entity number ex &lt or &#60 to display < symbol
 used for non-breaking space
@@ -485,9 +475,6 @@ A callback is a function that is passed as an argument to another function.
 
 A higher order function is a function that takes function as an argument and returns a function as an output.
 ex filter,map
-
-37.How does create-react-app work?
-create-react-app (CRA), your command runs through a series of checks. It finds information about your system and run program
 
 38.What is Tree Shaking?
 dead code elimination means if unused modules in application webpack will eliminate and not remove code 
@@ -534,25 +521,11 @@ Server-side routing is a technique that allows you to update the page without re
  react-router-dom library
  React Router provides a <Link> component, which can be used for basic React navigation
 
-
-49.difference of function statement and function expression
-hoisting is happens in function statement not in function expression
-
 50.block level element vs inline level element
 block level element will take full width and height of the parent element
 ex: <header>,<nav>,<section>,<article>,<aside>,<footer>,<main>
 inline level element will take only the space required to display the content
 ex: <a>,<span>,<strong>,<em>,<b>,,<label>,<img>,<input>,<br>,<script>
-
-most asked question
-hooks
-custom hooks 
-HOC
-lifecycle of methods(class components)
-state Management (all about data),redux,rtk query,contextAPI
-react.contextAPI
-lazy loading
-VDOM,reconciliation
 
 ssr vs csr
 Server-side rendering (SSR) and client-side rendering (CSR) are two different ways to render web pages: 

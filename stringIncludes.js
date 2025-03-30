@@ -1,7 +1,4 @@
 // find char in string
-
-const { forEach } = require("lodash");
-
 function stringIncludes(string, character) {
   for (let i = 0; i < string.length; i++) {
     if (string[i] === character) {
