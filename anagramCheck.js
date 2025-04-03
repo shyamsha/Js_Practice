@@ -16,10 +16,42 @@ function optimizedAnagram(s, t) {
     counter[s[i]] = (counter[s[i]] || 0) + 1;
     counter[t[i]] = (counter[t[i]] || 0) - 1;
   }
-  console.log(counter);
   for (let key in counter) {
     if (counter[key] !== 0) return false;
   }
   return true;
 }
-console.log(optimizedAnagram("silent", "listen"));
+// console.log(optimizedAnagram("silent", "listen"));
+let list = ["silent", "listen", "bat", "tab", "rock"];
+function getAnagrams() {
+  let anagrams = [];
+  for (let i = 0; i < list.length; i++) {
+    for (let j = i + 1; j < list.length; j++) {
+      let anagram = optimizedAnagram(list[i], list[j]);
+      if (anagram) {
+        anagrams.push([list[i], list[j]]);
+      } else if (list[i].length === list[j].length) {
+        anagrams.push([list[i], list[j]]);
+      }
+    }
+  }
+  return anagrams;
+}
+
+console.log(getAnagrams(list));
+
+function findAnagrams(words) {
+  let map = new Map();
+
+  for (let word of words) {
+    let sortedWord = word.split("").sort().join("");
+    if (!map.has(sortedWord)) {
+      map.set(sortedWord, []);
+    }
+    map.get(sortedWord).push(word);
+  }
+
+  return Array.from(map.values());
+}
+
+console.log(findAnagrams(list));
