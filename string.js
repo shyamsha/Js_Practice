@@ -231,3 +231,16 @@ let str = "ppp";
 console.log(str[0]); // p  string is ittrate like array
 str[0] = "b";
 console.log(str[0]); // p it can't change because string immutable
+
+// remove whitespace's from string
+let string = "  Q  W E   R TY ";
+console.log(string.replace(/\s/g, ""));
+let str = " H e l l o 1  5 9   ";
+console.log(str.replaceAll(" ", "")); // Hello159
+function removeWhitespace(string, i = 0, res = "") {
+  if (i >= string.length) return res;
+  else if (string[i] == " ") return removeWhitespace(string, i + 1, res);
+  else return removeWhitespace(string, i + 1, (res += string[i]));
+}
+
+console.log(removeWhitespace(" Hello World,   how is it going ? "));
