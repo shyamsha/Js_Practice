@@ -1,0 +1,45 @@
+.tab-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.tab-header {
+  padding: 8px;
+  background-color: gray;
+  border-radius: 4px;
+}
+
+.active {
+  color: white;
+  background-color: rgb(47, 0, 255);
+}
+
+.tabs {
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 400px;
+  background-color: white;
+}
+
+.header {
+  margin: auto;
+  padding: 18px;
+}
+
+.tab-body {
+  padding: 16px;
+}
+
+.btn-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 8px;
+}
+.error {
+  color: red;
+  font-size: 16px;
+  padding: 12px;
+}

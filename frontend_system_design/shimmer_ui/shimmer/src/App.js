@@ -30,6 +30,7 @@ import Offline from "./components/common/Offline";
 import Game from "./components/rippleGame/Game";
 import { CardItemList } from "./components/pictureGame/CardItemList";
 import MultiTabForm from "./components/multiTabFrom/MultiTabForm";
+import Box from "./components/Shape/Box";
 
 function App() {
   const { i18n } = useTranslation();
@@ -113,6 +114,9 @@ function App() {
             <a className="" href="/tabs">
               Tabs<span className="text-red-600 px-1">|</span>
             </a>
+            <a className="" href="/boxes">
+              Shape Box<span className="text-red-600 px-1">|</span>
+            </a>
           </nav>
           <select
             className="bg-black text-white"
@@ -159,6 +163,7 @@ function App() {
             {/* <Route path="/game" element={<Game />} /> */}
             <Route path="/game" element={<CardItemList />} />
             <Route path="/tabs" element={<MultiTabForm />} />
+            <Route path="/boxes" element={<Box />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
