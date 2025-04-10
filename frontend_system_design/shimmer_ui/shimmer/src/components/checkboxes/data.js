@@ -4,21 +4,21 @@ export const data = [
     name: "Fruits",
     children: [
       { id: 1.1, name: "Apple" },
-      { id: 2.1, name: "Banana" },
+      { id: 1.2, name: "Banana" },
       {
-        id: 3.1,
+        id: 1.3,
         name: "Mango",
         children: [
-          { id: 3.2, name: "Green Mango" },
-          { id: 3.3, name: "Bagnepalle Mango" },
+          { id: 1.4, name: "Green Mango" },
+          { id: 1.5, name: "Bagnepalle Mango" },
         ],
       },
       {
-        id: 4.1,
+        id: 1.6,
         name: "Grapes",
         children: [
-          { id: 4.2, name: "Black Grapes" },
-          { id: 4.3, name: "Red Grapes" },
+          { id: 1.7, name: "Black Grapes" },
+          { id: 1.8, name: "Red Grapes" },
         ],
       },
     ],
