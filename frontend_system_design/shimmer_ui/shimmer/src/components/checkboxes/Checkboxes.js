@@ -1,12 +1,16 @@
 import React from "react";
+import { checkboxesData as data } from "./data";
 import "./styles.css";
 
-function Checkboxes({ data, checked, setChecked }) {
+function Checkboxes({ checkboxesData, checked, setChecked }) {
+  // console.log(checkboxesData, "c");
   const handleChange = (isChecked, node) => {
+    // console.log(checkboxesData);
     setChecked((prev) => {
       const newChecked = { ...prev, [node.id]: isChecked };
       updateChildren(newChecked, isChecked, node);
-      data.forEach((node) => updateParent(newChecked, node));
+      data.forEach((parent) => updateParent(newChecked, parent));
+      console.log(data);
       return newChecked;
     });
   };
@@ -19,6 +23,7 @@ function Checkboxes({ data, checked, setChecked }) {
   };
   // if  all child's is checked, then check parent automatically
   const updateParent = (newChecked, node) => {
+    // !fixme: if parent is not checked, if check all children
     if (!node.children) return newChecked[node.id] || false;
     const allChildrenChecked = node.children.every((child) =>
       updateParent(newChecked, child)
@@ -28,8 +33,8 @@ function Checkboxes({ data, checked, setChecked }) {
   };
   return (
     <>
-      {data.map((node) => (
-        <div key={Math.random() + node.id}>
+      {checkboxesData.map((node) => (
+        <div key={node.id}>
           <input
             type="checkbox"
             checked={checked[node.id] || false}
@@ -39,7 +44,7 @@ function Checkboxes({ data, checked, setChecked }) {
           <div className="checkbox">
             {node.children && node.children.length > 0 && (
               <Checkboxes
-                data={node.children}
+                checkboxesData={node.children}
                 checked={checked}
                 setChecked={setChecked}
               />

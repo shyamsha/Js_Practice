@@ -1,12 +1,16 @@
 import React from "react";
 import Checkboxes from "./Checkboxes";
-import { data } from "./data";
+import { checkboxesData } from "./data";
 
 function Main() {
   const [checked, setChecked] = React.useState({});
   return (
     <div className="center">
-      <Checkboxes data={data} checked={checked} setChecked={setChecked} />
+      <Checkboxes
+        checkboxesData={checkboxesData}
+        checked={checked}
+        setChecked={setChecked}
+      />
     </div>
   );
 }
