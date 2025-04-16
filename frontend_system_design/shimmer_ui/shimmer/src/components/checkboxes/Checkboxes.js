@@ -3,14 +3,11 @@ import { checkboxesData as data } from "./data";
 import "./styles.css";
 
 function Checkboxes({ checkboxesData, checked, setChecked }) {
-  // console.log(checkboxesData, "c");
   const handleChange = (isChecked, node) => {
-    // console.log(checkboxesData);
     setChecked((prev) => {
       const newChecked = { ...prev, [node.id]: isChecked };
       updateChildren(newChecked, isChecked, node);
       data.forEach((parent) => updateParent(newChecked, parent));
-      console.log(data);
       return newChecked;
     });
   };

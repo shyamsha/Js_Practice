@@ -38,7 +38,7 @@ function getAnagrams() {
   return anagrams;
 }
 
-console.log(getAnagrams(list));
+// console.log(getAnagrams(list));
 
 function findAnagrams(words) {
   let map = new Map();
