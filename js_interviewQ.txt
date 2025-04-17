@@ -1,3 +1,68 @@
+Temporal dead zone
+A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible.
+ex if you access block scope variable before initialization it gives error Cannot access 'a' before initialization
+
+null vs undefined
+undefined means a variable has been declared but has not yet been assigned a value :
+
+var testVar;
+console.log(testVar); //shows undefined
+console.log(typeof testVar); //shows undefined
+
+null is an assignment value. It can be assigned to a variable as a representation of absence of data :
+
+var testVar = null;
+console.log(testVar); //shows null
+console.log(typeof testVar); //shows object
+Expand snippet
+From the preceding examples, it is clear that undefined and null are two distinct types: 
+undefined is a type itself (undefined) while null is an object.
+
+Map and filter and reduce 
+map returns new array from existing array. applying function to each element transforms into new array.
+filter returns new array from existing array. applying condition to each element and if condition satisfy push to element to array and returns
+reduce has accumulator,current values reduce can makes array values down to just single value
+
+Closures 
+A closure is a combination of function and with reference to the surrounding state
+It means inner function will access to outer function scope even if outer function is executed 
+it useful for declaring private variables and function level encapsulation and memoization
+function outer() {
+  let privateVar = 0;
+  return function inner() {
+    privateVar++;
+    console.log(privateVar);
+  };
+}
+const closureFunc = outer();
+const closureFunc1 = outer();
+closureFunc(); // 1
+closureFunc(); // 2
+closureFunc1(); // 1
+
+Debounce vs throttling 
+Debounce is limit the execution of a function call and waits for a certain amount of time before running it again 
+The throttle also limits function execution calls for intervals of time ex it takes a 1-sec delay first it will execute the function immediately 
+then wait 1sec and execute the function again so it will be continued to execute intervals of time 
+Debounce is most suitable for control events like typing or button clicks
+Throttle is most suitable for continued user events like resizing and scrolling 
+
+Axios interceptors
+Interceptors are a feature of axios. for an application to intercept requests or responses before they are handled by then or catch 
+Ex token sends every request 
+
+Event bubbling and capturing and 
+event delegation and event.stopPropagation()
+event bubbling is process when an element triggers an event and that event bubbles up to its parent and ancestor elements on DOM until gets to the root element
+Event capture phase opposite of bubbling, its parent to child
+Event delegation is pattern to handle events efficiently. 
+Instead of adding event listener to each and every smiler elements we can add event listener to parent element.
+Call an event on particular target using event.target property to perform an event on every child of parent. 
+For example we take Amazon website. It has several categories so we couldn’t add on click event on every category to navigate that category page. 
+simply we can add event to parent element and when call the event using property of event.target and 
+it is capturing which element triggers than we can perform task on that element. 
+event bubbling can be stopped by calling stopPropagation() on event object
+
 Differentiate between class and normal function ?
 class is template function is to perform a task
 class are not hoisted and functions are hoisted

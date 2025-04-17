@@ -1,0 +1,154 @@
+{
+  "selectedTemplate": 1,
+  "headings": {
+    "summary": "Summary",
+    "work": "Professional Experience",
+    "skills": "Thecnical Skills",
+    "projects": "Projects Handled",
+    "awards": "Certifications",
+    "education": "Education"
+  },
+  "basics": {
+    "name": "Syam Kumar Cherukuri",
+    "email": "shyamkumar97@live.com",
+    "phone": "+91-9849084994",
+    "location": {
+      "address": ""
+    },
+    "website": "https://portfoilo-livid.vercel.app"
+  },
+  "education": [
+    {
+      "location": "",
+      "area": "Bachelors in Computer Science from Acharya Nagarjuna University in 2013",
+      "studyType": "Master of Computer Application from Jawaharlal Nehru Technological University in 2016",
+      "startDate": "",
+      "endDate": "",
+      "gpa": ""
+    },
+    {}
+  ],
+  "work": [
+    {
+      "website": "",
+      "endDate": "January 2024",
+      "highlights": [
+        "Led the development of component libraries and project structure documentation, driving a 20% improvement in performance metrics",
+        "Partnered with cross-functional teams to incorporate research insights into product development, ensuring a user-centric approach"
+      ],
+      "company": "Onpassive Technologies ",
+      "position": " MERN Stack Developer",
+      "startDate": "November 2023"
+    },
+    {
+      "highlights": [
+        "Engineered front-end features and reusable components using cutting-edge frameworks, boosting cross-browser compatibility by 30%",
+        "Optimized development workflows by refining component life cycles, accelerating delivery time by 20%",
+        "Spearheaded technical discussions within Agile frameworks to enhance efficiency and drastically reduce project timelines",
+        "Conducted daily reviews of 3-4 pull requests, proactively identifying and resolving issues to ensure seamless code integration",
+        "Collaborated with cross-functional teams to design, document, and maintain software solutions, driving a flawless development cycle"
+      ],
+      "company": "Reckonsys Tech Labs",
+      "position": "Software Engineer",
+      "startDate": "March 2021",
+      "endDate": "February 2023"
+    },
+    {
+      "highlights": [
+        "Utilized React, TypeScript, and Redux to build robust applications, resulting in a 30% reduction in bugs",
+        "Developed clean, maintainable code by applying design patterns, improving scalability, and reducing complexity",
+        "Enhanced existing software by optimizing performance and performing thorough system validation",
+        "Provided customized software solutions through proactive client consultations, resolving performance issues and integrating feedback to improve system functionality"
+      ],
+      "company": " Mindship LLC",
+      "position": "Software Engineer",
+      "startDate": "July 2019",
+      "endDate": "July 2020"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Languages",
+      "level": "",
+      "keywords": [
+        "Javascript",
+        "Typescript",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "keywords": ["REST Services", "GraphQL"],
+      "name": "API Integration"
+    },
+    {
+      "keywords": [
+        "React.js",
+        "Redux",
+        "Next.js",
+        "Redux Saga",
+        "Context API",
+        "AWS"
+      ],
+      "name": "Frameworks & Libraries"
+    },
+    {
+      "keywords": [
+        "SASS",
+        "LESS",
+        "Git",
+        "GitHub",
+        "Bitbucket",
+        "Webpack",
+        "Babel",
+        "Build Tools",
+        "Agile/Scrum",
+        "JIRA"
+      ],
+      "name": "Tools"
+    }
+  ],
+  "projects": [
+    {
+      "url": "",
+      "keywords": [""],
+      "name": "Trust Your Supplier",
+      "description": "Led software update deployment using Agile, reducing errors by 30% and improving system performance by 25%, Delivered 10+ features and revamped website navigation, cutting customer service issues by 25% with React, Node.js, and AWS"
+    },
+    {
+      "keywords": [""],
+      "name": "Data Dictionary (Banking)",
+      "description": "Created a data dictionary solution, improving data organization and reducing retrieval times by 30%, Increased customer satisfaction by 50% and reduced complaints by 20% through user focused development"
+    }
+  ],
+  "awards": [
+    {
+      "date": "2016",
+      "awarder": "",
+      "summary": "Master of Computer Application from Jawaharlal Nehru Technological University"
+    },
+    {
+      "title": "Front-End System Design ",
+      "date": "2024",
+      "summary": "Design a resilient client-side architecture that delivers an intuitive, high-performance user experience while seamlessly integrating with back-end services and evolving business needs"
+    }
+  ],
+  "sumary": [
+    {
+      "description": "Results-oriented Frontend Developer with 3+ years of experience delivering scalable, high-performance web applications. Proficient in modern frameworks like React, TypeScript, and Redux, with a focus on optimizing performance, enhancing cross-browser compatibility, and minimizing bugs. Experienced in Agile methodologies and adept at leading technical discussions to streamline project execution. Skilled in fostering cross-functional collaboration and integrating user feedback for continuous product improvement"
+    }
+  ],
+  "sections": [
+    "templates",
+    "profile",
+    "summary",
+    "work",
+    "skills",
+    "projects",
+    "awards",
+    "education"
+  ]
+}

@@ -1,0 +1,97 @@
+1 Scope
+2 Hoisting
+3 Closures
+4 Callbacks
+5 Promises
+   1. pending 
+   2. fulfilled 
+   3. rejected 
+   4. unsettled
+6 Async & Await
+7. promiseAll, promise chaining, promise.race, promise.settle
+8. Spread Operator
+9. Destructring Object
+10. Nullish coalescing 
+11. optional Chaining
+12. 'use strict'
+13. events in JS 
+14. ES6 features
+15. this Ketword
+
+webpack
+costom hooks , use state , use effect w.r.t to life cycle methonds
+CROS erros 
+how to achive inheritence in JS ?
+-prototypeing , polyfill 
+
+What requests use CORS?
+The HTTP response headers ?
+
+Js & Ts questions
+Temporal dead zone
+A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible until the moment the computer completely initializes it with a value.
+
+Generic In typescript
+Class in ts
+Access variables in ts
+Map and filter and reduce 
+
+Closures 
+Debounce vs throttling 
+Axios interceptors
+Event bubbling 
+Why use react
+What is de-structure how can use arrays if value change dynamic
+If two components shared same username to display how will do in react
+
+Higher order function 
+
+Position relative vs position absolute 
+position: relative places an element relative to its current position without changing the layout around it, whereas position: absolute places an element relative to its parent’s position and changing the layout around it.
+
+Two separate div tags to display next to each other how can do that
+using flex-box
+one div inside another div display inline propertey without effecting width and height
+
+Servers side component 
+Rules of hooks 
+Flatten array of array object example [1,[{3:[5]}]]
+
+Npm vs yarn
+Answer: NPM fetches packages from the online npm registry for every 'install' command, YARN stores dependencies locally in most cases and fetches packages from a local disk.
+
+Use context API
+Global execution contexts 
+Lexical scope 
+
+HOC Function 
+Answer: A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React's compositional nature. Concretely, a higher-order component is a function that takes a component and returns a new component
+
+What is the hook? Life cycle methods vs hooks
+Answer: React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. Hooks can be stateful and can manage side effects. React hooks provide a more concise way to manage state and side effects in functional components. Lifecycle methods are only available in class components and can hook into various stages of a component’s lifecycle.
+
+Unidirectional flow in react
+Answer: In React JS, data flows in one direction, from Parent to Child. This helps components to be simple and predictable. Data passed through Props it's properties passed to a child component that can hold information.
+
+Mounting in react
+Answer: Mounting means putting elements into the DOM. It occurs when a component is first added to page
+
+Mounting vs render
+Answer: Mounting occurs when a component is first added to the page, while rendering occurs when a component's state changes.
+
+package.json vs package.lock.json
+The “package. json” file defines the rules required to run your application and install dependencies. On the other hand, the “package-lock. json” file holds detailed information on all the dependencies installed based on the package.
+
+What is hypertext in HTML 
+What is doctype in HTML 
+Function composition 
+React fiber
+Reconciliation 
+Reactdom
+React dom server
+ReactMixins
+Code splitting 
+Diffing algorithm 
+React scripts 
+Concurrent rendering 
+Use effect vs use layout effect 
