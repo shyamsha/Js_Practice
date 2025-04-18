@@ -316,6 +316,7 @@ ref are accessing DOM elements without using selector methods of the document ob
 the main difference when state updates than component re-renders but in useRef we can access DOM elements without re-rendering component
 ref create like useRef hook createRef using class-based components
 use-cases of refs are maintaining input focus,text selection,media controls,outside dom,wth third party libraries
+use ref persist data between renders
 
 14.version of react?
 react 18 features for automatic batch updates, useTransition startTransition  A transition is a new concept in React to distinguish between urgent and non-urgent updates.
@@ -357,24 +358,6 @@ use callback to achieve it
 
 22.pure functions?
 a function has always returns same if we pass same arguments. it is not depend on any state
-
-23. promise and async&await?
-promises makes a asynchronous operation either resolve or reject.
-previous we are using callbacks to achieve asynchronous operation. writing multiple callbacks inside callback will create callback hell
-to avoid callback hell promises are introduced. creating new promise and it returns promise object
-promise function  takes resolve and reject arguments
-it has three states 1.pending 2.fulfilled 3.reject
-initial stage to execute function
-when promise resolve it will fulfilled
-if reject it will reject
-we consume output we use then and catch then used resolve callback catch used reject callback
-promise chain is passing return value to then to another then and soon is called promise chain
-async/await is shorter syntax of promise 
-write async keyword function before and await waiting either resolve or reject
-we catch errors using try and catch
-
-24.how to 5 api calls parallel?
-promise.all([])
 
 25.what happens background when enter url and hit enter?
 each website has ip than ip locate DNS server and DNS locates to web server then fetch website from server
