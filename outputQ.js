@@ -198,3 +198,93 @@ function fibonacci(n) {
   }
   return fib;
 }
+//  Given 2 arrays that are sorted [0,3,4,31] and [4,6,30]. Merge them and sort [0,3,4,4,6,30,31] ?
+const arr5 = [0, 3, 4, 31];
+const arr6 = [4, 6, 30];
+function mergeSortedArrays(arr1, arr2) {
+  const mergedArray = [];
+  let i = 0;
+  let j = 0;
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      mergedArray.push(arr1[i]);
+      i++;
+    } else {
+      mergedArray.push(arr2[j]);
+      j++;
+    }
+  }
+  while (i < arr1.length) {
+    mergedArray.push(arr1[i]);
+    i++;
+  }
+  while (j < arr2.length) {
+    mergedArray.push(arr2[j]);
+    j++;
+  }
+  return mergedArray;
+}
+console.log(mergeSortedArrays(arr5, arr6)); // [0, 3, 4, 4, 6, 30, 31]
+// time complexity: O(n + m)
+// space complexity: O(n + m)
+// optimization
+function mergeSortedArraysOptimization(arr1, arr2) {
+  return [...arr1, ...arr2].sort((a, b) => a - b);
+}
+console.log(mergeSortedArraysOptimization(arr5, arr6)); // [0, 3, 4, 4, 6, 30, 31]
+// time complexity: O(nlogn)
+// space complexity: O(n + m)
+
+// Create a function which will accepts two arrays arr1 and arr2. The function should return true if every value in arr1 has its corresponding value squared in array2. The frequency of  values must be same.
+// Example: [1,2,3,4] and [1,4,9,16] => true
+// Example: [1,2,3,4] and [1,4,9,15] => false
+function same(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+  const frequencyCounter1 = {};
+  const frequencyCounter2 = {};
+  for (let val of arr1) {
+    frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+  }
+  for (let val of arr2) {
+    frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+  }
+  for (let key in frequencyCounter1) {
+    if (!(key ** 2 in frequencyCounter2)) {
+      return false;
+    }
+    if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(same([1, 2, 3, 4], [1, 4, 9, 16])); // true
+console.log(same([1, 2, 3, 4], [1, 4, 9, 15])); // false
+// time complexity: O(n)
+// space complexity: O(n)
+// optimization
+function sameOptimization(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+  const frequencyCounter1 = {};
+  for (let val of arr1) {
+    frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+  }
+  for (let val of arr2) {
+    if (!(Math.sqrt(val) in frequencyCounter1)) {
+      return false;
+    }
+    frequencyCounter1[Math.sqrt(val)]--;
+    if (frequencyCounter1[Math.sqrt(val)] < 0) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(sameOptimization([1, 2, 3, 4], [1, 4, 9, 16])); // true
+console.log(sameOptimization([1, 2, 3, 4], [1, 4, 9, 15])); // false
+// time complexity: O(n)
+// space complexity: O(n)
