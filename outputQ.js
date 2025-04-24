@@ -288,3 +288,139 @@ console.log(sameOptimization([1, 2, 3, 4], [1, 4, 9, 16])); // true
 console.log(sameOptimization([1, 2, 3, 4], [1, 4, 9, 15])); // false
 // time complexity: O(n)
 // space complexity: O(n)
+
+// Write logic to get unique objects from below array
+const array = [
+  { name: "sai" },
+  { name: "Nang" },
+  { name: "sai" },
+  { name: "Nang" },
+  { name: "111111" },
+];
+function getUniqueArr(array) {
+  const uniqueArr = [];
+  const seen = {};
+  for (let i = 0; i <= array.length - 1; i++) {
+    const currentItem = array[i].name;
+    if (!seen[currentItem]) {
+      uniqueArr.push(array[i]);
+      seen[currentItem] = true;
+    }
+  }
+  return uniqueArr;
+}
+console.log(getUniqueArr(array));
+const arr7 = [
+  { name: "syam" },
+  { name3: "kumar" },
+  { name1: "syam" },
+  { name2: "kumar" },
+  { name4: "111111" },
+];
+// if different keys
+function uniqueArr(arr7) {
+  const arr = [];
+  const obj = {};
+
+  for (let i = 0; i < arr7.length; i++) {
+    const currentItem = Object.values(arr7[i]).join(" ");
+    if (!obj[currentItem]) {
+      arr.push(arr7[i]);
+      obj[currentItem] = true;
+    }
+  }
+  return arr;
+}
+console.log(uniqueArr(arr7));
+
+// Write a JavaScript program to find the largest element in a nested array.
+
+function findLargestInNestedArray(arr) {
+  let max = -Infinity; // Start with the smallest possible value
+
+  for (let element of arr) {
+    if (Array.isArray(element)) {
+      // If the element is an array, recursively call the function
+      max = Math.max(max, findLargestInNestedArray(element));
+    } else if (typeof element === "number") {
+      // Update max if the element is a number and greater than the current max
+      max = Math.max(max, element);
+    }
+  }
+
+  return max;
+}
+
+// Example usage:
+const nestedArray = [1, [4, 2, [9, 12]], [5, [10, [6]]]];
+console.log(findLargestInNestedArray(nestedArray)); // Output: 12
+function findLargestElement(arr, max = -Infinity) {
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      // Use the returned value to update the largest variable
+      max = findLargestElement(arr[i], max);
+    } else {
+      // Update largest if the current element is greater
+      max = Math.max(max, arr[i]);
+    }
+  }
+
+  return max;
+}
+
+// Example usage:
+const array2 = [
+  [3, 4, 58],
+  [709, 8, 9, [10, 11]],
+  [111, 2],
+];
+console.log("Largest element:", findLargestElement(array2)); // Output: 709
+
+// reverse sentence
+
+function reverseWords(sentence) {
+  // Split the sentence into words
+  let words = [];
+  let wordStart = 0;
+  for (let i = 0; i < sentence.length; i++) {
+    if (sentence[i] === " ") {
+      words.unshift(sentence.substring(wordStart, i));
+      wordStart = i + 1;
+    } else if (i === sentence.length - 1) {
+      words.unshift(sentence.substring(wordStart, i + 1));
+    }
+  }
+  // Join the words to form the reversed sentence
+  return words.join(" ");
+}
+// Example usage
+const sentence = "ChatGPT is awesome";
+console.log(reverseWords(sentence));
+
+//Write a function which converts string input into an object
+// stringToObject("a.b.c", "someValue");
+// output -> {a: {b: {c: "someValue"}}}
+function stringToObject(path, value) {
+  const keys = path.split("."); // Split the string into an array of keys
+  let result = {}; // Initialize the resulting object
+  let current = result; // Keep track of the current level in the object
+
+  for (let i = 0; i < keys.length; i++) {
+    if (i === keys.length - 1) {
+      // If it's the last key, assign the value
+      current[keys[i]] = value;
+    } else {
+      // Otherwise, create an empty object and move deeper
+      current[keys[i]] = {};
+      current = current[keys[i]];
+    }
+  }
+
+  return result;
+}
+
+// Example usage
+const inputString = "a.b.c";
+const value = "someValue";
+const output = stringToObject(inputString, value);
+console.log(output); // Output: { a: { b: { c: "someValue" } } }
