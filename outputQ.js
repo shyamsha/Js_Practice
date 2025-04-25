@@ -424,3 +424,58 @@ const inputString = "a.b.c";
 const value = "someValue";
 const output = stringToObject(inputString, value);
 console.log(output); // Output: { a: { b: { c: "someValue" } } }
+
+// Find the 2nd largest element from a given array ?
+const numArr = [10, 5, 20, 8, 12];
+
+function secondLargestNum(numArr) {
+  // let firstNum = -Infinity;
+  // let secondNum = -Infinity;
+  // for (let i = 0; i < numArr.length; i++) {
+  //   const ele = numArr[i];
+  //   if (ele > firstNum) {
+  //     secondNum = firstNum;
+  //     firstNum = ele;
+  //   } else if (ele > secondNum && ele < firstNum) {
+  //     secondNum = ele;
+  //   }
+  // }
+  // return secondNum
+  return numArr.sort((a, b) => b - a)[1];
+}
+console.log(secondLargestNum(numArr));
+
+// Program challenge: Find the pairs from given input ?
+const input1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const input2 = 10;
+function pairs(input1, input2) {
+  let result = [];
+  let set = new Set();
+  for (const ele of input1) {
+    const diff = input2 - ele;
+    if (set.has(diff)) {
+      result.push([ele, diff]);
+    }
+    set.add(ele);
+  }
+  return result;
+}
+console.log(pairs(input1, input2));
+// Write a javascript program to get below output from given input ?
+const str2 = "abbcccddddeeaa";
+// O/P: 1a2b3c4d2e1a
+function charCount(str2) {
+  let res = "";
+  let count = 1;
+  for (let i = 0; i < str2.length; i++) {
+    const ele = str2[i];
+    if (ele === str2[i + 1]) {
+      count += 1;
+    } else {
+      res += count + ele;
+      count = 1;
+    }
+  }
+  return res;
+}
+console.log(charCount(str2));
