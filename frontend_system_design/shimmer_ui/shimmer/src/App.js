@@ -32,6 +32,7 @@ import { CardItemList } from "./components/pictureGame/CardItemList";
 import MultiTabForm from "./components/multiTabFrom/MultiTabForm";
 import Box from "./components/Shape/Box";
 import Main from "./components/checkboxes/Main";
+import Checkbox from "./components/checkboxes/allCheckBoxes/Checkbox";
 
 function App() {
   const { i18n } = useTranslation();
@@ -168,7 +169,8 @@ function App() {
             <Route path="/game" element={<CardItemList />} />
             <Route path="/tabs" element={<MultiTabForm />} />
             <Route path="/boxes" element={<Box />} />
-            <Route path="/checkboxes" element={<Main />} />
+            {/* <Route path="/checkboxes" element={<Main />} /> */}
+            <Route path="/checkboxes" element={<Checkbox />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

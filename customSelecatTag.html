@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Custom Select</title>
+    <style>
+      .custom-select-wrapper {
+        position: relative;
+        width: 200px;
+        font-family: sans-serif;
+      }
+
+      .custom-select {
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .options {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #ccc;
+        border-top: none;
+        max-height: 150px;
+        overflow-y: auto;
+        z-index: 100;
+      }
+
+      .option {
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .option:hover {
+        background-color: #f0f0f0;
+      }
+
+      .show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-select-wrapper">
+      <div class="custom-select" id="selected">Select an option</div>
+      <div class="options" id="options">
+        <div class="option">Option 1</div>
+        <div class="option">Option 2</div>
+        <div class="option">Option 3</div>
+      </div>
+    </div>
+
+    <script>
+      const select = document.getElementById("selected");
+      const optionsContainer = document.getElementById("options");
+      const options = document.querySelectorAll(".option");
+
+      select.addEventListener("click", () => {
+        optionsContainer.classList.toggle("show");
+      });
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          select.innerText = option.innerText;
+          optionsContainer.classList.remove("show");
+        });
+      });
+
+      // Optional: close dropdown if clicked outside
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".custom-select-wrapper")) {
+          optionsContainer.classList.remove("show");
+        }
+      });
+    </script>
+  </body>
+</html>
