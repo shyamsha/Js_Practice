@@ -222,8 +222,12 @@ React scripts  to run the build tools required to transform React JSX syntax int
 
 Use effect vs use layout effect 
 useEffect() is asynchronous useLayoutEffect() synchronous 
-useLayoutEffect() code always comes before useEffect()
+useLayoutEffect() code always comes before useEffect() means before repainting html
 useEffect() flickering or produce inaccurate results then useLayoutEffect() useful hook
+
+render props
+Another way of making components very reusable, is by using the render prop pattern. A render prop is a prop on a component, which value is a function that returns a JSX element. The component itself does not render anything besides the render prop. Instead, the component simply calls the render prop, instead of implementing its own rendering logic.
+example see codesandbox
 
 1.what are new tags of html5?
 there are several tags. 
