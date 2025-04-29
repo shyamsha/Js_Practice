@@ -11,12 +11,11 @@ function missingElement(array) {
     }
   }
 }
-console.log(missingElement(missingArraySingleValue));
+// console.log(missingElement(missingArraySingleValue));
 function missing(arr) {
   let missingValue = [];
   let min = Math.min(...arr);
   let max = Math.max(...arr);
-  console.log();
 
   for (let i = min; i < max; i++) {
     if (arr.indexOf(i) < 0) {
@@ -26,11 +25,12 @@ function missing(arr) {
   return missingValue;
 }
 
-console.log(missing(missingArrayMultipleValue));
+// console.log(missing(missingArrayMultipleValue));
 
 // find missing element in unsorted array another way
 // it give only one value this formula
 function missingNumber(arr) {
+  // inaccurate results producing
   var n = arr.length + 1,
     sum = 0,
     expectedSum = (n * (n + 1)) / 2;
@@ -43,4 +43,4 @@ function missingNumber(arr) {
 }
 
 console.log(missingNumber([5, 2, 6, 1, 3]));
-console.log(missingNumber(missingArraySingleValue));
+// console.log(missingNumber(missingArraySingleValue));
