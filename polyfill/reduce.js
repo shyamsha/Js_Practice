@@ -1,7 +1,7 @@
 //polyfill for reduce
 // reduce of this polyfill
-Array.prototype.myReduce = function (cb, initialValue) {
-  if (typeof cb !== "function")
+Array.prototype.myReduce = function (callback, initialValue) {
+  if (typeof callback !== "function")
     throw new TypeError("callback is not a function");
   if (this.length === 0 && initialValue === undefined)
     throw new TypeError("Reduce of empty array with no initial value");
@@ -17,13 +17,13 @@ Array.prototype.myReduce = function (cb, initialValue) {
 // Code to calculate sum of array elements
 // using our own reduce method
 const arr = [1, 2, 3, 4];
-console.log(arr.myReduce((total, elem) => total + elem));
+// console.log(arr.myReduce((total, elem) => total + elem));
 
 // Code to calculate multiplication of all array elements
-console.log(arr.myReduce((prod, elem) => prod * elem, 5));
+// console.log(arr.myReduce((prod, elem) => prod * elem, 5));
 
 const sum = arr.myReduce((prev, curr) => prev + curr, 6);
-console.log(sum);
+// console.log(sum);
 
 // polyfill for reduce right
 
@@ -46,7 +46,7 @@ Array.prototype.myReduceRight = function (cb, initialValue) {
 };
 
 const subtract = arr1.myReduceRight((prev, curr) => prev + curr);
-console.log(subtract);
+// console.log(subtract);
 
 // power full way usage reduce
 // functions
@@ -68,7 +68,7 @@ const arr21 = [upperCase, reverse, append];
 // initial value
 const initialValue = "learnersbucket";
 
-const finalValue = arr21.reduce((previousValue, currentElement) => {
+const finalValue = arr21.myReduce((previousValue, currentElement) => {
   // pass the value through each function
   // currentElement is the function from the array
   const newValue = currentElement(previousValue);
@@ -77,7 +77,7 @@ const finalValue = arr21.reduce((previousValue, currentElement) => {
   return newValue;
 }, initialValue);
 
-console.log(finalValue);
+// console.log(finalValue);
 
 // "Hello TEKCUBSRENRAEL"
 
@@ -101,7 +101,7 @@ const promises = [
 
 // mani function to run promise in series
 const asyncSeriesExecuter = function (promises) {
-  promises.reduce((acc, curr) => {
+  promises.myReduce((acc, curr) => {
     // return when previous promise is resolved
     return acc.then(() => {
       // run the current promise
@@ -113,9 +113,3 @@ const asyncSeriesExecuter = function (promises) {
 };
 
 asyncSeriesExecuter(promises);
-
-("Completing 3");
-("Completing 1");
-("Completing 7");
-("Completing 2");
-("Completing 5");

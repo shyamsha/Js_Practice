@@ -47,3 +47,22 @@ function groupBy1(arr) {
 }
 const arr = [{ id: "1" }, { id: "1" }, { id: "2" }];
 console.log(groupBy1(arr));
+
+function groupBy2(arr, key) {
+  const obj = {};
+  for (let i = 0; i < arr.length; i++) {
+    const ele = arr[i];
+    const k = ele[key];
+    if (!obj[k]) {
+      obj[k] = [];
+    }
+    obj[k].push(ele);
+  }
+  return obj;
+}
+const arr2 = [
+  { id: 1, category: "ele" },
+  { id: 2, category: "clo" },
+  { id: 3, category: "ele" },
+];
+console.log(groupBy2(arr2, "category"));
