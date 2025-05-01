@@ -431,8 +431,10 @@ HeaderComponent(): Logs the result of directly calling the component function, w
 42. What if 2 components are given will the state change in one component will effect the other component’s state (child)?
 yes,Every time some state changes in the parent component, it makes the child component to re render
 
-43.What is the use of return in useEffect ?
-removing EventListener
+43. What is the difference between a controlled and uncontrolled component?
+Controlled components are those whose value is controlled by React state.
+Uncontrolled components are those whose value is controlled by the DOM itself.
+
 
 44.Difference b/w client-side routing and server-side routing?
 Client-side routing is a technique that allows you to update the URL without reloading the page.

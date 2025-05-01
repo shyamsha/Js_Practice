@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { render } from "react-dom";
+import React from "react";
+
 const Checkbox = ({ label, checked, onChange }) => {
   return (
     <div>
