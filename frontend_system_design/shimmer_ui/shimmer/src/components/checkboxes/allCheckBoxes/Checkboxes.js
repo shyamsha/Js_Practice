@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Checkbox from "./Checkbox";
 
-const index = () => {
+const Checkboxes = () => {
   const [checkboxes, setCheckboxes] = useState([
     { id: 1, label: "Checkbox 1", checked: false },
     { id: 2, label: "Checkbox 2", checked: false },
@@ -30,7 +30,15 @@ const index = () => {
   const selectedCheckboxes = checkboxes.filter((checkbox) => checkbox.checked);
   const selectedCount = selectedCheckboxes.length;
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       {checkboxes.map((checkbox) => (
         <Checkbox
           key={checkbox.id}
@@ -52,4 +60,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Checkboxes;
