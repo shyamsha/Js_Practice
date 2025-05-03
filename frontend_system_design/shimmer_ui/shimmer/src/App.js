@@ -33,6 +33,7 @@ import MultiTabForm from "./components/multiTabFrom/MultiTabForm";
 import Box from "./components/Shape/Box";
 import Main from "./components/checkboxes/Main";
 import Checkboxes from "./components/checkboxes/allCheckBoxes/Checkboxes";
+import ChartCustom from "./components/Chart/ChartCustom";
 
 function App() {
   const { i18n } = useTranslation();
@@ -122,6 +123,9 @@ function App() {
             <a className="" href="/checkboxes">
               Check Boxes<span className="text-red-600 px-1">|</span>
             </a>
+            <a className="" href="/chart">
+              Bar Chart<span className="text-red-600 px-1">|</span>
+            </a>
           </nav>
           <select
             className="bg-black text-white"
@@ -171,6 +175,7 @@ function App() {
             <Route path="/boxes" element={<Box />} />
             {/* <Route path="/checkboxes" element={<Main />} /> */}
             <Route path="/checkboxes" element={<Checkboxes />} />
+            <Route path="/chart" element={<ChartCustom />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
