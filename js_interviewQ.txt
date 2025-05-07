@@ -458,6 +458,20 @@ object is not ordered.
 map is faster.
 object is slower.
 
+synchronous vs asynchronous
+Code runs line by line, one operation at a time.
+Each operation must complete before the next one begins. blocking code
+Potential for Slowdowns for Long-running operations can block the entire program, leading to unresponsiveness.
+
+Operations can run independently,
+Non-Blocking The program doesn't wait for an operation to finish before moving on to the next.
+Improved Performance
+callbacks, promises, or async/await to manage asynchronous operations. 
+
+Asynchronous is a non-blocking architecture, so the execution of task isn't dependent on another. Tasks can run simultaneously. 
+Synchronous is a blocking architecture, so the execution of each operation depends on completing the one before it.
+
+
 event loop
 ➤ Single-Threaded Execution:
 JavaScript is single-threaded, which means it can only execute one task at a time. 
