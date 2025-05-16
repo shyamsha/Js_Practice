@@ -50,7 +50,8 @@ function lengthOfLongestSubstring(s) {
     map.set(s[i], i);
     maxSize = Math.max(maxSize, i - left + 1);
   }
+  console.log(map);
   return maxSize;
 }
-let s = "pwwkew";
+let s = "abcabcbb";
 console.log(lengthOfLongestSubstring(s));
