@@ -62,3 +62,56 @@ function mapLimit(inputs, limit, iterateeFn, callback) {
 mapLimit([1, 2, 3, 4, 5], 2, getNameById, (allResults) => {
   console.log("output", allResults); // ["User1", "User2", "User3", "User4", "User5"]
 });
+
+// map async limit takes an array of inputs and a limit, and an async function. It processes the inputs in batches of the specified limit, calling the async function.
+
+function mapAsyncLimit(arr, limit, asyncFn) {
+  return new Promise((resolve, reject) => {
+    const results = [];
+    let index = 0;
+    let activeCount = 0;
+
+    function processNext() {
+      if (index >= arr.length && activeCount === 0) {
+        resolve(results);
+        return;
+      }
+
+      while (activeCount < limit && index < arr.length) {
+        const currentIndex = index++;
+        activeCount++;
+
+        asyncFn(arr[currentIndex])
+          .then((result) => {
+            results[currentIndex] = result;
+          })
+          .catch(reject)
+          .finally(() => {
+            activeCount--;
+            processNext();
+          });
+      }
+    }
+
+    processNext();
+  });
+}
+// Example usage
+const asyncFunction = (num) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(num * 2);
+    }, Math.random() * 1000);
+  });
+};
+const inputArray = [1, 2, 3, 4, 5];
+const limit = 2;
+mapAsyncLimit(inputArray, limit, asyncFunction)
+  .then((results) => {
+    console.log("Results:", results); // [2, 4, 6, 8, 10]
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+// The mapAsyncLimit function takes an array of inputs, a limit, and an async function. It processes the inputs in batches of the specified limit, calling the async function for each input and collecting the results in the order they were provided.
+// The function uses a promise to handle the asynchronous nature of the processing and ensures that the results are returned in the same order as the input array.

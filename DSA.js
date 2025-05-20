@@ -642,6 +642,49 @@ queue.deQueue();
 console.log(queue.min());
 console.log(queue);
 
+// implement priority queue
+class PriorityQueue {
+  constructor() {
+    this.items = [];
+  }
+  enqueue(value, priority) {
+    // Add element based on priority
+    let flag = false;
+    for (let i = 0; i < this.items.length; i++) {
+      let ele = this.items[i];
+      if (priority < ele.priority) {
+        this.items.splice(i, 0, { value, priority });
+        flag = true;
+        break;
+      }
+    }
+    if (!flag) {
+      // lowest priority
+      this.items.push({ value, priority });
+    }
+  }
+
+  dequeue() {
+    // Remove and return element with highest priority
+    return this.isEmpty() ? null : this.items.shift().value;
+  }
+
+  peek() {
+    // Return highest priority element
+    return this.isEmpty() ? null : this.items[0].value;
+  }
+
+  isEmpty() {
+    // Return boolean
+    return this.items.length === 0;
+  }
+
+  size() {
+    // Return number of items
+    return this.items.length;
+  }
+}
+
 //implement hash table
 
 class HashTable {
