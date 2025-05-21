@@ -8,6 +8,7 @@ class LRUCache {
   // Implementing Get method
   // If the key is found, delete and reinsert it so that it will be at the top.
   // So an item at the start of Map is the least recently used item.
+  // If the key is not found, return -1.
   get(key) {
     if (!this.cache.has(key)) return -1;
 
@@ -19,11 +20,16 @@ class LRUCache {
     return val;
   }
   // Implementing setting values in put method
+  // If the key is already present, delete and reinsert it so that it will be at the top.
+  // If the key is not present, check if the cache size is equal to the capacity.
+  // If it is, delete the least recently used item (the first item in the Map).
+  // Then, add the new key-value pair to the cache.
+  // If the cache size is not equal to the capacity, just add the new key-value pair.
   put(key, value) {
     this.cache.delete(key);
 
     if (this.cache.size === this.capacity) {
-      this.cache.delete(this.cache.keys().next().value);
+      this.cache.delete(this.cache.keys().next().value); // delete the least recently used item
       this.cache.set(key, value);
     } else {
       this.cache.set(key, value);
