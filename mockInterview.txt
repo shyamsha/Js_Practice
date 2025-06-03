@@ -62,12 +62,6 @@ session storage is used if we want to delete the data if the user closes that pa
 Is Async a sessionStorage?
 No, localStorage and sessionStorage calls are synchronous
 
-Position relative vs position absolute 
-default value is static it's not effect layout
-position: relative places an element relative to its current position without changing the layout around it, 
-position: absolute places an element relative to its parent’s position and changing the layout around it.
-position: fixed; is positioned relative to the viewport, stays same place
-position: sticky; is positioned based on the user's scroll position.
 
 Rules of hooks 
 hooks can only be called inside functional component
@@ -219,53 +213,7 @@ which value is a function that returns a JSX element. The component itself does 
 Instead, the component simply calls the render prop, instead of implementing its own rendering logic.
 example see codesandbox
 
-1.what are new tags of html5?
-there are several tags. 
-some of the tags are aside,article,datalist,canvas,date,datetime,audio,video,color inputs are some of new tags.
-
-2.should we inject div tag inside of span tag?
-yes, div is block scope and span is inline tag but schematically wrong it will break in production
-
-3.5 ways center align  div tag?
-flex box,grid,table css,margin css, position css
-with position and without
-div {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    margin: auto;
-}
-.element {
-  max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-}
-.element {
-  max-width: fit-content;
-  margin-inline: auto;  will set both m-left and m-right is auto
-}
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.container {
-  display: grid;
-  place-content: center;
-}
-4.px vs em vs rem?
-px is absolute value and it is  fixed size
-em is scalable elements that change size relative to parent element
-rem is scalable responsive layout that  change size relative to root element
-
-9.VDOM vs DOM?
+VDOM vs DOM?
 DOM is document object modal and it represents document tree structure of HTML
 React follows observable pattern
 VDOM is memory representation of DOM means exact copy of DOM
@@ -274,7 +222,7 @@ after updating react compares previous version of VDOM and current version of VD
 react knows exactly which nodes changed in VDOM.those nodes only changed in real DOM
 this process is reconciliation process. it uses diffing algorithm. VDOM is faster because of making minimal manipulating operations on realDOM
 
-10.component lifecycle methods and order?
+component lifecycle methods and order?
 there phases mounting and updating and unmounting
 constructor
 getderivedstatefromprops
@@ -284,7 +232,7 @@ componentdidmount
 componentdidupdate
 componentwillunmount
 
-11.pure components vs HOC components?
+pure components vs HOC components?
 pure components work like functional components there is one difference that is shouldcomponentupdate lifecycle method.
 it is checking on every render shallow comparison of state and props if it difference should render component other wise should not
 HOC is component it takes another component as argument and returns new component. it is pattern from compositional nature
@@ -297,11 +245,8 @@ react-redux --> connect
 react-router--> withRouter
 material-ui-->	withStyles(styles)(UserPage)
 
-12.HOF functions?
-HOF takes function as argument returns another function. they enable us abstract over actions not values
-for example map,foreach,filter
 
-13.state vs props vs ref?
+state vs props vs ref?
 state is object that stores information and owned by component and locally scoped
 state can mutable via setState
 props is object that have information
@@ -312,18 +257,18 @@ ref create like useRef hook createRef using class-based components
 use-cases of refs are maintaining input focus,text selection,media controls,outside dom,wth third party libraries
 use ref persist data between renders
 
-14.version of react?
+version of react?
 react 18 features for automatic batch updates, useTransition startTransition  A transition is a new concept in React to distinguish between urgent and non-urgent updates.
 support for Suspense on the server,New Strict Mode Behaviors, new hooks
 
-16.Why it is Recommended to use Functional Components over Class Components?
+Why it is Recommended to use Functional Components over Class Components?
 simplicity
 performance
 code readability
 easier to test
 we can make stateful and lifecycle methods using hooks
 
-17.Is the Shadow DOM the same as the Virtual DOM?
+Is the Shadow DOM the same as the Virtual DOM?
 No, they are different. The Shadow DOM is a browser technology designed primarily for scoping variables and CSS in web components. designed for encapsulation
 Shadow DOM allows hidden DOM trees to be attached to elements in the regular DOM tree this shadow DOM tree starts with a shadow root
 const shadowOpen = elementRef.attachShadow({ mode: "open" });
@@ -340,29 +285,16 @@ re-implementation of core algorithm in React v16.
 The goal of React Fiber is to increase its suitability for areas like animation, layout, gestures, ability to pause, abort, or 
 reuse work and assign priority to different types of updates and new concurrency primitives.
 
-Cumulative layout shift
-A layout shift happens when any element that is visible in the viewport changes its position between two frames.
-
-20.how can maintaining data in complex ui?
+how can maintaining data in complex ui?
 using redux maintaining external global single store to achieve
 contextAPI
 
-21.two way data binding implementation?
+two way data binding implementation?
 use callback to achieve it
 
-22.pure functions?
-a function has always returns same if we pass same arguments. it is not depend on any state
-
-25.what happens background when enter url and hit enter?
-each website has ip than ip locate DNS server and DNS locates to web server then fetch website from server
-
-26.what is hoisting and scope
-Hoisting is a JavaScript mechanism where variables and function statements are moved to the top of their scope before code execution.
-if we declared with var is hoisted and default value assigned as undefined
-Function declarations are hoisted not function expressions.
-Function hoisting allows us to call a function before it is defined
-scope-- block scope if the variable is declared in code block that variable visible in that code block
-lexical environment scope
+what is the difference between controlled and uncontrolled components?
+Controlled components are those whose value is controlled by React state.
+Uncontrolled components are those whose value is controlled by the DOM itself.
 
 27.service workers and pwa?
 it is script that browser runs background separate from web page
@@ -372,20 +304,6 @@ Service workers are at the core of progressive web applications.
 pwa has modern web capability to delivery to app experience to users
 pwa can run multiple platforms from single code base
 pwa support offline and it will install on device and faster loading and user interactions
-
-31.HTML entity
-some characters are reserved in HTML we can show in web page we can use entity name or entity number ex &lt or &#60 to display < symbol
-used for non-breaking space
-
-32.input type submit vs button in html
-<input type="submit"> cause the form data to be submitted to the server
-<button> can have content, whereas <input> cannot (it is a null element).
-
-34.callbacks vs HOF
-A callback is a function that is passed as an argument to another function.
-
-A higher order function is a function that takes function as an argument and returns a function as an output.
-ex filter,map
 
 38.What is Tree Shaking?
 dead code elimination means if unused modules in application webpack will eliminate and not remove code 
@@ -421,11 +339,6 @@ HeaderComponent(): Logs the result of directly calling the component function, w
 42. What if 2 components are given will the state change in one component will effect the other component’s state (child)?
 yes,Every time some state changes in the parent component, it makes the child component to re render
 
-43. What is the difference between a controlled and uncontrolled component?
-Controlled components are those whose value is controlled by React state.
-Uncontrolled components are those whose value is controlled by the DOM itself.
-
-
 44.Difference b/w client-side routing and server-side routing?
 Client-side routing is a technique that allows you to update the URL without reloading the page.
 Server-side routing is a technique that allows you to update the page without reloading the page.
@@ -433,12 +346,6 @@ Server-side routing is a technique that allows you to update the page without re
 45.How does React handle routing and navigation?
  react-router-dom library
  React Router provides a <Link> component, which can be used for basic React navigation
-
-50.block level element vs inline level element
-block level element will take full width and height of the parent element
-ex: <header>,<nav>,<section>,<article>,<aside>,<footer>,<main>
-inline level element will take only the space required to display the content
-ex: <a>,<span>,<strong>,<em>,<b>,,<label>,<img>,<input>,<br>,<script>
 
 ssr vs csr
 Server-side rendering (SSR) and client-side rendering (CSR) are two different ways to render web pages: 
@@ -500,60 +407,3 @@ public folder are not processed by webpack
 Images in the public folder are not processed by webpack and are simply copied to the build folder during the build process.
 means that the images are not part of the final bundle and will not increase the size of your application.
 
-In JavaScript, both pre-increment (++x) and post-increment (x++) operators increase the value of a variable by 1. However, they differ in when the increment happens and what value is returned:
-Pre-increment (++x)
-Increment first: The variable is incremented first, and then the new value is returned.
-Example:
-JavaScript
-
-let x = 5;
-let y = ++x;
-
-console.log(x); // 6
-console.log(y); // 6
-Post-increment (x++)
-Return first, increment later: The current value of the variable is returned first, and then the variable is incremented.
-Example:
-JavaScript
-
-let x = 5;
-let y = x++;
-
-console.log(x); // 6
-console.log(y); // 5
-In summary:
-Use pre-increment (++x): when you want to use the incremented value immediately.
-Use post-increment (x++): when you want to use the original value before incrementing.
-
-querySelector() vs getElementById()
-querySelector()
-The querySelector() function is used to retrieve an element from the document using a CSS selector.
- It returns the first element that matches the specified selector. 
- The selector can be any valid CSS selector, such as a class, id, or tag name.
-
-getElementById()
-The getElementById() function is used to retrieve an element from the document using its ID attribute. 
-It returns the element with the specified ID.
-IDs must be unique within a page, so getElementById() will always return one element or null if there is no matching element. 
-
-getElementById() only works with ID attributes, while querySelector() can work with any CSS selector. 
-Additionally, getElementById() is faster than querySelector() 
-because it only needs to search for one element, 
-whereas querySelector() may need to search for multiple elements before returning the first match.
-
-async vs defer
-async
-The script executes as soon as it's downloaded, without waiting for the HTML parsing to complete. 
-This means that the order of execution is not guaranteed.
-defer
-The script executes after the browser has fully processed the HTML, in the order they are in the HTML. 
-Here are some other differences between async and defer:
-When to use
-Use async if the order of execution doesn't matter and the script doesn't modify the DOM. 
-Use defer if the order is execution is important or the script modifies the DOM. 
-Performance
-Both attributes help you optimize the First Content-ful Paint metric. 
-Browser support
-Older browsers might not support defer, so your scripts might not load at all for some users. 
-Inline scripts
-These attributes don't work on inline scripts, which are scripts without a src attribute. 
