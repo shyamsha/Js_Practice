@@ -8,7 +8,7 @@ import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import Accordion from "./components/accordion/terms&conditionsAccordion/Accordion";
+import Accordion from "./components/accordion/Accordion";
 import Comments from "./components/comments/Comments";
 import MemesL from "./components/with_library/MemesL";
 import Slider from "./components/slider/Slider";

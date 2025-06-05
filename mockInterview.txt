@@ -407,3 +407,337 @@ public folder are not processed by webpack
 Images in the public folder are not processed by webpack and are simply copied to the build folder during the build process.
 means that the images are not part of the final bundle and will not increase the size of your application.
 
+what is react? how different from angular?
+React is a JavaScript library for building user interfaces. It focuses on creating reusable UI components and managing how data flows through your application.
+Key React Concepts
+React uses a component-based architecture where you build encapsulated components that manage their own state. It employs a "virtual DOM" - a JavaScript representation of the actual DOM that React uses to efficiently update only the parts of the page that have changed. React follows a unidirectional data flow, meaning data flows down from parent to child components through props.
+Main Differences from Angular
+Architecture Philosophy: React is a library focused specifically on the view layer, while Angular is a full framework that provides a complete solution including routing, HTTP client, forms handling, and more out of the box.
+Learning Curve: React has a gentler learning curve since react start with just the basics and add complexity gradually. Angular has a steeper initial learning curve due to its comprehensive nature and concepts like dependency injection, decorators, and TypeScript (though TypeScript is optional in React).
+Language: React works with JavaScript or TypeScript (optional), while Angular is built with TypeScript from the ground up, though you can technically use JavaScript.
+Data Binding: React uses one-way data binding with explicit state management, while Angular supports both one-way and two-way data binding natively.
+Structure: React gives you more flexibility in how you structure your application and what additional libraries you use. Angular provides a more opinionated, structured approach with built-in conventions.
+Size and Performance: React tends to have a smaller bundle size for simple applications, while Angular applications can be larger but come with more built-in functionality.
+Both are excellent choices - React offers more flexibility and is easier to start with, while Angular provides a more complete, enterprise-ready framework with stronger conventions.
+
+what are different ways to make API calls on react?
+1. Fetch API (Built-in Browser API)
+2. Axios (Popular HTTP client library)
+3. React Query/TanStack Query (Data fetching and caching library)
+4. SWR (Stale-While-Revalidate data fetching library)
+5. GraphQL (Query language for APIs, often used with Apollo Client)
+6. Redux Thunk or Redux Saga (Middleware for handling asynchronous actions in Redux)
+7. Custom Hooks (Creating reusable hooks for API calls)
+
+Explain react work flow and why its called single page application with one way data binding?
+1. **Component-Based Architecture**: React applications are built using components, which are reusable pieces of UI that can manage their own state and props. Components can be nested within each other to create complex UIs.
+2. **Virtual DOM**: React uses a virtual DOM to optimize rendering performance. When the state of a component changes, React creates a new virtual DOM representation of the UI and compares it with the previous version (diffing algorithm). It then updates only the parts of the actual DOM that have changed, minimizing direct manipulation of the DOM.
+Reconciliation Process:
+   - When a component's state or props change, React re-renders that component and its children.
+   - It creates a new virtual DOM tree and compares it with the previous one to identify changes.
+   - Only the changed elements are updated in the actual DOM, which improves performance.
+3. **One-Way Data Binding**: In React, data flows in one direction, from parent components to child components through props. This means that when a parent component's state changes, it can pass new data down to its children, but children cannot directly modify the parent's state. Instead, they can communicate changes back to the parent through callback functions.
+Predictable Data Flow: You always know where data is coming from and where changes originate.
+Easier Debugging: When something goes wrong, you can trace the data flow linearly.
+Better Performance: React can optimize rendering because it knows exactly what changed and where.
+Explicit State Management: You must explicitly handle state changes, making your code more intentional.
+4. **Single-Page Application (SPA)**: React applications are often built as SPAs, meaning that the entire application runs on a single HTML page. When users navigate through the app, React dynamically updates the UI without requiring a full page reload. This results in a smoother user experience and faster interactions. Reduced server load
+Easier to build complex interactions Persistent State: Application state persists across "page" changes since the page never actually reloads
+5. **State Management**: Components can manage their own local state using the `useState` hook or class component state. For more complex applications, state management libraries like Redux or Context API can be used to manage global state across components.
+
+how can you pass data child to parent in react with example?
+In React, you can pass data from a child component to a parent component using callback functions. The parent component defines a function that updates its state, and it passes this function down to the child component as a prop. The child component can then call this function with the data it wants to send back to the parent.
+
+Example:
+import React, { useState } from 'react';
+function ParentComponent() {
+  const [childData, setChildData] = useState("");
+
+  const handleDataFromChild = (data) => {
+    setChildData(data);
+  };
+
+  return (
+    <div>
+      <h1>Data from Child: {childData}</h1>
+      <ChildComponent onSendData={handleDataFromChild} />
+    </div>
+  );
+}
+
+function ChildComponent({ onSendData }) {
+  const sendData = () => {
+    onSendData("Hello from Child");
+  };
+
+  return <button onClick={sendData}>Send Data to Parent</button>;
+}
+
+how class component differ from functional component?
+Class components and functional components are two ways to define components in React, each with its own characteristics:
+
+1. **Syntax**:
+   - Class components are defined using ES6 class syntax and extend the `React.Component` class.
+   - Functional components are defined as JavaScript functions (either regular or arrow functions).
+
+2. **State Management**:
+   - Class components can hold and manage their own state using `this.state` and `this.setState()`.
+   - Functional components use the `useState` hook (and other hooks) to manage state.
+
+3. **Lifecycle Methods**:
+   - Class components have access to lifecycle methods (e.g., `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`) to run code at specific points in a component's life.
+   - Functional components use the `useEffect` hook to achieve similar behavior.
+
+4. **Performance**:
+   - Functional components are generally more lightweight and can be more performant, especially with React's optimizations like memoization.
+   - Class components may have more overhead due to the class structure and lifecycle methods.
+
+5. **Hooks**:
+   - Class components cannot use hooks.
+   - Functional components can use hooks, allowing for more reusable and composable logic.
+
+Overall, functional components are now the preferred way to write components in React, especially with the introduction of hooks in React 16.8, which allow functional components to manage state and side effects.
+When to Use Each
+Class Components
+Working with legacy codebases
+When you need error boundaries (though hooks version exists)
+Complex lifecycle logic that's hard to split
+
+Functional Components
+When you want to take advantage of hooks
+For simpler components without complex state management
+When you prefer a more concise and readable syntax
+
+what is context API? can we have multiple providers using context API?
+Context API is a React feature that allows you to share data across multiple components without having to pass props down through every level of the component tree. It's designed to solve the "prop drilling" problem.
+Yes, you can have multiple providers using the Context API. Each provider can hold its own state and provide it to the components within its subtree. This is useful for organizing your application's state and avoiding prop drilling.
+// 1. Create Context
+import React, { createContext, useContext, useState } from 'react';
+
+const ThemeContext = createContext();
+
+// 2. Create Provider Component
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+  
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  };
+  
+  const value = {
+    theme,
+    toggleTheme
+  };
+  
+  return (
+    <ThemeContext.Provider value={value}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+// 3. Custom Hook for easier usage
+function useTheme() {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+}
+
+// 4. Using the Context
+function App() {
+  return (
+    <ThemeProvider>
+      <Header />
+      <MainContent />
+      <Footer />
+    </ThemeProvider>
+  );
+}
+
+
+function MainContent() {
+  const { theme } = useTheme();
+  
+  return (
+    <main style={{ 
+      background: theme === 'light' ? '#f5f5f5' : '#222',
+      color: theme === 'light' ? '#333' : '#fff'
+    }}>
+      <p>Current theme: {theme}</p>
+    </main>
+  );
+}
+
+what is render props in react?
+Render props is a pattern in React where a component uses a prop that is a function to control what gets rendered. This allows for greater flexibility and reusability of components by enabling them to share code and logic without tightly coupling them.
+The function passed as a prop can return any JSX, allowing the parent component to dictate how the child component should render its content.
+Here's a simple example of how render props work:
+```jsx
+import React from 'react';
+
+function DataFetcher({ render }) {
+  const data = "Hello from DataFetcher";
+  return render(data);
+}
+
+function App() {
+  return (
+    <div>
+      <h1>Render Props Example</h1>
+      <DataFetcher render={data => <p>{data}</p>} />
+    </div>
+  );
+}
+
+export default App;
+Why Use Render Props?
+Share behavior across components.
+
+Avoid code duplication.
+
+Replace or enhance traditional HOCs (Higher-Order Components).
+
+What are the advantages and disadvantages of using render props?
+Advantages:
+- Flexibility: Allows for dynamic rendering based on the data passed to the render prop.
+- Reusability: Enables sharing of logic and behavior across components without tightly coupling them.
+- Avoids prop drilling: Helps in passing data down the component tree without needing to pass props through every level.
+Disadvantages:
+- Complexity: Can make the code harder to read and understand, especially for developers unfamiliar with the pattern.- Performance: If not used carefully, it can lead to unnecessary re-renders, as the render prop function is called on every render.
+- Naming Confusion: The term "render prop" can be confusing for developers who are not familiar with the pattern, leading to potential misunderstandings in codebases.
+- Overhead: It can introduce additional complexity in the component structure, making it harder to maintain if overused. 
+
+write custom input hook to reusable?
+import { useState } from 'react';
+function useInput(initialValue = '') {
+  const [value, setValue] = useState(initialValue);
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+  return {
+    value,
+    onChange: handleChange
+  };
+}
+// Usage in a component
+import React from 'react';
+import useInput from './useInput'; 
+function MyComponent() {
+  const nameInput = useInput('');
+  const emailInput = useInput('');
+
+  return (
+    <div>
+      <input type="text" placeholder="Name" {...nameInput} />
+      <input type="email" placeholder="Email" {...emailInput} />
+      <p>Name: {nameInput.value}</p>
+      <p>Email: {emailInput.value}</p>
+    </div>
+  );
+}
+export default MyComponent;
+
+what is compound component pattern?
+Compound components are a design pattern in React that allows you to create a set of components that work together as a single unit. This pattern is useful for building reusable and composable components that can share state and behavior without tightly coupling them.
+The key idea is to create a parent component that manages the shared state and behavior, while child components can access this state and behavior through context or props. This allows for greater flexibility and reusability of components.
+Here's a simple example of how compound components work:
+```jsx
+import React, { createContext, useContext, useState } from 'react';
+const TabsContext = createContext();  
+function Tabs({ children }) {
+  const [activeTab, setActiveTab] = useState(0);
+  
+  const value = {
+    activeTab,
+    setActiveTab
+  };
+  
+  return (
+    <TabsContext.Provider value={value}>
+      <div className="tabs">
+        {children}
+      </div>
+    </TabsContext.Provider>
+  );
+}
+function TabList({ children }) {
+  return <div className="tab-list">{children}</div>;
+}
+function Tab({ index, children }) {
+  const { activeTab, setActiveTab } = useContext(TabsContext);
+  return (
+    <button
+      className={`tab ${activeTab === index ? 'active' : ''}`}
+      onClick={() => setActiveTab(index)}
+    >
+      {children}
+    </button>
+  );
+}
+function TabPanel({ index, children }) {
+  const { activeTab } = useContext(TabsContext);  
+  return (
+    <div className={`tab-panel ${activeTab === index ? 'active' : ''}`}>
+      {children}
+    </div>
+  );
+}
+
+error boundaries in react
+Error boundaries are a React feature that allows you to catch JavaScript errors in your component tree and display a fallback UI instead of crashing the entire application. They are implemented using class components that define specific lifecycle methods.
+Error boundaries can catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
+Here's how to create an error boundary:
+```jsx
+import React from 'react';
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI
+    return { hasError: true };
+  }
+  componentDidCatch(error, errorInfo) {
+    // You can also log the error to an error reporting service
+    console.error("Error caught by Error Boundary:", error, errorInfo);
+  }
+  render() {  
+    if (this.state.hasError) {
+      // Fallback UI
+      return <h1>Something went wrong.</h1>;
+    }
+    return this.props.children; 
+  }
+}
+
+what is service worker in react?
+A service worker is a script that runs in the background of a web application, separate from the main browser thread. It allows you to intercept network requests, cache resources, and enable offline functionality. Service workers are a key part of Progressive Web Apps (PWAs) and can significantly enhance the performance and user experience of your application.
+Service workers can handle tasks like caching assets, serving cached content when offline, and managing push notifications. 
+
+unit tests in react example?
+
+Here's a simple example of a unit test for a React component using Jest and React Testing Library:
+```jsx
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import MyButton from './MyButton'; // Assuming you have a MyButton component
+describe('MyButton Component', () => {
+  test('renders with correct text', () => {
+    render(<MyButton text="Click Me" />);
+    const buttonElement = screen.getByText("click me");
+    expect(buttonElement).toBeInTheDocument();
+  });
+
+  test('calls onClick handler when clicked', () => {
+    const handleClick = jest.fn();
+    render(<MyButton text="Click Me" onClick={handleClick} />);
+    const buttonElement = screen.getByText("click me");
+    fireEvent.click(buttonElement);
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+```
