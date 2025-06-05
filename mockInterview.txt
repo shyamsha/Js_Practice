@@ -645,28 +645,23 @@ The key idea is to create a parent component that manages the shared state and b
 Here's a simple example of how compound components work:
 ```jsx
 import React, { createContext, useContext, useState } from 'react';
-const TabsContext = createContext();  
+const TabsContext = createContext();
 function Tabs({ children }) {
   const [activeTab, setActiveTab] = useState(0);
-  
-  const value = {
-    activeTab,
-    setActiveTab
-  };
+  const value = { activeTab, setActiveTab };
   
   return (
     <TabsContext.Provider value={value}>
-      <div className="tabs">
-        {children}
-      </div>
+      <div className="tabs">{children}</div>
     </TabsContext.Provider>
   );
 }
 function TabList({ children }) {
   return <div className="tab-list">{children}</div>;
 }
-function Tab({ index, children }) {
+function Tab({ index, children }) { 
   const { activeTab, setActiveTab } = useContext(TabsContext);
+  
   return (
     <button
       className={`tab ${activeTab === index ? 'active' : ''}`}
@@ -677,11 +672,26 @@ function Tab({ index, children }) {
   );
 }
 function TabPanel({ index, children }) {
-  const { activeTab } = useContext(TabsContext);  
+  const { activeTab } = useContext(TabsContext);
   return (
     <div className={`tab-panel ${activeTab === index ? 'active' : ''}`}>
       {children}
     </div>
+  );
+}
+```
+export default function App() {
+  return (
+    <Tabs>
+      <TabList>
+        <Tab index={0}>Tab 1</Tab>
+        <Tab index={1}>Tab 2</Tab>
+        <Tab index={2}>Tab 3</Tab>
+      </TabList>
+      <TabPanel index={0}>Content for Tab 1</TabPanel>
+      <TabPanel index={1}>Content for Tab 2</TabPanel>
+      <TabPanel index={2}>Content for Tab 3</TabPanel>
+    </Tabs>
   );
 }
 
