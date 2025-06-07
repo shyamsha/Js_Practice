@@ -27,7 +27,6 @@ export const CardItemList = () => {
           if (ele.isOpen && !images.has(ele.name)) {
             return { ...ele, isOpen: false };
           }
-
           return ele;
         });
         setImageObjArray([]);

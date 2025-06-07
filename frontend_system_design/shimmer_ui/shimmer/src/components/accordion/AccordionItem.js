@@ -1,6 +1,6 @@
 import React from "react";
 
-function AccordionItem({ index, title, body, setIsOpen, isOpen }) {
+function AccordionItem({ title, body, setIsOpen, isOpen }) {
   return (
     <div className="border border-black">
       <div

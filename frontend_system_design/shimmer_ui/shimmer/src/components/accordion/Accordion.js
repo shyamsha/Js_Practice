@@ -23,8 +23,6 @@ function Accordion() {
     <div className="w-[50%] m-auto mt-5">
       {data.map((item, index) => (
         <AccordionItem
-          key={index}
-          index={index}
           title={item.title}
           body={item.body}
           isOpen={index === isOpen}
