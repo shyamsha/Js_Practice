@@ -1101,3 +1101,828 @@ Browser support
 Older browsers might not support defer, so your scripts might not load at all for some users. 
 Inline scripts
 These attributes don't work on inline scripts, which are scripts without a src attribute. 
+
+What are Semantic Elements?
+Semantic elements are HTML tags that clearly describe their meaning and purpose to both browsers and developers. Instead of using generic <div> and <span> tags for everything, semantic elements tell us what the content actually represents.
+Examples of Semantic Elements:
+
+<header> - Page or section header
+<nav> - Navigation links
+<main> - Main content area
+<article> - Standalone content (blog post, news article)
+<section> - Thematic grouping of content
+<aside> - Sidebar or tangential content
+<footer> - Page or section footer
+<figure> and <figcaption> - Images with captions
+<time> - Dates and times
+<address> - Contact information
+
+Why Semantic Elements are Useful
+Accessibility
+Screen readers and other assistive technologies can better understand your page structure. A blind user can navigate directly to the main content or skip to navigation, making your site much more usable.
+SEO Benefits
+Search engines better understand your content hierarchy and context. A <article> tag signals important content, while <nav> helps search engines understand site structure.
+Code Readability
+Your HTML becomes self-documenting. Instead of <div class="header">, you use <header> - it's immediately clear what this section does.
+Maintenance
+Future developers (including yourself) can quickly understand the page structure without deciphering class names or comments.
+Browser Features
+Some browsers offer features like "reader mode" that rely on semantic markup to extract and display content cleanly.
+
+What do you mean by request cycle?
+The request cycle refers to the process that a web browser goes through to retrieve and display a web page. It involves several steps, including:
+1. **DNS Lookup**: The browser looks up the domain name to find the corresponding IP address.
+2. **Establishing a Connection**: The browser establishes a TCP connection with the server using the IP address.
+3. **Sending the Request**: The browser sends an HTTP request to the server for the desired resource (e.g., an HTML page).
+4. **Server Processing**: The server processes the request, which may involve querying a database or performing other actions.
+5. **Sending the Response**: The server sends an HTTP response back to the browser, which includes the requested resource.
+6. **Rendering the Page**: The browser receives the response and renders the page for the user to view.
+
+how does browser understand js code?
+The browser uses a JavaScript engine to parse and execute JavaScript code. The process involves several steps:
+1. **Lexical Analysis**: The engine breaks the code into tokens, which are the smallest units of meaning (e.g., keywords, operators, identifiers).
+2. **Parsing**: The engine converts the tokens into an Abstract Syntax Tree (AST), which represents the hierarchical structure of the code.
+3. **Compilation**: The engine compiles the AST into machine code or bytecode that can be executed by the browser.
+4. **Execution**: The engine executes the compiled code, allowing the JavaScript to interact with the DOM, handle events, and perform other tasks.
+
+What is Preconnect?
+Preconnect is a resource hint in HTML that allows browsers to establish early connections to a server before an actual request is made. This can significantly improve page load performance by reducing the time it takes to connect to external resources, such as APIs or third-party services.
+The `<link rel="preconnect">` tag is used to specify the origin of the resource that the browser should preconnect to. It can include optional attributes like `crossorigin` for handling CORS (Cross-Origin Resource Sharing) requests.
+Example:
+```html
+<link rel="preconnect" href="https://api.example.com" crossorigin>
+```
+This tells the browser to initiate a connection to `https://api.example.com` as soon as possible, allowing it to reuse that connection for subsequent requests, thus speeding up the overall loading process of the page.
+
+What is CSS Specificity?
+CSS specificity is a set of rules that browsers use to determine which CSS styles are applied to an element when there are conflicting styles. It is calculated based on the types of selectors used in a rule. The more specific a selector is, the higher its specificity score.
+
+CSS Selectors and Rules:
+1. **Element Selector**: Selects elements by their tag name (e.g., `div`, `p`, `h1`).
+2. **Class Selector**: Selects elements by their class attribute (e.g., `.class-name`).
+3. **ID Selector**: Selects a single element by its ID attribute (e.g., `#id-name`).
+4. **Attribute Selector**: Selects elements based on their attributes (e.g., `[type="text"]`).
+5. **Pseudo-classes**: Selects elements based on their state (e.g., `:hover`, `:focus`).
+6. **Pseudo-elements**: Selects a part of an element (e.g., `::before`, `::after`).
+CSS selectors and rules are the foundation of styling web pages. Let me break down how they work and the different types available.
+
+## Basic Structure of CSS Rules
+
+```css
+selector {
+  property: value;
+  property: value;
+}
+```
+
+**Example:**
+```css
+h1 {
+  color: blue;
+  font-size: 24px;
+}
+```
+
+## Types of CSS Selectors
+
+### Basic Selectors
+
+**Universal Selector**
+```css
+* {
+  margin: 0;
+  padding: 0;
+}
+```
+Selects all elements.
+
+**Type/Element Selector**
+```css
+p { color: black; }
+h1 { font-size: 2em; }
+div { background: white; }
+```
+Selects all elements of a specific type.
+
+**Class Selector**
+```css
+.highlight { background: yellow; }
+.btn { padding: 10px; }
+.nav-item { display: inline-block; }
+```
+Selects elements with specific class attribute.
+
+**ID Selector**
+```css
+#header { background: blue; }
+#main-content { width: 80%; }
+```
+Selects elements with specific ID attribute.
+
+### Attribute Selectors
+
+**Basic Attribute**
+```css
+[disabled] { opacity: 0.5; }
+[required] { border: 2px solid red; }
+```
+
+**Attribute with Value**
+```css
+[type="text"] { border: 1px solid gray; }
+[href="https://example.com"] { color: green; }
+```
+
+**Attribute Value Patterns**
+```css
+/* Starts with */
+[href^="https"] { color: green; }
+
+/* Ends with */
+[src$=".jpg"] { border: 2px solid blue; }
+
+/* Contains */
+[class*="btn"] { cursor: pointer; }
+
+/* Word in space-separated list */
+[class~="active"] { font-weight: bold; }
+
+/* Starts with (language codes) */
+[lang|="en"] { font-family: Arial; }
+```
+
+### Pseudo-Class Selectors
+
+**Interactive States**
+```css
+a:hover { color: red; }
+button:active { background: darkblue; }
+input:focus { outline: 2px solid blue; }
+input:disabled { background: gray; }
+```
+
+**Structural Pseudo-Classes**
+```css
+/* First and last */
+li:first-child { margin-top: 0; }
+li:last-child { margin-bottom: 0; }
+
+/* Nth patterns */
+tr:nth-child(odd) { background: #f0f0f0; }
+tr:nth-child(even) { background: white; }
+tr:nth-child(3n) { font-weight: bold; }
+tr:nth-child(3n+1) { color: red; }
+
+/* Other structural */
+p:only-child { text-align: center; }
+li:first-of-type { list-style: none; }
+```
+
+**Form Pseudo-Classes**
+```css
+input:valid { border: 2px solid green; }
+input:invalid { border: 2px solid red; }
+input:checked + label { font-weight: bold; }
+input:placeholder-shown { opacity: 0.7; }
+```
+
+### Pseudo-Element Selectors
+
+```css
+/* Generated content */
+p::before { content: "→ "; }
+p::after { content: " ←"; }
+
+/* Text selection */
+p::selection { background: yellow; }
+
+/* First letter/line */
+p::first-letter { font-size: 2em; }
+p::first-line { font-weight: bold; }
+
+/* Placeholder text */
+input::placeholder { color: gray; }
+```
+
+### Combinators
+
+**Descendant (Space)**
+```css
+/* Any p inside article */
+article p { color: gray; }
+```
+
+**Child (>)**
+```css
+/* Direct p children of article */
+article > p { margin-bottom: 1em; }
+```
+
+**Adjacent Sibling (+)**
+```css
+/* p immediately after h1 */
+h1 + p { font-size: 1.2em; }
+```
+
+**General Sibling (~)**
+```css
+/* All p siblings after h1 */
+h1 ~ p { margin-left: 20px; }
+```
+
+## Complex Selector Examples
+
+**Multiple Classes**
+```css
+.btn.primary.large { 
+  background: blue;
+  padding: 15px 30px;
+  font-size: 18px;
+}
+```
+
+**Combining Different Selectors**
+```css
+/* Form inputs that are required and invalid */
+input[required]:invalid {
+  border: 2px solid red;
+  background: #ffe6e6;
+}
+
+/* Navigation links on hover */
+nav ul li a:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+/* Every third item in a grid, but not the first */
+.grid-item:nth-child(3n):not(:first-child) {
+  margin-right: 0;
+}
+```
+
+## Grouping Selectors
+
+```css
+/* Multiple selectors with same rules */
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, sans-serif;
+  margin-bottom: 0.5em;
+}
+
+/* Complex grouping */
+.btn,
+.button,
+input[type="submit"],
+input[type="button"] {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+```
+
+## Advanced Selectors
+
+**Negation (:not)**
+```css
+/* All paragraphs except those with class 'intro' */
+p:not(.intro) { font-size: 14px; }
+
+/* All inputs except checkboxes and radios */
+input:not([type="checkbox"]):not([type="radio"]) {
+  border: 1px solid gray;
+}
+```
+
+**Has Selector (:has) - Modern browsers**
+```css
+/* Articles that contain an image */
+article:has(img) { border: 2px solid blue; }
+
+/* Forms with invalid inputs */
+form:has(input:invalid) { border: 2px solid red; }
+```
+
+**Where and Is**
+```css
+/* More forgiving selector lists */
+:is(h1, h2, h3):hover { color: blue; }
+:where(.btn, .button) { padding: 10px; }
+```
+What are Mixins?
+Mixins in CSS (often used with preprocessors like Sass or Less) are reusable blocks of code that allow you to define styles once and apply them to multiple selectors. They help reduce redundancy and improve maintainability in your stylesheets.
+### Example of a Mixin in Sass
+```css
+/* Mixin for flex box centering */
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Usage */
+.container {
+  @include flex-center;
+}
+```
+
+```css
+/* Mixin for responsive typography */
+@mixin responsive-font($min-font-size, $max-font-size) {
+  font-size: $min-font-size;
+
+  @media (min-width: 768px) {
+    font-size: $max-font-size;
+  }
+}
+
+/* Usage */
+h1 {
+  @include responsive-font(24px, 32px);
+}
+```
+
+```css
+/* Mixin for parameters */
+@mixin flex-center($direction: row, $gap: 0) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+// Usage
+.header {
+  @include flex-center();
+}
+
+.sidebar {
+  @include flex-center(column, 20px);
+}
+Benefits of Mixins
+Code Reusability:
+
+Write once, use many times
+Consistent styling across components
+Easy to maintain and update
+
+Parameterization:
+
+Flexible, customizable styles
+Reduce code duplication
+Create design systems
+
+Organization:
+
+Group related properties together
+Create component libraries
+Better code structure
+
+What are CSS Postprocessors?
+CSS Postprocessors are tools that allow you to extend the capabilities of CSS by adding features that are not natively supported in the language. They work by taking your existing CSS and transforming it in various ways, such as adding vendor prefixes, nesting rules, or enabling future CSS syntax.
+
+### Popular CSS Postprocessors
+
+1. **PostCSS**: A tool for transforming CSS with JavaScript plugins. It can be used for tasks like autoprefixing, linting, and minifying CSS.
+2. **Autoprefixer**: A PostCSS plugin that automatically adds vendor prefixes to your CSS rules, ensuring compatibility with different browsers.
+3. **CSSNano**: A PostCSS plugin that optimizes and minifies your CSS for production, reducing file size and improving load times.
+
+### Benefits of Using Postprocessors
+
+- **Future-Proofing**: Write modern CSS today and let the postprocessor handle compatibility.
+- **Enhanced Workflow**: Automate repetitive tasks like prefixing and minification.
+- **Modularity**: Use plugins to add only the features you need, keeping your build process lightweight.
+### Example of Using PostCSS with Autoprefixer
+```javascript
+// postcss.config.js
+module.exports = {
+  plugins: [
+    require('autoprefixer'),
+    require('cssnano')({
+      preset: 'default',
+    }),
+  ],
+};
+// styles.css
+body {
+  display: flex;
+  transition: all 0.3s ease;
+}
+// After running PostCSS with Autoprefixer
+// styles.css
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+```
+### How to Use Postprocessors in Your Workflow
+1. **Install PostCSS and Plugins**: Use npm or yarn to install PostCSS and any desired plugins.
+   ```bash
+   npm install postcss autoprefixer cssnano --save-dev
+   ```
+2. **Create a Configuration File**: Create a `postcss.config.js` file to specify the plugins you want to use.
+3. **Integrate with Build Tools**: Configure your build tool (e.g., Webpack, Gulp) to run PostCSS on your CSS files.
+   ```javascript
+   // Example for Webpack
+   const postcss = require('postcss-loader');
+   module.exports = {
+     module: {
+       rules: [
+         {
+           test: /\.css$/,
+           use: [
+             'style-loader',
+             'css-loader',
+             postcss,
+           ],
+         },
+       ],
+     },
+   };
+   ```
+
+   // =====================================
+// JAVASCRIPT PROTOTYPES - COMPLETE GUIDE
+// =====================================
+
+console.log("=== 1. BASIC PROTOTYPE CONCEPT ===");
+
+// Every object in JavaScript has a prototype
+// The prototype is another object that the current object inherits from
+
+const obj = {};
+console.log("obj.__proto__:", obj.__proto__); // Points to Object.prototype
+console.log("obj.__proto__ === Object.prototype:", obj.__proto__ === Object.prototype);
+
+// Arrays also have prototypes
+const arr = [];
+console.log("arr.__proto__ === Array.prototype:", arr.__proto__ === Array.prototype);
+
+console.log("\n=== 2. FUNCTION PROTOTYPES ===");
+
+// Every function has a 'prototype' property
+function Person(name) {
+    this.name = name;
+}
+
+console.log("Person.prototype:", Person.prototype);
+
+// Adding methods to the prototype
+Person.prototype.greet = function() {
+    return `Hello, I'm ${this.name}`;
+};
+
+Person.prototype.age = 0; // Default property
+
+// Creating instances
+const john = new Person("John");
+const mary = new Person("Mary");
+
+console.log("john.greet():", john.greet());
+console.log("mary.greet():", mary.greet());
+
+// Instances inherit from the constructor's prototype
+console.log("john.__proto__ === Person.prototype:", john.__proto__ === Person.prototype);
+
+console.log("\n=== 3. PROTOTYPE CHAIN ===");
+
+// The prototype chain is how JavaScript looks up properties
+console.log("john.name:", john.name); // Own property
+console.log("john.age:", john.age);   // From Person.prototype
+console.log("john.toString():", john.toString()); // From Object.prototype
+
+// Visualizing the prototype chain
+console.log("Prototype chain for john:");
+console.log("john -> Person.prototype -> Object.prototype -> null");
+
+// Checking the chain
+console.log("john.__proto__:", john.__proto__.constructor.name); // Person
+console.log("john.__proto__.__proto__:", john.__proto__.__proto__.constructor.name); // Object
+console.log("john.__proto__.__proto__.__proto__:", john.__proto__.__proto__.__proto__); // null
+
+console.log("\n=== 4. PROTOTYPE METHODS ===");
+
+// Object.getPrototypeOf() - modern way to get prototype
+console.log("Object.getPrototypeOf(john) === Person.prototype:", 
+    Object.getPrototypeOf(john) === Person.prototype);
+
+// Object.setPrototypeOf() - set prototype (avoid in production)
+const animal = {
+    type: "animal",
+    speak() {
+        return "Some sound";
+    }
+};
+
+const dog = {
+    breed: "Golden Retriever"
+};
+
+Object.setPrototypeOf(dog, animal);
+console.log("dog.type:", dog.type); // "animal"
+console.log("dog.speak():", dog.speak()); // "Some sound"
+
+// hasOwnProperty() - check if property is own (not inherited)
+console.log("john.hasOwnProperty('name'):", john.hasOwnProperty('name')); // true
+console.log("john.hasOwnProperty('greet'):", john.hasOwnProperty('greet')); // false
+
+console.log("\n=== 5. PROTOTYPE INHERITANCE ===");
+
+// Creating inheritance with prototypes
+function Animal(species) {
+    this.species = species;
+}
+
+Animal.prototype.eat = function() {
+    return `${this.species} is eating`;
+};
+
+Animal.prototype.sleep = function() {
+    return `${this.species} is sleeping`;
+};
+
+function Dog(name, breed) {
+    Animal.call(this, "Canine"); // Call parent constructor
+    this.name = name;
+    this.breed = breed;
+}
+
+// Set up inheritance
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog; // Fix constructor reference
+
+// Add dog-specific methods
+Dog.prototype.bark = function() {
+    return `${this.name} is barking!`;
+};
+
+Dog.prototype.wagTail = function() {
+    return `${this.name} is wagging tail`;
+};
+
+const buddy = new Dog("Buddy", "Labrador");
+console.log("buddy.name:", buddy.name);
+console.log("buddy.species:", buddy.species);
+console.log("buddy.eat():", buddy.eat());
+console.log("buddy.bark():", buddy.bark());
+
+// Check inheritance
+console.log("buddy instanceof Dog:", buddy instanceof Dog);
+console.log("buddy instanceof Animal:", buddy instanceof Animal);
+
+console.log("\n=== 6. MODERN CLASS SYNTAX (ES6) ===");
+
+// Classes are syntactic sugar over prototypes
+class Vehicle {
+    constructor(make, model) {
+        this.make = make;
+        this.model = model;
+    }
+    
+    start() {
+        return `${this.make} ${this.model} is starting`;
+    }
+    
+    stop() {
+        return `${this.make} ${this.model} is stopping`;
+    }
+}
+
+class Car extends Vehicle {
+    constructor(make, model, doors) {
+        super(make, model);
+        this.doors = doors;
+    }
+    
+    honk() {
+        return `${this.make} ${this.model} is honking!`;
+    }
+}
+
+const myCar = new Car("Toyota", "Camry", 4);
+console.log("myCar.start():", myCar.start());
+console.log("myCar.honk():", myCar.honk());
+
+// Under the hood, it's still prototypes
+console.log("myCar.__proto__ === Car.prototype:", myCar.__proto__ === Car.prototype);
+console.log("Car.prototype.__proto__ === Vehicle.prototype:", 
+    Car.prototype.__proto__ === Vehicle.prototype);
+
+console.log("\n=== 7. PROTOTYPE POLLUTION (DANGEROUS) ===");
+
+// WARNING: This is dangerous and should be avoided
+console.log("Before pollution - {}.isAdmin:", {}.isAdmin); // undefined
+
+// Polluting Object.prototype (DON'T DO THIS)
+Object.prototype.isAdmin = true;
+
+console.log("After pollution - {}.isAdmin:", {}.isAdmin); // true
+console.log("Even arrays get polluted - [].isAdmin:", [].isAdmin); // true
+
+// Clean up the pollution
+delete Object.prototype.isAdmin;
+console.log("After cleanup - {}.isAdmin:", {}.isAdmin); // undefined
+
+console.log("\n=== 8. PRACTICAL EXAMPLES ===");
+
+// Example 1: Adding methods to built-in prototypes (use carefully)
+Array.prototype.last = function() {
+    return this[this.length - 1];
+};
+
+const numbers = [1, 2, 3, 4, 5];
+console.log("numbers.last():", numbers.last()); // 5
+
+// Example 2: Polyfill (adding missing methods)
+if (!Array.prototype.includes) {
+    Array.prototype.includes = function(searchElement) {
+        return this.indexOf(searchElement) !== -1;
+    };
+}
+
+// Example 3: Plugin pattern
+function Calculator() {
+    this.value = 0;
+}
+
+Calculator.prototype.add = function(num) {
+    this.value += num;
+    return this; // Enable chaining
+};
+
+Calculator.prototype.multiply = function(num) {
+    this.value *= num;
+    return this;
+};
+
+Calculator.prototype.result = function() {
+    return this.value;
+};
+
+const calc = new Calculator();
+const result = calc.add(5).multiply(3).add(2).result();
+console.log("Calculator result:", result); // 17
+
+console.log("\n=== 9. PROTOTYPE VS CLOSURE ===");
+
+// Prototype approach - shared methods
+function CounterProto() {
+    this.count = 0;
+}
+
+CounterProto.prototype.increment = function() {
+    this.count++;
+};
+
+CounterProto.prototype.decrement = function() {
+    this.count--;
+};
+
+// Closure approach - private variables
+function CounterClosure() {
+    let count = 0;
+    
+    return {
+        increment() {
+            count++;
+        },
+        decrement() {
+            count--;
+        },
+        getCount() {
+            return count;
+        }
+    };
+}
+
+const protoCounter = new CounterProto();
+const closureCounter = CounterClosure();
+
+protoCounter.increment();
+closureCounter.increment();
+
+console.log("Proto counter:", protoCounter.count); // 1
+console.log("Closure counter:", closureCounter.getCount()); // 1
+
+// Prototype allows external access/modification
+console.log("Can access proto count directly:", protoCounter.count);
+// console.log("Cannot access closure count directly:", closureCounter.count); // undefined
+
+console.log("\n=== 10. PERFORMANCE CONSIDERATIONS ===");
+
+// Methods on prototype are memory efficient
+function EfficientPerson(name) {
+    this.name = name;
+}
+
+EfficientPerson.prototype.greet = function() {
+    return `Hello, I'm ${this.name}`;
+};
+
+// Methods as instance properties are memory inefficient
+function InefficientPerson(name) {
+    this.name = name;
+    this.greet = function() {
+        return `Hello, I'm ${this.name}`;
+    };
+}
+
+// Create multiple instances
+const people1 = [];
+const people2 = [];
+
+for (let i = 0; i < 3; i++) {
+    people1.push(new EfficientPerson(`Person${i}`));
+    people2.push(new InefficientPerson(`Person${i}`));
+}
+
+console.log("Efficient: All greet methods are the same reference:",
+    people1[0].greet === people1[1].greet); // true
+
+console.log("Inefficient: Each greet method is different:",
+    people2[0].greet === people2[1].greet); // false
+
+console.log("\n=== SUMMARY ===");
+console.log(`
+Key Points about Prototypes:
+1. Every object has a prototype (__proto__)
+2. Functions have a 'prototype' property
+3. Prototype chain enables inheritance
+4. Methods on prototype are shared across instances
+5. Classes are syntactic sugar over prototypes
+6. Prototype methods are memory efficient
+7. Be careful with prototype pollution
+8. Use Object.getPrototypeOf() instead of __proto__
+`);
+
+Cache Mechanisms & Service Workers
+🎯 Cache Mechanisms
+Caching is a technique that stores frequently accessed data in fast-access storage to reduce load times and server requests.
+Types of Web Caches:
+
+Browser Cache (HTTP Cache)
+
+Controlled by HTTP headers (Cache-Control, ETag, Expires)
+Stores resources on user's device
+Automatic based on server directives
+
+
+Memory Cache
+
+Fastest access, stored in RAM
+Lost when tab is closed or refreshed
+Used for currently active resources
+
+
+Disk Cache
+
+Persistent storage on hard drive
+Survives browser restarts
+Larger capacity than memory cache
+
+
+
+⚙️ Service Workers
+Service Workers are scripts that run in the background, separate from web pages, enabling:
+
+Offline functionality
+Background sync
+Push notifications
+Advanced caching strategies
+Network request interception
+
+Key Features:
+
+Runs on a separate thread
+Can't directly access DOM
+Programmable network proxy
+Event-driven lifecycle
+HTTPS required (except localhost)
+
+🚀 Cache Strategies
+
+Cache First: Check cache first, fallback to network
+Network First: Try network first, fallback to cache
+Stale While Revalidate: Serve from cache, update in background
+Network Only: Always fetch from network
+Cache Only: Only serve from cache
+
+📈 Benefits
+
+Performance: Faster load times
+Offline Support: App works without internet
+Reduced Bandwidth: Less data usage
+Better UX: Instant responses from cache
+Reliability: Graceful degradation when offline
+
+🎯 Use Cases
+
+Progressive Web Apps (PWAs)
+Offline-first applications
+Resource optimization
+Background data synchronization
+Push notification handling

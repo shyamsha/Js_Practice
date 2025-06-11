@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Form with DOM Manipulation</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        padding: 30px;
+        text-align: center;
+        color: white;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-container {
+        padding: 40px;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+        position: relative;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+        font-size: 1.1rem;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #e1e5e9;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #f8f9fa;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #4facfe;
+        background: white;
+        box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+      }
+
+      .btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 10px 5px;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-secondary {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      }
+
+      .btn-success {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      }
+
+      .error {
+        color: #e74c3c;
+        font-size: 0.9rem;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .valid {
+        border-color: #27ae60 !important;
+      }
+
+      .invalid {
+        border-color: #e74c3c !important;
+        animation: shake 0.5s ease-in-out;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        75% {
+          transform: translateX(5px);
+        }
+      }
+
+      .output {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 30px;
+        border-left: 4px solid #4facfe;
+        display: none;
+      }
+
+      .output h3 {
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .dynamic-list {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .list-item {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 10px 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        animation: slideIn 0.3s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .delete-btn {
+        background: #e74c3c;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8rem;
+      }
+
+      .delete-btn:hover {
+        background: #c0392b;
+      }
+
+      .counter {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        text-align: center;
+        margin: 20px 0;
+        font-weight: 600;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: #e1e5e9;
+        border-radius: 3px;
+        overflow: hidden;
+        margin: 20px 0;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        width: 0%;
+        transition: width 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🚀 Dynamic Form</h1>
+        <p>Interactive HTML Form with DOM Manipulation</p>
+      </div>
+
+      <div class="form-container">
+        <form id="dynamicForm">
+          <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required />
+            <div class="error" id="nameError">Please enter your full name</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required />
+            <div class="error" id="emailError">
+              Please enter a valid email address
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              min="1"
+              max="120"
+              required
+            />
+            <div class="error" id="ageError">
+              Please enter a valid age (1-120)
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+              <option value="">Select your country</option>
+              <option value="usa">United States</option>
+              <option value="canada">Canada</option>
+              <option value="uk">United Kingdom</option>
+              <option value="germany">Germany</option>
+              <option value="france">France</option>
+              <option value="india">India</option>
+              <option value="japan">Japan</option>
+              <option value="australia">Australia</option>
+            </select>
+            <div class="error" id="countryError">
+              Please select your country
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="bio">Bio:</label>
+            <textarea
+              id="bio"
+              name="bio"
+              rows="4"
+              placeholder="Tell us about yourself..."
+            ></textarea>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <button type="submit" class="btn">Submit Form</button>
+          <button type="button" class="btn btn-secondary" id="clearForm">
+            Clear Form
+          </button>
+          <button type="button" class="btn btn-success" id="fillSample">
+            Fill Sample Data
+          </button>
+        </form>
+
+        <div class="dynamic-list">
+          <h3>🎯 Dynamic Skills List</h3>
+          <div class="form-group">
+            <input
+              type="text"
+              id="skillInput"
+              placeholder="Enter a skill (e.g., JavaScript, Design)"
+            />
+            <button type="button" class="btn" id="addSkill">Add Skill</button>
+          </div>
+          <div id="skillsList"></div>
+          <div class="counter" id="skillsCounter">Skills Added: 0</div>
+        </div>
+
+        <div class="output" id="formOutput">
+          <h3>📊 Form Data:</h3>
+          <div id="outputContent"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // DOM Elements
+      const form = document.getElementById("dynamicForm");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const ageInput = document.getElementById("age");
+      const countrySelect = document.getElementById("country");
+      const bioTextarea = document.getElementById("bio");
+      const clearBtn = document.getElementById("clearForm");
+      const fillSampleBtn = document.getElementById("fillSample");
+      const formOutput = document.getElementById("formOutput");
+      const outputContent = document.getElementById("outputContent");
+      const progressFill = document.getElementById("progressFill");
+
+      // Skills functionality
+      const skillInput = document.getElementById("skillInput");
+      const addSkillBtn = document.getElementById("addSkill");
+      const skillsList = document.getElementById("skillsList");
+      const skillsCounter = document.getElementById("skillsCounter");
+      let skillsCount = 0;
+
+      // Form validation
+      function validateField(field, errorElement, validationFn) {
+        const isValid = validationFn(field.value);
+
+        if (isValid) {
+          field.classList.remove("invalid");
+          field.classList.add("valid");
+          errorElement.style.display = "none";
+        } else {
+          field.classList.remove("valid");
+          field.classList.add("invalid");
+          errorElement.style.display = "block";
+        }
+
+        return isValid;
+      }
+
+      // Validation functions
+      const validators = {
+        name: (value) => value.trim().length >= 2,
+        email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+        age: (value) => value >= 1 && value <= 120,
+        country: (value) => value !== "",
+      };
+
+      // Real-time validation
+      nameInput.addEventListener("blur", () => {
+        validateField(
+          nameInput,
+          document.getElementById("nameError"),
+          validators.name
+        );
+        updateProgress();
+      });
+
+      emailInput.addEventListener("blur", () => {
+        validateField(
+          emailInput,
+          document.getElementById("emailError"),
+          validators.email
+        );
+        updateProgress();
+      });
+
+      ageInput.addEventListener("blur", () => {
+        validateField(
+          ageInput,
+          document.getElementById("ageError"),
+          validators.age
+        );
+        updateProgress();
+      });
+
+      countrySelect.addEventListener("change", () => {
+        validateField(
+          countrySelect,
+          document.getElementById("countryError"),
+          validators.country
+        );
+        updateProgress();
+      });
+
+      // Progress bar update
+      function updateProgress() {
+        const fields = [nameInput, emailInput, ageInput, countrySelect];
+        const validFields = fields.filter((field) =>
+          field.classList.contains("valid")
+        ).length;
+        const progress = (validFields / fields.length) * 100;
+        progressFill.style.width = progress + "%";
+      }
+
+      // Form submission
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Validate all fields
+        const nameValid = validateField(
+          nameInput,
+          document.getElementById("nameError"),
+          validators.name
+        );
+        const emailValid = validateField(
+          emailInput,
+          document.getElementById("emailError"),
+          validators.email
+        );
+        const ageValid = validateField(
+          ageInput,
+          document.getElementById("ageError"),
+          validators.age
+        );
+        const countryValid = validateField(
+          countrySelect,
+          document.getElementById("countryError"),
+          validators.country
+        );
+
+        if (nameValid && emailValid && ageValid && countryValid) {
+          displayFormData();
+          form.style.transform = "scale(0.98)";
+          setTimeout(() => {
+            form.style.transform = "scale(1)";
+          }, 150);
+        }
+      });
+
+      // Display form data
+      function displayFormData() {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        outputContent.innerHTML = `
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Age:</strong> ${data.age}</p>
+                <p><strong>Country:</strong> ${data.country}</p>
+                <p><strong>Bio:</strong> ${data.bio || "Not provided"}</p>
+                <p><strong>Skills:</strong> ${skillsCount} skills added</p>
+                <p><strong>Submitted at:</strong> ${new Date().toLocaleString()}</p>
+            `;
+
+        formOutput.style.display = "block";
+        formOutput.scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Clear form
+      clearBtn.addEventListener("click", () => {
+        form.reset();
+        document.querySelectorAll(".valid, .invalid").forEach((el) => {
+          el.classList.remove("valid", "invalid");
+        });
+        document.querySelectorAll(".error").forEach((el) => {
+          el.style.display = "none";
+        });
+        formOutput.style.display = "none";
+        progressFill.style.width = "0%";
+      });
+
+      // Fill sample data
+      fillSampleBtn.addEventListener("click", () => {
+        nameInput.value = "John Doe";
+        emailInput.value = "john.doe@example.com";
+        ageInput.value = "28";
+        countrySelect.value = "usa";
+        bioTextarea.value =
+          "Full-stack developer with 5 years of experience in web technologies.";
+
+        // Trigger validation
+        [nameInput, emailInput, ageInput, countrySelect].forEach((field) => {
+          field.dispatchEvent(new Event("blur"));
+        });
+      });
+
+      // Skills management
+      function addSkill() {
+        const skill = skillInput.value.trim();
+        if (skill === "") return;
+
+        // Check for duplicates
+        const existingSkills = Array.from(skillsList.children).map(
+          (item) => item.querySelector("span").textContent
+        );
+
+        if (existingSkills.includes(skill)) {
+          skillInput.style.borderColor = "#e74c3c";
+          setTimeout(() => {
+            skillInput.style.borderColor = "#e1e5e9";
+          }, 1000);
+          return;
+        }
+
+        // Create skill element
+        const skillElement = document.createElement("div");
+        skillElement.className = "list-item";
+        skillElement.innerHTML = `
+                <span>${skill}</span>
+                <button class="delete-btn" onclick="removeSkill(this)">×</button>
+            `;
+
+        skillsList.appendChild(skillElement);
+        skillsCount++;
+        updateSkillsCounter();
+
+        skillInput.value = "";
+        skillInput.focus();
+      }
+
+      function removeSkill(button) {
+        const skillElement = button.parentElement;
+        skillElement.style.animation = "slideOut 0.3s ease-out";
+
+        setTimeout(() => {
+          skillsList.removeChild(skillElement);
+          skillsCount--;
+          updateSkillsCounter();
+        }, 300);
+      }
+
+      function updateSkillsCounter() {
+        skillsCounter.textContent = `Skills Added: ${skillsCount}`;
+        skillsCounter.style.transform = "scale(1.1)";
+        setTimeout(() => {
+          skillsCounter.style.transform = "scale(1)";
+        }, 200);
+      }
+
+      // Event listeners for skills
+      addSkillBtn.addEventListener("click", addSkill);
+
+      skillInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          addSkill();
+        }
+      });
+
+      // Dynamic country selection effect
+      countrySelect.addEventListener("change", (e) => {
+        if (e.target.value) {
+          e.target.style.background =
+            "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)";
+          e.target.style.color = "white";
+        } else {
+          e.target.style.background = "#f8f9fa";
+          e.target.style.color = "#333";
+        }
+      });
+
+      // Add CSS for slide out animation
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes slideOut {
+                from {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateX(20px);
+                }
+            }
+        `;
+      document.head.appendChild(style);
+
+      // Initialize
+      console.log(
+        "🚀 Dynamic form initialized with DOM manipulation features!"
+      );
+    </script>
+  </body>
+</html>

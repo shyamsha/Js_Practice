@@ -1,5 +1,4 @@
 // what happens this in async/callbacks
-"";
 let personObj1 = {
   firstName: "John",
   lastName: "sin",

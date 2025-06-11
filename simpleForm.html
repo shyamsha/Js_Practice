@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form with Validation</title>
+    <style>
+      .error {
+        color: red;
+      }
+      .success {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Contact Form</h2>
+    <form id="contactForm">
+      <label>
+        Name:
+        <input type="text" id="name" name="name" required /> </label
+      ><br /><br />
+
+      <label>
+        Email:
+        <input type="email" id="email" name="email" required /> </label
+      ><br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+      const form = document.getElementById("contactForm");
+      const result = document.getElementById("result");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+
+        // Simple validation
+        if (name === "" || email === "") {
+          result.textContent = "Please fill in all fields.";
+          result.className = "error";
+          return;
+        }
+
+        // Basic email pattern check
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          result.textContent = "Please enter a valid email address.";
+          result.className = "error";
+          return;
+        }
+
+        // If valid
+        result.textContent = `Submitted: Name - ${name}, Email - ${email}`;
+        result.className = "success";
+
+        // Optional: reset form
+        form.reset();
+      });
+    </script>
+  </body>
+</html>

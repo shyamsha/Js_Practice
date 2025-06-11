@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Drag & Drop Upload</title>
+    <style>
+      #dropzone {
+        border: 2px dashed #888;
+        padding: 40px;
+        text-align: center;
+        transition: background 0.3s, border-color 0.3s;
+        cursor: pointer;
+      }
+      #dropzone.dragover {
+        border-color: #333;
+        background: #f0f0f0;
+      }
+      #preview img {
+        max-width: 100px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dropzone">
+      <p>Drop files here or click to browse</p>
+      <input type="file" id="fileInput" multiple hidden />
+    </div>
+
+    <div id="preview"></div>
+
+    <script>
+      const drop = document.getElementById("dropzone");
+      const input = document.getElementById("fileInput");
+      const preview = document.getElementById("preview");
+
+      // Prevent default behavior and highlight
+      ["dragenter", "dragover", "dragleave", "drop"].forEach((evt) => {
+        drop.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        });
+      });
+      drop.addEventListener("dragover", () => drop.classList.add("dragover"));
+      drop.addEventListener("dragleave", () =>
+        drop.classList.remove("dragover")
+      );
+
+      // Handle dropped files
+      drop.addEventListener("drop", (e) => {
+        drop.classList.remove("dragover");
+        handleFiles(e.dataTransfer.files);
+      });
+
+      // Trigger browse
+      drop.addEventListener("click", () => input.click());
+      input.addEventListener("change", () => handleFiles(input.files));
+
+      // Process and preview files
+      function handleFiles(files) {
+        Array.from(files).forEach((file) => {
+          // Validate images only
+          if (!file.type.startsWith("image/")) {
+            alert("Only images allowed");
+            return;
+          }
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            const img = document.createElement("img");
+            const objectURL = URL.createObjectURL(file);
+            img.src = objectURL;
+            preview.appendChild(img);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+    </script>
+  </body>
+</html>

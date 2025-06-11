@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caching & Service Workers Demo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+        color: #333;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        padding: 30px;
+        text-align: center;
+        color: white;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .content {
+        padding: 40px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 30px;
+        border-left: 5px solid #4facfe;
+      }
+
+      .section h2 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+
+      .section h3 {
+        color: #34495e;
+        margin: 20px 0 15px 0;
+        font-size: 1.3rem;
+      }
+
+      .code-block {
+        background: #2c3e50;
+        color: #ecf0f1;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 15px 0;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .demo-section {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        margin: 20px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin: 10px 5px;
+        transition: all 0.3s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .status {
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        font-weight: 600;
+      }
+
+      .status.online {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .status.offline {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      .cache-demo {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .cache-item {
+        background: #e3f2fd;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #2196f3;
+      }
+
+      .cache-item h4 {
+        color: #1976d2;
+        margin-bottom: 10px;
+      }
+
+      .log {
+        background: #263238;
+        color: #00e676;
+        padding: 15px;
+        border-radius: 8px;
+        max-height: 200px;
+        overflow-y: auto;
+        font-family: monospace;
+        font-size: 0.85rem;
+        margin: 15px 0;
+      }
+
+      .highlight {
+        background: yellow;
+        padding: 2px 4px;
+        border-radius: 3px;
+        color: #333;
+      }
+
+      .diagram {
+        text-align: center;
+        margin: 20px 0;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        border: 2px dashed #4facfe;
+      }
+
+      .flow-arrow {
+        font-size: 2rem;
+        color: #4facfe;
+        margin: 10px;
+      }
+
+      .performance-meter {
+        background: linear-gradient(to right, #ff6b6b, #feca57, #48cab2);
+        height: 20px;
+        border-radius: 10px;
+        margin: 10px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .performance-indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        transition: width 0.5s ease;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🚀 Caching & Service Workers</h1>
+        <p>Complete Guide with Interactive Demos</p>
+      </div>
+
+      <div class="content">
+        <!-- Cache Mechanisms Section -->
+        <div class="section">
+          <h2>📦 Cache Mechanisms Overview</h2>
+          <p>
+            Caching stores frequently accessed data to reduce load times and
+            server requests.
+          </p>
+
+          <div class="cache-demo">
+            <div class="cache-item">
+              <h4>🌐 Browser Cache</h4>
+              <p><strong>Location:</strong> User's browser</p>
+              <p>
+                <strong>Controls:</strong> HTTP headers (Cache-Control, ETag)
+              </p>
+              <p><strong>Lifespan:</strong> Until expiration or manual clear</p>
+            </div>
+
+            <div class="cache-item">
+              <h4>💾 Memory Cache</h4>
+              <p><strong>Location:</strong> RAM</p>
+              <p><strong>Speed:</strong> Fastest access</p>
+              <p><strong>Persistence:</strong> Lost on page reload</p>
+            </div>
+
+            <div class="cache-item">
+              <h4>💿 Disk Cache</h4>
+              <p><strong>Location:</strong> Hard drive</p>
+              <p><strong>Speed:</strong> Slower than memory</p>
+              <p><strong>Persistence:</strong> Survives browser restart</p>
+            </div>
+
+            <div class="cache-item">
+              <h4>🔄 Service Worker Cache</h4>
+              <p><strong>Location:</strong> Browser's cache storage</p>
+              <p><strong>Control:</strong> Programmatic via JavaScript</p>
+              <p>
+                <strong>Features:</strong> Offline support, custom strategies
+              </p>
+            </div>
+          </div>
+
+          <h3>Cache Strategies</h3>
+          <div class="code-block">
+            // 1. Cache First (Offline First) // Good for: Static assets, app
+            shell async function cacheFirst(request) { const cache = await
+            caches.open('v1'); const cachedResponse = await
+            cache.match(request); return cachedResponse || fetch(request); } //
+            2. Network First // Good for: Dynamic content, API calls async
+            function networkFirst(request) { try { const response = await
+            fetch(request); return response; } catch (error) { const cache =
+            await caches.open('v1'); return cache.match(request); } } // 3.
+            Stale While Revalidate // Good for: Content that changes
+            occasionally async function staleWhileRevalidate(request) { const
+            cache = await caches.open('v1'); const cachedResponse =
+            cache.match(request); const fetchResponse =
+            fetch(request).then(response => { cache.put(request,
+            response.clone()); return response; }); return cachedResponse ||
+            fetchResponse; }
+          </div>
+        </div>
+
+        <!-- Service Workers Section -->
+        <div class="section">
+          <h2>⚙️ Service Workers</h2>
+          <p>
+            Service Workers are scripts that run in the background, enabling
+            offline functionality, push notifications, and advanced caching
+            strategies.
+          </p>
+
+          <div class="diagram">
+            <h3>Service Worker Lifecycle</h3>
+            <div>
+              📝 Register <span class="flow-arrow">→</span> 📦 Install
+              <span class="flow-arrow">→</span> 🎯 Activate
+              <span class="flow-arrow">→</span> 🏃 Control
+              <span class="flow-arrow">→</span>
+              🔄 Update
+            </div>
+          </div>
+
+          <h3>Service Worker Features</h3>
+          <ul style="margin: 15px 0; padding-left: 20px">
+            <li>
+              <strong>Offline Support:</strong> Cache resources for offline
+              access
+            </li>
+            <li>
+              <strong>Background Sync:</strong> Sync data when connection is
+              restored
+            </li>
+            <li>
+              <strong>Push Notifications:</strong> Receive server-sent
+              notifications
+            </li>
+            <li>
+              <strong>Network Proxying:</strong> Intercept and modify network
+              requests
+            </li>
+            <li>
+              <strong>Performance:</strong> Implement custom caching strategies
+            </li>
+          </ul>
+
+          <div class="code-block">
+            // Service Worker Registration (main.js) if ('serviceWorker' in
+            navigator) { navigator.serviceWorker.register('/sw.js')
+            .then(registration => { console.log('SW registered:', registration);
+            }) .catch(error => { console.log('SW registration failed:', error);
+            }); } // Service Worker (sw.js) const CACHE_NAME = 'my-app-v1';
+            const urlsToCache = [ '/', '/styles.css', '/script.js',
+            '/offline.html' ]; // Install event - cache resources
+            self.addEventListener('install', event => { event.waitUntil(
+            caches.open(CACHE_NAME) .then(cache => cache.addAll(urlsToCache)) );
+            }); // Fetch event - serve from cache self.addEventListener('fetch',
+            event => { event.respondWith( caches.match(event.request)
+            .then(response => { return response || fetch(event.request); }) );
+            });
+          </div>
+        </div>
+
+        <!-- Interactive Demo Section -->
+        <div class="demo-section">
+          <h2>🎮 Interactive Demo</h2>
+
+          <div class="status" id="connectionStatus">
+            <span id="statusText">Checking connection...</span>
+          </div>
+
+          <div style="margin: 20px 0">
+            <button class="button" onclick="checkServiceWorker()">
+              Check Service Worker Status
+            </button>
+            <button class="button" onclick="simulateOffline()">
+              Simulate Offline
+            </button>
+            <button class="button" onclick="clearCache()">Clear Cache</button>
+            <button class="button" onclick="cacheResources()">
+              Cache Resources
+            </button>
+          </div>
+
+          <div class="log" id="logOutput">
+            <div>🚀 Demo initialized. Try the buttons above!</div>
+          </div>
+
+          <h3>Performance Metrics</h3>
+          <div>
+            <p>Cache Hit Rate: <span id="cacheHitRate">0%</span></p>
+            <div class="performance-meter">
+              <div class="performance-indicator" id="performanceBar"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advanced Concepts -->
+        <div class="section">
+          <h2>🔬 Advanced Concepts</h2>
+
+          <h3>Cache Storage API</h3>
+          <div class="code-block">
+            // Working with Cache Storage API async function manageCaches() { //
+            Open a cache const cache = await caches.open('my-cache-v1'); // Add
+            resources to cache await cache.addAll(['/page1.html',
+            '/page2.html']); // Add single resource await
+            cache.add('/api/data'); // Check if request is cached const response
+            = await cache.match('/page1.html'); // Delete from cache await
+            cache.delete('/old-resource'); // List all caches const cacheNames =
+            await caches.keys(); // Delete old caches await Promise.all(
+            cacheNames.map(name => { if (name !== 'my-cache-v1') { return
+            caches.delete(name); } }) ); }
+          </div>
+
+          <h3>Background Sync</h3>
+          <div class="code-block">
+            // Register background sync self.addEventListener('sync', event => {
+            if (event.tag === 'background-sync') {
+            event.waitUntil(doBackgroundSync()); } }); async function
+            doBackgroundSync() { // Sync data when online try { const response =
+            await fetch('/api/sync'); console.log('Background sync completed');
+            } catch (error) { console.log('Background sync failed'); } } //
+            Trigger from main thread
+            navigator.serviceWorker.ready.then(registration => { return
+            registration.sync.register('background-sync'); });
+          </div>
+
+          <h3>Push Notifications</h3>
+          <div class="code-block">
+            // Service Worker - handle push events self.addEventListener('push',
+            event => { const options = { body: event.data.text(), icon:
+            '/icon-192x192.png', badge: '/badge-72x72.png', actions: [ { action:
+            'open', title: 'Open App' }, { action: 'close', title: 'Close' } ]
+            }; event.waitUntil( self.registration.showNotification('App Title',
+            options) ); }); // Handle notification clicks
+            self.addEventListener('notificationclick', event => {
+            event.notification.close(); if (event.action === 'open') {
+            event.waitUntil( clients.openWindow('/') ); } });
+          </div>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="section">
+          <h2>✅ Best Practices</h2>
+
+          <h3>Caching Strategy</h3>
+          <ul style="margin: 15px 0; padding-left: 20px">
+            <li><strong>App Shell:</strong> Cache first strategy</li>
+            <li><strong>Static Assets:</strong> Cache with versioning</li>
+            <li>
+              <strong>API Data:</strong> Network first with cache fallback
+            </li>
+            <li><strong>User Content:</strong> Stale while revalidate</li>
+          </ul>
+
+          <h3>Service Worker Tips</h3>
+          <ul style="margin: 15px 0; padding-left: 20px">
+            <li>Always handle the install and activate events</li>
+            <li>Update service worker files to trigger updates</li>
+            <li>Use skipWaiting() and clients.claim() carefully</li>
+            <li>Implement proper error handling</li>
+            <li>Clean up old caches during activation</li>
+          </ul>
+
+          <div class="code-block">
+            // Complete Service Worker Template const VERSION = 'v1.0.0'; const
+            CACHE_NAME = `app-cache-${VERSION}`; const STATIC_CACHE =
+            'static-v1'; const DYNAMIC_CACHE = 'dynamic-v1'; // Install - cache
+            static resources self.addEventListener('install', event => {
+            event.waitUntil( caches.open(STATIC_CACHE) .then(cache =>
+            cache.addAll([ '/', '/css/app.css', '/js/app.js', '/offline.html'
+            ])) .then(() => self.skipWaiting()) ); }); // Activate - clean up
+            old caches self.addEventListener('activate', event => {
+            event.waitUntil( caches.keys() .then(keys => Promise.all(
+            keys.map(key => { if (key !== STATIC_CACHE && key !== DYNAMIC_CACHE)
+            { return caches.delete(key); } }) )) .then(() =>
+            self.clients.claim()) ); }); // Fetch - implement caching strategy
+            self.addEventListener('fetch', event => { const { request } = event;
+            // Handle different types of requests if
+            (request.url.includes('/api/')) { // Network first for API calls
+            event.respondWith(networkFirst(request)); } else if
+            (request.destination === 'image') { // Cache first for images
+            event.respondWith(cacheFirst(request)); } else { // Stale while
+            revalidate for others
+            event.respondWith(staleWhileRevalidate(request)); } });
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let cacheHits = 0;
+      let totalRequests = 0;
+
+      // Check connection status
+      function updateConnectionStatus() {
+        const status = document.getElementById("connectionStatus");
+        const statusText = document.getElementById("statusText");
+
+        if (navigator.onLine) {
+          status.className = "status online";
+          statusText.textContent = "🟢 Online - Full functionality available";
+        } else {
+          status.className = "status offline";
+          statusText.textContent = "🔴 Offline - Using cached resources";
+        }
+      }
+
+      // Log function
+      function log(message) {
+        const logOutput = document.getElementById("logOutput");
+        const timestamp = new Date().toLocaleTimeString();
+        logOutput.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+        logOutput.scrollTop = logOutput.scrollHeight;
+      }
+
+      // Check Service Worker status
+      function checkServiceWorker() {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.getRegistration().then((registration) => {
+            if (registration) {
+              log(`✅ Service Worker registered: ${registration.scope}`);
+              log(`📊 State: ${registration.active ? "Active" : "Installing"}`);
+            } else {
+              log("❌ No Service Worker registered");
+              registerServiceWorker();
+            }
+          });
+        } else {
+          log("❌ Service Workers not supported");
+        }
+      }
+
+      // Register Service Worker (demo version)
+      function registerServiceWorker() {
+        // This is a demo - we'll simulate SW registration
+        log("🔄 Registering Service Worker...");
+        setTimeout(() => {
+          log("✅ Service Worker registered successfully!");
+          log("📦 Caching app shell and static resources...");
+        }, 1000);
+      }
+
+      // Simulate offline mode
+      function simulateOffline() {
+        log("🔴 Simulating offline mode...");
+        log("📱 App continues to work using cached resources");
+        log("🔄 Background sync queued for when online");
+
+        // Update UI to show offline state
+        const status = document.getElementById("connectionStatus");
+        const statusText = document.getElementById("statusText");
+        status.className = "status offline";
+        statusText.textContent = "🔴 Simulated Offline Mode";
+
+        setTimeout(() => {
+          log("🟢 Connection restored");
+          updateConnectionStatus();
+        }, 3000);
+      }
+
+      // Clear cache
+      function clearCache() {
+        log("🗑️ Clearing cache...");
+
+        // Simulate cache clearing
+        setTimeout(() => {
+          log("✅ Cache cleared successfully");
+          log("⚠️ Next requests will fetch from network");
+          cacheHits = 0;
+          totalRequests = 0;
+          updatePerformanceMetrics();
+        }, 500);
+      }
+
+      // Cache resources
+      function cacheResources() {
+        log("📦 Caching resources...");
+
+        const resources = [
+          "index.html",
+          "styles.css",
+          "script.js",
+          "images/logo.png",
+          "data/config.json",
+        ];
+
+        resources.forEach((resource, index) => {
+          setTimeout(() => {
+            log(`✅ Cached: ${resource}`);
+            cacheHits++;
+            totalRequests++;
+            updatePerformanceMetrics();
+          }, index * 200);
+        });
+      }
+
+      // Update performance metrics
+      function updatePerformanceMetrics() {
+        const hitRate =
+          totalRequests > 0 ? (cacheHits / totalRequests) * 100 : 0;
+        document.getElementById(
+          "cacheHitRate"
+        ).textContent = `${hitRate.toFixed(1)}%`;
+        document.getElementById("performanceBar").style.width = `${hitRate}%`;
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", () => {
+        updateConnectionStatus();
+        log("🚀 Cache & Service Worker demo loaded");
+        log("💡 Try the interactive buttons above!");
+
+        // Listen for online/offline events
+        window.addEventListener("online", () => {
+          log("🟢 Connection restored");
+          updateConnectionStatus();
+        });
+
+        window.addEventListener("offline", () => {
+          log("🔴 Connection lost - switching to offline mode");
+          updateConnectionStatus();
+        });
+
+        // Simulate some cache activity
+        setTimeout(() => {
+          totalRequests = 10;
+          cacheHits = 7;
+          updatePerformanceMetrics();
+          log("📊 Performance metrics updated");
+        }, 2000);
+      });
+
+      // Demo service worker simulation
+      if ("serviceWorker" in navigator) {
+        // This would normally register a real service worker
+        log("🔧 Service Worker support detected");
+      }
+    </script>
+  </body>
+</html>
