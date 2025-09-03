@@ -4,7 +4,7 @@ let users: (string | number)[] = ["John", "Jane", 1]; //this is a union type arr
 let persons: Array<string | number> = ["Jane", 25]; //this is way representing using generics
 
 let results: [number, number] = [1, -1]; //this is a tuple type with fixed length and types
-let user: { name: string; age: number } = { name: "John", age: 30 }; //this is an object type
+let person: { name: string; age: number } = { name: "John", age: 30 }; //this is an object type
 let admin: Array<{ name: string; role: string }> = [
   { name: "Alice", role: "Admin" },
 ];
@@ -61,3 +61,75 @@ unknownValue = true;
 let nullishValue: string | null | undefined | boolean = false;
 let res = nullishValue ?? "Default Value";
 // If nullishValue is check right side value null or undefined, use "Default Value" if right side is false it will use right side value
+
+class SimpleUser {
+  name: string;
+  age: number;
+
+  constructor(n: string, age: number) {
+    this.name = n;
+    this.age = age;
+  }
+}
+
+let basicNewUser = new SimpleUser("John", 30);
+class Admin extends SimpleUser {
+  constructor(name: string, age: number, public role: string) {
+    // public defined as type instead of creating separate properties
+    super(name, age); // calling parent class constructor
+    console.log(
+      `Admin Created: ${this.name}, Age: ${this.age}, Role: ${this.role}`
+    );
+  }
+}
+let adminUser = new Admin("Alice", 35, "Admin");
+adminUser.role = "SuperAdmin"; // we can access and modify public properties
+class SuperAdmin extends Admin {
+  constructor(
+    name: string,
+    age: number,
+    role: string,
+    private permissions: string[]
+  ) {
+    super(name, age, role);
+    console.log(
+      `SuperAdmin Created: ${this.name}, Age: ${this.age}, Role: ${this.role}, Permissions: ${this.permissions}`
+    );
+  }
+  getPermissions() {
+    this.permissions.push("DELETE"); // we can access and modify private properties within the class
+    return this.permissions;
+  }
+}
+
+let superAdminUser = new SuperAdmin("Bob", 40, "SuperAdmin", ["READ", "WRITE"]);
+
+// superAdminUser.permissions.push("DELETE"); // we can access and modify public properties but not private properties it is available only within the class
+
+class User1 {
+  readonly _name: string;
+  readonly _age: number;
+  readonly _location: string[];
+
+  constructor(name: string, age: number, location: string[]) {
+    this._name = name;
+    this._age = age;
+    this._location = location;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  get age(): number {
+    return this._age;
+  }
+
+  get location(): string[] {
+    return this._location;
+  }
+}
+
+let user1 = new User1("John", 30, ["New York", "London"]);
+user1.name; // we can access name but cannot modify it because it is readonly
+user1.location.push("Paris"); // we can access location array and modify its contents but cannot reassign the array itself
