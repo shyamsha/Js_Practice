@@ -7,7 +7,22 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "experimentalDecorators": true
+    // "rootDir": "./src",
+    "experimentalDecorators": true,
+    "lib": [
+      "es6",
+      "dom",
+      "es2017",
+      "esnext.asynciterable",
+      "DOM.Iterable",
+      "ScriptHost"
+    ],
+    "sourceMap": true,
+    "removeComments": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true
   },
 
   "include": ["src"],
