@@ -55,3 +55,20 @@ var compress = function (chars) {
 
 let chars = ["a", "b", "b", "c"];
 console.log(compress(chars));
+// simpler version
+function compressString(str) {
+  let output = "";
+  let count = 1;
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === str[i + 1]) count++;
+    else {
+      output += count === 1 ? str[i] : str[i] + count;
+      count = 1;
+    }
+  }
+  return { output, length: output.length };
+}
+
+const str = "aaabbbccdde";
+console.log(compressString(str));

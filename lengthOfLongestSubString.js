@@ -53,5 +53,5 @@ function lengthOfLongestSubstring(s) {
   console.log(map);
   return maxSize;
 }
-let s = "abcabcbb";
+let s = "abcdeeabcasd";
 console.log(lengthOfLongestSubstring(s));
