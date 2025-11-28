@@ -50,3 +50,5 @@ function longestPalindromeOptimized(str) {
   }
   return longest;
 }
+
+console.log(longestPalindromeOptimized("cbbd")); // Output: "bb"
